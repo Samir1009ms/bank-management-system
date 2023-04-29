@@ -1,38 +1,43 @@
-.App {
-  text-align: center;
+@import "primereact/resources/primereact.min.css";
+@import 'primeflex/primeflex.css';
+@import "https://unpkg.com/primeflex@^3/primeflex.css";
+@import "https://unpkg.com/primeflex/themes/saga-blue.css";
+@import "primereact/resources/themes/lara-light-indigo/theme.css";
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Manrope", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --body-bg-color: #fff;
+  --nav-bg-color: #FAFBFC;
+  --nav-active-color: #D3E1F5;
+  --nav-text-color: #050624;
+  --icon-color: #3E79E5;
+  --nav-active-bg-color: #D3E1F5;
+  --nav-text-color-active: linear-gradient(90deg, #3E79E5 38%, #01B8E3 47%);
+  --nav-hover-color: #c9dffe;
+  --btn-bg-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
+  --login-bg-color: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
+  --text-colors: #A4B4CB;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: var(--body-bg-color);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+body.dark {
+  --body-bg-color: #050624;
+  --nav-bg-color: rgba(61, 122, 229, 0.1);
+  --nav-hover-color: rgba(250, 251, 252, 0.075);
+  --nav-active-bg-color: rgba(250, 251, 252, 0.103);
+  --icon-color: #01B8E3;
+  --nav-active-color: #D3E1F5;
+  --nav-text-color: #fff;
+  --nav-text-color-active: linear-gradient(90deg, #3E79E5 38%, #01B8E3 47%);
+  --btn-bg-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
+  --login-bg-color: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
+  --text-colors: #D3E1F5;
+}/*# sourceMappingURL=app.css.map */
