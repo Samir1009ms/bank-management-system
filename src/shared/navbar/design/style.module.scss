@@ -9,10 +9,10 @@
     // justify-content: space-between;
     row-gap: 45px;
     background: var(--nav-bg-color);
-    border-radius: 20px;
+    // border-radius: 20px;
     padding: 40px 0px;
 
-    position: fixed;
+    position: sticky;
     top: 0;
     left: 0;
 
@@ -22,7 +22,8 @@
         flex-direction: column;
         align-items: center;
         row-gap: 30px;
-
+        height: 100%;
+        justify-content: space-between;
 
         .logo {
             margin-bottom: 20px;

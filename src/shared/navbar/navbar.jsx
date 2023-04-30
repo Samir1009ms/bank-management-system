@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { routing } from './config/routing.js'
+import { mod, routing } from './config/routing.js'
 import s from './design/style.module.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Theme } from '../../components/theme/theme.jsx'
 import { AuthService } from '../../services/auth.services.js'
 
@@ -11,15 +11,26 @@ export function Navbar() {
     const navigate = useNavigate()
     const location = useLocation()
     const [hover, setHover] = useState(null)
+    const [hover2, setHover2] = useState(null)
 
     function active(e) {
         setHover(e)
+        // setHover2(e)
         console.log(e);
     }
     function deActive(e) {
         setHover(null)
+        // setHover2(null)
     }
-
+    function active2(e) {
+        // setHover(e)
+        setHover2(e)
+        console.log(e);
+    }
+    function deActive2(e) {
+        // setHover(null)
+        setHover2(null)
+    }
     // function Hover(e) {
     //     return hover === e ? "#c4d7f0" : ''
     // }
@@ -29,7 +40,22 @@ export function Navbar() {
         navigate('/login')
         window.location.reload();
     }
+    const [user, setUser] = useState(null)
 
+    function userId() {
+        // const id = AuthService.headers().then(
+        //     (data) => {
+        //         console.log(data);
+        //     }
+        // )
+        const id = localStorage.getItem("userId")
+        console.log(id);
+        setUser(id)
+    }
+
+    useEffect(() => {
+        userId();
+    }, [])
 
     return (
 
@@ -58,6 +84,26 @@ export function Navbar() {
                             </li>
                         )
                     })}
+                </ul>
+                <ul className={s.navList}>
+                    {
+                        mod.map((e, index) => {
+                            return (
+                                <li key={index}
+                                    className={`${s.navListText}  ${hover2 === index && s.hover}`}
+                                >
+                                    <a
+                                        className={`${s.navLink} `}
+                                        onMouseEnter={() => active2(index)}
+                                        onMouseLeave={() => deActive2(index)}
+                                    >
+                                        {e.icon}
+                                        {e.text}
+                                    </a>
+                                </li>
+                            )
+                        })
+                    }
                 </ul>
             </nav>
         </header>

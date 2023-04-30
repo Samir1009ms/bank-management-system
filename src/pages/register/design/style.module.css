@@ -4,75 +4,16 @@
 @import "https://unpkg.com/primeflex/themes/saga-blue.css";
 @import "primereact/resources/themes/lara-light-indigo/theme.css";
 @import "../../../App.css";
-* {
-  box-sizing: border-box;
-}
-
-.colors {
-  background: var(--btn-bg-color) !important;
-}
-
-.login {
-  box-shadow: 0 1rem 3rem rgba(32, 21, 94, 0.295);
-  background: var(--login-bg-color);
-  height: 55%;
-}
-
-.sign {
-  color: var(--text-colors);
-  font-size: 30px;
-}
-
-.auth {
-  color: var(--text-colors) !important;
-}
-
 .main {
-  height: 100vh;
   align-items: center;
+  height: 100vh;
   margin: 0 auto !important;
-}
-
-input {
-  background: none !important;
-  outline: none !important;
-  box-shadow: none !important;
-  border: 1px solid transparent !important;
-  -o-border-image: linear-gradient(to right, #f07516, #ffa500, #6e3102) 1 !important;
-     border-image: linear-gradient(to right, #f07516, #ffa500, #6e3102) 1 !important;
-  color: var(--text-colors) !important;
-  border-radius: 0 !important;
-}
-
-.checkbox {
-  background: none !important;
-}
-
-.p-checkbox .p-checkbox-box {
-  background: blue !important;
-  border-radius: 0 !important;
-}
-
-.remember {
-  color: var(--text-colors) !important;
-}
-
-.account {
-  color: var(--text-colors) !important;
-}
-
-.link {
-  background: var(--nav-text-color-active) !important;
-  -webkit-background-clip: text !important;
-          background-clip: text !important;
-  -webkit-text-fill-color: transparent;
-  text-decoration: underline;
 }
 
 .images {
   background-image: url(https://i.ibb.co/tDLqQtj/bg.jpg);
   background-size: cover;
-  height: 55%;
+  height: 75%;
   position: relative;
 }
 .images::after {
@@ -113,6 +54,52 @@ input {
   letter-spacing: 1.8px;
 }
 
+.colors {
+  background: var(--btn-bg-color) !important;
+}
+
+.register {
+  box-shadow: 0 1rem 3rem rgba(32, 21, 94, 0.295);
+  background: var(--login-bg-color);
+  height: 75%;
+}
+
+.sign {
+  color: var(--text-colors);
+  font-size: 30px;
+}
+
+.auth {
+  color: var(--text-colors) !important;
+}
+
+input {
+  background: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid transparent !important;
+  -o-border-image: linear-gradient(to right, #f07516, #ffa500, #6e3102) 1 !important;
+     border-image: linear-gradient(to right, #f07516, #ffa500, #6e3102) 1 !important;
+  color: var(--text-colors) !important;
+  border-radius: 0 !important;
+}
+
+.remember {
+  color: var(--text-colors) !important;
+}
+
+.account {
+  color: var(--text-colors) !important;
+}
+
+.link {
+  background: var(--nav-text-color-active) !important;
+  -webkit-background-clip: text !important;
+          background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  text-decoration: underline;
+}
+
 i {
   cursor: pointer;
   color: #d96d1a !important;
@@ -120,4 +107,20 @@ i {
 
 body {
   background: var(--body-bg-color);
+}
+
+.error {
+  position: absolute;
+  bottom: -21px;
+  left: 13px;
+  color: rgba(255, 0, 0, 0.832);
+}
+
+.cPassword {
+  position: relative;
+  margin-bottom: 18px;
+}
+
+.p-inputwrapper-focus {
+  display: none !important;
 }/*# sourceMappingURL=style.module.css.map */

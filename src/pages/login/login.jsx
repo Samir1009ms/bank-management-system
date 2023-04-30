@@ -75,7 +75,7 @@ const Login = () => {
                     </div>
                     <div className="card flex justify-content-center">
                         <span className="p-float-label col-12" style={{ padding: 0 }}>
-                            <Password style={{ width: "100%" }} className='col-12' inputStyle={{ width: "100%" }} inputId="password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask />
+                            <Password style={{ width: "100%" }} className='col-12' inputStyle={{ width: "100%" }} inputId="password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask feedback={false} />
                             <label className={style.auth} htmlFor="password">Password</label>
                         </span>
                     </div>
