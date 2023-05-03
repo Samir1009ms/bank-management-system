@@ -1,9 +1,3 @@
-@import "primereact/resources/primereact.min.css";
-@import 'primeflex/primeflex.css';
-@import "https://unpkg.com/primeflex@^3/primeflex.css";
-@import "https://unpkg.com/primeflex/themes/saga-blue.css";
-@import "primereact/resources/themes/lara-light-indigo/theme.css";
-@import "../../../App.css";
 * {
   box-sizing: border-box;
 }

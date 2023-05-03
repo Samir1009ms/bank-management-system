@@ -1,0 +1,56 @@
+.pAvatar {
+  background-color: var(--nav-active-bg-color) !important;
+  color: var(--nav-text-color);
+}
+
+.icon {
+  color: red;
+  background-color: rgb(14, 129, 230);
+}
+
+.pBadge {
+  min-width: 1.2rem !important;
+  height: 1.2rem !important;
+  line-height: 1.2rem !important;
+  background: var(--nav-active-bg-color);
+  color: var(--nav-text-color);
+}
+
+.title {
+  color: var(--nav-text-color);
+}
+
+.homeHeader {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 0 50px;
+  height: 65px;
+  align-items: center;
+}
+
+.icons {
+  color: var(--nav-text-color) !important;
+  cursor: pointer;
+}
+
+.profile {
+  color: var(--nav-text-color);
+  background-color: var(--nav-bg-color);
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+}
+
+.profilesMenu {
+  position: absolute;
+  top: 103%;
+  right: 2px;
+  width: calc(100% - 42px);
+  border: 1px solid red;
+  border-radius: 10px;
+}/*# sourceMappingURL=style.module.css.map */

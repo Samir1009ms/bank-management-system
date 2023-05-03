@@ -16,7 +16,7 @@ const Login = () => {
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
     const navigate = useNavigate()
-    console.log(password);
+    // console.log(password);
 
     const [theme, setTheme] = useState('light')
     const [disabled, setDisabled] = useState(true);
@@ -26,6 +26,7 @@ const Login = () => {
         let theme = localStorage.getItem("theme");
         if (theme === "dark") {
             document.body.classList.add("dark");
+
             setTheme("dark");
         } else {
             document.body.classList.remove("dark");

@@ -6,6 +6,7 @@ import { Theme } from '../../components/theme/theme.jsx'
 import { AuthService } from '../../services/auth.services.js'
 
 
+var counter = 0
 
 export function Navbar() {
     const navigate = useNavigate()
@@ -52,16 +53,36 @@ export function Navbar() {
         console.log(id);
         setUser(id)
     }
+    async function get() {
+
+        try {
+            const data = await AuthService.headers()
+            console.log(data);
+        }
+        catch { }
+    }
 
     useEffect(() => {
         userId();
+        get()
     }, [])
 
-    return (
+    const [ss, setS] = useState("flex")
+    function show() {
+        if (counter === 1) {
+            setS("block")
+            counter--
+        } else {
+            setS("hidden")
+            counter++
+        }
+        console.log(ss);
+    }
 
-        <header className={s.header}>
+    return (
+        <header className={`${s.header} col-2 sm:${ss} lg:${ss} `}>
             <Theme></Theme>
-            <button onClick={() => logout()}></button>
+            <button onClick={() => show()}></button>
             <nav className={s.navTop}>
                 <ul className={s.navList}>
                     {routing.map((route, index) => {

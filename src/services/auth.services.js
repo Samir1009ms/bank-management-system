@@ -66,8 +66,10 @@ export class AuthService {
   }
   static userId(id) {
     console.log(id);
+
     return localStorage.setItem("userId", id)
   }
+
 
 
 }

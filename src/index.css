@@ -1,3 +1,12 @@
+@import "primereact/resources/primereact.min.css";
+@import 'primeflex/primeflex.css';
+@import "https://unpkg.com/primeflex@^3/primeflex.css";
+@import "https://unpkg.com/primeflex/themes/saga-blue.css";
+@import "primereact/resources/themes/lara-light-indigo/theme.css"; 
+@import "./App.css";
+@import 'primeicons/primeicons.css';
+        
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +20,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* @media screen and (min-width: 62em) {
+  .p-sidebar-md-hidden {
+    min-width: unset;
+    max-width: 992px;
+  }
+} */

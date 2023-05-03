@@ -7,6 +7,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { Theme } from './components/theme/theme';
 import Login from './pages/login/login';
 import { Register } from './pages/register/register';
+import { Home } from './pages/home/home';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -15,7 +16,7 @@ root.render(
       <Route exact path='/login' element={<Login></Login>} />
       <Route path='/register' element={<Register></Register>} />
       <Route path="/" exact element={<App />}>
-        <Route />
+        <Route path='/' element={<Home />} />
       </Route>
     </Routes>
 
