@@ -1,1 +1,71 @@
 .home {}
+
+
+
+
+.mainTop {
+    color: white;
+
+    .balansCont {
+        display: flex;
+        flex-direction: column;
+        row-gap: 30px;
+
+        .balans {
+            background: var(--bg-colors);
+            display: flex;
+            flex-direction: column;
+            padding: 20px 40px;
+            color: var(--nav-text-color);
+            border: 1px solid #2888d6;
+            border-radius: 10px;
+
+
+
+
+            .total {
+                text-transform: capitalize;
+                font-size: 13px;
+                position: relative;
+                color: var(--total-color);
+
+
+                &::before {
+                    content: '';
+                    width: 25px;
+                    height: 3px;
+                    background: linear-gradient(77.34deg, #36D9FF 6.16%, #4A00C5 94.12%);
+                    display: inline-block;
+                    position: absolute;
+                    top: 105%;
+                    left: 0px;
+                    border-radius: 5px;
+                }
+
+            }
+
+            .amout {
+                font-size: 30px;
+                font-weight: 600;
+                margin-top: 10px;
+
+            }
+
+            .limit {
+                font-size: 24px;
+                margin-top: 10px;
+                font-weight: 600;
+            }
+        }
+
+        .paymentBtn {
+            padding: 10px 32px;
+            border-radius: 10px;
+            background: var(--gradient-color);
+            border: none;
+            color: var(--nav-text-color);
+            cursor: pointer;
+        }
+    }
+
+}

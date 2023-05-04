@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASE_URL = "http://localhost:5500/api";
+const BASE_URL = "https://ecommerce-back-end-theta.vercel.app/api";
 
 export class AuthService {
 
@@ -37,15 +37,18 @@ export class AuthService {
     axios.defaults.headers['Authorization'] = `${token}`;
 
     const t = localStorage.getItem("token")
-    console.log(t)
+    // console.log(t)
     // console.log(JSON.parse(atob(t.split('.'))))
     const payload = JSON.parse(atob(t.split('.')[1]))
     // const userName = payload.name
-    console.log(payload._id)
+    // console.log(payload._id)
     setTimeout(() => {
     }, 300);
 
+
     this.userId(payload._id);
+
+    return payload
   }
 
   static async register(name, email, password) {
@@ -65,7 +68,7 @@ export class AuthService {
     return JSON.parse(localStorage.getItem('token'));
   }
   static userId(id) {
-    console.log(id);
+    // console.log(id);
 
     return localStorage.setItem("userId", id)
   }

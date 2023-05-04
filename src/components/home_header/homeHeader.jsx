@@ -7,20 +7,26 @@ import { Badge } from 'primereact/badge';
 import style from "./design/style.module.css"
 import { useEffect } from 'react';
 import { AuthService } from '../../services/auth.services';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export function HomeHeader() {
 
     // ! location text
     const [pathname, setPathname] = useState(null)
+
+    const location = useLocation()
+
+
     useEffect(() => {
-        if (window.location.pathname === "/") {
+
+        if (location.pathname === "/") {
             setPathname("Dashboard")
         } else {
-            setPathname(window.location.pathname.slice(1))
+            setPathname(location.pathname.slice(1))
+            console.log(location.pathname);
         }
-        console.log(window.location.pathname);
-    }, [window.location.pathname])
+        // console.log(window.location.pathname);
+    }, [location])
 
     //! user profile  
     const [users, setUsers] = useState("hidden")
@@ -37,7 +43,7 @@ export function HomeHeader() {
     function logout() {
         AuthService.logout()
         navigate('/login')
-        window.location.reload();
+        // window.location.reload();
 
     }
 
@@ -54,7 +60,6 @@ export function HomeHeader() {
                     <Avatar className={`border-circle ${style.pAvatar}`} label='S' size="" shape="circle" />
                     Samir Yusifov
                     <i className={`pi pi-angle-down ${style.icons}`}> </i>
-
                 </div>
                 <div className={`${style.profilesMenu} ${users}  flex-column gap-2 p-3`}>
                     <span className={`${style.icons} flex align-items-center gap-1`} >
@@ -66,11 +71,7 @@ export function HomeHeader() {
                         Logout
                     </span>
                 </div>
-
-
             </div>
-
-
         </div>
     )
 }

@@ -8,6 +8,7 @@ import { Theme } from './components/theme/theme';
 import Login from './pages/login/login';
 import { Register } from './pages/register/register';
 import { Home } from './pages/home/home';
+import { Wallet } from './pages/wallet/wallet';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -17,6 +18,7 @@ root.render(
       <Route path='/register' element={<Register></Register>} />
       <Route path="/" exact element={<App />}>
         <Route path='/' element={<Home />} />
+        <Route path='/wallet' element={<Wallet />} />
       </Route>
     </Routes>
 

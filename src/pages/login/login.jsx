@@ -53,8 +53,8 @@ const Login = () => {
             .then((data) => {
                 navigate('/');
                 // window.location.reload();
-                console.log(data);
-                console.log("ssas");
+                // console.log(data);
+                // console.log("ssas");
 
             })
             .catch((error) => {

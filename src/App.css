@@ -22,6 +22,9 @@
   --btn-bg-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
   --login-bg-color: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
   --text-colors: #A4B4CB;
+  --bg-colors: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
+  --total-color: #A4B4CB;
+  --gradient-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
 }
 
 body {
@@ -40,4 +43,7 @@ body.dark {
   --btn-bg-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
   --login-bg-color: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
   --text-colors: #D3E1F5;
+  --bg-colors: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
+  --total-color: #D3E1F5;
+  --gradient-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
 }/*# sourceMappingURL=app.css.map */

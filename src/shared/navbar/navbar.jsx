@@ -17,7 +17,7 @@ export function Navbar() {
     function active(e) {
         setHover(e)
         // setHover2(e)
-        console.log(e);
+        // console.log(e);
     }
     function deActive(e) {
         setHover(null)
@@ -26,7 +26,7 @@ export function Navbar() {
     function active2(e) {
         // setHover(e)
         setHover2(e)
-        console.log(e);
+        // console.log(e);
     }
     function deActive2(e) {
         // setHover(null)
@@ -36,34 +36,37 @@ export function Navbar() {
     //     return hover === e ? "#c4d7f0" : ''
     // }
 
-    function logout() {
-        AuthService.logout()
-        navigate('/login')
-        window.location.reload();
-    }
-    const [user, setUser] = useState(null)
+    // function logout() {
+    //     AuthService.logout()
+    //     navigate('/login')
+    //     window.location.reload();
+    // }
+    // const [user, setUser] = useState(null)
 
-    function userId() {
-        // const id = AuthService.headers().then(
-        //     (data) => {
-        //         console.log(data);
-        //     }
-        // )
-        const id = localStorage.getItem("userId")
-        console.log(id);
-        setUser(id)
-    }
+    // function userId() {
+    // const id = AuthService.headers().then(
+    //     (data) => {
+    //         console.log(data);
+    //     }
+    // )
+    // const id = localStorage.getItem("userId")
+    // console.log(id);
+    // setUser(id)
+
+    const [isAdmin, setIsAdmin] = useState(false)
+
     async function get() {
 
         try {
             const data = await AuthService.headers()
             console.log(data);
+            setIsAdmin(data.isAdmin)
         }
         catch { }
     }
 
     useEffect(() => {
-        userId();
+        // userId();
         get()
     }, [])
 
@@ -76,7 +79,7 @@ export function Navbar() {
             setS("hidden")
             counter++
         }
-        console.log(ss);
+        // console.log(ss);
     }
 
     return (
@@ -106,6 +109,7 @@ export function Navbar() {
                         )
                     })}
                 </ul>
+                {/* {isAdmin && <p>sss</p>} */}
                 <ul className={s.navList}>
                     {
                         mod.map((e, index) => {

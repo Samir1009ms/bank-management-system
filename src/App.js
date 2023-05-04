@@ -11,16 +11,18 @@ function App() {
   const navigate = useNavigate()
 
 
-
+  // window.location.reload()
+  // 
   useEffect(() => {
     if (!currentUser) {
       // window.location.href = '/login';
       // console.log(currentUser);
       navigate('/login')
-      console.log("s");
+      // console.log("s");
 
     } else {
-      console.log(currentUser);
+      // console.log(currentUser);
+
     }
   }, [])
 
