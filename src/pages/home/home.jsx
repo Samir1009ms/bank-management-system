@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react';
 // import { HomeHeader } from '../../components/home_header/homeHeader'
 import style from "./design/style.module.css"
 import { ApiService } from '../../services/api.services';
+import { Charts } from '../../components/charts/chart';
+import moment from 'moment/moment';
 
 
 export function Home() {
@@ -12,39 +14,83 @@ export function Home() {
     const [card, setCard] = useState("")
     const [loading, setLoading] = useState(true);
 
+    const [incoming, setIncoming] = useState([])
+    const [moneys, setMoney] = useState()
+
+    // const months = [
+    //     "January",
+    //     "February",
+    //     "March",
+    //     "April",
+    //     "May",
+    //     "June",
+    //     "July",
+    //     "August",
+    //     "September",
+    //     "October",
+    //     "November",
+    //     "December"
+    // ];
+
+
     async function getCard() {
         try {
             let userId = localStorage.getItem("userId")
-            // setLoading(true)
-            ApiService.card(userId).then((data) => {
-                setCard(data)
-                setTotal(data.cards.reduce((acc, item) => acc + item.balance, 0))
-                console.log(data);
-                console.log(card);
+            ApiService.card(userId)
+                .then((data) => {
+                    setCard(data)
+                    setTotal(data.cards.reduce((acc, item) => acc + item.balance, 0))
 
-                setLoading(false)
-                return data
+                    setLoading(false)
+                    Incomings(userId)
+                    return data
 
-
-            }).catch((err) => {
-                console.log(err);
-            })
-        } catch {
-            console.log("error");
+                }).catch((err) => {
+                    console.log(err);
+                })
         }
-
+        catch (err) {
+            console.log(err);
+        }
     }
 
-    useEffect(() => {
-        setTimeout(() => {
-            getCard()
-        }, 90);
-    }, [])
+    async function Incomings(userId) {
+        setLoading(true)
+        await ApiService.transctions(userId)
+            .then((data) => {
 
-    // useEffect(() => {
-    //     // var v = card
-    //     console.log(card);
-    // }, [card]);
+
+                setIncoming(data.filter((e) => e.type !== "Outgoing"))
+                setLoading(false)
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+    async function money() {
+        const result = [];
+        const months = moment.months();
+
+        months.forEach((month) => {
+            result.push({ month: month, amount: 0 });
+        });
+
+        incoming.forEach((transaction) => {
+            const month = moment(transaction.date).format("MMMM");
+            const index = result.findIndex((item) => item.month === month);
+            if (index !== -1) {
+                result[index].amount += transaction.amount;
+            }
+        });
+        setMoney(result);
+    }
+    useEffect(() => {
+        money();
+    }, [incoming]);
+
+    useEffect(() => {
+        getCard()
+    }, [])
 
     return (
         <main className={`${style.home} grid m-0 w-full`}>
@@ -68,7 +114,7 @@ export function Home() {
                             </button>
                         </div>
                         <div className={`col-8`}>
-                            charts
+                            <Charts money={moneys}></Charts>
                             {card && card.cards.map((e, i) => {
 
                                 return (

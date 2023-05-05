@@ -31,6 +31,7 @@ export function Theme() {
         <>
             <button
                 onClick={changeTheme}
+                data-theme={theme}
             >
                 s
                 {theme === "light" ? "🌚" : "☀️"}

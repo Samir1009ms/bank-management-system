@@ -8,4 +8,7 @@ export class ApiService {
         return (await axios.get(`${BASE_URL}getBankCards/${userId}`)).data
     }
 
+    static async transctions(userId) {
+        return (await axios.get(`${BASE_URL}getTransactions/${userId}`)).data
+    }
 }
