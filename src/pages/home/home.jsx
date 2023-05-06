@@ -138,10 +138,7 @@ export function Home() {
         },
         {
             field: '',
-        },
-
-        // { field: 'category', header: 'Category' },
-        // { field: 'quantity', header: 'Quantity' }
+        }
     ];
 
     return (
