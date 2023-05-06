@@ -35,6 +35,7 @@ export function Charts({ money }) {
         const textColor = documentStyle.getPropertyValue('--nav-text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+        const bg = documentStyle.getPropertyValue('--login-bg-color');
 
 
         const data = {
@@ -45,7 +46,7 @@ export function Charts({ money }) {
                     fill: true,
                     borderColor: documentStyle.getPropertyValue('--red-500'),
                     tension: 0.4,
-                    backgroundColor: 'rgba(255,167,38,0.2)'
+                    backgroundColor: 'bg'
                 }
             ]
         };

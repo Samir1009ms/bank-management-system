@@ -11,19 +11,19 @@ import { Wallet } from './pages/wallet/wallet';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route exact path='/login' element={<Login></Login>} />
-        <Route path='/register' element={<Register></Register>} />
-        <Route path="/" exact element={<App />}>
-          <Route path='/' element={<Home />} />
-          <Route path='/wallet' element={<Wallet />} />
-        </Route>
-      </Routes>
+  // <React.StrictMode>
+  <BrowserRouter>
+    <Routes>
+      <Route exact path='/login' element={<Login></Login>} />
+      <Route path='/register' element={<Register></Register>} />
+      <Route path="/" exact element={<App />}>
+        <Route path='/' element={<Home />} />
+        <Route path='/wallet' element={<Wallet />} />
+      </Route>
+    </Routes>
 
-    </BrowserRouter>
-  </React.StrictMode>
+  </BrowserRouter>
+  // </React.StrictMode> 
 );
 
 
