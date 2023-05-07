@@ -30,7 +30,25 @@ code {
 } */
 
 tr{
-display: flex;
-justify-content: space-between;
-padding: 0 10px;
+/* display: flex; */
+/* justify-content: space-between;   */
+/* padding: 0 10px; */
+/* text-align: center; */
+
+}
+
+td{
+  /* padding: 0 10px; */
+  /* text-align: center !important; */
+  min-width: 45px;
+}
+
+td:nth-child(2){
+  /* text-align: center !important;
+   */
+   min-width: 45px;
+   
+   /* max-width: 60px; */
+   /* padding: 0 !important; */
+   /* width: 60px; */
 }

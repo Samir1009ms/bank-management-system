@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
+
+import DayNightToggle from 'react-day-and-night-toggle'
+
 export function Theme() {
+    const [isDarkMode, setIsDarkMode] = useState(false)
 
     const [theme, setTheme] = useState('light')
 
@@ -26,16 +30,24 @@ export function Theme() {
             document.body.classList.remove("dark")
             setTheme("light")
         }
+
     }
     return (
         <>
-            <button
-                onClick={changeTheme}
-                data-theme={theme}
+            {/* <button
+            // onClick={changeTheme}
+            // data-theme={theme}
             >
                 s
                 {theme === "light" ? "🌚" : "☀️"}
-            </button>
+            </button> */}
+            <DayNightToggle
+                // onChange={() => setIsDarkMode(!isDarkMode)}
+                checked={theme === "dark" ? true : false}
+                onClick={changeTheme}
+
+            />
+
         </>
     )
 }

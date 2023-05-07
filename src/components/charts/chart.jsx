@@ -114,6 +114,21 @@ export function Charts({ money }) {
         // console.log("money2", money);
     }, [money]);
 
+    // const [t, setT] = useState()
+    // useEffect(() => {
+    //     const v = localStorage.getItem("theme")
+    //     setT(v)
+    //     console.log(v);
+    // }, [])
+    // window.addEventListener('storage', function (event) {
+    //     // sadece "theme" anahtarına yapılan değişiklikleri kontrol edelim
+    //     if (event.key === 'theme') {
+    //         // yeni değeri console'a loglayalım
+    //         console.log(`LocalStorage'de "theme" anahtarı değiştirildi. Yeni değer: ${event.newValue}`);
+    //     }
+    // });
+
+
     return (
         <div className="card">
             <Chart type="line" style={{ border: "1px solid blue", borderRadius: "10px", background: "#eddefd" }} width='540px' height='320px' data={chartData} options={chartOptions} />

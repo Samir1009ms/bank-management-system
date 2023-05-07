@@ -31,7 +31,7 @@ body {
   background: var(--body-bg-color);
 }
 
-.dark {
+body.dark {
   --body-bg-color: #050624;
   --nav-bg-color: rgba(61, 122, 229, 0.1);
   --nav-hover-color: rgba(250, 251, 252, 0.075);
@@ -46,4 +46,4 @@ body {
   --bg-colors: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
   --total-color: #D3E1F5;
   --gradient-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
-}
+}/*# sourceMappingURL=app.css.map */

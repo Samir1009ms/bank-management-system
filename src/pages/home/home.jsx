@@ -98,7 +98,7 @@ export function Home() {
             const sorts = transction.sort((a, b) => b.date.localeCompare(a.date))
             const groupDates = sorts.reduce((acc, date) => {
                 const [month, day, year] = moment(date.date).format("MMMM DD YYYY").split(" ")
-                const datesKey = `${month} ${day} ${year}`
+                const datesKey = `${month}  ${year}`
                 if (!acc[datesKey]) {
                     acc[datesKey] = []
                 }
@@ -111,35 +111,64 @@ export function Home() {
                 transctions
             }))
             setTarix(data)
-            console.log(data);
         }
     }, [transction]);
 
     useEffect(() => {
+
         setTimeout(() => {
             getCard();
         }, 90);
     }, []);
-    const columns = [
-        {
-            field: 'date',
 
-            body: (rowData) => format(new Date(rowData.date), 'MMMM dd, yyyy'),
+    // const columns = [
+    //     {
+    //         field: 'date',
 
-        },
-        {
-            field: 'amount',
-        },
-        {
-            field: 'type',
-        },
-        {
-            field: 'type',
-        },
-        {
-            field: '',
+    //         body: (rowData) => format(new Date(rowData.date), 'MMMM dd, yyyy'),
+
+    //     },
+    //     {
+    //         field: 'amount',
+    //     },
+    //     {
+    //         field: 'type',
+    //     },
+    //     {
+    //         field: 'type',
+    //     },
+    //     {
+    //         field: '',
+    //     }
+    // ];
+
+
+    // month sort
+
+    const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
+    const [filters, setFilters] = useState()
+    useEffect(() => {
+        if (tarix) {
+            const filtr = tarix && tarix.filter((e) => {
+                let month = moment(e.date).format("M");
+                // console.log(month);
+                month = Number(month)
+                return month === selectedMonth
+            })
+            setFilters(filtr);
         }
-    ];
+        console.log(selectedMonth);
+        // console.log(filters[selectedMonth]);
+    }, [selectedMonth, tarix])
+
+
+    // paginate
+    const [first, setFirst] = useState(0);
+    const [rows, setRows] = useState(5);
+    const onPageChange = (event) => {
+        setFirst(event.first);
+        setRows(event.rows);
+    };
 
     return (
         <main className={`${style.home} grid m-0 w-full`}>
@@ -164,18 +193,6 @@ export function Home() {
                         </div>
                         <div className={`col-8`}>
                             <Charts money={moneys}></Charts>
-                            {/* {card &&
-                                card.cards.map((e, i) => {
-                                    return (
-                                        <div key={i}>
-                                            <div>{e.cardNumber}</div>
-                                            <div>{e.cardName}</div>
-                                            <div>{e.cardType}</div>
-                                            <div>{e.cardDate}</div>
-                                            <div>{e.cardCvv}</div>
-                                        </div>
-                                    );
-                                })} */}
                         </div>
                     </div>
                     <div>
@@ -183,39 +200,44 @@ export function Home() {
                         <div className="card">
 
                         </div>
-                        <div>
-                            {tarix && tarix.map((e, i) => (
-                                <div key={i}>
-                                    <p style={{ color: "red" }} >{e.date}</p>
-                                    <ul>
-                                        {e.transctions.map((e, i) => (
-                                            // <li key={i}>
-                                            //     <div>{e.amount}</div>
-                                            //     <div style={{ color: e.type === "Incoming" ? "green" : "blue" }}>{e.type}</div>
-                                            //     <div>{moment(e.date).format("MMMM DD YYYY")}</div>
-                                            // </li>
-                                            <DataTable key={i} value={[e]} tableStyle={{ minWidth: '35rem', maxWidth: '35rem' }}>
 
-                                                {columns.map((col, i) => (
-                                                    <Column
-                                                        key={i}
-                                                        field={col.field}
-                                                        body={col.body}
-                                                        headerStyle={{ display: 'none' }}
-                                                    />
-                                                ))}
+                        <div style={{ maxWidth: '35rem' }}>
+                            <select value={selectedMonth} onChange={(e) => {
+                                setSelectedMonth(Number(e.target.value))
 
-                                            </DataTable>
-                                        ))
-                                        }
-                                    </ul>
-                                </div>
+                            }} name="" id="">
+                                <option value="1">yanvar</option>
+                                <option value="2">fevral</option>
+                                <option value="3">mart</option>
+                                <option value="4">aprel</option>
+                                <option value="5">may</option>
+                                <option value="6">iyun</option>
+                                <option value="7">iyul</option>
+                            </select>
+                            {filters && filters.map((e, i) => (
+
+                                <DataTable key={i} value={e.transctions} sortmode="multiple" tableStyle={{ minWidth: '35rem', maxWidth: '35rem' }} first={first} rows={rows} paginator paginatorTemplate=" PrevPageLink PageLinks NextPageLink " onPage={(e) => onPageChange(e)}>
+                                    <Column field="date" body={(rowData) => format(new Date(rowData.date), 'MMMM dd, yyyy HH:mm:ss')} header="Date" sortable></Column>
+                                    <Column field="amount" header="Amount" sortable></Column>
+                                    <Column field="type" header="Type" sortable></Column>
+                                    <Column field="date" header="Transaction Details" sortable body={(rowData) => (
+                                        <React.Fragment>
+                                            <div>{rowData.type}</div>
+                                            <div>{format(new Date(rowData.date), 'MMMM dd, yyyy HH:mm:ss')}</div>
+                                        </React.Fragment>
+                                    )}></Column>
+                                </DataTable>
+
                             ))}
+
+
                         </div>
+
                         <div>{/* //! account summary */}</div>
                     </div>
                 </section>
-            )}
-        </main>
+            )
+            }
+        </main >
     );
 }
