@@ -6,6 +6,7 @@ import { TbSettings } from "react-icons/tb";
 import { MdOutlineSecurity, MdOutlineDarkMode } from "react-icons/md";
 import { BiHelpCircle } from "react-icons/bi";
 import s from "../design/style.module.css";
+import { Theme } from "../../../components/theme/theme"
 
 
 
@@ -50,8 +51,7 @@ export const mod = [
     icon: <BiHelpCircle className={s.icon} />,
   },
   {
-    text: "dark mode",
-    icon: <MdOutlineDarkMode className={s.icon} />,
+    text: <Theme></Theme>
   },
 
 ]

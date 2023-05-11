@@ -37,10 +37,23 @@ tr{
 
 }
 
+table{
+  font-size: 11px;
+   /* background: var(--nav-bg-color); */
+  
+background: none !important;
+
+}
+
 td{
   /* padding: 0 10px; */
   /* text-align: center !important; */
   min-width: 45px;
+  border:var(--table-border-color) !important;
+  
+  border-width: 0px 0px 1px 0px !important;
+  /* border-color: var(--table-border-color) !important; */
+
 }
 
 td:nth-child(2){
@@ -51,4 +64,79 @@ td:nth-child(2){
    /* max-width: 60px; */
    /* padding: 0 !important; */
    /* width: 60px; */
+}
+
+tr{
+color: var(--nav-text-color) !important;
+background: none !important;
+}
+
+th{
+  /* background: var(--nav-bg-color) !important; */
+  background: none !important;
+  color: var(--text-colors) !important;
+  border: var(--table-border-color) !important;
+  border-width: 0px 0px 1px 0px !important;
+
+
+}
+
+th >div >svg{
+  color: var(--text-colors) !important;
+}
+
+ .jpBuES{
+
+  transition: left 1s ease 0s, transform 1s ease 0s, width 1s ease 0s, height 1s ease 0s, box-shadow 1s ease 0s, background-color 1s ease 0.2s !important;
+}
+
+.GuAPJ{
+  width: 300px !important;
+  box-shadow: rgb(224, 224, 224) 0px 0px 15px 1px !important;
+}
+
+.lhLyMq{
+  width: 300px !important;
+  box-shadow: rgb(97, 97, 97) 0px 0px 15px 1px !important;
+}
+
+.gedoCi{
+
+  width: 110px !important;
+}
+
+.p-paginator{
+  background: none !important;
+  border: var(--table-border-color) !important;
+  border-width: 0px 0px 1px 0px !important;
+
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight{
+  background: var(--btn-bg-color);
+  color: var(--btn-text-color) !important;
+}
+
+
+
+.p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover{
+
+  background: #e9ecef47 !important;
+  color: var(--btn-text-color) !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page{
+  color: var(--nav-text-color) !important;
+  min-width: 2.5rem !important;
+  height: 2.5rem !important;
+
+}
+.p-paginator .p-paginator-prev{
+  min-width: 2.5rem !important;
+  height: 2.5rem !important;
+}
+
+.p-paginator .p-paginator-next{
+  min-width: 2.5rem !important;
+  height: 2.5rem !important;
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
 const BASE_URL = "https://ecommerce-back-end-theta.vercel.app/api";
+// const BASE_URL = 'http://localhost:5500/api'
 
 export class AuthService {
 
@@ -7,34 +8,53 @@ export class AuthService {
   //     return (await axios.post(`${BASE_URL}/login`),data);
   // }
 
+  // static async login(email, password) {
+  //   return await axios
+  //     .post(BASE_URL + '/login', { email, password }, {
+  //       // headers: {
+  //       //   Authorization: `Bearer ${token}`
+  //       // }
+  //     })
+  //     .then((response) => {
+  //       // console.log("S");
+  //       if (response.data) {
+  //         localStorage.setItem('token', JSON.stringify(response.data));
+  //         // console.log(response);
+  //         const token = response.data
+  //         setTimeout(() => {
+  //           axios.defaults.headers['Authorization'] = `${token}`;
+  //           this.headers(token)
+  //         }, 100);
+  //         // console.log(token);
+  //         // console.log(JSON.parse(response));
+  //       }
+  //       return response.data;
+  //     });
+
+
+  // }
+
+
   static async login(email, password) {
-    return await axios
-      .post(BASE_URL + '/login', { email, password }, {
-        // headers: {
-        //   Authorization: `Bearer ${token}`
-        // }
-      })
-      .then((response) => {
-        // console.log("S");
-        if (response.data) {
-          localStorage.setItem('token', JSON.stringify(response.data));
-          // console.log(response);
-          const token = response.data
-          setTimeout(() => {
-            axios.defaults.headers['Authorization'] = `${token}`;
-            this.headers(token)
-          }, 100);
-          // console.log(token);
-          // console.log(JSON.parse(response));
-        }
-        return response.data;
-      });
+    let data = await axios
+      .post(BASE_URL + '/login', { email, password })
+
+    console.log(data.data);
+
+    localStorage.setItem("token", data.data)
 
 
-  }
+
+
+
+  };
+
+
+
+
 
   static async headers(token) {
-    axios.defaults.headers['Authorization'] = `${token}`;
+    // axios.defaults.headers['Authorization'] = `${token}`;
 
     const t = localStorage.getItem("token")
     // console.log(t)
@@ -65,7 +85,7 @@ export class AuthService {
   }
 
   static getCurrentUser() {
-    return JSON.parse(localStorage.getItem('token'));
+    return (localStorage.getItem('token'));
   }
   static userId(id) {
     // console.log(id);

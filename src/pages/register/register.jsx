@@ -81,8 +81,8 @@ export function Register() {
     }, [])
 
     return (
-        <main className={`${style.main} formgrid grid justify-content-center xl:col-8 md:col-10 sm:col-12`}>
-            <section className={`${style.register} field xl:col-6 sm:col-9 justify-content-center flex flex-column  align-items-center gap-4 pt-6 pb-6`}>
+        <main className={`${style.main} formgrid grid justify-content-center xl:col-8 col-12 md:col-10 sm:col-12`}>
+            <section className={`${style.register} field xl:col-6 sm:col-9 col-12 justify-content-center flex flex-column  align-items-center gap-4 pt-6 pb-6`}>
                 <form className='col-10 sm:col-10 gap-4 grid flex-column' onSubmit={handleRegister}>
                     <h3 className={style.sign}>Register</h3>
                     <div className="card flex justify-content-center">
@@ -135,7 +135,7 @@ export function Register() {
                     <a href="/login" className={style.link}>Log in to your account</a>
                 </div>
             </section>
-            <section className={`field xl:col-6 sm:hidden md:hidden lg:flex  lg:relative sm:absolute grid align-items-center justify-content-center ${style.images}`} >
+            <section className={`hidden field xl:col-6 sm:hidden md:hidden lg:flex  lg:relative sm:absolute grid align-items-center justify-content-center ${style.images}`} >
                 <div className={`grid align-items-center justify-content-center ${style.text}`}>
                     <h3>Welcome</h3>
                     <p>Lorem ipsuing elit. Molomos totam est voluptatum i omos totam est voluptatum i ure sit consectetur ill</p>

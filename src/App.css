@@ -1,7 +1,7 @@
-@import "primereact/resources/primereact.min.css";
 @import 'primeflex/primeflex.css';
 @import "https://unpkg.com/primeflex@^3/primeflex.css";
 @import "https://unpkg.com/primeflex/themes/saga-blue.css";
+@import "primereact/resources/primereact.min.css";
 @import "primereact/resources/themes/lara-light-indigo/theme.css";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
 * {
@@ -25,6 +25,10 @@
   --bg-colors: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
   --total-color: #A4B4CB;
   --gradient-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
+  --chart-bg-color: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
+  --chart-border: 1px solid #2888d6;
+  --table-border-color: 0.5px solid #D3E1F5;
+  --btn-text-color: white;
 }
 
 body {
@@ -46,4 +50,8 @@ body.dark {
   --bg-colors: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
   --total-color: #D3E1F5;
   --gradient-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
+  --chart-bg-color: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
+  --chart-border: 1px solid #4B6EAC;
+  --table-border-color: 0.5px solid rgba(211, 225, 245, 0.3);
+  --btn-text-color: white;
 }/*# sourceMappingURL=app.css.map */

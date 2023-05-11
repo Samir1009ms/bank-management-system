@@ -83,9 +83,9 @@ export function Navbar() {
     }
 
     return (
-        <header className={`${s.header} col-2 sm:${ss} lg:${ss} `}>
-            <Theme></Theme>
+        <header className={`${s.header} col-2 sm:${ss} hidden md:hidden lg:${ss} `}>
             <button onClick={() => show()}></button>
+            <Theme></Theme>
             <nav className={s.navTop}>
                 <ul className={s.navList}>
                     {routing.map((route, index) => {

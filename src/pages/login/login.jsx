@@ -64,8 +64,8 @@ const Login = () => {
     };
 
     return (
-        <main className={`${style.main} formgrid grid justify-content-center xl:col-8 md:col-10 sm:col-12`}>
-            <section className={`${style.login} field xl:col-6 sm:col-9 justify-content-center flex flex-column  align-items-center gap-4 pt-6 pb-6`}>
+        <main className={`${style.main} formgrid grid justify-content-center xl:col-8 md:col-10 col-12 sm:col-12`}>
+            <section className={`${style.login} col-12 field xl:col-6 sm:col-9 justify-content-center flex flex-column  align-items-center gap-4 pt-6 pb-6`}>
                 <form className='col-10 sm:col-10 gap-4 grid flex-column' onSubmit={handleLogin}>
                     <h3 className={style.sign}>Log in</h3>
                     <div className="card flex justify-content-center">
@@ -104,7 +104,7 @@ const Login = () => {
                     <a href="/register" className={style.link}>Create your account</a>
                 </div>
             </section>
-            <section className={`field xl:col-6 sm:hidden md:hidden lg:flex  lg:relative sm:absolute grid align-items-center justify-content-center ${style.images}`} >
+            <section className={`hidden field xl:col-6  md:hidden lg:flex  lg:relative sm:absolute grid align-items-center justify-content-center ${style.images}  sm:hidden`} >
                 <div className={`grid align-items-center justify-content-center ${style.text}`}>
                     <h3>Welcome</h3>
                     <p>Lorem ipsuing elit. Molomos totam est voluptatum i omos totam est voluptatum i ure sit consectetur ill</p>

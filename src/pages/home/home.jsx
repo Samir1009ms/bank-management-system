@@ -8,13 +8,12 @@ import moment from "moment/moment";
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { format } from 'date-fns';
+import DoughnutChartDemo from "../../components/charts/chart2";
 
 export function Home() {
     const [total, setTotal] = useState(0);
-
     const [card, setCard] = useState("");
     const [loading, setLoading] = useState(true);
-
     const [incoming, setIncoming] = useState([]);
     const [moneys, setMoney] = useState();
 
@@ -39,10 +38,8 @@ export function Home() {
             ApiService.card(userId)
                 .then((data) => {
                     setCard(data);
-                    setTotal(data.cards.reduce((acc, item) => acc + item.balance, 0));
-
+                    setTotal(data.cards.reduce((acc, item) => (acc + item.balance), 0));
                     setLoading(false);
-
                     Incomings(userId);
                     return data;
                 })
@@ -61,24 +58,20 @@ export function Home() {
             .then((data) => {
                 setIncoming(data.filter((e) => e.type !== "Outgoing"));
                 setTransction(data);
-                console.log(transction);
-                // setTimeout(() => {
                 setLoading(false);
-
-                // }, 1000);
             })
             .catch((err) => {
                 console.log(err);
             });
     }
+
+    console.log(transction);
     async function money() {
         const result = [];
         const months = moment.months();
-
         months.forEach((month) => {
             result.push({ month: month, amount: 0 });
         });
-
         incoming.forEach((transaction) => {
             const month = moment(transaction.date).format("MMMM");
             const index = result.findIndex((item) => item.month === month);
@@ -105,7 +98,6 @@ export function Home() {
                 acc[datesKey].push(date)
                 return acc
             }, {})
-
             const data = Object.entries(groupDates).map(([date, transctions]) => ({
                 date,
                 transctions
@@ -113,9 +105,7 @@ export function Home() {
             setTarix(data)
         }
     }, [transction]);
-
     useEffect(() => {
-
         setTimeout(() => {
             getCard();
         }, 90);
@@ -151,14 +141,11 @@ export function Home() {
         if (tarix) {
             const filtr = tarix && tarix.filter((e) => {
                 let month = moment(e.date).format("M");
-                // console.log(month);
                 month = Number(month)
                 return month === selectedMonth
             })
             setFilters(filtr);
         }
-        console.log(selectedMonth);
-        // console.log(filters[selectedMonth]);
     }, [selectedMonth, tarix])
 
 
@@ -175,14 +162,14 @@ export function Home() {
             {loading ? (
                 loading
             ) : (
-                <section className={`w-full p-6`}>
-                    <div className={`${style.mainTop} grid col-9`}>
+                <section className={`w-9 pt-6 pb-6 pl-6`}>
+                    <div className={`${style.mainTop} hidden lg:flex grid w-full`}>
                         {/* //! top */}
                         <div className={`${style.balansCont} p-3  col-4`}>
                             <div className={`${style.balans}  `}>
                                 {/* //! total balans */}
                                 <span className={`${style.total}`}>total balance</span>
-                                <span className={`${style.amout}`}>$ {total}</span>
+                                <span className={`${style.amout}`}>$ {total.toLocaleString('az-Latn-AZ')}</span>
                             </div>
                             <div className={`${style.balans}`}>
                                 {/* //! credit limit */}
@@ -195,13 +182,13 @@ export function Home() {
                             <Charts money={moneys}></Charts>
                         </div>
                     </div>
-                    <div>
+                    <div className={`flex w-full`}>
                         {/* //! bottom */}
-                        <div className="card">
+                        {/* <div className="card">
 
-                        </div>
+                        </div> */}
 
-                        <div style={{ maxWidth: '35rem' }}>
+                        <div className={`col-8`}>
                             <select value={selectedMonth} onChange={(e) => {
                                 setSelectedMonth(Number(e.target.value))
 
@@ -216,7 +203,15 @@ export function Home() {
                             </select>
                             {filters && filters.map((e, i) => (
 
-                                <DataTable key={i} value={e.transctions} sortmode="multiple" tableStyle={{ minWidth: '35rem', maxWidth: '35rem' }} first={first} rows={rows} paginator paginatorTemplate=" PrevPageLink PageLinks NextPageLink " onPage={(e) => onPageChange(e)}>
+                                <DataTable
+                                    key={i}
+                                    value={e.transctions}
+                                    sortmode="multiple"
+                                    // tableStyle={{ minWidth: '35rem', maxWidth: '35rem' }}
+                                    first={first} rows={rows}
+                                    paginator
+                                    paginatorTemplate=" PrevPageLink PageLinks NextPageLink "
+                                    onPage={(e) => onPageChange(e)}>
                                     <Column field="date" body={(rowData) => format(new Date(rowData.date), 'MMMM dd, yyyy HH:mm:ss')} header="Date" sortable></Column>
                                     <Column field="amount" header="Amount" sortable></Column>
                                     <Column field="type" header="Type" sortable></Column>
@@ -229,11 +224,23 @@ export function Home() {
                                 </DataTable>
 
                             ))}
-
-
                         </div>
 
-                        <div>{/* //! account summary */}</div>
+                        <div style={{ color: "white" }}>
+                            <h2>Account summary</h2>
+                            <div>
+                                <div>
+                                    <p>Incomne</p>
+                                    <span>$27,289</span>
+                                </div>
+                                <div>
+                                    <p>Incomne</p>
+                                    <span>$27,289</span>
+                                </div>
+                            </div>
+                            <DoughnutChartDemo filter={filters}></DoughnutChartDemo>
+
+                        </div>
                     </div>
                 </section>
             )
