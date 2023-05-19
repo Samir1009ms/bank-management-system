@@ -9,13 +9,37 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { format } from 'date-fns';
 import DoughnutChartDemo from "../../components/charts/chart2";
+import { getCard } from '../../store/asyncthunk/transactions.js';
+import { getTransactions } from "../../store/expense/transactions-slice";
+import { useDispatch, useSelector } from "react-redux";
 
 export function Home() {
+    const dispatch = useDispatch();
+    const cardData = useSelector((state) => state.card.cardData);
+    const totals = useSelector((state) => state.card.total);
+    const loading = useSelector((state) => state.card.loading);
+    const error = useSelector((state) => state.card.error);
+
+    console.log(cardData);
+    console.log(totals);
+    console.log(loading);
+    useEffect(() => {
+        dispatch(getCard());
+    }, [dispatch]);
+
+    // !--------------------------------------------------------------------------------
+
+
+
+
+
+
     const [total, setTotal] = useState(0);
     const [card, setCard] = useState("");
-    const [loading, setLoading] = useState(true);
+    const [loadin, setLoading] = useState(true);
     const [incoming, setIncoming] = useState([]);
     const [moneys, setMoney] = useState();
+    // const dispatch = useDispatch()
 
     // const months = [
     //     "January",
@@ -32,40 +56,44 @@ export function Home() {
     //     "December"
     // ];
 
-    async function getCard() {
-        try {
-            let userId = localStorage.getItem("userId");
-            ApiService.card(userId)
-                .then((data) => {
-                    setCard(data);
-                    setTotal(data.cards.reduce((acc, item) => (acc + item.balance), 0));
-                    setLoading(false);
-                    Incomings(userId);
-                    return data;
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    // async function getCard() {
+    //     try {
+    //         ApiService.card(userId)
+    //             .then((data) => {
+    //                 setCard(data);
+    //                 setTotal(data.cards.reduce((acc, item) => (acc + item.balance), 0));
+    //                 setLoading(false);
+    //                 Incomings(userId);
+    //                 return data;
+    //             })
+    //             .catch((err) => {
+    //                 console.log(err);
+    //             });
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
     const [transction, setTransction] = useState();
-    async function Incomings(userId) {
+    async function Incomings() {
+        let userId = localStorage.getItem("userId");
+
         // setLoading(true)
         await ApiService.transctions(userId)
             .then((data) => {
                 setIncoming(data.filter((e) => e.type !== "Outgoing"));
                 setTransction(data);
+                dispatch(getTransactions(data))
+
                 setLoading(false);
+                // console.log(data);
             })
             .catch((err) => {
                 console.log(err);
             });
     }
 
-    console.log(transction);
+    // console.log(transction);
     async function money() {
         const result = [];
         const months = moment.months();
@@ -107,33 +135,11 @@ export function Home() {
     }, [transction]);
     useEffect(() => {
         setTimeout(() => {
-            getCard();
+            // getCard();
+            Incomings()
         }, 90);
     }, []);
 
-    // const columns = [
-    //     {
-    //         field: 'date',
-
-    //         body: (rowData) => format(new Date(rowData.date), 'MMMM dd, yyyy'),
-
-    //     },
-    //     {
-    //         field: 'amount',
-    //     },
-    //     {
-    //         field: 'type',
-    //     },
-    //     {
-    //         field: 'type',
-    //     },
-    //     {
-    //         field: '',
-    //     }
-    // ];
-
-
-    // month sort
 
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
     const [filters, setFilters] = useState()
@@ -157,6 +163,7 @@ export function Home() {
         setRows(event.rows);
     };
 
+    // console.log(filters);
     return (
         <main className={`${style.home} grid m-0 w-full`}>
             {loading ? (
@@ -169,7 +176,7 @@ export function Home() {
                             <div className={`${style.balans}  `}>
                                 {/* //! total balans */}
                                 <span className={`${style.total}`}>total balance</span>
-                                <span className={`${style.amout}`}>$ {total.toLocaleString('az-Latn-AZ')}</span>
+                                <span className={`${style.amout}`}>$ {totals.toLocaleString('en-US')}</span>
                             </div>
                             <div className={`${style.balans}`}>
                                 {/* //! credit limit */}
@@ -225,7 +232,6 @@ export function Home() {
 
                             ))}
                         </div>
-
                         <div style={{ color: "white" }}>
                             <h2>Account summary</h2>
                             <div>
@@ -238,6 +244,7 @@ export function Home() {
                                     <span>$27,289</span>
                                 </div>
                             </div>
+
                             <DoughnutChartDemo filter={filters}></DoughnutChartDemo>
 
                         </div>

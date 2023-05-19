@@ -10,6 +10,7 @@ const themeSlice = createSlice({
         theme: (state, action) => {
             // console.log(action.payload);
             state.theme = action.payload;
+
         }
     }
 })
