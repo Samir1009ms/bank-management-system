@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getCard } from '../asyncthunk/transactions';
+import { getCard } from '../asyncthunk/bankCard-service';
 
 const cardSlice = createSlice({
     name: 'card',
@@ -12,6 +12,7 @@ const cardSlice = createSlice({
     reducers: {
         setCard: (state, action) => {
             state.cardData = action.payload;
+            // console.log(state.cardData);
         },
         setLoading: (state, action) => {
             state.loading = action.payload;

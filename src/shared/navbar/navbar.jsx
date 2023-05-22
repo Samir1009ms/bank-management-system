@@ -59,7 +59,7 @@ export function Navbar() {
 
         try {
             const data = await AuthService.headers()
-            console.log(data);
+            // console.log(data);
             setIsAdmin(data.isAdmin)
         }
         catch { }

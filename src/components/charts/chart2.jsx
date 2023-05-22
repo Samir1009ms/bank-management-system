@@ -15,7 +15,7 @@ export default function DoughnutChartDemo({ filter }) {
 
         setOutgomings(outcomne && outcomne.reduce((acc, amount) => (acc + amount.amount), 0))
         setIncomes(incomne && incomne.reduce((acc, amount) => (acc + amount.amount), 0))
-        console.log(arr);
+        // console.log(arr);
     }
     useEffect(() => {
         transactionsData(filter && filter)
@@ -45,7 +45,7 @@ export default function DoughnutChartDemo({ filter }) {
         };
         setChartData(data);
         setChartOptions(options);
-        console.log(filter);
+        // console.log(filter);
     }, [filter, outgomings, incomes]);
 
 

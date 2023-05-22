@@ -9,8 +9,9 @@ import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { format } from 'date-fns';
 import DoughnutChartDemo from "../../components/charts/chart2";
-import { getCard } from '../../store/asyncthunk/transactions.js';
-import { getTransactions } from "../../store/expense/transactions-slice";
+import { getCard } from '../../store/asyncthunk/bankCard-service';
+import { getTransactions } from '../../store/asyncthunk/transactions-service';
+// import { getTransactions } from "../../store/expense/transactions-slice";
 import { useDispatch, useSelector } from "react-redux";
 
 export function Home() {
@@ -19,12 +20,15 @@ export function Home() {
     const totals = useSelector((state) => state.card.total);
     const loading = useSelector((state) => state.card.loading);
     const error = useSelector((state) => state.card.error);
-
-    console.log(cardData);
-    console.log(totals);
-    console.log(loading);
+    // const d = useSelector((state) => state.transactionsSlice.transactions)
+    const d = useSelector((state) => state.transactionsSlice.outcoming)
+    console.log(d);
+    // console.log(cardData);
+    // console.log(totals);
+    // console.log(loading);
     useEffect(() => {
         dispatch(getCard());
+        dispatch(getTransactions())
     }, [dispatch]);
 
     // !--------------------------------------------------------------------------------
@@ -79,18 +83,18 @@ export function Home() {
         let userId = localStorage.getItem("userId");
 
         // setLoading(true)
-        await ApiService.transctions(userId)
-            .then((data) => {
-                setIncoming(data.filter((e) => e.type !== "Outgoing"));
-                setTransction(data);
-                dispatch(getTransactions(data))
+        // await ApiService.transctions(userId)
+        //     .then((data) => {
+        //         setIncoming(data.filter((e) => e.type !== "Outgoing"));
+        //         setTransction(data);
+        //         // dispatch(getTransactions(data))
 
-                setLoading(false);
-                // console.log(data);
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        //         setLoading(false);
+        //         // console.log(data);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //     });
     }
 
     // console.log(transction);
@@ -144,15 +148,15 @@ export function Home() {
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
     const [filters, setFilters] = useState()
     useEffect(() => {
-        if (tarix) {
-            const filtr = tarix && tarix.filter((e) => {
+        if (d) {
+            const filtr = d.filter((e) => {
                 let month = moment(e.date).format("M");
                 month = Number(month)
                 return month === selectedMonth
             })
             setFilters(filtr);
         }
-    }, [selectedMonth, tarix])
+    }, [d, selectedMonth])
 
 
     // paginate
