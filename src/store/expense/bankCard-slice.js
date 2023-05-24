@@ -36,7 +36,9 @@ const cardSlice = createSlice({
                 state.cardData = action.payload;
             })
             .addCase(getCard.rejected, (state, action) => {
+
                 state.loading = false;
+
                 state.error = action.error.message;
             });
     },

@@ -28,10 +28,11 @@ const transactionsSlice = createSlice({
 
         },
         dataT: ((state, action) => {
-            console.log(action.payload);
-            // const xerc = action.payload
+            // console.log(action.payload);
+            let xerc = [...action.payload]
+            // console.log("222222", action.payload);
             if (state.transactions) {
-                const sorts = state.transactions.sort((a, b) => b.date.localeCompare(a.date))
+                const sorts = xerc.sort((a, b) => b.date.localeCompare(a.date))
                 const groupDates = sorts.reduce((acc, date) => {
                     const [month, day, year] = moment(date.date).format("MMMM DD YYYY").split(" ")
                     const datesKey = `${month}  ${year}`

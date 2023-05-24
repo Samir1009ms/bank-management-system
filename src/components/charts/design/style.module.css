@@ -2,4 +2,9 @@
   border-radius: 5px;
   border: var(--chart-border);
   background: var(--chart-bg-color);
+}
+
+.chart2 {
+  background: var(--summary-bg-color);
+  border-radius: 10px;
 }/*# sourceMappingURL=style.module.css.map */

@@ -29,6 +29,7 @@
   --chart-border: 1px solid #2888d6;
   --table-border-color: 0.5px solid #D3E1F5;
   --btn-text-color: white;
+  --summary-bg-color: linear-gradient(0deg, #f7f6f6, #f8f4f4), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgb(239 236 236 / 0%) 100%);
 }
 
 body {
@@ -54,4 +55,5 @@ body.dark {
   --chart-border: 1px solid #4B6EAC;
   --table-border-color: 0.5px solid rgba(211, 225, 245, 0.3);
   --btn-text-color: white;
+  --summary-bg-color: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
 }/*# sourceMappingURL=app.css.map */

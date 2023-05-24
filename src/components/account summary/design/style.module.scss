@@ -1,0 +1,51 @@
+.summary {
+    color: var(--nav-text-color);
+    display: flex;
+    // flex-direction: column;
+    flex-wrap: wrap;
+
+    .xerc {
+        .incomme {
+            border: 1px solid #2888d6;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+            align-items: center;
+            justify-content: center;
+            background: var(--summary-bg-color);
+            text-align: center;
+
+            p {
+                color: var(--total-color);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                column-gap: 4px;
+                font-weight: 400;
+                font-size: 12px;
+                line-height: 15px;
+
+                svg {
+                    color: rgb(114, 189, 3);
+                    font-weight: 900;
+                    font-size: 18px;
+
+
+
+                }
+
+                .down {
+                    color: red;
+                }
+            }
+
+
+
+            span {
+                font-weight: 700;
+                font-size: 18px;
+            }
+        }
+    }
+}
