@@ -7,12 +7,14 @@ const cardSlice = createSlice({
         cardData: null,
         loading: false,
         error: null,
-        total: 0
+        total: 0,
+        cards: null
     },
     reducers: {
         setCard: (state, action) => {
             state.cardData = action.payload;
             // console.log(state.cardData);
+            state.cards = state.cardData.cards
         },
         setLoading: (state, action) => {
             state.loading = action.payload;
@@ -28,12 +30,13 @@ const cardSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getCard.pending, (state) => {
-                state.loading = true;
+                // state.loading = true;
                 state.error = null;
             })
             .addCase(getCard.fulfilled, (state, action) => {
                 state.loading = false;
                 state.cardData = action.payload;
+                state.cards = state.cardData.cards
             })
             .addCase(getCard.rejected, (state, action) => {
 

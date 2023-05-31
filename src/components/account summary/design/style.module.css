@@ -1,7 +1,15 @@
 .summary {
   color: var(--nav-text-color);
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-height: 135px;
+  min-height: 135px;
+  margin-top: 10px;
+}
+.summary .text {
+  font-size: 22px;
 }
 .summary .xerc .incomme {
   border: 1px solid #2888d6;
@@ -13,6 +21,7 @@
   justify-content: center;
   background: var(--summary-bg-color);
   text-align: center;
+  padding: 6px;
 }
 .summary .xerc .incomme p {
   color: var(--total-color);
@@ -36,4 +45,9 @@
 .summary .xerc .incomme span {
   font-weight: 700;
   font-size: 18px;
+}
+
+.accSum {
+  flex-direction: column;
+  row-gap: 30px !important;
 }/*# sourceMappingURL=style.module.css.map */

@@ -1,6 +1,6 @@
 import axios from "axios";
-const BASE_URL = "https://ecommerce-back-end-theta.vercel.app/api";
-// const BASE_URL = 'http://localhost:5500/api'
+// const BASE_URL = "https://ecommerce-back-end-theta.vercel.app/api";
+const BASE_URL = 'http://localhost:5500/api'
 
 export class AuthService {
 

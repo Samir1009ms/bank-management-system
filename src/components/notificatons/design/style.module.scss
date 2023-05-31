@@ -1,0 +1,30 @@
+.icons {
+    color: var(--nav-text-color) !important;
+    cursor: pointer;
+}
+
+.pBadge {
+    min-width: 1.2rem !important;
+    height: 1.2rem !important;
+    line-height: 1.2rem !important;
+    background: var(--nav-active-bg-color);
+    color: var(--nav-text-color);
+}
+
+.bildirisCont {
+    border: 1px solid red;
+    min-height: 50px;
+    max-height: 350px;
+    position: absolute;
+    width: 280px;
+    left: -80px;
+    top: 50px;
+    color: green;
+    overflow-y: scroll;
+    z-index: 9999;
+}
+
+.notification {
+
+    position: relative;
+}

@@ -10,19 +10,19 @@ export default function DoughnutChartDemo({ incom, outcom }) {
 
         const documentStyle = getComputedStyle(document.documentElement);
         const data = {
-            labels: ['Incomne', 'Outcomne'],
+            labels: ['Outcomne', 'Incomne'],
             datasets: [
                 {
-                    data: [outcom, incom],
+                    data: [outcom ? outcom : -0.1, incom ? incom : 0.1],
                     backgroundColor: [
-                        documentStyle.getPropertyValue('--blue-500'),
-                        documentStyle.getPropertyValue('--yellow-500'),
-                        documentStyle.getPropertyValue('--green-500')
+                        documentStyle.getPropertyValue('--blue-300'),
+                        documentStyle.getPropertyValue('--yellow-300'),
+                        documentStyle.getPropertyValue('--green-200')
                     ],
                     hoverBackgroundColor: [
-                        documentStyle.getPropertyValue('--blue-400'),
-                        documentStyle.getPropertyValue('--yellow-400'),
-                        documentStyle.getPropertyValue('--green-400')
+                        documentStyle.getPropertyValue('--blue-200'),
+                        documentStyle.getPropertyValue('--yellow-300'),
+                        documentStyle.getPropertyValue('--green-100')
                     ]
                 }
             ]

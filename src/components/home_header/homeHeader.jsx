@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 import { Avatar } from 'primereact/avatar';
 import { FiLogOut } from "react-icons/fi"
-import { Badge } from 'primereact/badge';
-
-
 import style from "./design/style.module.css"
 import { useEffect } from 'react';
 import { AuthService } from '../../services/auth.services';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { Notification } from '../notificatons/notifications';
 
 export function HomeHeader() {
 
@@ -47,15 +45,14 @@ export function HomeHeader() {
 
     }
 
+
     return (
         <div className={`${style.homeHeader}`}>
             <div className={style.title}>
                 <h1>{pathname}</h1>
             </div>
             <div className={`grid align-items-center gap-3 h-full pt-2 relative `}>
-                <i className={`pi pi-bell p-overlay-badge ${style.icons}`} style={{ fontSize: '22px' }}>
-                    <Badge className={style.pBadge} value="2"></Badge>
-                </i>
+                <Notification />
                 <div onClick={() => userProfile()} className={`${style.profile} relative`}>
                     <Avatar className={`border-circle ${style.pAvatar}`} label='S' size="" shape="circle" />
                     Samir Yusifov

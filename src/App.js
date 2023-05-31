@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { AuthService } from './services/auth.services';
 import { useEffect } from 'react';
 import { HomeHeader } from './components/home_header/homeHeader';
+import Footer from './shared/footer/Footer';
 
 function App() {
   const currentUser = AuthService.getCurrentUser();
@@ -32,6 +33,7 @@ function App() {
       <div className='flex w-10 flex-column'>
         <HomeHeader></HomeHeader>
         <Outlet></Outlet>
+        <Footer />
       </div>
     </>
   );

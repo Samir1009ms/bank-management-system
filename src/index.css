@@ -79,7 +79,14 @@ th{
   border-width: 0px 0px 1px 0px !important;
 
 
+
+
 }
+
+tr:last-child>td{
+  border: none !important;
+}
+
 
 th >div >svg{
   color: var(--text-colors) !important;
@@ -110,10 +117,12 @@ th >div >svg{
   border: var(--table-border-color) !important;
   border-width: 0px 0px 1px 0px !important;
 
+  border: none !important;
+
 }
 
 .p-paginator .p-paginator-pages .p-paginator-page.p-highlight{
-  background: var(--btn-bg-color);
+  background: var(--btn-bg-color) !important;
   color: var(--btn-text-color) !important;
 }
 

@@ -18,9 +18,9 @@ export function AccountSummary({ filter }) {
         setIncomes(incomne && incomne.reduce((acc, amount) => (acc + amount.amount), 0))
     }, [filter])
     return (
-        <div className={`grid col-4 row-gap-4 `}>
+        <div className={`grid col-4 row-gap-1 ${style.accSum}`}>
             <div className={`${style.summary}`}>
-                <h2 className={`col-12 text-center`}>Account summary</h2>
+                <h2 className={`col-12 ${style.text}`}>Account summary</h2>
                 <div className={`${style.xerc} w-full flex column-gap-2`}>
                     <div className={`w-6 ${style.incomme}`}>
                         <p> <HiArrowTrendingUp /> Incomne</p>

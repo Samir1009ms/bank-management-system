@@ -1,24 +1,51 @@
-.home {}
+.home {
+    // flex-wrap: nowrap !important;
+    column-gap: 23.1px !important;
+}
 
 
 
 .transactions {
-    min-height: 464px;
+    min-height: 464px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.table {
+    min-height: 464px !important;
+
+}
+
+.basliq {
+    color: var(--nav-text-color);
+}
+
+.chart {
+    width: 66%;
+}
+
+.homeLeftxx {
+    width: 71%;
+    // width: 69%; //! media query 1240 px
+
 }
 
 .mainTop {
     color: white;
+    padding-top: 20px;
 
     .balansCont {
         display: flex;
         flex-direction: column;
         row-gap: 30px;
+        width: 33%;
+        padding: 0 1rem 1rem 1rem !important;
 
         .balans {
             background: var(--bg-colors);
             display: flex;
             flex-direction: column;
-            padding: 20px 40px;
+            padding: 20px;
             color: var(--nav-text-color);
             border: 1px solid #2888d6;
             border-radius: 10px;
@@ -62,6 +89,8 @@
         }
 
         .paymentBtn {
+            width: 100%;
+            margin: 0 !important;
             padding: 10px 32px;
             border-radius: 10px;
             background: var(--gradient-color);
@@ -71,4 +100,69 @@
         }
     }
 
+}
+
+
+.left {
+    width: calc(100% - 73%);
+    // width: calc(100% - 71%); //! media query 1240 px
+    // padding: 0 !important;
+
+}
+
+
+// !----------
+.textW {
+    width: 95%;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+
+}
+
+.transfer {
+    width: 100%;
+    background: rgba(211, 225, 245, 0.15);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.transferBtn {
+    padding: 9px 11px 6px;
+    background: var(--btn-bg-color);
+    border-radius: 10px;
+    color: white;
+    margin: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.transferInput {
+    height: 40px;
+    border: 1px solid rgb(122, 122, 241) !important;
+    width: 76%;
+}
+
+.transferContainer {
+    width: 98%;
+    background: dimgray;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    column-gap: 14px;
+    padding: 20px 8px;
 }

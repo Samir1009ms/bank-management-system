@@ -11,6 +11,8 @@ import { Wallet } from './pages/wallet/wallet';
 import { Provider } from 'react-redux';
 import cartStore from './store/store';
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>

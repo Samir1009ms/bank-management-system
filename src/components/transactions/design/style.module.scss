@@ -1,0 +1,29 @@
+.selects {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    margin-top: 20px;
+
+    .selectLeft {
+        display: flex;
+        column-gap: 10px;
+        cursor: pointer;
+
+        .click {
+
+            color: #A4B4CB;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 15px;
+        }
+
+        .active {
+            color: #3D7AE5;
+            border-bottom: 2px solid #3D7AE5;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+
+
+        }
+    }
+}

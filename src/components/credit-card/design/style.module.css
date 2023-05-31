@@ -1,0 +1,123 @@
+@charset "UTF-8";
+.cardItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.cardItem .PaginationCont {
+  height: 40px;
+}
+.cardItem .PaginationCont .pagination {
+  height: 40px;
+  display: flex;
+  -moz-column-gap: 5px;
+       column-gap: 5px;
+  align-items: center;
+  justify-content: center;
+}
+.cardItem .PaginationCont .pagination .pageItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cardItem .PaginationCont .pagination .pageItem .pageLink {
+  background: #6359E9;
+  border-radius: 4px;
+  width: 10px;
+  height: 6px;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+.cardItem .PaginationCont .pagination .pageItem .active {
+  width: 25px;
+  height: 6px;
+}
+
+.pagination {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.pagination span {
+  background: var(--btn-bg-color);
+  padding: 7px 14px;
+  display: inline-block;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.cardSlider {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardContainer {
+  width: 100%;
+  /* Kartın genişliğini istediğiniz değere ayarlayabilirsiniz */
+  height: 185px;
+  /* Kartın yüksekliğini istediğiniz değere ayarlayabilirsiniz */
+  overflow: hidden;
+  position: relative;
+}
+.cardContainer > div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.ss {
+  position: absolute;
+  top: 0;
+}
+
+.total {
+  position: absolute;
+  top: 10px;
+  left: 25px;
+}
+.total .balansText {
+  color: #fff;
+  opacity: 0.54;
+  font-size: 14px;
+  text-transform: capitalize;
+}
+.total .price {
+  color: #fff;
+  font-size: 26px;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.active {
+  color: red;
+}
+
+/* Kartın stilleri */
+.cardItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: #f9f9f9;
+  text-align: center;
+}
+
+.cardItem h2 {
+  margin-top: 0;
+}
+
+.cardItem p {
+  margin-bottom: 0;
+}/*# sourceMappingURL=style.module.css.map */

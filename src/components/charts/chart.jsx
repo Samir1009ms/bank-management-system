@@ -113,8 +113,8 @@ export function Charts({ money }) {
     }, [money, theme.background, theme.primary, theme.text, theme.border, theme.chartBg, theme.lineColor]);
 
     return (
-        <div className="card">
-            <Chart type="line" className={`${style.charts}`} width='540px' height='320px' data={chartData} options={chartOptions} />
+        <div className={style.card}>
+            <Chart type="line" className={`${style.charts}`} width='100%' height='320px' data={chartData} options={chartOptions} />
         </div>
     )
 }
