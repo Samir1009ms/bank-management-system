@@ -1,6 +1,6 @@
 @import 'primeflex/primeflex.css';
 @import "https://unpkg.com/primeflex@^3/primeflex.css";
-@import "https://unpkg.com/primeflex/themes/saga-blue.css";
+@import "https://unpkg.com/primeflex/themes/arya-blue.css";
 @import "primereact/resources/primereact.min.css";
 @import "primereact/resources/themes/lara-light-indigo/theme.css";
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap");
@@ -31,6 +31,10 @@
   --btn-text-color: white;
   --summary-bg-color: linear-gradient(0deg, #f7f6f6, #f8f4f4), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgb(239 236 236 / 0%) 100%);
   --select-text-color: #3D7AE5;
+  --transfer-Input-border-color: 0.5px solid #A4B4CB;
+  --transfer-Input-bg-color: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
+  --transfer-cont-bg-color: #D3E1F5;
+  --homeR-bg-color: #FAFBFC;
 }
 
 body {
@@ -59,6 +63,10 @@ body.dark {
   --btn-text-color: white;
   --summary-bg-color: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
   --select-text-color: #3D7AE5;
+  --transfer-Input-border-color: 1px solid #4B6EAC;
+  --transfer-Input-bg-color: rgba(255, 255, 255, 0.22);
+  --transfer-cont-bg-color: rgba(211, 225, 245, 0.15);
+  --homeR-bg-color: rgba(61, 122, 229, 0.1);
 }
 
 .rccs {

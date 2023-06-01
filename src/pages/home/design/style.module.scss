@@ -1,6 +1,7 @@
 .home {
     // flex-wrap: nowrap !important;
     column-gap: 23.1px !important;
+    align-items: flex-start;
 }
 
 
@@ -107,6 +108,9 @@
     width: calc(100% - 73%);
     // width: calc(100% - 71%); //! media query 1240 px
     // padding: 0 !important;
+    background: var(--homeR-bg-color);
+    position: sticky;
+    top: 1px;
 
 }
 
@@ -151,11 +155,13 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 40px;
     border: 1px solid rgb(122, 122, 241) !important;
     width: 76%;
+    border-radius: 8px !important;
+    background: var(--transfer-Input-bg-color) !important;
 }
 
 .transferContainer {
     width: 98%;
-    background: dimgray;
+    background: var(--transfer-cont-bg-color);
 }
 
 .top {
@@ -165,4 +171,29 @@ input[type="number"]::-webkit-outer-spin-button {
     width: 100%;
     column-gap: 14px;
     padding: 20px 8px;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    column-gap: 14px;
+    padding: 16px 8px;
+}
+
+
+.debit {
+    width: 93%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px;
+    border: 1px solid red;
+    border-radius: 8px;
+}
+
+.debitDropDown {
+    display: flex;
+    flex-direction: column;
 }

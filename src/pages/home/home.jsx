@@ -74,6 +74,26 @@ export function Home() {
 
     const [value, setValue] = useState();
 
+    const [designs, setDesigns] = useState("hidden")
+    const [cardActive, setCardActive] = useState(0)
+
+
+    function handleDesign() {
+
+        if (designs === "hidden") {
+            setDesigns("flex")
+        } else {
+            setDesigns("hidden")
+        }
+
+    }
+
+    function handleActive(i) {
+        setCardActive(i)
+        setDesigns("hidden")
+
+    }
+
 
     return (
         loading ? (
@@ -108,7 +128,7 @@ export function Home() {
                     </div>
                 </section>
                 <section className={`pt-4 pb-6 ${style.left} `}>
-                    <div className={`grid  row-gap-6  justify-content-center m-0`} style={{ backgroundColor: "violet", width: "100%", height: "490px", color: "white" }}>
+                    <div className={`grid  row-gap-6  justify-content-center m-0`} style={{ width: "100%", height: "490px", color: "white" }}>
                         <div style={{ width: "100%", height: "230px" }}>
                             <h3 className={`${style.textW}`}>Wallet</h3>
                             <BankCards cardData={cardData && cardData} />
@@ -119,6 +139,24 @@ export function Home() {
                                 <div className={style.top}>
                                     <input className={style.transferInput} type="number" value={value} name="" onChange={(e) => setValue(e.value)} id="" />
                                     <button className={style.transferBtn}><AiOutlineSend /></button>
+                                </div>
+                                <div className={style.bottom} >
+
+                                    <div onClick={() => handleDesign()} className={style.debit}>
+                                        <span>{cardData && cardData[cardActive].cardNumber}</span>
+                                        {/* <input type="text" value={cardData && cardData[cardActive].cardNumber} /> */}
+                                        <span>${cardData && cardData[cardActive].balance}</span>
+                                    </div>
+                                    <div className={`${style.debitDropDown} ${style.debit} ${designs}`}>
+                                        {
+                                            cardData && cardData.map((e, i) => (
+                                                <div onClick={() => handleActive(i)} key={i}>
+                                                    <span>{e.cardNumber.slice(12).replace("", "**")}</span>
+                                                    <span>{e.balance}</span>
+                                                </div>
+                                            ))
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         </div>
