@@ -57,7 +57,7 @@ const transactionsSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(getTransactions.pending, (state) => {
-                state.loading = true
+                // state.loading = true
                 state.error = null
                 // console.log("s");
             })

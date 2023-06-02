@@ -6,7 +6,7 @@ import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
 import { Message } from 'primereact/message';
 import { Checkbox } from 'primereact/checkbox';
-import style from "./design/style.module.css"
+import style from "./design/style.module.scss"
 
 const Login = () => {
 

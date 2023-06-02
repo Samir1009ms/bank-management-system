@@ -1,17 +1,5 @@
-// @import "primereact/resources/primereact.min.css";
-// @import 'primeflex/primeflex.css';
-// @import "https://unpkg.com/primeflex@^3/primeflex.css";
-// @import "https://unpkg.com/primeflex/themes/saga-blue.css";
-// @import "primereact/resources/themes/lara-light-indigo/theme.css";
-// @import "../../../App.css";
-
-// @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-
-
 * {
-
     box-sizing: border-box;
-    // font-family: 'Manrope', sans-serif;
 }
 
 .colors {
@@ -19,11 +7,6 @@
     background: var(--btn-bg-color) !important;
 }
 
-
-// .xx {
-
-//     background-color: rgb(72, 0, 255);
-// }
 
 .login {
     box-shadow: 0 1rem 3rem rgba(32, 21, 94, 0.295);

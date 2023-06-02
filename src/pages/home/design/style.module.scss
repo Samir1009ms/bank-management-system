@@ -2,6 +2,7 @@
     // flex-wrap: nowrap !important;
     column-gap: 23.1px !important;
     align-items: flex-start;
+    justify-content: space-between;
 }
 
 
@@ -26,7 +27,7 @@
 }
 
 .homeLeftxx {
-    width: 71%;
+    width: 70.6%;
     // width: 69%; //! media query 1240 px
 
 }
@@ -187,13 +188,93 @@ input[type="number"]::-webkit-outer-spin-button {
 .debit {
     width: 93%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
     padding: 10px 5px;
-    border: 1px solid red;
+    border: 1px solid rgb(21, 255, 0);
     border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+
+}
+
+.debitCards {
+    display: flex;
+    justify-content: space-between;
 }
 
 .debitDropDown {
+    width: 100%;
+    background: var(--summary-bg-color);
+    flex-direction: column;
+    display: flex;
+    max-height: 222px;
+    // background: #2888d6;
+    overflow: auto;
+    position: absolute;
+    left: 0px;
+    border-radius: 8px;
+    row-gap: 5px;
+    padding: 5px 7px;
+
+    top: 44px;
+    // bottom: 0;
+    // top: auto;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.bankCardCont {
+    // border: 1px solid #2888d6;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+    background: var(--summary-bg-color);
+    border-radius: 8px;
+    // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
+
+}
+
+.cardDesign {
+
+    background: rgba(255, 0, 0, 0.729);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 46px;
+    width: 28%;
+    padding: 3px;
+    border-radius: 8px;
+    row-gap: 5px;
+}
+
+.cardType {
+    margin-left: 4px;
+    font-size: 13px;
+}
+
+.cardNumber {
+    margin-right: 4px;
+    font-size: 13px;
+
+    text-align: right;
+}
+
+.cardText {
     display: flex;
     flex-direction: column;
 }
+
+.cardLeft {
+    display: flex;
+    column-gap: 13px;
+    width: 90%;
+}
+
+:root {}
+
+.radio {}

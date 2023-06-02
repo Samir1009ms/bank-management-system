@@ -1,6 +1,6 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 import { mod, routing } from './config/routing.js'
-import s from './design/style.module.css'
+import s from './design/style.module.scss'
 import { useEffect, useState } from 'react'
 import { Theme } from '../../components/theme/theme.jsx'
 import { AuthService } from '../../services/auth.services.js'

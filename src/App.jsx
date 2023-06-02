@@ -1,4 +1,4 @@
-import './App.css';
+import './app.scss';
 import { Navbar } from './shared/navbar/navbar';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { AuthService } from './services/auth.services';

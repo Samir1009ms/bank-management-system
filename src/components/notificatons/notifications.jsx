@@ -1,5 +1,5 @@
 import { Badge } from "primereact/badge";
-import style from './design/style.module.css'
+import style from './design/style.module.scss'
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { ApiService } from "../../services/api.services";

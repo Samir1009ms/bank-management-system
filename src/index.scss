@@ -1,9 +1,11 @@
 @import "primereact/resources/primereact.min.css";
 @import 'primeflex/primeflex.css';
 @import "https://unpkg.com/primeflex@^3/primeflex.css";
-/* @import "https://unpkg.com/primeflex/themes/saga-blue.css"; */
-@import "primereact/resources/themes/lara-light-indigo/theme.css"; 
-@import "./App.css";
+@import "primereact/resources/themes/saga-blue/theme.css"; 
+/* @import "primereact/resources/themes/arya-blue/theme.css"; */
+
+/* @import "primereact/resources/themes/lara-light-indigo/theme.css";  */
+@import "./App.scss";
 @import 'primeicons/primeicons.css';
         
 
@@ -50,6 +52,7 @@ td{
   /* text-align: center !important; */
   min-width: 45px;
   border:var(--table-border-color) !important;
+  text-transform: capitalize;
   
   border-width: 0px 0px 1px 0px !important;
   /* border-color: var(--table-border-color) !important; */
@@ -120,6 +123,19 @@ th >div >svg{
   border: none !important;
 
 }
+.p-paginator .p-paginator-pages .p-paginator-page{
+  border-radius: 50% !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page .p-highlight{
+  border-color: none;
+}
+
+.p-link:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: none !important;
+}
 
 .p-paginator .p-paginator-pages .p-paginator-page.p-highlight{
   background: var(--btn-bg-color) !important;
@@ -143,9 +159,26 @@ th >div >svg{
 .p-paginator .p-paginator-prev{
   min-width: 2.5rem !important;
   height: 2.5rem !important;
+  border-radius: 50% !important;
+  color: var(--nav-text-color) !important;
 }
 
 .p-paginator .p-paginator-next{
   min-width: 2.5rem !important;
   height: 2.5rem !important;
+  border-radius: 50% !important;
+  color: var(--nav-text-color) !important;
+
+}
+
+
+.p-paginator .p-paginator-next:hover{
+
+  background: #e9ecef47 !important;
+
+}
+.p-paginator .p-paginator-prev:hover{
+
+  background: #e9ecef47 !important;
+
 }

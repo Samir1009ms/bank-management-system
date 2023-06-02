@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import style from "./design/style.module.css";
+import style from "./design/style.module.scss";
 import { Charts } from "../../components/charts/chart";
 import moment from "moment/moment";
 
@@ -14,11 +14,12 @@ import BankCards from "../../components/credit-card/BankCards";
 
 
 import { InputNumber } from 'primereact/inputnumber';
+import { RadioButton } from "primereact/radiobutton";
 import { AiOutlineSend } from 'react-icons/ai'
 export function Home() {
     const dispatch = useDispatch();
     const total = useSelector((state) => state.card.total);
-    const loading = useSelector((state) => state.card.loading);
+    // const loading = useSelector((state) => state.transactionsSlice.loading);
     const error = useSelector((state) => state.card.error);
     // const d = useSelector((state) => state.transactionsSlice.transactions)
     const incom = useSelector((state) => state.transactionsSlice.incoming)
@@ -26,7 +27,20 @@ export function Home() {
 
     let cardData = useSelector((state) => state.card.cards);
 
+    const [loading, setLoading] = useState(true)
+
+
+
+
+
     useEffect(() => {
+
+        if (total) {
+            setTimeout(() => {
+                setLoading(false)
+            }, 1000);
+
+        }
         dispatch(getCard());
         dispatch(getTransactions())
 
@@ -39,17 +53,16 @@ export function Home() {
 
             // Yeni bildirimi bildirimler listesine ekleme
             setNotifications((prevNotifications) => [...prevNotifications, message]);
-            console.log(message);
-            console.log("s");
+            // console.log(message);
+            // console.log("s");
         });
-
         // Temizlik işlemleri
         console.log("s");
         return () => {
             // Socket bağlantısını kapatma
             socket.disconnect();
         };
-    }, [dispatch]);
+    }, [dispatch, total]);
 
     // !--------------------------------------------------------------------------------
     const [moneys, setMoney] = useState();
@@ -70,12 +83,15 @@ export function Home() {
             }
         });
         setMoney(result);
+
+        return () => {
+            console.log("cixdi");
+        }
     }, [incom]);
 
     const [value, setValue] = useState();
 
     const [designs, setDesigns] = useState("hidden")
-    const [cardActive, setCardActive] = useState(0)
 
 
     function handleDesign() {
@@ -88,13 +104,14 @@ export function Home() {
 
     }
 
+    const [ingredient, setIngredient] = useState(0)
+    const [cardActive, setCardActive] = useState(ingredient)
     function handleActive(i) {
-        setCardActive(i)
+        setIngredient(i)
         setDesigns("hidden")
+        setCardActive(i)
 
     }
-
-
     return (
         loading ? (
             loading
@@ -143,19 +160,32 @@ export function Home() {
                                 <div className={style.bottom} >
 
                                     <div onClick={() => handleDesign()} className={style.debit}>
-                                        <span>{cardData && cardData[cardActive].cardNumber}</span>
-                                        {/* <input type="text" value={cardData && cardData[cardActive].cardNumber} /> */}
-                                        <span>${cardData && cardData[cardActive].balance}</span>
-                                    </div>
-                                    <div className={`${style.debitDropDown} ${style.debit} ${designs}`}>
-                                        {
-                                            cardData && cardData.map((e, i) => (
-                                                <div onClick={() => handleActive(i)} key={i}>
-                                                    <span>{e.cardNumber.slice(12).replace("", "**")}</span>
-                                                    <span>{e.balance}</span>
-                                                </div>
-                                            ))
-                                        }
+                                        <div className={style.debitCards}>
+                                            <span>{cardData && cardData[cardActive].cardNumber}</span>
+                                            {/* <input type="text" value={cardData && cardData[cardActive].cardNumber} /> */}
+                                            <span>${cardData && cardData[cardActive].balance}</span>
+                                        </div>
+                                        <div className={`${style.debitDropDown} ${designs}`}>
+                                            {
+                                                cardData && cardData.map((e, i) => (
+                                                    <div id="x" className={`${style.bankCardCont}`} onClick={() => handleActive(i)} key={i}>
+                                                        <div className={style.cardLeft}>
+                                                            <span className={style.cardDesign}>
+                                                                <span className={style.cardType}>{e.cardType}</span>
+                                                                <span className={style.cardNumber}> {e.cardNumber.slice(12).replace("", "**")}</span>
+                                                            </span>
+                                                            <span className={style.cardText}>
+                                                                <span>Debit Card</span>
+                                                                $ {(e.balance).toLocaleString("en-US")}
+                                                            </span>
+                                                        </div>
+                                                        <div className="flex align-items-center">
+                                                            <RadioButton inputId="x" name="pizza" value="card" className={style.radio} onChange={(e) => setIngredient(i)} checked={ingredient === i} />
+                                                        </div>
+                                                    </div>
+                                                ))
+                                            }
+                                        </div>
                                     </div>
                                 </div>
                             </div>

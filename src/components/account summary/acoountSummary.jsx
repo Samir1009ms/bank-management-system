@@ -5,7 +5,7 @@ import DoughnutChartDemo from "../../components/charts/chart2";
 import { HiArrowTrendingUp } from 'react-icons/hi2'
 import { HiOutlineArrowTrendingDown } from 'react-icons/hi2'
 // ! style
-import style from "./design/style.module.css"
+import style from "./design/style.module.scss"
 
 export function AccountSummary({ filter }) {
     const [incomes, setIncomes] = useState(0)

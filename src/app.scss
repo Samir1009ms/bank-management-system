@@ -1,13 +1,15 @@
 // ! primeflex
 @import 'primeflex/primeflex.css';
 @import "https://unpkg.com/primeflex@^3/primeflex.css";
-@import "https://unpkg.com/primeflex/themes/arya-blue.css";
 
 // ! primeicons
 @import "primereact/resources/primereact.min.css";
 
 // ! primereact
-@import "primereact/resources/themes/lara-light-indigo/theme.css";
+@import "primereact/resources/themes/saga-blue/theme.css";
+// @import "primereact/resources/themes/arya-blue/theme.css";
+
+
 
 // ! font family
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
@@ -102,6 +104,11 @@ body.dark {
 
 }
 
+
+.p-radiobutton .p-radiobutton-box.p-highlight {
+    background: var(--btn-bg-color) !important;
+    border: 1px solid #3D7AE5 !important;
+}
 
 
 // ! bank card design 

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Avatar } from 'primereact/avatar';
 import { FiLogOut } from "react-icons/fi"
-import style from "./design/style.module.css"
+import style from "./design/style.module.scss"
 import { useEffect } from 'react';
 import { AuthService } from '../../services/auth.services';
 import { useLocation, useNavigate } from 'react-router-dom';

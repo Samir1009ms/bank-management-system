@@ -8,7 +8,7 @@ import { Message } from "primereact/message";
 import { useNavigate } from "react-router-dom";
 
 
-import style from "./design/style.module.css"
+import style from "./design/style.module.scss"
 
 export function Register() {
 

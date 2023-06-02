@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 import { useSelector } from 'react-redux';
-import style from "./design/style.module.css";
+import style from "./design/style.module.scss";
 
 export function Charts({ money }) {
     const [chartData, setChartData] = useState({});

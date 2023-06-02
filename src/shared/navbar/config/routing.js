@@ -5,7 +5,7 @@ import { RiAccountCircleLine } from "react-icons/ri";
 import { TbSettings } from "react-icons/tb";
 import { MdOutlineSecurity, MdOutlineDarkMode } from "react-icons/md";
 import { BiHelpCircle } from "react-icons/bi";
-import s from "../design/style.module.css";
+import s from "../design/style.module.scss";
 import { Theme } from "../../../components/theme/theme"
 
 

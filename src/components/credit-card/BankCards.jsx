@@ -3,7 +3,7 @@ import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
 import { useSelector } from 'react-redux';
 import { Pagination } from './Pagination';
-import style from './design/style.module.css'
+import style from './design/style.module.scss'
 import { AnimatePresence, motion } from 'framer-motion';
 
 export default function BankCards({ cardData }) {
@@ -82,7 +82,7 @@ export default function BankCards({ cardData }) {
                         initial={{ opacity: 0, x: 100 }}
                         animate={{ opacity: 1, x: 0 }}
                         exit={{ opacity: 0, x: 100 }}
-                        transition={{ duration: 0.9 }}
+                        transition={{ duration: 0.7 }}
                     >
                         {<Cards
                             number={cardData ? cardData[currentCardIndex].cardNumber : state.number}

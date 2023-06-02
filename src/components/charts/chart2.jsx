@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
-import style from "./design/style.module.css"
+import style from "./design/style.module.scss"
 
 export default function DoughnutChartDemo({ incom, outcom }) {
     const [chartData, setChartData] = useState({});
