@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import moment from "moment";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
@@ -7,12 +7,13 @@ import { useSelector } from "react-redux";
 import { AccountSummary } from "../account summary/acoountSummary";
 import style from "./design/style.module.scss"
 import 'moment/locale/az'
-export function Transaction() {
+function Transaction() {
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
     const [filters, setFilters] = useState()
     const d = useSelector((state) => state.transactionsSlice.outcoming)
     const [selected, setSelected] = useState("All")
     const [selectData, setSelectData] = useState([])
+    console.log("sss");
     useEffect(() => {
         if (d) {
             const filtr = d.filter((e) => {
@@ -97,3 +98,5 @@ export function Transaction() {
         </>
     )
 }
+
+export default memo(Transaction)

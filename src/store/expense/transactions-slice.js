@@ -8,8 +8,9 @@ const transactionsSlice = createSlice({
         transactions: null,
         loading: false,
         error: null,
-        incoming: null,
-        outcoming: []
+        incoming: [],
+        outcoming: [],
+        monthData: []
 
     },
     reducers: {
@@ -20,6 +21,7 @@ const transactionsSlice = createSlice({
             state.incoming = action.payload.filter((e) => e.type !== "Outgoing")
 
         }),
+
         setLoading: ((state, action) => {
             state.loading = action.payload
         }),
@@ -28,13 +30,11 @@ const transactionsSlice = createSlice({
 
         },
         dataT: ((state, action) => {
-            // console.log(action.payload);
             let xerc = [...action.payload]
-            // console.log("222222", action.payload);
             if (state.transactions) {
                 const sorts = xerc.sort((a, b) => b.date.localeCompare(a.date))
                 const groupDates = sorts.reduce((acc, date) => {
-                    const [month, day, year] = moment(date.date).format("MMMM DD YYYY").split(" ")
+                    const [month, year] = moment(date.date).format("MMMM DD YYYY").split(" ")
                     const datesKey = `${month}  ${year}`
                     if (!acc[datesKey]) {
                         acc[datesKey] = []
@@ -51,21 +51,34 @@ const transactionsSlice = createSlice({
             }
 
 
-        })
-
+        }),
+        setTotalIncomne: ((state, action) => {
+            let data = []
+            state.monthData = action.payload.filter((e) => e.type !== "Outgoing")
+            const months = moment.months();
+            console.log(months);
+            months.forEach((month) => {
+                data.push({ month: month, amount: 0 });
+            });
+            state.monthData.forEach((transaction) => {
+                const month = moment(transaction.date).format("MMMM");
+                const index = data.findIndex((item) => item.month === month);
+                if (index !== -1) {
+                    data[index].amount += transaction.amount;
+                }
+            });
+            state.monthData = data
+        }),
     },
     extraReducers: (builder) => {
         builder
             .addCase(getTransactions.pending, (state) => {
                 // state.loading = true
                 state.error = null
-                // console.log("s");
             })
             .addCase(getTransactions.fulfilled, (state, action) => {
                 state.loading = false
                 state.transactions = action.payload
-                // console.log("ss");
-
             })
             .addCase(getTransactions.rejected, (state, action) => {
                 state.loading = false
@@ -76,5 +89,5 @@ const transactionsSlice = createSlice({
     }
 })
 
-export const { setTransactions, dataT } = transactionsSlice.actions
+export const { setTransactions, dataT, setTotalIncomne } = transactionsSlice.actions
 export default transactionsSlice.reducer

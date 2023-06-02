@@ -1,17 +1,16 @@
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Chart } from 'primereact/chart';
 import { useSelector } from 'react-redux';
 import style from "./design/style.module.scss";
+import moment from 'moment';
 
-export function Charts({ money }) {
+function Charts() {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
-
     // ? theme store 
-    let the = useSelector((theme) => theme.themeSlice.theme)
-    // console.log(the);
-
+    const totalicom = useSelector((state) => state.transactionsSlice.monthData)
+    let theme = useSelector((theme) => theme.themeSlice.theme)
+    console.log(totalicom);
     // ? dark theme
     const darkColors = {
         primary: '#3E79E5',
@@ -38,19 +37,22 @@ export function Charts({ money }) {
         lineColor: "rgba(119, 119, 119, 0.43)"
     };
 
+    const datax = ['January', 'February', 'March', 'April', 'May', 'June', 'July', "August", "September", "October", "November", "December"]
+    // const data2 = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', "Avqust", "Sentyabr", "Oktyabr", "Noyabr", "Dekabr"]
     // ? theme store dark or light
-    const theme = the === 'dark' ? darkColors : lightColors;
-
+    const colors = theme === 'dark' ? darkColors : lightColors;
+    // const veri = the === 'dark' ? datax : data2;
+    console.log("asas");
     useEffect(() => {
         const data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', "August", "September", "October", "November", "December"],
+            labels: datax,
             datasets: [
                 {
-                    data: money && money.map((item) => item.amount),
+                    data: totalicom.map((item) => item.amount),
                     fill: true,
-                    borderColor: theme.border,
+                    borderColor: colors.border,
                     tension: 0.4,
-                    backgroundColor: theme.chartBg,
+                    backgroundColor: colors.chartBg,
                 }
             ]
         };
@@ -73,10 +75,10 @@ export function Charts({ money }) {
                 x: {
                     ticks: {
                         // display: false,
-                        color: theme.text
+                        color: colors.text
                     },
                     grid: {
-                        color: theme.text,
+                        color: colors.text,
                         display: false,
                         borderDash: [5, 5]
                     },
@@ -96,12 +98,12 @@ export function Charts({ money }) {
                             }
                             return number;
                         },
-                        color: theme.text,
+                        color: colors.text,
                         borderDash: [10, 10],
                         borderDashOffset: 10,
                     },
                     grid: {
-                        color: theme.lineColor,
+                        color: colors.lineColor,
                         borderDash: [10, 10],
                         borderDashOffset: 10,
                     }
@@ -110,7 +112,7 @@ export function Charts({ money }) {
         };
         setChartData(data);
         setChartOptions(options);
-    }, [money, theme.background, theme.primary, theme.text, theme.border, theme.chartBg, theme.lineColor]);
+    }, [colors.background, colors.primary, colors.text, colors.border, colors.chartBg, colors.lineColor, totalicom]);
 
     return (
         <div className={style.card}>
@@ -118,3 +120,6 @@ export function Charts({ money }) {
         </div>
     )
 }
+
+
+export default memo(Charts)

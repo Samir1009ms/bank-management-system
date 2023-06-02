@@ -190,17 +190,22 @@ input[type="number"]::-webkit-outer-spin-button {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 10px 5px;
-    border: 1px solid rgb(21, 255, 0);
+    padding: 6px;
+    // border: 1px solid rgb(21, 255, 0);
     border-radius: 8px;
     position: relative;
     cursor: pointer;
+    background: var(--summary-bg-color);
+    box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
+
+
 
 }
 
 .debitCards {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 .debitDropDown {
@@ -217,7 +222,7 @@ input[type="number"]::-webkit-outer-spin-button {
     row-gap: 5px;
     padding: 5px 7px;
 
-    top: 44px;
+    top: 66px;
     // bottom: 0;
     // top: auto;
 
@@ -246,9 +251,9 @@ input[type="number"]::-webkit-outer-spin-button {
     flex-direction: column;
     justify-content: space-between;
     height: 46px;
-    width: 28%;
+    width: 30%;
     padding: 3px;
-    border-radius: 8px;
+    border-radius: 6px;
     row-gap: 5px;
 }
 
@@ -267,6 +272,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .cardText {
     display: flex;
     flex-direction: column;
+    color: var(--cart-color);
 }
 
 .cardLeft {
@@ -278,3 +284,48 @@ input[type="number"]::-webkit-outer-spin-button {
 :root {}
 
 .radio {}
+
+
+.amount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    column-gap: 14px;
+    padding: 20px 8px;
+
+
+    .amountCont {
+        width: 93%;
+        // border: 1px solid goldenrod;
+
+        background: var(--summary-bg-color);
+        padding: 8px 12px;
+        border-radius: 8px;
+
+        box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
+
+
+        .amountText {}
+
+        .moneyCont {
+            position: relative;
+
+            .amountInput {
+                border: none !important;
+                text-indent: 20px;
+                height: 27px;
+                font-size: 16px;
+            }
+
+            .usd {
+                position: absolute;
+                left: 5px;
+                top: 2px;
+
+            }
+        }
+
+    }
+}

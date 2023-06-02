@@ -11,9 +11,7 @@ export function HomeHeader() {
 
     // ! location text
     const [pathname, setPathname] = useState(null)
-
     const location = useLocation()
-
 
     useEffect(() => {
 
@@ -23,7 +21,6 @@ export function HomeHeader() {
             setPathname(location.pathname.slice(1))
             console.log(location.pathname);
         }
-        // console.log(window.location.pathname);
     }, [location])
 
     //! user profile  
@@ -34,7 +31,6 @@ export function HomeHeader() {
         } else {
             setUsers("flex")
         }
-
     }
     // ! logout
     const navigate = useNavigate()
@@ -42,10 +38,7 @@ export function HomeHeader() {
         AuthService.logout()
         navigate('/login')
         // window.location.reload();
-
     }
-
-
     return (
         <div className={`${style.homeHeader}`}>
             <div className={style.title}>

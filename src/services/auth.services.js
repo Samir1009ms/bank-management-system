@@ -42,13 +42,7 @@ export class AuthService {
     console.log(data.data);
 
     localStorage.setItem("token", data.data)
-
-
-
-
-
   };
-
 
 
 
@@ -84,12 +78,11 @@ export class AuthService {
     localStorage.removeItem("userId")
   }
 
+  // ! user login olub olmamasini yoxluyur
   static getCurrentUser() {
     return (localStorage.getItem('token'));
   }
   static userId(id) {
-    // console.log(id);
-
     return localStorage.setItem("userId", id)
   }
 
