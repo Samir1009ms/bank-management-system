@@ -1,0 +1,271 @@
+.transfer {
+    width: 100%;
+    background: rgba(211, 225, 245, 0.15);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px 30px;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.transferInput {
+    height: 27px;
+    border: none !important;
+    width: 93%;
+    border-radius: 8px !important;
+    background: none;
+    color: var(--amount-text-color);
+    border: none !important;
+    text-indent: 3px;
+    font-size: 16px;
+    line-height: 120%;
+    font-weight: 700;
+
+    &::placeholder {
+        color: var(--amount-text-color);
+        opacity: 0.4;
+
+    }
+
+    // background: var(--transfer-Input-bg-color) !important;
+    // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
+}
+
+.numberText {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    display: flex;
+    align-items: center;
+    color: #A4B4CB;
+}
+
+.transferCont {
+    width: 93%;
+    padding: 8px 12px;
+    border-radius: 8px !important;
+    background: var(--transfer-Input-bg-color) !important;
+    box-shadow: var(--box-shadow);
+    // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
+}
+
+.transferContainer {
+    width: 98%;
+    background: var(--transfer-cont-bg-color);
+    border-radius: 8px;
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    column-gap: 14px;
+    padding: 16px 8px 0;
+}
+
+.bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    column-gap: 14px;
+    padding: 16px 8px 0;
+}
+
+
+.debit {
+    width: 93%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 6px;
+    border-radius: 8px;
+    position: relative;
+    cursor: pointer;
+    background: var(--summary-bg-color);
+    box-shadow: var(--box-shadow);
+
+    // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
+}
+
+.debitCards {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.debitDropDown {
+    width: 100%;
+    background: var(--dropDown-bg-color);
+    flex-direction: column;
+    display: flex;
+    max-height: 202px;
+    overflow: auto;
+    position: absolute;
+    left: 0px;
+    border-radius: 8px;
+    row-gap: 5px;
+    padding: 5px 7px;
+    z-index: 3;
+    top: 63px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.bankCardCont {
+    // border: 1px solid #2888d6;
+    display: flex;
+    justify-content: space-between;
+    padding: 6px;
+    background: var(--summary-bg-color);
+    border-radius: 8px;
+    // box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    // box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: var(--box-shadow);
+
+    // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
+}
+
+.cardDesign {
+
+    background: rgba(255, 0, 0, 0.729);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 46px;
+    width: 30%;
+    padding: 3px;
+    border-radius: 6px;
+    row-gap: 5px;
+}
+
+.cardType {
+    margin-left: 4px;
+    font-size: 13px;
+}
+
+.cardNumber {
+    margin-right: 4px;
+    font-size: 13px;
+    text-align: right;
+}
+
+.cardText {
+    display: flex;
+    flex-direction: column;
+    color: var(--cart-color);
+}
+
+.cardLeft {
+    display: flex;
+    column-gap: 13px;
+    width: 90%;
+}
+
+.amount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    column-gap: 14px;
+    padding: 16px 8px;
+
+    .amountCont {
+        width: 93%;
+        // border: 1px solid goldenrod;
+        background: var(--summary-bg-color);
+        padding: 8px 12px;
+        border-radius: 8px;
+        // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
+        box-shadow: var(--box-shadow);
+
+        .amountText {
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 120%;
+            display: flex;
+            align-items: center;
+            color: #A4B4CB;
+        }
+
+        .moneyCont {
+            position: relative;
+            color: var(--amount-text-color);
+            font-weight: 700;
+            font-size: 16px;
+            line-height: 120%;
+
+            .amountInput {
+                border: none !important;
+                text-indent: 20px;
+                height: 27px;
+                font-size: 16px;
+                line-height: 120%;
+                font-weight: 700;
+
+                &::placeholder {
+                    color: var(--amount-text-color);
+                    opacity: 0.4;
+
+                }
+            }
+
+            .usd {
+                position: absolute;
+                left: 5px;
+                top: 4px;
+            }
+        }
+
+    }
+}
+
+
+.transferButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    column-gap: 14px;
+    padding: 0px 8px 16px;
+
+    .transferBtnContainer {
+        width: 93%;
+
+        .transferBtn {
+            width: 100%;
+            padding: 12px 11px 12px;
+            background: var(--btn-bg-color);
+            border-radius: 10px;
+            color: white;
+            font-weight: 500;
+            margin: 0;
+            box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
+
+        }
+    }
+}
+
+.textW {
+    width: 95%;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: var(--nav-text-color);
+    margin-top: 16px;
+
+}

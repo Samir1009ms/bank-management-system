@@ -1,52 +1,60 @@
-import { Badge } from "primereact/badge";
 import style from './design/style.module.scss'
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 import { ApiService } from "../../services/api.services";
-
-
+import moment from 'moment';
+import { useTranslation } from 'react-i18next';
+import { Badge } from "primereact/badge";
 export function Notification() {
-
     const [say, setSay] = useState(0)
     const [notifications, setNotifications] = useState([]);
-
-
     async function not() {
         const userId = localStorage.getItem("userId")
         try {
             ApiService.notii(userId).then((data) => {
-                console.log(data);
                 setSay(data.length)
                 setNotifications(data)
             })
         }
-        catch { }
+        catch {
+            console.log("error");
+        }
     }
 
-
     useEffect(() => {
-        // Socket.io istemcisini oluşturma ve sunucuya bağlanma
         const socket = io('http://localhost:3003');
         not()
-        // // Bildirimleri dinleme
         socket.on('notification', (message) => {
-            // Yeni bildirimi bildirimler listesine ekleme
             setNotifications((prevNotifications) => [...prevNotifications, message]);
             console.log(message);
-            console.log("s");
             not()
         });
-
-        // Temizlik işlemleri
-        console.log("s");
         return () => {
-            // Socket bağlantısını kapatma
             socket.disconnect();
         };
-
     }, []);
 
-
+    const [dates, setDates] = useState([])
+    useEffect(() => {
+        if (notifications) {
+            const dataSorts = notifications.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+            const GroupDates = dataSorts.reduce((acc, date) => {
+                const [day, month, year] = moment(date.createdAt).format("DD MMMM YYYY").split(" ")
+                const dataKey = ` ${day} ${month} ${year}`
+                if (!acc[dataKey]) {
+                    acc[dataKey] = []
+                }
+                acc[dataKey].push(date)
+                return acc
+            }, {})
+            console.log(GroupDates);
+            const dates = Object.entries(GroupDates).map(([day, notifications]) => ({
+                day,
+                notifications: notifications
+            }))
+            setDates(dates)
+        }
+    }, [notifications])
 
     const [notificat, setNotificat] = useState("hidden")
     function notification() {
@@ -55,24 +63,46 @@ export function Notification() {
         } else {
             setNotificat("flex")
         }
-
     }
+
+    const { t } = useTranslation()
     return (
         <div className={`${style.notification}`}>
             <i onClick={() => notification()} className={`pi pi-bell p-overlay-badge ${style.icons}`} style={{ fontSize: '22px' }}>
                 <Badge className={style.pBadge} value={say}></Badge>
             </i>
             <div className={`${style.bildirisCont} ${notificat}`} style={{}}>
-                <p>
-                    {notifications.map((e, i) => (
-
-
-                        <span key={i}>{e.message}</span>
-
-
-
-                    ))}
-                </p>
+                <div>
+                    {dates.map((date) => {
+                        const today = moment().format("DD MMMM YYYY");
+                        const yesterday = moment().subtract(1, 'days').format("YYYY-MM-DD");
+                        const dateToShow = (date.day).trim();
+                        let displayDate;
+                        if (dateToShow === today) {
+                            displayDate = t('today');
+                        } else if (dateToShow === yesterday) {
+                            displayDate = t('yesterday');
+                        } else {
+                            displayDate = date.day;
+                        }
+                        console.log(displayDate);
+                        return (
+                            <div key={date.day}>
+                                <h5>{displayDate}</h5>
+                                <ul>
+                                    {date.notifications.map((notification) => (
+                                        <li key={notification._id}>
+                                            {/* <AccountBalanceIcon /> */}
+                                            <span>
+                                                {moment(notification.createdAt).format("HH:mm")} - {notification.message}
+                                            </span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        );
+                    })}
+                </div>
             </div>
         </div>
     )

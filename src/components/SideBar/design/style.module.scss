@@ -1,0 +1,13 @@
+.left {
+    width: calc(100% - 73%);
+    // width: calc(100% - 71%); //! media query 1240 px
+    // padding: 0 !important;
+    background: var(--homeR-bg-color);
+    position: sticky;
+    top: 1px;
+    padding-bottom: 21px;
+
+}
+
+
+// !----------

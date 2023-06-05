@@ -1,8 +1,8 @@
-import React, { useState, useEffect, memo } from 'react';
+import { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 import { useSelector } from 'react-redux';
 import style from "./design/style.module.scss";
-import moment from 'moment';
+import { useTranslation } from 'react-i18next';
 
 function Charts() {
     const [chartData, setChartData] = useState({});
@@ -10,7 +10,7 @@ function Charts() {
     // ? theme store 
     const totalicom = useSelector((state) => state.transactionsSlice.monthData)
     let theme = useSelector((theme) => theme.themeSlice.theme)
-    console.log(totalicom);
+    // console.log(totalicom);
     // ? dark theme
     const darkColors = {
         primary: '#3E79E5',
@@ -37,18 +37,17 @@ function Charts() {
         lineColor: "rgba(119, 119, 119, 0.43)"
     };
 
-    const datax = ['January', 'February', 'March', 'April', 'May', 'June', 'July', "August", "September", "October", "November", "December"]
-    // const data2 = ['Yanvar', 'Fevral', 'Mart', 'Aprel', 'May', 'Iyun', 'Iyul', "Avqust", "Sentyabr", "Oktyabr", "Noyabr", "Dekabr"]
     // ? theme store dark or light
     const colors = theme === 'dark' ? darkColors : lightColors;
-    // const veri = the === 'dark' ? datax : data2;
-    console.log("asas");
+    // console.log("asas");
+    const { t } = useTranslation();
+
     useEffect(() => {
         const data = {
-            labels: datax,
+            labels: t('month', { returnObjects: true }).map((month) => month),
             datasets: [
                 {
-                    data: totalicom.map((item) => item.amount),
+                    data: totalicom && totalicom.map((item) => item.amount),
                     fill: true,
                     borderColor: colors.border,
                     tension: 0.4,
@@ -56,7 +55,9 @@ function Charts() {
                 }
             ]
         };
-        const options = {
+
+        setChartData(data);
+        setChartOptions({
             maintainAspectRatio: false,
             aspectRatio: 0.6,
             plugins: {
@@ -91,7 +92,7 @@ function Charts() {
                 y: {
                     position: 'left',
                     ticks: {
-                        callback: function (value, index, values) {
+                        callback: function (value) {
                             const number = +value;
                             if (number >= 1000) {
                                 return (number / 1000).toFixed(0) + "k";
@@ -109,11 +110,9 @@ function Charts() {
                     }
                 }
             }
-        };
-        setChartData(data);
-        setChartOptions(options);
-    }, [colors.background, colors.primary, colors.text, colors.border, colors.chartBg, colors.lineColor, totalicom]);
-
+        });
+    }, [colors.background, colors.primary, colors.text, colors.border, colors.chartBg, colors.lineColor, totalicom, t]);
+    console.log('s');
     return (
         <div className={style.card}>
             <Chart type="line" className={`${style.charts}`} width='100%' height='320px' data={chartData} options={chartOptions} />
@@ -121,5 +120,4 @@ function Charts() {
     )
 }
 
-
-export default memo(Charts)
+export default (Charts)

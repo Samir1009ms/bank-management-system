@@ -6,11 +6,11 @@ const transactionsSlice = createSlice({
     name: "transactions",
     initialState: {
         transactions: null,
-        loading: false,
+        loading: true,
         error: null,
         incoming: [],
         outcoming: [],
-        monthData: []
+        monthData: null
 
     },
     reducers: {
@@ -49,14 +49,12 @@ const transactionsSlice = createSlice({
             } else {
                 console.log("x");
             }
-
-
         }),
         setTotalIncomne: ((state, action) => {
             let data = []
             state.monthData = action.payload.filter((e) => e.type !== "Outgoing")
             const months = moment.months();
-            console.log(months);
+            // console.log(months);
             months.forEach((month) => {
                 data.push({ month: month, amount: 0 });
             });

@@ -7,7 +7,7 @@ const resources = {
     en: {
         translation: enTranslation,
     },
-    tr: {
+    az: {
         translation: azTranslation,
     },
 };

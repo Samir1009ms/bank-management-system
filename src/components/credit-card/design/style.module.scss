@@ -1,3 +1,16 @@
+.textW {
+    width: 95%;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: var(--nav-text-color);
+    margin-top: 16px;
+
+}
+
 .cardItem {
 
     display: flex;
@@ -46,15 +59,30 @@
 .pagination {
     display: flex;
     column-gap: 10px;
+    margin-top: 12px;
 
     span {
         background: var(--btn-bg-color);
-        padding: 7px 14px;
+        padding: 7px 18px;
         display: inline-block;
-        border-radius: 50%;
+        border-radius: 11px;
         text-align: center;
         cursor: pointer;
     }
+}
+
+.blur {
+    position: absolute;
+    top: 71px;
+    left: 7px;
+    width: 100%;
+    z-index: 0;
+    height: 41px;
+    background: var(--card-blur-color);
+    filter: blur(18.314px);
+    transform: matrix(0.7, -0.67, 1.5, 0.87, 0, 0);
+    z-index: 0;
+    display: none;
 }
 
 .cardSlider {
@@ -64,11 +92,9 @@
 }
 
 .cardContainer {
-    width: 100%;
-    /* Kartın genişliğini istediğiniz değere ayarlayabilirsiniz */
+    width: 96%;
+    border-radius: 13px;
     height: 185px;
-    /* Kartın yüksekliğini istediğiniz değere ayarlayabilirsiniz */
-    // border: 1px solid #ccc;
     overflow: hidden;
     position: relative;
 
@@ -113,7 +139,7 @@ button {
 }
 
 .active {
-    color: red;
+    background: red !important;
 }
 
 /* Kartın stilleri */

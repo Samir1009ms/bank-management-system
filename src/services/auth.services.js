@@ -55,6 +55,8 @@ export class AuthService {
     // console.log(JSON.parse(atob(t.split('.'))))
     const payload = JSON.parse(atob(t.split('.')[1]))
     // const userName = payload.name
+    console.log(payload);
+    localStorage.setItem("user", JSON.stringify(payload))
     // console.log(payload._id)
     setTimeout(() => {
     }, 300);

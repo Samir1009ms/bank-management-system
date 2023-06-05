@@ -1,14 +1,13 @@
 // ! primeflex
 @import 'primeflex/primeflex.css';
 @import "https://unpkg.com/primeflex@^3/primeflex.css";
-
 // ! primeicons
 @import "primereact/resources/primereact.min.css";
-
 // ! primereact
 @import "primereact/resources/themes/saga-blue/theme.css";
 // @import "primereact/resources/themes/arya-blue/theme.css";
-
+@import './components/variables/mixins';
+@import './components/variables/variables';
 
 
 // ! font family
@@ -22,7 +21,6 @@
 
 :root {
     --body-bg-color: #fff;
-
     // ? Nav Light Theme Start
     --nav-bg-color: #e6ecf2;
     --nav-active-color: #D3E1F5;
@@ -31,43 +29,40 @@
     --nav-active-bg-color: #D3E1F5;
     --nav-text-color-active: linear-gradient(90deg, #3E79E5 38%, #01B8E3 47%);
     --nav-hover-color: #c9dffe;
-
     --btn-bg-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
     --login-bg-color: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
     --text-colors: #A4B4CB;
-
     --bg-colors: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
     --total-color: #A4B4CB;
     --gradient-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
-
-
     --chart-bg-color: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
     --chart-border: 1px solid #2888d6;
     --table-border-color: 0.5px solid #D3E1F5;
     --btn-text-color: white;
     --summary-bg-color: linear-gradient(0deg, #f7f6f6, #f8f4f4), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgb(239 236 236 / 0%) 100%);
     --select-text-color: #3D7AE5;
-
     --transfer-Input-border-color: 0.5px solid #A4B4CB;
     --transfer-Input-bg-color: linear-gradient(0deg, #FAFBFC, #FAFBFC), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
     --transfer-cont-bg-color: #D3E1F5;
-
     --homeR-bg-color: #FAFBFC;
     --cart-color: #5B5B5B;
-
+    --amount-text-color: #3D424B;
+    --bank-card-bg-color: #A4B4CB;
+    --card-blur-color: linear-gradient(89.36deg, #01B8E3 13.74%, #3D7AE5 40.06%);
+    --profile-bg-color: #e6ecf2;
+    --box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
+    --dropDown-bg-color: linear-gradient(0deg, #f7f6f6, #f8f4f4), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgb(239 236 236 / 0%) 100%);
 
 }
 
 body {
     font-family: 'Manrope', sans-serif;
-
     background: var(--body-bg-color);
 }
 
 
 body.dark {
     --body-bg-color: #050624;
-
     // ? Nav Dark Theme Start
     --nav-bg-color: rgba(61, 122, 229, 0.1);
     --nav-hover-color: rgba(250, 251, 252, 0.075);
@@ -76,9 +71,7 @@ body.dark {
     --nav-active-color: #D3E1F5;
     --nav-text-color: #fff;
     --nav-text-color-active: linear-gradient(90deg, #3E79E5 38%, #01B8E3 47%);
-
     --btn-bg-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
-
     --login-bg-color: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
     --text-colors: #D3E1F5;
     --bg-colors: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
@@ -86,27 +79,30 @@ body.dark {
     --gradient-color: linear-gradient(90deg, #3E79E5 0%, #01B8E3 100%);
     --chart-bg-color: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
     --chart-border: 1px solid #4B6EAC;
-
     --table-border-color: 0.5px solid rgba(211, 225, 245, 0.3);
-
     --btn-text-color: white;
-
     --summary-bg-color: linear-gradient(0deg, rgba(250, 251, 252, 0.1), rgba(250, 251, 252, 0.1)), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgba(240, 240, 240, 0) 100%);
-
     --select-text-color: #3D7AE5;
     --transfer-Input-border-color: 1px solid #4B6EAC;
     --transfer-Input-bg-color: rgba(255, 255, 255, 0.22);
-
     --transfer-cont-bg-color: rgba(211, 225, 245, 0.15);
-
     --homeR-bg-color: rgba(61, 122, 229, 0.1);
-
     --cart-color: #fff;
-
-
+    --amount-text-color: #fff;
+    --bank-card-bg-color: linear-gradient(110.73deg, #050624 19.98%, #3D7AE5 103.78%);
+    --card-blur-color: #01B8E3;
+    --profile-bg-color: #11183f;
+    --box-shadow: rgba(16, 26, 38, 0.4) 0px 2px 4px, rgba(50, 75, 93, 0.3) 0px 7px 13px -3px, rgba(0, 32, 48, 0.223) 0px -3px 0px inset !important;
+    --dropDown-bg-color: #4b5172;
 
 }
 
+.container {
+
+    @include desktop {
+        width: 100% !important;
+    }
+}
 
 .p-radiobutton .p-radiobutton-box.p-highlight {
     background: var(--btn-bg-color) !important;
@@ -118,7 +114,7 @@ body.dark {
 .rccs {
     margin: 0 auto;
     perspective: 1000px;
-    width: 98% !important;
+    width: 100% !important;
     position: relative;
 }
 
@@ -128,7 +124,7 @@ body.dark {
     position: relative;
     transform-style: preserve-3d;
     transition: all 0.4s linear;
-    width: 98% !important;
+    width: 100% !important;
 }
 
 .rccs__card--front,
@@ -136,7 +132,7 @@ body.dark {
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     // background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
-    background: linear-gradient(110.73deg, #050624 19.98%, #3D7AE5 103.78%);
+    background: var(--bank-card-bg-color) !important;
     backdrop-filter: blur(7.32558px);
     -radius: 14.5px;
     color: #fff;
@@ -193,9 +189,10 @@ body.dark {
 
 .rccs__card--unknown>div {
     // background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
-    background: linear-gradient(110.73deg, #050624 19.98%, #3D7AE5 103.78%);
+    background: var(--bank-card-bg-color) !important;
     backdrop-filter: blur(7.32558px);
     -shadow: none;
+
 }
 
 .rccs__card--unknown .rccs__issuer {
@@ -207,7 +204,10 @@ body.dark {
 }
 
 .rccs__card--amex .rccs__card__background {
-    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    // background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    background: var(--bank-card-bg-color) !important;
+    backdrop-filter: blur(7.32558px);
+
 }
 
 .rccs__card--amex .rccs__issuer {
@@ -220,7 +220,10 @@ body.dark {
 }
 
 .rccs__card--dankort .rccs__card__background {
-    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    // background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    background: var(--bank-card-bg-color) !important;
+    backdrop-filter: blur(7.32558px);
+
 }
 
 .rccs__card--dankort .rccs__issuer {
@@ -232,7 +235,10 @@ body.dark {
 }
 
 .rccs__card--dinersclub .rccs__card__background {
-    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    // background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    background: var(--bank-card-bg-color) !important;
+    backdrop-filter: blur(7.32558px);
+
 }
 
 .rccs__card--dinersclub .rccs__issuer {
@@ -244,7 +250,10 @@ body.dark {
 }
 
 .rccs__card--discover .rccs__card__background {
-    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    // background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    background: var(--bank-card-bg-color) !important;
+    backdrop-filter: blur(7.32558px);
+
 }
 
 .rccs__card--discover .rccs__issuer {
@@ -252,7 +261,10 @@ body.dark {
 }
 
 .rccs__card--elo .rccs__card__background {
-    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    // background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    background: var(--bank-card-bg-color) !important;
+    backdrop-filter: blur(7.32558px);
+
 }
 
 .rccs__card--elo .rccs__issuer {
@@ -260,7 +272,8 @@ body.dark {
 }
 
 .rccs__card--hipercard .rccs__card__background {
-    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    background: var(--bank-card-bg-color) !important;
+    backdrop-filter: blur(7.32558px);
 }
 
 .rccs__card--hipercard .rccs__issuer {
@@ -282,7 +295,9 @@ body.dark {
 
 .rccs__card--maestro .rccs__card__background,
 .rccs__card--mastercard .rccs__card__background {
-    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    background: var(--bank-card-bg-color) !important;
+    backdrop-filter: blur(7.32558px);
+
 }
 
 .rccs__card--maestro .rccs__issuer {
@@ -299,7 +314,8 @@ body.dark {
 
 .rccs__card--visa .rccs__card__background,
 .rccs__card--visaelectron .rccs__card__background {
-    background: linear-gradient(177.23deg, #9C2CF3 -13.49%, #3A6FF9 109.75%) !important;
+    background: var(--bank-card-bg-color) !important;
+    backdrop-filter: blur(7.32558px);
 }
 
 .rccs__card--visa .rccs__issuer,
@@ -351,6 +367,7 @@ body.dark {
     line-height: 1;
     position: absolute;
     right: 10%;
+
 }
 
 .rccs__expiry>* {
@@ -375,20 +392,31 @@ body.dark {
 .rccs__name,
 .rccs__expiry,
 .rccs__cvc {
-    opacity: 0.5;
+    opacity: 1;
     transition: opacity 0.3s;
 }
 
 .rccs__chip {
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9Ijc2IiB2aWV3Qm94PSIwIDAgMTAwIDc2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj48ZGVmcz48bGluZWFyR3JhZGllbnQgeDE9IjEwMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSIgaWQ9ImEiPjxzdG9wIHN0b3AtY29sb3I9IiNGM0QwOEYiIG9mZnNldD0iMCUiLz48c3RvcCBzdG9wLWNvbG9yPSIjRkFENzY2IiBvZmZzZXQ9IjEwMCUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNOTIuNzI3IDc1LjQ1NWgtODUuNDU1Yy00IDAtNy4yNzMtMy4yNzMtNy4yNzMtNy4yNzN2LTYwLjkwOWMwLTQgMy4yNzMtNy4yNzMgNy4yNzMtNy4yNzNoODUuNDU1YzQgMCA3LjI3MyAzLjI3MyA3LjI3MyA3LjI3M3Y2MC45MDljMCA0LTMuMjczIDcuMjczLTcuMjczIDcuMjczIiBmaWxsPSJ1cmwoI2EpIi8+PHBhdGggZD0iTTcyLjEyMyAyOC40ODVoMjcuODc4di0xLjgxOGgtMjkuNjQ4Yy0uOTY1IDAtMS44MzIuNjAxLTIuMTcyIDEuNTA0LTIuMjg3IDYuMDcyLTIuNDMzIDEyLjU5NC0uNDM4IDE5Ljg0Mi40NTUgMS42NTQuNDM1IDMuNC0uMSA1LjAzLTIuMDM2IDYuMTk1LTcuNzc5IDE5Ljk4OC0xOC41NTEgMTkuOTg4LTExLjAwOCAwLTE2LjA5Ni0xNS42OTktMTcuMzM0LTIxLjk1Mi0uMTU1LS43ODQtLjEyMi0xLjU5Mi4xMDctMi4zNTcgMS42OTUtNS42NDggMi4wOTQtMTAuNjQtLjAxNi0xOS41OS0uMjA1LS44Ny0uMTgyLTEuNzgzLjA0OC0yLjY0NiA0LjQ4LTE2Ljc1NSAxMi44ODItMjAuMTQ3IDEyLjk2NS0yMC4xNzkuMzU2LS4xMzIuNTkzLS40NzIuNTkzLS44NTJ2LTUuNDU1aC0xLjgxOHYzLjc3NmMwIC42NS0uMzMyIDEuMjUyLS44ODQgMS41OTYtMi44MDMgMS43NDItOC45MDQgNi45MzYtMTIuNTU3IDIwLjQ1Ni0uMTguNjY4LS43ODEgMS4xMzYtMS40NzMgMS4xMzNsLTI4LjcyMi0uMTM5djEuODE4bDI3LjQxNi4xMzNjMS40NjguMDA3IDIuNzM1IDEuMDQxIDMuMDM3IDIuNDc4IDEuNDE2IDYuNzQxIDEuMjE5IDExLjAzOS4wODIgMTUuNDU4LS4zMTYgMS4yMy0xLjQyIDIuMDk2LTIuNjkgMi4xMDlsLTI3Ljg0NC4yN3YxLjgxOWwyOC42MDUtLjI3OGMuNjkzLS4wMDcgMS4yOTYuNDczIDEuNDM1IDEuMTUyIDEuNDQyIDcuMDQxIDYuODg3IDIzLjA3IDE5LjA1IDIzLjA3IDYuMzY4IDAgMTIuMDYyLTQuMjUgMTYuNDY3LTEyLjI5IDIuNjQ0LTQuODI4IDQuMDY3LTkuNTkxIDQuNTQxLTExLjM0NmgyOS45MDF2LTEuODE4aC0yOC4wMTZjLTEuMTU4IDAtMi4xODMtLjc3Mi0yLjQ4OS0xLjg4OS0xLjY5Mi02LjE2NC0xLjc2MS0xMS43NTUtLjItMTYuOTU5LjM3MS0xLjIzNSAxLjUzOC0yLjA2MSAyLjgyNy0yLjA2MXptLTE3LjE1LTIxLjkxNGMuMDQ1LjAyMiA0LjUxOSAyLjMyMiA5LjI1MyAxMC4wNDEuMTcyLjI4LjQ3LjQzNC43NzYuNDM0LjE5OCAwIC4zOTktLjA2NC41NzEtLjIwMi4zNjUtLjI5Mi40MTYtLjgzNy4xNzItMS4yMzUtMy41Ny01LjgwNS03LjAyNC04LjcxLTguNzc1LTkuOTMxLS40My0uMjk5LS42OC0uNzkyLS42OC0xLjMxNXYtNC4zNjNoLTEuODE4djUuNzU4YzAgLjM0NS4xOTUuNjU5LjUwMi44MTN6IiBmaWxsPSIjMEMwMjAwIi8+PC9zdmc+");
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 26.36364px;
-    left: 10%;
-    position: absolute;
-    top: 10%;
-    width: 41.42857px;
-    display: none;
+    // background-image: url("data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9Ijc2IiB2aWV3Qm94PSIwIDAgMTAwIDc2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj48ZGVmcz48bGluZWFyR3JhZGllbnQgeDE9IjEwMCUiIHkxPSIwJSIgeDI9IjAlIiB5Mj0iMTAwJSIgaWQ9ImEiPjxzdG9wIHN0b3AtY29sb3I9IiNGM0QwOEYiIG9mZnNldD0iMCUiLz48c3RvcCBzdG9wLWNvbG9yPSIjRkFENzY2IiBvZmZzZXQ9IjEwMCUiLz48L2xpbmVhckdyYWRpZW50PjwvZGVmcz48cGF0aCBkPSJNOTIuNzI3IDc1LjQ1NWgtODUuNDU1Yy00IDAtNy4yNzMtMy4yNzMtNy4yNzMtNy4yNzN2LTYwLjkwOWMwLTQgMy4yNzMtNy4yNzMgNy4yNzMtNy4yNzNoODUuNDU1YzQgMCA3LjI3MyAzLjI3MyA3LjI3MyA3LjI3M3Y2MC45MDljMCA0LTMuMjczIDcuMjczLTcuMjczIDcuMjczIiBmaWxsPSJ1cmwoI2EpIi8+PHBhdGggZD0iTTcyLjEyMyAyOC40ODVoMjcuODc4di0xLjgxOGgtMjkuNjQ4Yy0uOTY1IDAtMS44MzIuNjAxLTIuMTcyIDEuNTA0LTIuMjg3IDYuMDcyLTIuNDMzIDEyLjU5NC0uNDM4IDE5Ljg0Mi40NTUgMS42NTQuNDM1IDMuNC0uMSA1LjAzLTIuMDM2IDYuMTk1LTcuNzc5IDE5Ljk4OC0xOC41NTEgMTkuOTg4LTExLjAwOCAwLTE2LjA5Ni0xNS42OTktMTcuMzM0LTIxLjk1Mi0uMTU1LS43ODQtLjEyMi0xLjU5Mi4xMDctMi4zNTcgMS42OTUtNS42NDggMi4wOTQtMTAuNjQtLjAxNi0xOS41OS0uMjA1LS44Ny0uMTgyLTEuNzgzLjA0OC0yLjY0NiA0LjQ4LTE2Ljc1NSAxMi44ODItMjAuMTQ3IDEyLjk2NS0yMC4xNzkuMzU2LS4xMzIuNTkzLS40NzIuNTkzLS44NTJ2LTUuNDU1aC0xLjgxOHYzLjc3NmMwIC42NS0uMzMyIDEuMjUyLS44ODQgMS41OTYtMi44MDMgMS43NDItOC45MDQgNi45MzYtMTIuNTU3IDIwLjQ1Ni0uMTguNjY4LS43ODEgMS4xMzYtMS40NzMgMS4xMzNsLTI4LjcyMi0uMTM5djEuODE4bDI3LjQxNi4xMzNjMS40NjguMDA3IDIuNzM1IDEuMDQxIDMuMDM3IDIuNDc4IDEuNDE2IDYuNzQxIDEuMjE5IDExLjAzOS4wODIgMTUuNDU4LS4zMTYgMS4yMy0xLjQyIDIuMDk2LTIuNjkgMi4xMDlsLTI3Ljg0NC4yN3YxLjgxOWwyOC42MDUtLjI3OGMuNjkzLS4wMDcgMS4yOTYuNDczIDEuNDM1IDEuMTUyIDEuNDQyIDcuMDQxIDYuODg3IDIzLjA3IDE5LjA1IDIzLjA3IDYuMzY4IDAgMTIuMDYyLTQuMjUgMTYuNDY3LTEyLjI5IDIuNjQ0LTQuODI4IDQuMDY3LTkuNTkxIDQuNTQxLTExLjM0NmgyOS45MDF2LTEuODE4aC0yOC4wMTZjLTEuMTU4IDAtMi4xODMtLjc3Mi0yLjQ4OS0xLjg4OS0xLjY5Mi02LjE2NC0xLjc2MS0xMS43NTUtLjItMTYuOTU5LjM3MS0xLjIzNSAxLjUzOC0yLjA2MSAyLjgyNy0yLjA2MXptLTE3LjE1LTIxLjkxNGMuMDQ1LjAyMiA0LjUxOSAyLjMyMiA5LjI1MyAxMC4wNDEuMTcyLjI4LjQ3LjQzNC43NzYuNDM0LjE5OCAwIC4zOTktLjA2NC41NzEtLjIwMi4zNjUtLjI5Mi40MTYtLjgzNy4xNzItMS4yMzUtMy41Ny01LjgwNS03LjAyNC04LjcxLTguNzc1LTkuOTMxLS40My0uMjk5LS42OC0uNzkyLS42OC0xLjMxNXYtNC4zNjNoLTEuODE4djUuNzU4YzAgLjM0NS4xOTUuNjU5LjUwMi44MTN6IiBmaWxsPSIjMEMwMjAwIi8+PC9zdmc+");
+    // background-repeat: no-repeat;
+    // background-size: contain;
+    // height: 26.36364px;
+    // left: 10%;
+    // position: absolute;
+    // top: 10%;
+    // width: 41.42857px;
+    // display: none;
+    position: absolute !important;
+    top: 71px !important;
+    left: 7px !important;
+    width: 100% !important;
+    z-index: 0 !important;
+    height: 41px !important;
+    background: var(--card-blur-color) !important;
+    filter: blur(18.314px);
+    transform: matrix(0.7, -0.67, 1.5, 0.87, 0, 0) !important;
+    z-index: 0;
+    display: block;
 }
 
 .rccs__issuer {
@@ -400,6 +428,8 @@ body.dark {
     right: 10%;
     top: 17%;
     width: 25% !important;
+    z-index: 1;
+
 }
 
 .rccs__stripe {
@@ -446,10 +476,20 @@ body.dark {
 }
 
 .rccs--filled {
-    opacity: 0.8 !important;
+    opacity: 1 !important;
+    z-index: 99 !important;
 }
 
 .rccs--focused {
     font-weight: 700;
     opacity: 1 !important;
+}
+
+
+
+
+@media only screen and (min-width: 1000px) and (max-width: 1200px) {
+    .container {
+        width: 100% !important;
+    }
 }

@@ -2,15 +2,18 @@
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 import style from "./design/style.module.scss"
+import { useTranslation } from 'react-i18next';
 
 export default function DoughnutChartDemo({ incom, outcom }) {
     const [chartData, setChartData] = useState({});
     const [chartOptions, setChartOptions] = useState({});
+    const { t } = useTranslation();
+
     useEffect(() => {
 
         const documentStyle = getComputedStyle(document.documentElement);
         const data = {
-            labels: ['Outcomne', 'Incomne'],
+            labels: [`${t('outcom')}`, `${t('incom')}`],
             datasets: [
                 {
                     data: [outcom ? outcom : -0.1, incom ? incom : 0.1],
@@ -47,7 +50,7 @@ export default function DoughnutChartDemo({ incom, outcom }) {
         };
         setChartData(data);
         setChartOptions(options);
-    }, [outcom, incom]);
+    }, [outcom, incom, t]);
 
 
 

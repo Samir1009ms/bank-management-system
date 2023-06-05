@@ -1,21 +1,23 @@
+@import '../../../components/variables/mixins';
+
 .header {
-    // position: absolute;
-    // width: 208px;
     height: 100vh;
     min-height: 700px;
     left: 346px;
     top: 278px;
     display: flex;
     flex-direction: column;
-    // justify-content: space-between;
     row-gap: 45px;
     background: var(--nav-bg-color);
     // border-radius: 20px;
-    padding: 40px 0px;
-
+    padding: 40px 0px !important;
     position: sticky;
     top: 0;
     left: 0;
+
+    @include desktop {
+        display: none !important;
+    }
 
 
     .navTop {
@@ -150,3 +152,17 @@
         }
     }
 }
+
+.hamburger {
+    position: absolute;
+    color: var(--nav-text-color);
+}
+
+
+// @media only screen and (min-width: 1000px) and (max-width: 1200px) {
+
+//     /* Bu stil kuralları sadece 768 piksel ile 1024 piksel arasındaki ekran genişliklerinde uygulanır */
+//     .header {
+//         display: none !important;
+//     }
+// }

@@ -3,12 +3,9 @@ import { IoAnalyticsOutline } from "react-icons/io5";
 import { IoWalletOutline } from "react-icons/io5";
 import { RiAccountCircleLine } from "react-icons/ri";
 import { TbSettings } from "react-icons/tb";
-import { MdOutlineSecurity, MdOutlineDarkMode } from "react-icons/md";
 import { BiHelpCircle } from "react-icons/bi";
 import s from "../design/style.module.scss";
 import { Theme } from "../../../components/theme/theme"
-
-
 
 export const routing = [
 
@@ -25,12 +22,17 @@ export const routing = [
   },
   {
     link: "/wallet",
-    text: "my wallet",
+    text: "wallet",
     icon: <IoWalletOutline className={s.icon} />,
   },
   {
     link: "/account",
     text: "accounts",
+    icon: <RiAccountCircleLine className={s.icon} />,
+  },
+  {
+    link: "/history",
+    text: "history",
     icon: <RiAccountCircleLine className={s.icon} />,
   },
   {
@@ -41,17 +43,14 @@ export const routing = [
   //     text: "security",
   //     icon: <MdOutlineSecurity className={s.icon} />,
   //   },
-
-
 ]
 
 export const mod = [
   {
-    text: "help centre",
+    text: "help",
     icon: <BiHelpCircle className={s.icon} />,
   },
   {
-    text: <Theme></Theme>
+    icon: <Theme></Theme>
   },
-
 ]

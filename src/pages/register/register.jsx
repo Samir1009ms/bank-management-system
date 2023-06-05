@@ -4,17 +4,15 @@ import { InputText } from "primereact/inputtext";
 import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { Checkbox } from "primereact/checkbox";
-import { Message } from "primereact/message";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 import style from "./design/style.module.scss"
+import { useTranslation } from "react-i18next";
 
 export function Register() {
-
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false)
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
@@ -22,12 +20,7 @@ export function Register() {
     const [checked, setChecked] = useState(false);
     const [disabled, setDisabled] = useState(true);
 
-
     const navigate = useNavigate();
-
-
-
-
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -67,6 +60,10 @@ export function Register() {
     }, [email, password, name, checked])
 
     //! dark light mod
+    const { i18n } = useTranslation();
+    const { t } = useTranslation()
+    const [lang, setLang] = useState()
+
     useEffect(() => {
         let theme = localStorage.getItem("theme");
         if (theme === "dark") {
@@ -77,36 +74,48 @@ export function Register() {
             localStorage.setItem("theme", "light")
             // setTheme("light");
         }
+        const selectedLanguage = localStorage.getItem('lang');
+        if (selectedLanguage) {
+            i18n.changeLanguage(selectedLanguage);
+            setLang(selectedLanguage)
+        } else {
+            localStorage.setItem("lang", "az")
+            setLang('az')
+            i18n.changeLanguage(lang);
 
+        }
     }, [])
+
+
+
 
     return (
         <main className={`${style.main} formgrid grid justify-content-center xl:col-8 col-12 md:col-10 sm:col-12`}>
             <section className={`${style.register} field xl:col-6 sm:col-9 col-12 justify-content-center flex flex-column  align-items-center gap-4 pt-6 pb-6`}>
                 <form className='col-10 sm:col-10 gap-4 grid flex-column' onSubmit={handleRegister}>
-                    <h3 className={style.sign}>Register</h3>
+                    <h3 className={style.sign}>{t('register')}</h3>
                     <div className="card flex justify-content-center">
                         <span className="p-float-label col-12">
                             <InputText style={{ width: "100%" }} id="email" value={name} onChange={(e) => setName(e.target.value)} />
-                            <label className={style.auth} htmlFor="email">User Name</label>
+                            <label className={style.auth} htmlFor="email">{t('userName')}</label>
                         </span>
                     </div>
                     <div className="card flex justify-content-center">
                         <span className="p-float-label col-12">
                             <InputText style={{ width: "100%" }} id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                            <label className={style.auth} htmlFor="email">Email</label>
+                            <label className={style.auth} htmlFor="email">{t('email')}</label>
                         </span>
                     </div>
                     <div className="card flex justify-content-center">
                         <span className="p-float-label col-12" style={{ padding: 0 }}>
                             <Password style={{ width: "100%" }} className='col-12' inputStyle={{ width: "100%" }} inputId="password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask feedback={false} />
-                            <label className={style.auth} htmlFor="password">Password</label>
+                            <label className={style.auth} htmlFor="password">{t('password')}</label>
                         </span>
                     </div>
                     <div className="card flex justify-content-center">
                         <span className={`p-float-label col-12 ${style.cPassword}`} style={{ padding: 0 }}>
                             <Password onKeyUp={() => handlePassword()} style={{ width: "100%" }} className='col-12' inputStyle={{ width: "100%" }} inputId="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} toggleMask feedback={false} />
-                            <label className={style.auth} htmlFor="password">Confirm Password</label>
+                            <label className={style.auth} htmlFor="password">{t('cPassword')}</label>
                             {message && <small className={style.error}>{message}</small>}
                             {/* {message && <div>{message}</div>} */}
 
@@ -115,29 +124,24 @@ export function Register() {
                     <div className="card flex justify-content-center col-12">
                         <div className="card flex gap-1 col-6 p-0" >
                             <Checkbox className={style.checkbox} onChange={e => setChecked(e.checked)} checked={checked}></Checkbox>
-                            <label htmlFor="remember" className={style.remember}>Remember me</label>
+                            <label htmlFor="remember" className={style.remember}>{t('remember')}</label>
                         </div>
                         <div className='card flex justify-content-center col-6 p-0'>
                             {/* <a href="/forgotpassword" className={style.link}>Forgot Password?</a> */}
                         </div>
                     </div>
                     <div className="card flex flex-wrap justify-content-center gap-3">
-                        <Button disabled={disabled} className={`col-12 pb-2 pt-2 ${style.colors}`} label={loading ? "loading.." : "Register"} rounded />
+                        <Button disabled={disabled} className={`col-12 pb-2 pt-2 ${style.colors}`} label={loading ? "loading.." : `${t('register')}`} rounded />
                     </div>
-
-                    {/* <Message severity="info" text="Info Message" />
-                <Message severity="success" text="Success Message" />
-                <Message severity="warn" text="Warning Message" />
-                <Message severity="error" text="Error Message" /> */}
                 </form>
                 <div className={`${style.xx} grid gap-2`}>
-                    <span className={style.account}>Do have an account?</span>
-                    <a href="/login" className={style.link}>Log in to your account</a>
+                    <span className={style.account}>{t('DoAccount?')}</span>
+                    <Link to="/login" className={style.link}>{t('loginAccount')}</Link>
                 </div>
             </section>
             <section className={`hidden field xl:col-6 sm:hidden md:hidden lg:flex  lg:relative sm:absolute grid align-items-center justify-content-center ${style.images}`} >
                 <div className={`grid align-items-center justify-content-center ${style.text}`}>
-                    <h3>Welcome</h3>
+                    <h3>{t('welcome')}</h3>
                     <p>Lorem ipsuing elit. Molomos totam est voluptatum i omos totam est voluptatum i ure sit consectetur ill</p>
                 </div>
             </section>

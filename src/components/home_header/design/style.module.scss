@@ -36,6 +36,53 @@
 .icons {
     color: var(--nav-text-color) !important;
     cursor: pointer;
+    box-shadow: var(--box-shadow);
+    padding: 10px;
+    border-radius: 9px;
+    background: var(--summary-bg-color);
+    transition: 0.35s ease-in-out;
+
+
+    i {
+        box-shadow: none;
+    }
+
+    svg {
+        // box-shadow: var(--box-shadow);
+
+    }
+
+    &:hover {
+        opacity: 0.6;
+        transition: 0.35s ease-in-out;
+        color: rgb(50, 134, 243) !important;
+    }
+}
+
+.ico {
+    color: var(--nav-text-color) !important;
+    cursor: pointer;
+    box-shadow: var(--box-shadow);
+    padding: 7px 8px 3px;
+    border-radius: 9px;
+    background: var(--summary-bg-color);
+    transition: 0.35s ease-in-out;
+
+
+    svg {
+
+        width: 16px !important;
+    }
+
+    &:hover {
+        opacity: 0.6;
+        transition: 0.35s ease-in-out;
+        color: rgb(50, 134, 243) !important;
+    }
+}
+
+.users {
+    padding: 8px;
 }
 
 .profile {
@@ -48,7 +95,8 @@
     align-items: center;
     // justify-content: center;
     column-gap: 8px;
-
+    box-shadow: var(--box-shadow);
+    text-transform: capitalize;
 }
 
 .profilesMenu {
@@ -56,6 +104,11 @@
     top: 103%;
     right: 2px;
     width: calc(100% - 42px);
-    border: 1px solid red;
     border-radius: 10px;
+    z-index: 23;
+    // background: var(--summary-bg-color);
+    background-color: var(--profile-bg-color);
+    // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
+
+
 }

@@ -1,51 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
 import { useSelector } from 'react-redux';
-import { Pagination } from './Pagination';
 import style from './design/style.module.scss'
 import { AnimatePresence, motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
-export default function BankCards({ cardData }) {
-    // let cardData = useSelector((state) => state.card.cards);
-
-
-    const cardsPerPage = 1
+export default function BankCards() {
+    let cardData = useSelector((state) => state.card.cards);
+    useCallback(() => {
+        console.log(cardData);
+    }, [cardData])
 
     const [state, setState] = useState({
-
         number: '0000000000000000',
         expiry: '00/00',
         cvc: '000',
         name: 'NO NAME',
         focus: 'TRUE',
     });
-    const handleInputChange = (evt) => {
-        const { name, value } = evt.target;
-
-        setState((prev) => ({ ...prev, [name]: value }));
-    }
-
-    const handleInputFocus = (evt) => {
-        setState((prev) => ({ ...prev, focus: evt.target.name }));
-    }
-    const [currentPage, setCurrentPage] = useState(1);
-    const handlePageChange = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    };
-
-
 
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
-
-    function handleNextCard() {
-        setCurrentCardIndex((prevIndex) => (prevIndex === (cardData && cardData.length) - 1 ? 0 : prevIndex + 1));
-    };
-
-    const handlePrevCard = () => {
-        setCurrentCardIndex((prevIndex) => (prevIndex === 0 ? cardData && cardData.length - 1 : prevIndex - 1));
-    };
-
     const getVisibleIndexes = () => {
         if (cardData && cardData.length > 0) {
             if (cardData.length <= 2) {
@@ -69,48 +44,49 @@ export default function BankCards({ cardData }) {
             }
         }
         return [];
+
     };
-
+    const { t } = useTranslation()
     return (
-
-        <div className={style.cardSlider}>
-
-            <div className={style.cardContainer}>
-                <AnimatePresence initial={false} custom={currentCardIndex}>
-                    <motion.div
-                        key={currentCardIndex}
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: 100 }}
-                        transition={{ duration: 0.7 }}
-                    >
-                        {<Cards
-                            number={cardData ? cardData[currentCardIndex].cardNumber : state.number}
-                            expiry={cardData ? cardData[currentCardIndex].cardDate : state.expiry}
-                            cvc={cardData ? cardData[currentCardIndex].cardCvv : state.cvc}
-                            name={cardData ? cardData[currentCardIndex].cardName : state.name}
-                        />}
-
-                        <div className={style.total}>
-                            <small className={style.balansText}>current balance</small>
-                            <p className={style.price}>$ {cardData ? (cardData[currentCardIndex].balance).toLocaleString('en-US') : 0}</p>
-                        </div>
-
-                    </motion.div>
-                </AnimatePresence>
+        <div style={{ width: "100%" }}>
+            <h3 className={`${style.textW}`}>{t('wallet')}</h3>
+            <div className={style.cardSlider}>
+                <div className={style.cardContainer}>
+                    <AnimatePresence initial={false} custom={currentCardIndex}>
+                        <motion.div
+                            key={currentCardIndex}
+                            initial={{ opacity: 0, x: 100 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            exit={{ opacity: 0, x: 100 }}
+                            transition={{ duration: 0.7 }}
+                        >
+                            {<Cards
+                                number={cardData ? cardData[currentCardIndex].cardNumber : state.number}
+                                expiry={cardData ? cardData[currentCardIndex].cardDate : state.expiry}
+                                cvc={cardData ? cardData[currentCardIndex].cardCvv : state.cvc}
+                                name={cardData ? cardData[currentCardIndex].cardName : state.name}
+                            >
+                            </Cards>}
+                            <div className={style.blur}>
+                            </div>
+                            <div className={style.total}>
+                                <small className={style.balansText}>{t('current')}</small>
+                                <p className={style.price}>$ {cardData ? (cardData[currentCardIndex].balance).toLocaleString('en-US') : 0}</p>
+                            </div>
+                        </motion.div>
+                    </AnimatePresence>
+                </div>
+                <div className={style.pagination}>
+                    {getVisibleIndexes().map((index) => (
+                        <span
+                            key={index}
+                            className={currentCardIndex === index - 1 ? style.active : ''}
+                            onClick={() => setCurrentCardIndex(index - 1)}
+                        >
+                        </span>
+                    ))}
+                </div>
             </div>
-            <div className={style.pagination}>
-                {getVisibleIndexes().map((index) => (
-                    <span
-                        key={index}
-                        className={currentCardIndex === index - 1 ? style.active : ''}
-                        onClick={() => setCurrentCardIndex(index - 1)}
-                    >
-                        {index}
-                    </span>
-                ))}
-            </div>
-
         </div>
     )
 }

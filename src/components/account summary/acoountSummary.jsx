@@ -6,6 +6,7 @@ import { HiArrowTrendingUp } from 'react-icons/hi2'
 import { HiOutlineArrowTrendingDown } from 'react-icons/hi2'
 // ! style
 import style from "./design/style.module.scss"
+import { useTranslation } from "react-i18next";
 
 export function AccountSummary({ filter }) {
     const [incomes, setIncomes] = useState(0)
@@ -17,13 +18,14 @@ export function AccountSummary({ filter }) {
         setOutgomings(outcomne && outcomne.reduce((acc, amount) => (acc + amount.amount), 0))
         setIncomes(incomne && incomne.reduce((acc, amount) => (acc + amount.amount), 0))
     }, [filter])
+    const { t } = useTranslation()
     return (
         <div className={`grid col-4 row-gap-1 ${style.accSum}`}>
             <div className={`${style.summary}`}>
-                <h2 className={`col-12 ${style.text}`}>Account summary</h2>
+                <h2 className={`col-12 ${style.text}`}>{t('summary')}</h2>
                 <div className={`${style.xerc} w-full flex column-gap-2`}>
                     <div className={`w-6 ${style.incomme}`}>
-                        <p> <HiArrowTrendingUp /> Incomne</p>
+                        <p> <HiArrowTrendingUp /> {t('incom')}</p>
                         <span> +${incomes && (incomes.toLocaleString("en-US"))}</span>
                     </div>
                     <div className={`w-6 ${style.incomme}`}>
@@ -31,7 +33,8 @@ export function AccountSummary({ filter }) {
                             <HiOutlineArrowTrendingDown
                                 className={`${style.down}`}
                             />
-                            Outcomne</p>
+                            {t('outcom')}
+                        </p>
                         <span>-${(outgomings && (outgomings * -1).toLocaleString('en-US'))}</span>
                     </div>
                 </div>
