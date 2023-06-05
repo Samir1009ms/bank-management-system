@@ -5,6 +5,7 @@ import { ApiService } from "../../services/api.services";
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { Badge } from "primereact/badge";
+import { HiOutlineBanknotes } from 'react-icons/hi2'
 export function Notification() {
     const [say, setSay] = useState(0)
     const [notifications, setNotifications] = useState([]);
@@ -25,14 +26,28 @@ export function Notification() {
         const socket = io('http://localhost:3003');
         not()
         socket.on('notification', (message) => {
-            setNotifications((prevNotifications) => [...prevNotifications, message]);
+            // setNotifications((prevNotifications) => [...prevNotifications, message]);
+            // console.log(message);
+            not()
+        });
+        socket.on('deleteNotification', (message) => {
             console.log(message);
             not()
         });
+
         return () => {
             socket.disconnect();
         };
     }, []);
+
+    function delet(e) {
+        ApiService.deleteNotifications(e).then((e) => {
+            console.log(e);
+        }).catch((err) => {
+            console.log(err);
+        })
+
+    }
 
     const [dates, setDates] = useState([])
     useEffect(() => {
@@ -64,7 +79,6 @@ export function Notification() {
             setNotificat("flex")
         }
     }
-
     const { t } = useTranslation()
     return (
         <div className={`${style.notification}`}>
@@ -92,10 +106,15 @@ export function Notification() {
                                 <ul>
                                     {date.notifications.map((notification) => (
                                         <li key={notification._id}>
-                                            {/* <AccountBalanceIcon /> */}
-                                            <span>
-                                                {moment(notification.createdAt).format("HH:mm")} - {notification.message}
-                                            </span>
+                                            <HiOutlineBanknotes />
+                                            <p >
+                                                <span>Hesaba Medaxil</span>
+                                                <span>
+                                                    <small>{moment(notification.createdAt).format("HH:mm")}</small>
+                                                    <small>{notification.card.slice(0, 4) + "**" + notification.card.slice(12)}</small>
+                                                </span>
+                                            </p>
+                                            <span onClick={() => delet(notification._id)}>{notification.amount.toFixed(2)} azn</span >
                                         </li>
                                     ))}
                                 </ul>

@@ -86,9 +86,6 @@ export function Register() {
         }
     }, [])
 
-
-
-
     return (
         <main className={`${style.main} formgrid grid justify-content-center xl:col-8 col-12 md:col-10 sm:col-12`}>
             <section className={`${style.register} field xl:col-6 sm:col-9 col-12 justify-content-center flex flex-column  align-items-center gap-4 pt-6 pb-6`}>

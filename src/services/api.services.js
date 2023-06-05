@@ -14,8 +14,13 @@ export class ApiService {
     }
 
     static async notii(userId) {
-        return (await axios.get(`${BASE_URL}noti/${userId}`)).data
+        return (await axios.get(`${BASE_URL}notifications/${userId}`)).data
     }
+
+    static async deleteNotifications(notificationId) {
+        return await axios.delete(`${BASE_URL}notifications/delete/${notificationId}`)
+    }
+
 
 
 
