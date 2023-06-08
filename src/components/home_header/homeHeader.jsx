@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineDown } from 'react-icons/ai'
 import { FiUser } from 'react-icons/fi'
 import { FiLogOut } from 'react-icons/fi'
+import img from '../../assets/1 (2).jpg'
 export function HomeHeader() {
 
     // ! location text
@@ -19,12 +20,10 @@ export function HomeHeader() {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"))
         setUser(user)
-        console.log(user);
         if (location.pathname === "/") {
             setPathname(t('dashboard'))
         } else {
             setPathname(t(`${location.pathname.slice(1)}`))
-            console.log(location.pathname);
         }
     }, [location, t])
 
@@ -44,6 +43,7 @@ export function HomeHeader() {
         navigate('/login')
 
     }
+
     return (
         <div className={`${style.homeHeader}`}>
             <div className={style.title}>
@@ -52,12 +52,13 @@ export function HomeHeader() {
             <div className={`grid align-items-center gap-3 h-full pt-2 relative `}>
                 <Notification />
                 <div onClick={() => userProfile()} className={`${style.profile} relative`}>
-                    <Avatar className={`border-circle ${style.pAvatar}`} label='S' size="" shape="circle" />
+                    {/* user.img && */}
+                    <Avatar className={`border-circle ${style.pAvatar}`} image={img} label={user && user.name[0]} size="" shape="circle" />
                     {user && user.name}
                     <i className={`pi pi-angle-down ${style.icons}`}> </i>
                 </div>
                 <div className={`${style.profilesMenu} ${users}  flex-column gap-2 p-3`}>
-                    <span className={`${style.icons} ${style.users} flex align-items-center gap-1`} >
+                    <span onClick={() => navigate('/profile')} className={`${style.icons} ${style.users} flex align-items-center gap-1`} >
                         <i className={`pi pi-user ${style.icons} `}>
 
                         </i>

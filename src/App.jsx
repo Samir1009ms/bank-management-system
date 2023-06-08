@@ -4,6 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { AuthService } from './services/auth.services';
 import { useEffect } from 'react';
 import { HomeHeader } from './components/home_header/homeHeader';
+import axios from 'axios';
 function App() {
   // const currentUser = AuthService.getCurrentUser();
   const navigate = useNavigate()
@@ -24,10 +25,10 @@ function App() {
   // }, [])
 
   async function isLogged() {
-    
-    try{
+
+    try {
       await AuthService.getCurrentUser()
-    }catch{
+    } catch {
       navigate('/login')
     }
     return
@@ -37,6 +38,8 @@ function App() {
     isLogged()
 
   }, [])
+
+
 
   return (
     <>

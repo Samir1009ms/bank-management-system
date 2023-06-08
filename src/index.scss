@@ -58,6 +58,13 @@ code {
     monospace;
 }
 
+.p-avatar.p-component.p-avatar-image.p-avatar-circle.p-avatar-xl {
+
+  img {
+    object-fit: cover;
+  }
+}
+
 
 /* @media screen and (min-width: 62em) {
   .p-sidebar-md-hidden {

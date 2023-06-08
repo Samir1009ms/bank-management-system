@@ -8,7 +8,6 @@ import { useTranslation } from 'react-i18next';
 
 function QuickTransfer() {
     let cardData = useSelector((state) => state.card.cards);
-    console.log("ss");
 
     const [ingredient, setIngredient] = useState(0)
     const [cardActive, setCardActive] = useState(ingredient)
@@ -53,10 +52,8 @@ function QuickTransfer() {
                 senderCardNumber: cardData[cardActive].cardNumber
             }))
         }
-        console.log(cardData);
     }, [cardActive, cardData])
     function handleTransferPost() {
-        console.log();
         axios.post("http://localhost:5500/api/transferMoney", {
             senderCardNumber: tra.senderCardNumber,
             receiverCardNumber: tra.receiverCardNumber,

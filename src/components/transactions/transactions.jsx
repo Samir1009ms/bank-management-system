@@ -16,7 +16,6 @@ function Transaction() {
     const d = useSelector((state) => state.transactionsSlice.outcoming)
     const [selected, setSelected] = useState("All")
     const [selectData, setSelectData] = useState([])
-    console.log("sss");
     useEffect(() => {
         if (d) {
             const filtr = d.filter((e) => {
@@ -28,7 +27,6 @@ function Transaction() {
             if (selected === "All") {
                 const allData = filtr.flatMap((e) => e.transctions)
                 setSelectData(allData)
-                console.log(selectData);
             } else if (selected === "Incomings") {
                 let incomeData = filtr.flatMap((e) => e.transctions)
                 incomeData = incomeData.filter((e) => e.type === "Incoming");
@@ -49,10 +47,7 @@ function Transaction() {
     function select(e) {
         setSelected(e)
     }
-    console.log(lang);
     const { t } = useTranslation();
-    console.log(moment().locale(lang).months(t('month', { returnObjects: true })[selectedMonth]).format("M"));
-    console.log(t('month', { returnObjects: true })[1]);
 
     const [isOpen, setIsOpen] = useState(false)
     return (

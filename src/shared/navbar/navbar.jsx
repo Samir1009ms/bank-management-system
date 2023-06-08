@@ -40,7 +40,6 @@ export function Navbar() {
         const fetchData = async () => {
             const data = await AuthService.headers();
             setIsAdmin(data.isAdmin);
-            console.log(isAdmin);
         };
 
         fetchData();

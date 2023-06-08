@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import cartStore from './store/store';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18';
+import Profile from './pages/profile/Profile';
 
 
 
@@ -27,6 +28,7 @@ root.render(
           <Route path="/" exact element={<App />}>
             <Route path='/' element={<Home />} />
             <Route path='/wallet' element={<Wallet />} />
+            <Route path='/profile' element={<Profile />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -112,7 +112,6 @@ function Charts() {
             }
         });
     }, [colors.background, colors.primary, colors.text, colors.border, colors.chartBg, colors.lineColor, totalicom, t]);
-    console.log('s');
     return (
         <div className={style.card}>
             <Chart type="line" className={`${style.charts}`} width='100%' height='320px' data={chartData} options={chartOptions} />

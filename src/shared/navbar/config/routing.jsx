@@ -25,11 +25,11 @@ export const routing = [
     text: "wallet",
     icon: <IoWalletOutline className={s.icon} />,
   },
-  {
-    link: "/account",
-    text: "accounts",
-    icon: <RiAccountCircleLine className={s.icon} />,
-  },
+  // {
+  //   link: "/account",
+  //   text: "accounts",
+  //   icon: <RiAccountCircleLine className={s.icon} />,
+  // },
   {
     link: "/history",
     text: "history",

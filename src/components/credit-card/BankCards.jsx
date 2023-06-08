@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useState } from 'react'
 import Cards from 'react-credit-cards-2';
 import 'react-credit-cards-2/dist/es/styles-compiled.css'
 import { useSelector } from 'react-redux';
@@ -8,10 +8,6 @@ import { useTranslation } from 'react-i18next';
 
 export default function BankCards() {
     let cardData = useSelector((state) => state.card.cards);
-    useCallback(() => {
-        console.log(cardData);
-    }, [cardData])
-
     const [state, setState] = useState({
         number: '0000000000000000',
         expiry: '00/00',

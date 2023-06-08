@@ -12,7 +12,6 @@ export class AuthService {
     let data = await axios
       .post(BASE_URL + '/login', { email, password })
 
-    console.log(data.data);
 
     localStorage.setItem("token", data.data)
   };
@@ -28,7 +27,6 @@ export class AuthService {
     // console.log(JSON.parse(atob(t.split('.'))))
     const payload = JSON.parse(atob(t.split('.')[1]))
     // const userName = payload.name
-    console.log(payload);
     localStorage.setItem("user", JSON.stringify(payload))
     // console.log(payload._id)
     setTimeout(() => {

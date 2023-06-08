@@ -9,63 +9,24 @@ import { HiOutlineBanknotes } from 'react-icons/hi2'
 import { MdClear } from 'react-icons/md'
 export function Notification() {
     const [notifications, setNotifications] = useState([]);
-    // async function not() {
-    //     const userId = localStorage.getItem("userId")
-    //     try {
-    //         ApiService.notii(userId).then((data) => {
-    //             setSay(data.length)
-    //             setNotifications(data)
-    //         })
-    //     }
-    //     catch {
-    //         console.log("error");
-    //     }
-    // }
-
-    // useEffect(() => {
-    //     const socket = io('http://localhost:3003');
-    //     not()
-    //     socket.on('notification', (message) => {
-
-    //         setNotifications([...notifications, message]);
-    //         console.log("deyisiklin oldu")
-    //         console.log(message);
-    //         // not()
-    //     });
-    //     socket.on('deleteNotification', (message) => {
-
-    //         console.log(message);
-    //     })
-
-
-    // }, []);
     useEffect(() => {
         const socket = io('http://localhost:3003');
-
         async function fetchNotifications() {
             const userId = localStorage.getItem("userId");
             try {
                 const data = await ApiService.notii(userId);
                 setNotifications(data);
             } catch (error) {
-                console.log("Hata oluştu: ", error);
             }
         }
-
         fetchNotifications();
-
         socket.on('notification', (message) => {
             setNotifications((prevNotifications) => [...prevNotifications, message]);
-            console.log("Değişiklik oldu");
-
             console.log(message);
         });
-
         socket.on('deleteNotification', (message) => {
             console.log(message);
         });
-
-        // Cleanup
         return () => {
             socket.disconnect();
         };
@@ -76,13 +37,11 @@ export function Notification() {
         setNotifications(notifications.filter((x) => x._id !== e))
         console.log(notifications);
         ApiService.deleteNotifications(e).then((e) => {
-            console.log(e);
         }).catch((err) => {
             console.log(err);
         })
 
     }
-    console.log("render");
     const [dates, setDates] = useState([])
     useEffect(() => {
         if (notifications) {
@@ -96,7 +55,6 @@ export function Notification() {
                 acc[dataKey].push(date)
                 return acc
             }, {})
-            console.log(GroupDates);
             const dates = Object.entries(GroupDates).map(([day, notifications]) => ({
                 day,
                 notifications: notifications

@@ -10,7 +10,6 @@ export const getCard = createAsyncThunk(
             const data = await ApiService.card(userId);
             thunkAPI.dispatch(setCard(data));
             thunkAPI.dispatch(setTotal(data.cards.reduce((acc, item) => (acc + item.balance), 0)));
-            console.log(data);
             return data;
         } catch (err) {
             console.log(err);
