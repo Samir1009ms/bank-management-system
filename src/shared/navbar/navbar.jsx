@@ -44,24 +44,32 @@ export function Navbar() {
         };
 
         fetchData();
+        const handleResize = () => {
+            if (window.innerWidth >= 992) {
+                setIsOpen(true);
+            } else {
+                setIsOpen(false);
+            }
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
     }, [isAdmin]);
 
-    const [ss, setS] = useState("flex")
-    function show() {
-        if (counter === 1) {
-            setS("block")
-            counter--
-        } else {
-            setS("hidden")
-            counter++
-        }
 
-    }
     const { t } = useTranslation()
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsOpen(!isOpen);
+    };
     return (
         <>
-            <div className={`lg:hidden ${s.hamburger}`}>sasaa</div>
-            <header className={`${s.header} col-2 sm:${ss} hidden md:hidden lg:${ss} `}>
+            <div onClick={() => toggleMenu()} className={`lg:hidden ${s.hamburger}`}>X</div>
+            <header className={`${s.header}  animate__animated col-2 lg:flex  ${isOpen ? `${s.active} ` : ''}`}>
                 <LanguageSwitcher />
                 <nav className={s.navTop}>
                     <ul className={s.navList}>

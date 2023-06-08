@@ -1,8 +1,31 @@
+@import '../../../components/variables/mixins';
+
 .home {
     // flex-wrap: nowrap !important;
     column-gap: 23.1px !important;
     align-items: flex-start;
     justify-content: space-between;
+
+    @include tablet {
+        padding: 0 !important;
+        width: 100% !important;
+        flex-direction: column-reverse;
+        position: relative;
+    }
+
+    .container {
+        @include mobile {
+            width: 100%;
+            color: white;
+            border-radius: 10px;
+        }
+    }
+}
+
+.cardsTop {
+    @include mobile {
+        width: 81%;
+    }
 }
 
 
@@ -16,6 +39,10 @@
 .homeLeftxx {
     width: 70.6%;
     // width: 69%; //! media query 1240 px
+
+    @include tablet {
+        width: 100%;
+    }
 
 }
 

@@ -102,6 +102,10 @@ body.dark {
     @include desktop {
         width: 100% !important;
     }
+
+    @include tablet {
+        width: 100% !important;
+    }
 }
 
 .p-radiobutton .p-radiobutton-box.p-highlight {

@@ -19,16 +19,110 @@
 }
 
 .bildirisCont {
-    border: 1px solid red;
     min-height: 50px;
     max-height: 350px;
     position: absolute;
     width: 280px;
     left: -80px;
     top: 50px;
-    color: green;
     overflow-y: scroll;
     z-index: 9999;
+    background-color: var(--profile-bg-color);
+    color: var(--nav-text-color);
+    border-radius: 8px;
+    flex-direction: column;
+
+    &::-webkit-scrollbar {
+
+        display: none;
+    }
+
+    .bildiris {
+
+        width: 100%;
+        height: min-content;
+        // background: var(--dropDown-bg-color);
+        background: var(--transfer-cont-bg-color);
+        padding: 10px;
+
+        .date {
+            font-size: 17px;
+            margin-bottom: 7px;
+        }
+
+        .dateList {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            row-gap: 5px;
+
+            .list {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                background: var(--summary-bg-color);
+                box-shadow: var(--box-shadow);
+                border-radius: 8px;
+                padding: 8px;
+                position: relative;
+
+                .listLeft {
+                    display: flex;
+                    column-gap: 8px;
+                    align-items: center;
+
+                    svg {
+                        font-size: 30px;
+                    }
+
+                    .listInfo {
+                        display: flex;
+                        flex-direction: column;
+
+                        .listInfoText {}
+
+                        .listDate {
+
+                            small {
+                                &:first-child {
+                                    margin-right: 5px;
+
+                                }
+                            }
+
+                        }
+                    }
+                }
+
+
+                .listAmount {
+                    margin-top: 5px;
+                    color: rgb(12, 172, 55);
+                }
+
+                .clear {
+                    position: absolute;
+                    right: 4px;
+                    top: 3px;
+                    transition: 0.35 ease-in-out;
+
+
+                    &:hover {
+                        color: red;
+                        cursor: pointer;
+                        transform: scale(1.0999);
+                        transition: 0.35 ease-in-out;
+                    }
+                }
+
+            }
+        }
+
+
+
+    }
+
+
 }
 
 .notification {

@@ -1,3 +1,6 @@
+@import '../../variables/mixins';
+
+
 .left {
     width: calc(100% - 73%);
     // width: calc(100% - 71%); //! media query 1240 px
@@ -7,6 +10,11 @@
     top: 1px;
     padding-bottom: 21px;
 
+    @include tablet {
+        position: relative;
+        width: 100%;
+        border-radius: 10px;
+    }
 }
 
 

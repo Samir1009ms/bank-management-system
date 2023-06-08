@@ -1,10 +1,23 @@
+@import '../../variables/mixins';
+
+
 .chart {
     width: 66%;
+
+    @include mobile {
+        width: 97%;
+    }
 }
 
 .mainTop {
     color: white;
     padding-top: 20px;
+
+    @include mobile {
+        flex-direction: column;
+        margin: 0;
+        align-items: center;
+    }
 
     .balansCont {
         display: flex;
@@ -12,6 +25,13 @@
         row-gap: 30px;
         width: 33%;
         padding: 0 1rem 1rem 1rem !important;
+
+        @include mobile {
+            width: 100%;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
 
         .balans {
             background: var(--bg-colors);
@@ -21,6 +41,10 @@
             color: var(--nav-text-color);
             border: 1px solid #2888d6;
             border-radius: 10px;
+
+            @include mobile {
+                width: 49%;
+            }
 
 
 

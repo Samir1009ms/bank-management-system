@@ -48,7 +48,7 @@ export default function BankCards() {
     };
     const { t } = useTranslation()
     return (
-        <div style={{ width: "100%" }}>
+        <div className={style.cardsTop} >
             <h3 className={`${style.textW}`}>{t('wallet')}</h3>
             <div className={style.cardSlider}>
                 <div className={style.cardContainer}>

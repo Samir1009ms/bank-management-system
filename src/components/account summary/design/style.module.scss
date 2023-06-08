@@ -1,3 +1,5 @@
+@import '../../variables/mixins';
+
 .summary {
     color: var(--nav-text-color);
     display: flex;
@@ -9,6 +11,10 @@
     max-height: 135px;
     min-height: 135px;
     margin-top: 10px;
+
+    @include mobile {
+        display: none;
+    }
 
     .text {
         font-size: 22px;
@@ -65,4 +71,7 @@
     flex-direction: column;
     row-gap: 30px !important;
 
+    @include mobile {
+        display: none;
+    }
 }

@@ -6,7 +6,7 @@ import QuickTransfer from '../QuickTransfer/QuickTransfer';
 export default function Sidebar() {
     return (
         <section className={`pt-2  ${style.left} `}>
-            <div className={`grid  row-gap-6  justify-content-center m-0`} style={{ width: "100%", color: "white" }}>
+            <div className={`grid ${style.container} row-gap-6  justify-content-center m-0`} style={{ width: "100%", color: "white" }}>
                 <BankCards />
                 <QuickTransfer />
             </div>

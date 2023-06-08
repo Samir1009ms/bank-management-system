@@ -28,6 +28,7 @@ function Transaction() {
             if (selected === "All") {
                 const allData = filtr.flatMap((e) => e.transctions)
                 setSelectData(allData)
+                console.log(selectData);
             } else if (selected === "Incomings") {
                 let incomeData = filtr.flatMap((e) => e.transctions)
                 incomeData = incomeData.filter((e) => e.type === "Incoming");
@@ -58,7 +59,7 @@ function Transaction() {
         <div className={`flex w-full gap-3 mt-6 ${style.transactions}`}>
             <h2 className={`${style.basliq}`}>{t('transactions')}</h2>
             <div className={`flex column-gap-3 ${style.table}`}>
-                <div className={`col-8`}>
+                <div className={`col-8 ${style.dataTable}`}>
                     <div className={`${style.selects}`}>
                         <div className={`${style.selectLeft}`}>
                             <span onClick={() => select("All")} className={`${style.click} ${selected === "All" ? style.active : ""}`}>{t('all')}</span>
@@ -90,10 +91,9 @@ function Transaction() {
                         <Column field="date" body={(rowData) => moment((rowData.date)).locale(lang).format('MMMM DD, yyyy HH:mm:ss')} header="Date" sortable></Column>
                         <Column field="amount" header="Amount" sortable></Column>
                         <Column field="type" header="Type" body={(ty) => ty.type === "Incoming" ? "Income" : "Outcome"} sortable></Column>
-                        <Column field="date" header="Transaction Details" sortable body={(rowData) => (
+                        <Column field="date" header="Card Number" body={(rowData) => (
                             <>
-                                <div>{rowData.type}</div>
-                                <div>{moment((rowData.date)).format('MMMM DD, yyyy HH:mm:ss')}</div>
+                                <div>{rowData.cardNumber.slice(0, 4) + " ** " + rowData.cardNumber.slice(12)}</div>
                             </>
                         )}></Column>
                     </DataTable>

@@ -72,6 +72,24 @@ const Login = () => {
             });
     };
 
+    async function isLogged(){
+        try{
+            await AuthService.getCurrentUser()
+            navigate("/")
+        }catch{
+        }
+    }
+
+    useEffect(()=>{
+        isLogged()
+
+    },[])
+
+
+
+
+
+
     return (
         <main className={`${style.main} formgrid grid justify-content-center xl:col-8 md:col-10 col-12 sm:col-12`}>
             <section className={`${style.login} col-12 field xl:col-6 sm:col-9 justify-content-center flex flex-column  align-items-center gap-4 pt-6 pb-6`}>
