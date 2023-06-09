@@ -8,6 +8,7 @@ export default function ProfileTop() {
         setUser(user)
     }, [])
 
+    // !=--------------------------------=
     const [img, setImg] = useState('');
     const handleImageChange = (e) => {
         const file = e.target.files[0];
@@ -21,15 +22,14 @@ export default function ProfileTop() {
             reader.readAsDataURL(file);
         }
     };
-
+    // !=--------------------------------=
     const inputRef = useRef()
-
     const handleInputChange = () => {
         inputRef.current.click()
     }
     return (
         <section style={{
-            width: '60%', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '0 0 45px', background: '#000', borderRadius: '14px'
+            width: '60%', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '0 0 45px', background: 'var(--summary-bg-color)', borderRadius: '14px'
         }}>
             <section style={{ width: '70%', display: 'flex', alignItems: 'center    ', justifyContent: 'flex-start', flexDirection: 'column', rowGap: '10px' }
             } >
@@ -48,7 +48,7 @@ export default function ProfileTop() {
                         <input ref={inputRef} onChange={handleImageChange} type="file" name="" id="" style={{ visibility: 'hidden', position: "absolute", top: 0, left: 0, zIndex: -2 }} />
                     </span>
                 </div>
-                <div style={{ color: "white", display: "flex", flexDirection: 'column', alignItems: 'center', rowGap: '10px' }}>
+                <div style={{ color: 'var(--nav-text-color)', display: "flex", flexDirection: 'column', alignItems: 'center', rowGap: '10px' }}>
                     <span style={{ fontSize: "30px", textTransform: "capitalize" }}>{user && user.name}</span>
                     <p>
                         <span style={{ marginRight: '5px' }}>{user && user.email}</span>
