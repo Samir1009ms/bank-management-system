@@ -26,20 +26,27 @@
     "logout":"Çıxış",
     "login":"Daxil ol",
     "profile":"Profil",
+    "profile/editprofile":"Profili redaktə et",
     "email":"E-poçt ünvanı",
     "password":"Şifrə",
     "remember":"Məni xatırla",
     "fPassword":"Şifrəni unutmusunuz",
     "dontAccount":"Hesabınız yoxdur?",
     "createAccount":"Hesabınızı yaradın",
-    "userName":"istifadəçi adı",
+    "userName":"İstifadəçi adı",
     "cPassword":"Şifrəni təsdiqləyin",
     "DoAccount?":"Hesabınız var?",
     "loginAccount":"Hesabınıza daxil olun",
     "register":"Qeydiyyatdan keçin",
     "today":"Bu gün",
-    "yesterday":"Dünən"
-   
-
+    "yesterday":"Dünən",
+    "min":"Uzunluq ən azı {{min}} simvol olmalıdır",
+    "max":"Uzunluq maksimum {{max}} simvol olmalıdır",
+    "bDate":"Doğum tarixi",
+    "phone":"Telefon",
+    "province":"Ölkə",
+    "city":"Şəhər",
+    "adress":"Ünvan",
+    "emailValidation":"E-mail ünvanı səhvdir. Etibarlı e-poçt ünvanı daxil edin."
   
   }

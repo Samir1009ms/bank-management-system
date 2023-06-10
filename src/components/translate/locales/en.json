@@ -38,7 +38,17 @@
     "loginAccount":"Log in to your account",
     "register":"Register",
     "today":"Today",
-    "yesterday":"Yesterday"
+    "yesterday":"Yesterday",
+    "profile/editprofile":"Edit profile",
+    "min":"Length should be at least {{min}} characters",
+    "max":"Length should be at most {{max}} characters",
+    "bDate":"Birth Date",
+    "phone":"Phone",
+    "province":"Province",
+    "city":"City",
+    "adress":"Adress",
+    "emailValidation":"Invalid email address. Please enter a valid email address."
+
   }
   
 

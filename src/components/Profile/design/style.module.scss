@@ -1,10 +1,42 @@
 .pen {
-    color: #fff !important;
-    background: gray;
+    color: var(--nav-text-color) !important;
+    background: var(--summary-bg-color);
     width: 80%;
     height: 80%;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+}
+
+.input {
+    border: 1px solid rgb(0, 85, 255) !important;
+    border-radius: 10px !important;
+
+    input {
+        border: none !important;
+
+    }
+
+    button {
+        border-radius: 0 10px 10px 0 !important;
+
+    }
+}
+
+
+.d {
+    border: 1px solid red;
+}
+
+.red {
+
+    border: 1px solid red !important;
+
+}
+
+.green {
+
+    border: 1px solid rgb(40, 176, 6) !important;
+
 }

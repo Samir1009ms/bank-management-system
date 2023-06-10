@@ -8,8 +8,8 @@ export const profileTop = [
     {
         text: 'Edit profile information',
         icon: <ImProfile />,
-        status: false,
-        button: false
+        status: true,
+        button: true
     },
     {
         text: 'Notifications',

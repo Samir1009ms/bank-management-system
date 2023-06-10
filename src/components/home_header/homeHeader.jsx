@@ -9,7 +9,7 @@ import { useTranslation } from 'react-i18next';
 import { AiOutlineDown } from 'react-icons/ai'
 import { FiUser } from 'react-icons/fi'
 import { FiLogOut } from 'react-icons/fi'
-import img from '../../assets/1 (2).jpg'
+// import img from '../../assets/1 (2).jpg'
 export function HomeHeader() {
 
     // ! location text
@@ -43,6 +43,33 @@ export function HomeHeader() {
         navigate('/login')
 
     }
+
+    const [img, setImg] = useState('');
+
+    const filee = (dataURL) => {
+        const blob = dataURLtoBlob(dataURL);
+        setImg(URL.createObjectURL(blob))
+        console.log(URL.createObjectURL(blob));
+    }
+
+    const dataURLtoBlob = (dataURL) => {
+        const byteString = atob(dataURL.split(',')[1]);
+        const mimeString = dataURL.split(',')[0].split(':')[1].split(';')[0];
+        const ab = new ArrayBuffer(byteString.length);
+        const ia = new Uint8Array(ab);
+        for (let i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+        }
+        return new Blob([ab], { type: mimeString });
+    }
+
+    useEffect(() => {
+
+        const img = localStorage.getItem('img')
+        if (img) {
+            filee(img)
+        }
+    }, [])
 
     return (
         <div className={`${style.homeHeader}`}>

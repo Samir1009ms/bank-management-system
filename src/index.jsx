@@ -13,6 +13,7 @@ import cartStore from './store/store';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18';
 import Profile from './pages/profile/Profile';
+import EditProfile from './components/Profile/EditProfile';
 
 
 
@@ -29,6 +30,7 @@ root.render(
             <Route path='/' element={<Home />} />
             <Route path='/wallet' element={<Wallet />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/profile/editprofile' element={<EditProfile />} />
           </Route>
         </Routes>
       </BrowserRouter>
