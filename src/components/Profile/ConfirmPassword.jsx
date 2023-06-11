@@ -88,15 +88,15 @@ export default function ConfirmPassword() {
             <div style={{ marginBottom: '20px', fontSize: '20px', fontWeight: '900' }}>
                 <span>Change Password</span>
             </div>
-            <div className={style.d} style={{ padding: '15px', border: "1px solid red", borderRadius: '15px' }}>
+            <div className={style.d} style={{ padding: '15px', marginTop: '10px', border: "1px solid red", borderRadius: '15px' }}>
                 <div className="flex flex-column gap-2" style={{ marginBottom: "25px", position: "relative" }}>
                     <label htmlFor="email">{t('currentP')}*</label>
                     <Password
                         style={{ width: "100%" }}
                         value={formValues.password}
                         className={`${style.input} 
-                    ${formValues.email
-                                ? (formError.email
+                    ${formValues.password
+                                ? (formError.password
                                     ? style.red : style.green)
                                 : style.input}`}
                         name='password'
@@ -114,8 +114,8 @@ export default function ConfirmPassword() {
                         style={{ width: "100%" }}
                         value={formValues.yPassword}
                         className={`${style.input} 
-                    ${formValues.email
-                                ? (formError.email ? style.red : style.green)
+                    ${formValues.yPassword
+                                ? (formError.yPassword ? style.red : style.green)
                                 : style.input}`}
                         name='yPassword'
                         inputStyle={{ width: "100%" }}
@@ -129,8 +129,8 @@ export default function ConfirmPassword() {
                     <label htmlFor="email">{t('cNPassword')}*</label>
                     <Password style={{ width: "100%" }}
                         className={`${style.input} 
-                    ${formValues.email
-                                ? (formError.email ? style.red : style.green)
+                    ${formValues.nPassword
+                                ? (formError.nPassword ? style.red : style.green)
                                 : style.input}`}
                         value={formValues.nPassword}
                         name='nPassword'
@@ -143,7 +143,7 @@ export default function ConfirmPassword() {
                     <small style={{ position: "absolute", bottom: "-20px" }}>{!formError.nPassword && (formValues.nPassword !== formValues.yPassword) && 'parollar beraber deyil'}</small>
 
                 </div>
-                <div className="flex flex-column gap-2" style={{ marginBottom: "25px", position: "relative" }}>
+                <div className="flex flex-column gap-2" style={{ marginBottom: "10px", position: "relative" }}>
                     <button style={{ backgroundColor: "darkcyan", borderRadius: "10px", padding: '8px', width: "100%", margin: '0' }} onClick={handlePassword}>{t('saveChanges')}</button>
                 </div>
             </div>

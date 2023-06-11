@@ -99,35 +99,27 @@ export default function EditProfileCont() {
 
     function post() {
         const userId = localStorage.getItem("userId")
-
         ApiService.addProfile(userId, formValues).then((e) => {
             console.log(e);
         }).catch((err) => {
             console.log(err);
         })
-
-
     }
 
     async function getProfile(userId) {
-
         try {
             await ApiService.getProfile(userId).then((e) => {
                 console.log(e.data);
             }).catch((e) => {
                 console.log(e);
             })
-
         }
         catch { }
     }
-
     useEffect(() => {
         const { email, name, _id } = JSON.parse(localStorage.getItem("user"))
         setFormValues({ ...formValues, email: email, userName: name })
-
         getProfile(_id)
-
     }, [])
 
     return (
@@ -151,13 +143,11 @@ export default function EditProfileCont() {
                         <label htmlFor="calendar" className="font-bold block mb-2">{t("bDate")}</label>
                         <Calendar onChange={handleFormValue} name='date' className={`${style.input} ${formValues.date ? (formError.date ? style.red : style.green) : style.input}`} id='calendar' value={formValues.date} showIcon />
                         <small style={{ position: "absolute", bottom: "-20px" }}>{formError.date}</small>
-
                     </div>
                     <div className="flex flex-column gap-1" style={{ width: "49%", position: "relative" }}>
                         <label htmlFor="phone" className="font-bold block mb-2">{t('phone')}</label>
                         <InputText onChange={handleFormValue} value={formValues.phone} name='phone' className={`${style.input} ${formValues.phone ? (formError.phone ? style.red : style.green) : style.input}`} id="phone" placeholder="(994) 55-555-55-55"></InputText>
                         <small style={{ position: "absolute", bottom: "-20px" }}>{formError.phone}</small>
-
                     </div>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
@@ -165,22 +155,19 @@ export default function EditProfileCont() {
                         <label htmlFor="province">{t('province')}</label>
                         <InputText onChange={handleFormValue} value={formValues.province} name='province' className={`${style.input} ${formValues.province ? (formError.province ? style.red : style.green) : style.input}`} id="province" aria-describedby="username-help" />
                         <small style={{ position: "absolute", bottom: "-20px" }}>{formError.province}</small>
-
                     </div>
                     <div className="flex flex-column gap-2" style={{ width: "49%", position: "relative" }}>
                         <label htmlFor="city">{t('city')}</label>
                         <InputText onChange={handleFormValue} value={formValues.city} name='city' className={`${style.input} ${formValues.city ? (formError.city ? style.red : style.green) : style.input}`} id="city" aria-describedby="username-help" />
                         <small style={{ position: "absolute", bottom: "-20px" }}>{formError.city}</small>
-
                     </div>
                 </div>
                 <div className="flex flex-column gap-2" style={{ marginBottom: "20px", position: "relative" }}>
                     <label htmlFor="adress">{t('adress')}</label>
                     <InputText style={{ height: '100px' }} onChange={handleFormValue} value={formValues.adress} name='adress' className={`${style.input} ${formValues.adress ? (formError.adress ? style.red : style.green) : style.input}`} id="adress" aria-describedby="username-help" />
                     <small style={{ position: "absolute", bottom: "-20px" }}>{formError.adress}</small>
-
                 </div>
-                <button onClick={post}>send</button>
+                <button style={{ backgroundColor: "darkcyan", borderRadius: "10px", padding: '8px', width: "100%", margin: '0' }} onClick={post}>{t('saveChanges')}</button>
             </div>
         </section>
     )

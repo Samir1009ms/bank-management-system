@@ -91,7 +91,7 @@ export function HomeHeader() {
             <div className={style.title}>
                 <h1>{pathname}</h1>
             </div>
-            <div className={`grid align-items-center gap-3 h-full pt-2 relative `}>
+            <div className={`grid align-items-center gap-4 h-full pt-2 relative `}>
                 <Notification />
                 <div onClick={() => userProfile()} ref={userProfileRef} className={`${style.profile} relative`}>
                     {/* user.img && */}
