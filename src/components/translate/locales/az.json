@@ -47,6 +47,10 @@
     "province":"Ölkə",
     "city":"Şəhər",
     "adress":"Ünvan",
-    "emailValidation":"E-mail ünvanı səhvdir. Etibarlı e-poçt ünvanı daxil edin."
+    "emailValidation":"E-mail ünvanı səhvdir. Etibarlı e-poçt ünvanı daxil edin.",
+    "currentP":"Cari şifrə",
+    "nPassword":"Yeni şifrə",
+    "cNPassword":"Cari yeni şifrə",
+    "saveChanges":"Dəyişiklikləri yadda saxla"
   
   }

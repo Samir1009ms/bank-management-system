@@ -9,7 +9,6 @@ export default function ProfileContainer({ data }) {
     const { t } = useTranslation()
     const navigate = useNavigate()
 
-
     return (
         <section style={{
             width: '60%', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '30px 20px', background: 'var(--summary-bg-color)', borderRadius: '10px'

@@ -23,6 +23,12 @@ export class ApiService {
         return await axios.delete(`${BASE_URL}notifications/delete/${notificationId}`)
     }
 
+    static async addProfile(userId, value) {
+        return await axios.post(`${BASE_URL}addProfile/${userId}`, { value })
+    }
+    static async getProfile(userId) {
+        return await axios.get(`${BASE_URL}getProfile/${userId}`)
+    }
 
 
 

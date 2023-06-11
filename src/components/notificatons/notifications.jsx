@@ -1,5 +1,5 @@
 import style from './design/style.module.scss'
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import { ApiService } from "../../services/api.services";
 import moment from 'moment';
@@ -65,19 +65,30 @@ export function Notification() {
 
     const [notificat, setNotificat] = useState("hidden")
     function notification() {
-        if (notificat === "flex") {
-            setNotificat("hidden")
-        } else {
-            setNotificat("flex")
-        }
+        setNotificat((prevState) => (prevState === "hidden" ? "flex" : "hidden"))
     }
     const { t } = useTranslation()
+
+    const notificationRef = useRef(null);
+    const iconRef = useRef(null);
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+
+            if (notificationRef.current && !notificationRef.current.contains(event.target) && !iconRef.current.contains(event.target)) {
+                setNotificat("hidden");
+            }
+        };
+        window.addEventListener("click", handleClickOutside);
+        return () => {
+            window.removeEventListener("click", handleClickOutside);
+        };
+    }, []);
     return (
         <div className={`${style.notification}`}>
-            <i onClick={() => notification()} className={`pi pi-bell p-overlay-badge ${style.icons}`} style={{ fontSize: '22px' }}>
+            <i onClick={() => notification()} ref={iconRef} className={`pi pi-bell p-overlay-badge ${style.icons}`} style={{ fontSize: '22px' }}>
                 <Badge className={style.pBadge} value={notifications.length}></Badge>
             </i>
-            <div className={`${style.bildirisCont} ${notificat}`} style={{}}>
+            <div className={`${style.bildirisCont} ${notificat}`} style={{}} ref={notificationRef}>
 
                 {dates.map((date) => {
                     const today = moment().format("DD MMMM YYYY");

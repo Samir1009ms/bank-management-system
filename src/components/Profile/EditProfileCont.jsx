@@ -5,6 +5,8 @@ import { Calendar } from 'primereact/calendar';
 import style from './design/style.module.scss'
 import Service from '../validation/validation';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
+import { ApiService } from '../../services/api.services';
 
 const VALIDATOR = {
     userName: (value, t) => {
@@ -39,6 +41,7 @@ const isValidEmail = (email) => {
 export default function EditProfileCont() {
     const { t, i18n } = useTranslation();
     const [lang, setLang] = useState()
+
     useEffect(() => {
         const selectedLanguage = localStorage.getItem('lang');
         if (selectedLanguage) {
@@ -85,7 +88,6 @@ export default function EditProfileCont() {
     const validations = (name, value) => {
         setFormError({ ...formError, [name]: VALIDATOR[name](value, t) })
     }
-
     const error = () => {
         for (const name in formError) {
             if (formError[name]) {
@@ -94,6 +96,40 @@ export default function EditProfileCont() {
         }
         return false;
     };
+
+    function post() {
+        const userId = localStorage.getItem("userId")
+
+        ApiService.addProfile(userId, formValues).then((e) => {
+            console.log(e);
+        }).catch((err) => {
+            console.log(err);
+        })
+
+
+    }
+
+    async function getProfile(userId) {
+
+        try {
+            await ApiService.getProfile(userId).then((e) => {
+                console.log(e.data);
+            }).catch((e) => {
+                console.log(e);
+            })
+
+        }
+        catch { }
+    }
+
+    useEffect(() => {
+        const { email, name, _id } = JSON.parse(localStorage.getItem("user"))
+        setFormValues({ ...formValues, email: email, userName: name })
+
+        getProfile(_id)
+
+    }, [])
+
     return (
         <section style={{ width: '54%', padding: '20px', background: 'burlywood', borderRadius: "15px" }}>
             <div style={{ marginBottom: '20px', fontSize: '20px', fontWeight: '900' }}>
@@ -107,7 +143,7 @@ export default function EditProfileCont() {
                 </div>
                 <div className="flex flex-column gap-2" style={{ marginBottom: "25px", position: "relative" }}>
                     <label htmlFor="email">{t('email')}*</label>
-                    <InputText onChange={handleFormValue} value={formValues.email} name='email' className={`${style.input} ${formValues.email ? (formError.email ? style.red : style.green) : style.input}`} id="email" aria-describedby="username-help" />
+                    <InputText disabled onChange={handleFormValue} value={formValues.email} name='email' className={`${style.input} ${formValues.email ? (formError.email ? style.red : style.green) : style.input}`} id="email" aria-describedby="username-help" />
                     <small style={{ position: "absolute", bottom: "-20px" }}>{formError.email}</small>
                 </div>
                 <div style={{ display: "flex", justifyContent: "space-between", marginBottom: "20px" }}>
@@ -140,10 +176,11 @@ export default function EditProfileCont() {
                 </div>
                 <div className="flex flex-column gap-2" style={{ marginBottom: "20px", position: "relative" }}>
                     <label htmlFor="adress">{t('adress')}</label>
-                    <InputText onChange={handleFormValue} value={formValues.adress} name='adress' className={`${style.input} ${formValues.adress ? (formError.adress ? style.red : style.green) : style.input}`} id="adress" aria-describedby="username-help" />
+                    <InputText style={{ height: '100px' }} onChange={handleFormValue} value={formValues.adress} name='adress' className={`${style.input} ${formValues.adress ? (formError.adress ? style.red : style.green) : style.input}`} id="adress" aria-describedby="username-help" />
                     <small style={{ position: "absolute", bottom: "-20px" }}>{formError.adress}</small>
 
                 </div>
+                <button onClick={post}>send</button>
             </div>
         </section>
     )

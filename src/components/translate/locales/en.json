@@ -47,7 +47,11 @@
     "province":"Province",
     "city":"City",
     "adress":"Adress",
-    "emailValidation":"Invalid email address. Please enter a valid email address."
+    "emailValidation":"Invalid email address. Please enter a valid email address.",
+    "currentP":"Current Password",
+    "nPassword":"New Password",
+    "cNPassword":"Current New Password",
+    "saveChanges":"Save Changes"
 
   }
   

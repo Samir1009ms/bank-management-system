@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Avatar } from 'primereact/avatar';
 import style from "./design/style.module.scss"
 import { useEffect } from 'react';
@@ -29,6 +29,7 @@ export function HomeHeader() {
 
     //! user profile  
     const [users, setUsers] = useState("hidden")
+    const userProfileRef = useRef(null);
     function userProfile() {
         if (users === "flex") {
             setUsers("hidden")
@@ -69,7 +70,21 @@ export function HomeHeader() {
         if (img) {
             filee(img)
         }
+
+        const handleClickOutside = (event) => {
+            if (userProfileRef.current && !userProfileRef.current.contains(event.target)) {
+                setUsers("hidden");
+            }
+        };
+
+        window.addEventListener("click", handleClickOutside);
+
+        return () => {
+            window.removeEventListener("click", handleClickOutside);
+        };
     }, [])
+
+
 
     return (
         <div className={`${style.homeHeader}`}>
@@ -78,14 +93,14 @@ export function HomeHeader() {
             </div>
             <div className={`grid align-items-center gap-3 h-full pt-2 relative `}>
                 <Notification />
-                <div onClick={() => userProfile()} className={`${style.profile} relative`}>
+                <div onClick={() => userProfile()} ref={userProfileRef} className={`${style.profile} relative`}>
                     {/* user.img && */}
                     <Avatar className={`border-circle ${style.pAvatar}`} image={img} label={user && user.name[0]} size="" shape="circle" />
                     {user && user.name}
                     <i className={`pi pi-angle-down ${style.icons}`}> </i>
                 </div>
                 <div className={`${style.profilesMenu} ${users}  flex-column gap-2 p-3`}>
-                    <span onClick={() => navigate('/profile')} className={`${style.icons} ${style.users} flex align-items-center gap-1`} >
+                    <span onClick={() => { navigate('/profile'); userProfile() }} className={`${style.icons} ${style.users} flex align-items-center gap-1`} >
                         <i className={`pi pi-user ${style.icons} `}>
 
                         </i>
