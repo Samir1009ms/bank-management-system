@@ -29,6 +29,9 @@ export class ApiService {
     static async getProfile(userId) {
         return await axios.get(`${BASE_URL}getProfile/${userId}`)
     }
+    static async updateProfile(userId, value) {
+        return await axios.put(`${BASE_URL}updateProfile/${userId}`, { value })
+    }
 
 
 

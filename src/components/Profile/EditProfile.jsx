@@ -8,7 +8,7 @@ export default function EditProfile() {
 
 
     return (
-        <section style={{ background: 'white', width: '100%', padding: '20px', display: "flex", alignItems: 'flex-start', justifyContent: "space-between" }}>
+        <section style={{ background: 'none', width: '100%', padding: '20px', display: "flex", alignItems: 'flex-start', justifyContent: "space-between" }}>
             <EditProfileCont />
             <ConfirmPassword />
         </section>

@@ -89,7 +89,6 @@ export function Notification() {
                 <Badge className={style.pBadge} value={notifications.length}></Badge>
             </i>
             <div className={`${style.bildirisCont} ${notificat}`} style={{}} ref={notificationRef}>
-
                 {dates.map((date) => {
                     const today = moment().format("DD MMMM YYYY");
                     const yesterday = moment().subtract(1, 'days').format("YYYY-MM-DD");
@@ -132,7 +131,6 @@ export function Notification() {
                         </div>
                     );
                 })}
-
             </div>
         </div>
     )

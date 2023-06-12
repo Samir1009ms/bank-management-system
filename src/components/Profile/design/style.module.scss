@@ -10,10 +10,18 @@
 }
 
 .input {
-    border: 1px solid rgb(0, 255, 204) !important;
     border-radius: 10px !important;
+    // box-shadow: var(--box-shadow) !important;
+    background: var(--summary-bg-color) !important;
+    color: var(--nav-text-color) !important;
+    height: 50px;
+
+    border: 1px solid #2888d6 !important;
 
     input {
+        color: var(--nav-text-color) !important;
+        // border: 1px solid #2888d6 !important;
+        border-radius: 10px !important;
         border: none !important;
 
     }
@@ -26,7 +34,7 @@
 
 
 .d {
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 .red {
