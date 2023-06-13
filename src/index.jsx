@@ -14,6 +14,7 @@ import { I18nextProvider } from 'react-i18next';
 import i18n from './i18';
 import Profile from './pages/profile/Profile';
 import EditProfile from './components/Profile/EditProfile';
+import History from './pages/history/History';
 
 
 
@@ -30,6 +31,7 @@ root.render(
             <Route path='/' element={<Home />} />
             <Route path='/wallet' element={<Wallet />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/history' element={<History />} />
             <Route path='/profile/editprofile' element={<EditProfile />} />
           </Route>
         </Routes>

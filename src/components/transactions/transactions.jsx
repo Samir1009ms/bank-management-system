@@ -48,7 +48,6 @@ function Transaction() {
         setSelected(e)
     }
     const { t } = useTranslation();
-
     const [isOpen, setIsOpen] = useState(false)
     return (
         <div className={`flex w-full gap-3 mt-6 ${style.transactions}`}>

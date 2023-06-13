@@ -6,6 +6,7 @@ import { TbSettings } from "react-icons/tb";
 import { BiHelpCircle } from "react-icons/bi";
 import s from "../design/style.module.scss";
 import { Theme } from "../../../components/theme/theme"
+import { BsCreditCard } from "react-icons/bs";
 
 export const routing = [
 
@@ -15,21 +16,21 @@ export const routing = [
     icon: <RxDashboard className={s.icon} />,
   },
 
+  // {
+  //   link: "/analytics",
+  //   text: "analytics",
+  //   icon: <IoAnalyticsOutline className={s.icon} />,
+  // },
   {
-    link: "/analytics",
-    text: "analytics",
-    icon: <IoAnalyticsOutline className={s.icon} />,
+    link: "/card",
+    text: "card",
+    icon: <BsCreditCard className={s.icon} />,
   },
   {
     link: "/wallet",
     text: "wallet",
     icon: <IoWalletOutline className={s.icon} />,
   },
-  // {
-  //   link: "/account",
-  //   text: "accounts",
-  //   icon: <RiAccountCircleLine className={s.icon} />,
-  // },
   {
     link: "/history",
     text: "history",
