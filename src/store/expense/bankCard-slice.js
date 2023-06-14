@@ -5,7 +5,7 @@ const cardSlice = createSlice({
     name: 'card',
     initialState: {
         cardData: null,
-        loading: false,
+        loading: true,
         error: null,
         total: 0,
         cards: null

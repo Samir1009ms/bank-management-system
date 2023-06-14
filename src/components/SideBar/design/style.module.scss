@@ -9,6 +9,7 @@
     position: sticky;
     top: 1px;
     padding-bottom: 21px;
+    border-radius: 10px 0px 0px 10px;
 
     @include tablet {
         position: relative;

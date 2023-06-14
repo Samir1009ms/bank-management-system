@@ -87,5 +87,5 @@ const transactionsSlice = createSlice({
     }
 })
 
-export const { setTransactions, dataT, setTotalIncomne } = transactionsSlice.actions
+export const { setTransactions, dataT, setTotalIncomne, setLoading } = transactionsSlice.actions
 export default transactionsSlice.reducer

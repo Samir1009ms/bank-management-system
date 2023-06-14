@@ -81,6 +81,18 @@ tr {
 
 }
 
+tbody {
+
+  tr {
+
+    &:hover {
+      // border: 1px solid red;
+      // background: var(--summary-bg-color) !important;
+      background: #86aef937 !important;
+    }
+  }
+}
+
 table {
   font-size: 11px;
   /* background: var(--nav-bg-color); */

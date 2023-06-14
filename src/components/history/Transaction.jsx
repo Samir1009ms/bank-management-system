@@ -16,6 +16,7 @@ import { ImCancelCircle } from 'react-icons/im';
 
 export default function Transaction() {
     const d = useSelector((state) => state.transactionsSlice.outcoming)
+    const loading = useSelector((state) => state.transactionsSlice.loading)
     console.log(d);
     const lang = localStorage.getItem("lang")
 
@@ -61,15 +62,16 @@ export default function Transaction() {
         setActiveRow(activeRow === rowData ? null : rowData);
     };
     return (
-        <section style={{ backgroundColor: "GrayText", borderRadius: '10px', padding: "30px" }}>
+
+        loading ? "loading..." : <section style={{ backgroundColor: "var(--homeR-bg-color)", borderRadius: '10px', padding: "30px" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <h4>Transfer History</h4>
+                    <h4 style={{ color: "var(--nav-text-color)" }}>Transfer History</h4>
                     <div style={{ display: "flex", alignItems: "center" }}>
-                        <div>
-                            <BiSearch style={{ fontSize: "22px", marginBottom: "-4px" }} />
+                        <div style={{ color: "var(--nav-text-color)" }}>
+                            <BiSearch style={{ fontSize: "22px", marginBottom: "-4px", marginRight: "15px" }} />
                         </div>
-                        <div onClick={() => setIsOpen(!isOpen)} className={style.selectedMonth}>
+                        <div onClick={() => setIsOpen(!isOpen)} className={style.selectedMonth} >
                             <span>
                                 <BsFillCalendarWeekFill />
                                 {(t('month', { returnObjects: true })[selectedMonth - 1])}
@@ -90,6 +92,7 @@ export default function Transaction() {
                     paginator={selectData.length > 5}
                     paginatorTemplate="PrevPageLink PageLinks NextPageLink"
                     onPage={(e) => onPageChange(e)}
+                    style={{ color: "var(--nav-text-color)" }}
                 >
                     {/*//! locale en az dinamik yazmaq  */}
                     <Column
@@ -103,7 +106,7 @@ export default function Transaction() {
                                 </span>
                             </p>
                         )}
-                        header="Business"
+                        header="Name / Business"
                     // sortable
                     ></Column>
                     <Column
@@ -118,7 +121,7 @@ export default function Transaction() {
                                 </span>
                             </p>
                         )}
-                        header="Date/Time"
+                        header="Date / Time"
                     // sortable
                     ></Column>
                     <Column
@@ -136,7 +139,7 @@ export default function Transaction() {
                     <Column
                         field="date"
                         header="Card Number"
-                        style={{ width: '12%' }}
+                        style={{ width: '13%' }}
                         body={(rowData) => (
                             <>
                                 <div>{rowData.cardNumber.slice(0, 4) + " ** " + rowData.cardNumber.slice(12)}</div>
@@ -148,8 +151,8 @@ export default function Transaction() {
                             <div style={{ position: "relative" }}>
                                 <IoEllipsisVerticalSharp onClick={() => handleRowClick(rowData)} style={{ cursor: 'pointer' }} />
                                 {activeRow === rowData && (
-                                    <div style={{ position: 'absolute', left: '-67px', bottom: '-18px', width: '90px', background: 'white', color: 'black', borderRadius: "10px", padding: '10px 5px' }}>
-                                        <span onClick={() => console.log(rowData)} style={{ cursor: "pointer", fontSize: "11px", display: "flex", alignItems: 'center', columnGap: "6px" }}>
+                                    <div style={{ position: 'absolute', left: '-67px', bottom: '-18px', width: '90px', background: 'var(--table-dropDown-bg)', color: 'var(--nav-text-color)', borderRadius: "10px", padding: '8px 5px' }}>
+                                        <span onClick={() => console.log(rowData)} style={{ cursor: "pointer", fontSize: "11px", display: "flex", alignItems: 'center', columnGap: "6px", marginBottom: '6px' }}>
                                             <AiOutlineInfoCircle /> view details
                                         </span>
                                         <span onClick={() => handleRowClick(false)} style={{ cursor: "pointer", display: "flex", alignItems: 'center', columnGap: "6px" }}>
@@ -162,5 +165,6 @@ export default function Transaction() {
                 </DataTable>
             </div>
         </section>
+
     )
 }

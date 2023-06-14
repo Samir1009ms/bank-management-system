@@ -52,6 +52,7 @@
     --profile-bg-color: #e6ecf2;
     --box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
     --dropDown-bg-color: linear-gradient(0deg, #f7f6f6, #f8f4f4), linear-gradient(90deg, rgba(240, 240, 240, 0.2) 0%, rgb(239 236 236 / 0%) 100%);
+    --table-dropDown-bg: #dadcf1e6;
 
 }
 
@@ -94,7 +95,7 @@ body.dark {
     --profile-bg-color: #11183f;
     --box-shadow: rgba(16, 26, 38, 0.4) 0px 2px 4px, rgba(50, 75, 93, 0.3) 0px 7px 13px -3px, rgba(0, 32, 48, 0.223) 0px -3px 0px inset !important;
     --dropDown-bg-color: #4b5172;
-
+    --table-dropDown-bg: #1c2158ed;
 }
 
 .container {

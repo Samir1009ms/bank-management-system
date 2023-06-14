@@ -20,9 +20,6 @@ function App() {
   useEffect(() => {
     isLogged()
   }, [])
-
-
-  console.log(process.env);
   return (
     <>
       <Navbar></Navbar>
