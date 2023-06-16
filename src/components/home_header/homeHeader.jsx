@@ -89,7 +89,7 @@ export function HomeHeader() {
     return (
         <div className={`${style.homeHeader}`}>
             <div className={style.title}>
-                <h1>{pathname}</h1>
+                <h1 style={{ textTransform: "capitalize" }}>{pathname}</h1>
             </div>
             <div className={`grid align-items-center gap-4 h-full pt-2 relative `}>
                 <Notification />

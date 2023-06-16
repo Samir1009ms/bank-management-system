@@ -8,7 +8,7 @@ const cardSlice = createSlice({
         loading: true,
         error: null,
         total: 0,
-        cards: null
+        cards: []
     },
     reducers: {
         setCard: (state, action) => {

@@ -1,8 +1,8 @@
 
 export function Wallet() {
     return (
-        <div>
-            Wallet
-        </div>
+        <section>
+
+        </section>
     )
 }

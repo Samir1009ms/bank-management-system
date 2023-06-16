@@ -15,6 +15,7 @@ import i18n from './i18';
 import Profile from './pages/profile/Profile';
 import EditProfile from './components/Profile/EditProfile';
 import History from './pages/history/History';
+import Card from './pages/card/Card';
 
 
 
@@ -32,6 +33,7 @@ root.render(
             <Route path='/wallet' element={<Wallet />} />
             <Route path='/profile' element={<Profile />} />
             <Route path='/history' element={<History />} />
+            <Route path='/card' element={<Card />} />
             <Route path='/profile/editprofile' element={<EditProfile />} />
           </Route>
         </Routes>

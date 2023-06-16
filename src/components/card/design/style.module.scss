@@ -1,0 +1,207 @@
+@import '../../variables/mixins';
+
+.textW {
+    width: 95%;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 19px;
+    line-height: 16px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    color: var(--nav-text-color);
+    margin-top: 16px;
+
+}
+
+.cardItem {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .PaginationCont {
+        height: 40px;
+
+        .pagination {
+            height: 40px;
+            display: flex;
+            column-gap: 5px;
+            align-items: center;
+            justify-content: center;
+
+
+            .pageItem {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .pageLink {
+                    background: #6359E9;
+                    border-radius: 4px;
+                    width: 10px;
+                    height: 6px;
+                    display: inline-block;
+                    border: none;
+                    cursor: pointer;
+
+
+                }
+
+                .active {
+                    width: 25px;
+                    height: 6px;
+                }
+            }
+        }
+    }
+
+}
+
+.pagination {
+    display: flex;
+    column-gap: 10px;
+    margin-top: 12px;
+
+    span {
+        background: var(--btn-bg-color);
+        padding: 7px 18px;
+        display: inline-block;
+        border-radius: 11px;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+
+.blur {
+    position: absolute;
+    top: 71px;
+    left: 7px;
+    width: 100%;
+    z-index: 0;
+    height: 41px;
+    background: var(--card-blur-color);
+    filter: blur(18.314px);
+    transform: matrix(0.7, -0.67, 1.5, 0.87, 0, 0);
+    z-index: 0;
+    display: none;
+}
+
+.cardSlider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    // scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    @include mobile {
+        width: 85%;
+        margin: 0 auto;
+    }
+}
+
+.cardContainer {
+    width: 96%;
+    border-radius: 13px;
+    height: 100%;
+    position: relative;
+    display: flex;
+
+
+    .cardsContainer {
+        position: absolute;
+        top: 12px;
+        width: 30%;
+        // height: 100%;
+        // top: 0;
+        left: 0;
+        // flex-shrink: 0;
+        // scroll-snap-align: start;
+
+        transition: 0.35s ease-in-out;
+
+        .cards {
+            .rccs {
+                width: 80% !important;
+                display: none !important;
+            }
+        }
+    }
+}
+
+
+
+.ss {
+    position: absolute;
+    top: 0;
+}
+
+.total {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+
+    .balansText {
+        color: #fff;
+        opacity: 0.54;
+        font-size: 14px;
+        text-transform: capitalize;
+    }
+
+    .price {
+        color: #fff;
+        font-size: 26px;
+    }
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.active {
+    // transform: scale(1.1);
+    transition: 0.35s ease-in-out;
+}
+
+.cardsTop {
+    width: 100%;
+
+    @include mobile {
+        width: 98% !important;
+    }
+
+    @include tablet {
+        width: 50%;
+    }
+}
+
+/* Kartın stilleri */
+.cardItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    // padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center;
+}
+
+.cardItem h2 {
+    margin-top: 0;
+}
+
+.cardItem p {
+    margin-bottom: 0;
+}

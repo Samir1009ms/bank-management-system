@@ -23,7 +23,7 @@ export const routing = [
   // },
   {
     link: "/card",
-    text: "card",
+    text: "Card",
     icon: <BsCreditCard className={s.icon} />,
   },
   {

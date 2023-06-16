@@ -7,21 +7,27 @@ import QuickTransfer from '../../components/QuickTransfer/QuickTransfer'
 import Sidebar from '../../components/SideBar/Sidebar'
 import Loading from '../../components/loading/Loading'
 import { setLoading } from '../../store/expense/transactions-slice'
+import { io } from 'socket.io-client'
 
 export default function History() {
     const dispatch = useDispatch()
     const loading = useSelector((state) => state.transactionsSlice.loading)
 
     useEffect(() => {
-        // if (!loading) {
+
         dispatch(setLoading(true));
-        //     console.log("Ss");
-        //     setTimeout(() => {
-        //         dispatch(setLoading(false));
-        //     }, 2000);
-        // }
+
         dispatch(getTransactions())
-        // console.log("s");
+        const socket = io('http://localhost:3003');
+        socket.on('notification', (message) => {
+            // setNotifications((prevNotifications) => [...prevNotifications, message]);
+            dispatch(getTransactions())
+
+        });
+        return () => {
+            socket.disconnect();
+        };
+
     }, [dispatch])
     return (
         loading ? <Loading /> : <section style={{ padding: "22px 0px 22px 22px", columnGap: '12px', display: "flex" }}>
