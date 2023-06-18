@@ -125,7 +125,7 @@
         // flex-shrink: 0;
         // scroll-snap-align: start;
 
-        transition: 0.35s ease-in-out;
+        transition: 0.55s ease-in-out;
 
         .cards {
             .rccs {
@@ -171,7 +171,7 @@ button {
 
 .active {
     // transform: scale(1.1);
-    transition: 0.35s ease-in-out;
+    transition: 0.55s ease-in-out;
 }
 
 .cardsTop {
@@ -202,6 +202,71 @@ button {
     margin-top: 0;
 }
 
+.cardListContainer {
+    // background: var(--homeR-bg-color);
+    padding: 20px;
+    display: flex;
+    column-gap: 30px;
+
+    .cardListLeft {
+        padding: 20px;
+        border-radius: 10px;
+        width: 75%;
+        background: var(--homeR-bg-color);
+        color: var(--nav-text-color);
+
+        .cardListLeftTop {
+            margin-bottom: 10px;
+        }
+
+        .cardContent {
+            display: flex;
+            flex-direction: column;
+            row-gap: 12px;
+            padding: 10px;
+            border: 1px solid gray;
+
+            .cardLists {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                border: 1px solid rgb(39, 161, 232);
+                align-items: center;
+
+            }
+        }
+    }
+}
+
 .cardItem p {
     margin-bottom: 0;
+}
+
+.cardDesign {
+
+    background: rgba(255, 0, 0, 0.729);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 55px;
+    width: 41%;
+    padding: 3px;
+    border-radius: 6px;
+    row-gap: 5px;
+}
+
+.cardType {
+    margin-left: 4px;
+    font-size: 13px;
+}
+
+.cardNumber {
+    margin-right: 4px;
+    font-size: 13px;
+    text-align: right;
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
 }

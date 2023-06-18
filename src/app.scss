@@ -152,6 +152,10 @@ body.dark {
     box-shadow: none !important;
 }
 
+rect {
+    fill: none;
+}
+
 .rccs__card--front {
     z-index: 2;
 }

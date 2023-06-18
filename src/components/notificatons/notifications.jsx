@@ -20,8 +20,13 @@ export function Notification() {
             }
         }
         fetchNotifications();
+        const userId = localStorage.getItem("userId");
+
         socket.on('notification', (message) => {
-            setNotifications((prevNotifications) => [...prevNotifications, message]);
+            if (userId === message.sender) {
+
+                setNotifications((prevNotifications) => [...prevNotifications, message]);
+            }
             console.log(message);
         });
         socket.on('deleteNotification', (message) => {

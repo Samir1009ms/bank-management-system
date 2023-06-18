@@ -3,6 +3,7 @@ import CardCenter from '../../components/card/CardCenter'
 import { useDispatch } from 'react-redux';
 import { getCard } from '../../store/asyncthunk/bankCard-service';
 import { io } from 'socket.io-client';
+import CardList from '../../components/card/CardList';
 
 export default function Card() {
     const dispatch = useDispatch()
@@ -19,8 +20,11 @@ export default function Card() {
         };
     }, [dispatch]);
     return (
-        <section style={{ background: "white" }}>
+        <section >
             <CardCenter />
+            <div>
+                <CardList />
+            </div>
         </section>
     )
 }

@@ -8,16 +8,16 @@ import Sidebar from '../../components/SideBar/Sidebar'
 import Loading from '../../components/loading/Loading'
 import { setLoading } from '../../store/expense/transactions-slice'
 import { io } from 'socket.io-client'
+import { getCard } from '../../store/asyncthunk/bankCard-service'
 
 export default function History() {
     const dispatch = useDispatch()
     const loading = useSelector((state) => state.transactionsSlice.loading)
 
     useEffect(() => {
-
-        dispatch(setLoading(true));
-
         dispatch(getTransactions())
+        dispatch(getCard())
+        dispatch(setLoading(true));
         const socket = io('http://localhost:3003');
         socket.on('notification', (message) => {
             // setNotifications((prevNotifications) => [...prevNotifications, message]);

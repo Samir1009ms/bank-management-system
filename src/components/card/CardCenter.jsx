@@ -35,7 +35,7 @@ export default function CardCenter() {
     return (
         <section>
             <div className={style.cardsTop}>
-                <h3 className={`${style.textW}`}>{t('wallet')}</h3>
+                <h3 className={`${style.textW}`}>Card Center</h3>
                 <div className={style.cardSlider}>
                     {/* <p onClick={previous}>X</p> */}
                     <div className={style.cardContainer}>
@@ -53,14 +53,14 @@ export default function CardCenter() {
                                 >
                                     {console.log((((i - currentCardIndex + cardData.length) % cardData.length)), ((i - currentCardIndex + cardData.length)))}
                                     <Cards
-                                        number={e.cardNumber || state.number}
+                                        number={`${e.cardNumber.slice(0, 4)} **** **** ${e.cardNumber.slice(12)}` || state.number}
                                         expiry={e.cardDate || state.expiry}
                                         cvc={e.cardCvv || state.cvc}
                                         name={e.cardName || state.name}
                                     />
                                     <div className={style.total}>
                                         <small className={style.balansText}>{t('current')}</small>
-                                        <p>{i}</p>
+                                        {/* <p>{i}</p> */}
                                         <p className={style.price}>$ {cardData ? e.balance.toLocaleString('en-US') : 0}</p>
                                     </div>
                                 </div>

@@ -9,6 +9,7 @@
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "axios": "^1.4.0",
+    "britecharts-react": "^0.6.5",
     "chart.js": "^4.3.0",
     "date-fns": "^2.30.0",
     "framer-motion": "^10.12.16",
