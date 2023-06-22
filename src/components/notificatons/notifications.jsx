@@ -7,8 +7,11 @@ import { useTranslation } from 'react-i18next';
 import { Badge } from "primereact/badge";
 import { HiOutlineBanknotes } from 'react-icons/hi2'
 import { MdClear } from 'react-icons/md'
+
 export function Notification() {
+
     const [notifications, setNotifications] = useState([]);
+
     useEffect(() => {
         const socket = io('http://localhost:3003');
         async function fetchNotifications() {
@@ -19,7 +22,9 @@ export function Notification() {
             } catch (error) {
             }
         }
+
         fetchNotifications();
+
         const userId = localStorage.getItem("userId");
 
         socket.on('notification', (message) => {
@@ -43,11 +48,13 @@ export function Notification() {
         console.log(notifications);
         ApiService.deleteNotifications(e).then((e) => {
         }).catch((err) => {
-            console.log(err);
+            console.log(err)
         })
 
     }
+
     const [dates, setDates] = useState([])
+
     useEffect(() => {
         if (notifications) {
             const dataSorts = notifications.sort((a, b) => b.createdAt.localeCompare(a.createdAt))

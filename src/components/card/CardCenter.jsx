@@ -4,6 +4,7 @@ import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import { useSelector } from 'react-redux';
 import style from './design/style.module.scss';
 import { useTranslation } from 'react-i18next';
+import { AiFillPlusCircle } from 'react-icons//ai'
 
 export default function CardCenter() {
     let cardData = useSelector((state) => state.card.cards);
@@ -22,9 +23,10 @@ export default function CardCenter() {
         // console.log(8 % 6);
     };
 
-    const next = () => {
-        setCurrentCardIndex((prev) => (prev + 1) % cardData.length);
-    };
+    // TODO: Will be add in next development
+    // const next = () => {
+    //     setCurrentCardIndex((prev) => (prev + 1) % cardData.length);
+    // };
 
     const previous = () => {
         setCurrentCardIndex((prev) => (prev - 1 + cardData.length) % cardData.length);
@@ -33,9 +35,15 @@ export default function CardCenter() {
     const { t } = useTranslation();
 
     return (
-        <section>
+        <section style={{ marginTop: '20px' }}>
             <div className={style.cardsTop}>
-                <h3 className={`${style.textW}`}>Card Center</h3>
+                <div style={{ display: "flex", justifyContent: "space-between", color: 'white', width: "100%", alignItems: 'center', padding: '0 20px 0 10px' }}>
+                    <h3 className={`${style.textW}`}>Card Center</h3>
+                    <div style={{ width: "15%", height: '50px', borderRadius: "22px", background: "var( --btn-bg-color)", display: "flex", alignItems: 'center', columnGap: "6px", padding: "5px 10px", cursor: "pointer    " }}>
+                        <AiFillPlusCircle style={{ fontSize: "33px" }} />
+                        <p>Add Card</p>
+                    </div>
+                </div>
                 <div className={style.cardSlider}>
                     {/* <p onClick={previous}>X</p> */}
                     <div className={style.cardContainer}>
@@ -48,10 +56,13 @@ export default function CardCenter() {
                                     style={{
                                         transform: `translateX(${((i - currentCardIndex + cardData.length) % cardData.length) * 100}%)${currentCardIndex === i ? 'scale(1.1)' : ''
                                             }`,
+                                        zIndex: currentCardIndex === i ? 0 : cardData.length - 1,
+                                        // opacity: cardData.length === i ? 1 : 0
+
                                     }}
 
                                 >
-                                    {console.log((((i - currentCardIndex + cardData.length) % cardData.length)), ((i - currentCardIndex + cardData.length)))}
+                                    {/* {console.log((((i - currentCardIndex + cardData.length) % cardData.length)), ((i - currentCardIndex + cardData.length)))} */}
                                     <Cards
                                         number={`${e.cardNumber.slice(0, 4)} **** **** ${e.cardNumber.slice(12)}` || state.number}
                                         expiry={e.cardDate || state.expiry}

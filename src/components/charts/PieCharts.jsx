@@ -23,7 +23,7 @@ const LegendDonut = ({ data }) => {
 
     console.log("renderr");
     return (
-        <div>
+        <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
             <Donut
                 data={donutData}
                 externalRadius={150}

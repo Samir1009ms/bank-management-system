@@ -9,6 +9,7 @@ export default function ProfileTop() {
         setUser(user)
     }, [])
 
+    // base 64 format sekili cevirmek
     // const filee = (e) => {
     //     console.log(URL.createObjectURL(e));
     // }
@@ -53,7 +54,6 @@ export default function ProfileTop() {
     }
 
     useEffect(() => {
-
         const img = localStorage.getItem('img')
         if (img) {
             filee(img)
@@ -65,6 +65,7 @@ export default function ProfileTop() {
         const reader = new FileReader();
         reader.onload = () => {
             const image = reader.result;
+            console.log(image);
             // setImg(image);
             console.log(image);
             localStorage.setItem("img", image)

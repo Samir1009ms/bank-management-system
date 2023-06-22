@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import { Column } from 'primereact/column'
 import { DataTable } from 'primereact/datatable'
-import { AiOutlineInfoCircle } from 'react-icons/ai'
+import { AiFillPlusCircle, AiOutlineInfoCircle } from 'react-icons/ai'
 import { ImCancelCircle } from 'react-icons/im'
 import { IoEllipsisVerticalSharp } from 'react-icons/io5'
 import { useSelector } from 'react-redux'
@@ -21,7 +21,9 @@ export default function CardList() {
         name: 'NO NAME',
         focus: 'TRUE',
     });
+    console.log('sa');
     console.log(cardData);
+    console.log('dsds');
     const [activeRow, setActiveRow] = useState(null);
     const handleRowClick = (rowData) => {
         setActiveRow(activeRow === rowData ? null : rowData);
@@ -39,13 +41,16 @@ export default function CardList() {
             >
                 <div className={style.cardListLeftTop}>
                     <h3>Card List</h3>
-                    <span></span>
+                    <div style={{ width: "20%", height: '50px', borderRadius: "22px", background: "var( --btn-bg-color)", display: "flex", alignItems: 'center', columnGap: "6px", padding: "5px 10px", cursor: "pointer    " }}>
+                        <AiFillPlusCircle style={{ fontSize: "33px" }} />
+                        <p>Add Card</p>
+                    </div>
                 </div>
                 <div className={style.cardContent}>
                     {
                         cardData.map((e, i) => (
-                            <div className={style.cardLists}>
-                                <div style={{ display: 'flex', width: '100%', columnGap: '15px', alignItems: "center    " }}>
+                            <div key={e._id} className={style.cardLists}>
+                                <div className={style.cardListCont} >
                                     <div className={style.cardDesign}>
                                         <span className={style.cardType}>{cardData ? e.cardType : "Card"}</span>
                                         <span className={style.cardNumber}> {cardData && e.cardNumber.slice(12).replace("", "**")}</span>
@@ -66,14 +71,15 @@ export default function CardList() {
                                         <span>Namein Card</span>
                                         <span>{e.cardName}</span>
                                     </div>
-                                    <div style={{ position: "relative" }}>
+                                    <div className={style.cardListContModal} >
                                         <IoEllipsisVerticalSharp onClick={() => handleRowClick(e)} style={{ cursor: 'pointer' }} />
                                         {activeRow === e && (
-                                            <div style={{ position: 'absolute', left: '-67px', bottom: '-18px', width: '90px', background: 'var(--table-dropDown-bg)', color: 'var(--nav-text-color)', borderRadius: "10px", padding: '8px 5px' }}>
-                                                <span onClick={() => console.log(e)} style={{ cursor: "pointer", fontSize: "11px", display: "flex", alignItems: 'center', columnGap: "6px", marginBottom: '6px' }}>
+                                            <div className={style.modalContainer}
+                                            >
+                                                <span className={style.modalTop} onClick={() => console.log(e)} >
                                                     <AiOutlineInfoCircle /> view details
                                                 </span>
-                                                <span onClick={() => handleRowClick(false)} style={{ cursor: "pointer", display: "flex", alignItems: 'center', columnGap: "6px" }}>
+                                                <span className={style.modalBottom} onClick={() => handleRowClick(false)} >
                                                     <ImCancelCircle />  cancel
                                                 </span>
                                             </div>
