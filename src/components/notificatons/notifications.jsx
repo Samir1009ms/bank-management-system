@@ -13,7 +13,7 @@ export function Notification() {
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
-        const socket = io('http://localhost:3003');
+        const socket = io('http://localhost:3000');
         async function fetchNotifications() {
             const userId = localStorage.getItem("userId");
             try {

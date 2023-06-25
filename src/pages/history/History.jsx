@@ -18,7 +18,7 @@ export default function History() {
         dispatch(getTransactions())
         dispatch(getCard())
         dispatch(setLoading(true));
-        const socket = io('http://localhost:3003');
+        const socket = io('http://localhost:3000');
         socket.on('notification', (message) => {
             // setNotifications((prevNotifications) => [...prevNotifications, message]);
             dispatch(getTransactions())

@@ -100,13 +100,13 @@ export default function Transaction() {
                         body={(rowData) => (
                             <p style={{ display: "flex", flexDirection: 'column' }}>
                                 <span>
-                                    Transfer Money
+                                    {t('transferMoney')}
                                 </span>
                                 <span>
                                 </span>
                             </p>
                         )}
-                        header="Name / Business"
+                        header={t('namebusinees')}
                     // sortable
                     ></Column>
                     <Column
@@ -121,24 +121,24 @@ export default function Transaction() {
                                 </span>
                             </p>
                         )}
-                        header="Date / Time"
+                        header={t('date/time')}
                     // sortable
                     ></Column>
                     <Column
                         field="amount"
-                        header="Amount"
+                        header={t('Amount')}
                         style={{ color: "#3a8ffd" }}
                     // sortable
                     ></Column>
                     <Column
                         field="type"
-                        header="Type"
-                        body={(ty) => ty.type === "Incoming" ? "Income" : "Outcome"}
+                        header={t('Type')}
+                        body={(ty) => ty.type === "Incoming" ? t('incom') : t('outcom')}
                     // sortable
                     ></Column>
                     <Column
                         field="date"
-                        header="Card Number"
+                        header={t('cardNumber')}
                         style={{ width: '13%' }}
                         body={(rowData) => (
                             <>

@@ -8,6 +8,7 @@ import { io } from "socket.io-client";
 import 'moment/locale/az'
 import Overwiev from "../../components/Overwiev/Overwiev";
 import Sidebar from "../../components/SideBar/Sidebar";
+import QuickTransfer from "../../components/QuickTransfer/QuickTransfer";
 
 function Home() {
     const dispatch = useDispatch();
@@ -15,7 +16,7 @@ function Home() {
     useEffect(() => {
         dispatch(getCard());
         dispatch(getTransactions())
-        const socket = io('http://localhost:3003');
+        const socket = io('http://localhost:3000');
         socket.on('notification', (message) => {
             dispatch(getTransactions())
             dispatch(getCard());
@@ -32,6 +33,9 @@ function Home() {
             <main className={`${style.home} grid m-0 w-full pl-4 column-gap-3`}>
                 <section className={` ${style.homeLeftxx} pt-4 pb-6`}>
                     <Overwiev />
+                    <div className='grid block md:hidden' style={{ width: '100%' }}>
+                        <QuickTransfer />
+                    </div>
                     <Transaction />
                 </section >
                 <Sidebar />

@@ -9,7 +9,7 @@ export default function Card() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCard());
-        const socket = io('http://localhost:3003');
+        const socket = io('http://localhost:3000');
 
         socket.on('notification', (message) => {
             dispatch(getCard());

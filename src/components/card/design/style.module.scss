@@ -115,6 +115,10 @@
     position: relative;
     display: flex;
 
+    font-size: 14px;
+    letter-spacing: 1.3px;
+    // line-height: 15px;
+
 
     .cardsContainer {
         position: absolute;
@@ -228,22 +232,38 @@ button {
         .cardContent {
             display: flex;
             flex-direction: column;
-            row-gap: 12px;
+            // row-gap: 12px;
             padding: 10px;
-            border: 1px solid gray;
+            // border: 1px solid gray;
+            background: var(--transfer-cont-bg-color);
+            border-radius: 10px;
+            min-height: 464px;
+            max-height: 464px;
+            overflow: auto;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
 
             .cardLists {
                 display: flex;
                 flex-direction: row;
                 width: 100%;
-                border: 1px solid rgb(39, 161, 232);
+                // border: 1px solid rgb(39, 161, 232);
                 align-items: center;
+                padding: 7px;
 
                 .cardListCont {
                     display: flex;
                     align-items: center;
                     width: 100%;
                     column-gap: 15px;
+                    background: var(--summary-bg-color);
+                    border-radius: 10px;
+                    height: 60px;
+                    justify-content: center;
+                    padding: 0 5px;
+
 
                     .cardDesign {
 
@@ -251,8 +271,8 @@ button {
                         display: flex;
                         flex-direction: column;
                         justify-content: space-between;
-                        height: 55px;
-                        width: 41%;
+                        height: 50px;
+                        width: 44%;
                         padding: 3px;
                         border-radius: 6px;
                         row-gap: 5px;
@@ -261,6 +281,8 @@ button {
                     .cardContainer {
                         display: flex;
                         flex-direction: column;
+                        justify-content: center;
+                        text-transform: capitalize;
                     }
 
                     .cardListContModal {
@@ -298,6 +320,20 @@ button {
                         }
                     }
 
+                }
+            }
+        }
+    }
+
+    .cardListRigth {
+        background: var(--homeR-bg-color);
+        border-radius: 10px;
+        color: var(--nav-text-color) !important;
+
+        div {
+            div {
+                svg {
+                    fill: var(--nav-text-color);
                 }
             }
         }

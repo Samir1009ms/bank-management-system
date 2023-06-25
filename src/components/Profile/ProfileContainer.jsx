@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types';
 import LanguageSwitcher from '../translate/TranslateSwitch';
 import { Theme } from '../theme/theme';
@@ -7,7 +7,20 @@ import { useNavigate } from 'react-router-dom';
 
 export default function ProfileContainer({ data }) {
     const { t } = useTranslation()
+    const { i18n } = useTranslation();
+
     const navigate = useNavigate()
+
+    useEffect(() => {
+        const selectedLanguage = localStorage.getItem('lang');
+        if (selectedLanguage) {
+            i18n.changeLanguage(selectedLanguage);
+        } else {
+            localStorage.setItem("lang", "az")
+            i18n.changeLanguage("az");
+
+        }
+    }, [])
 
     return (
         <section style={{
@@ -40,7 +53,6 @@ export default function ProfileContainer({ data }) {
         </section>
     )
 }
-
 ProfileContainer.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({
         text: PropTypes.string,

@@ -10,7 +10,7 @@ export default function Sidebar() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCard());
-        const socket = io('http://localhost:3003');
+        const socket = io('http://localhost:3000');
         socket.on('notification', (message) => {
             dispatch(getCard());
             // setNotifications((prevNotifications) => [...prevNotifications, message]);
@@ -23,7 +23,9 @@ export default function Sidebar() {
         <section className={`pt-2  ${style.left} `}>
             <div className={`grid ${style.container} row-gap-6  justify-content-center m-0`} style={{ width: "100%", color: "white" }}>
                 <BankCards />
-                <QuickTransfer />
+                <div className='grid hidden sm:hidden lg:block' style={{ width: "98%" }}>
+                    <QuickTransfer />
+                </div>
             </div>
         </section>
     )

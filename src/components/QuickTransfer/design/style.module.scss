@@ -11,11 +11,11 @@
     padding: 20px 10px 30px;
 
     @include mobile {
-        display: none;
+        // display: none;
     }
 
     @include tablet {
-        width: 50%;
+        // width: 50%;
     }
 }
 

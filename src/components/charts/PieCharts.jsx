@@ -23,14 +23,16 @@ const LegendDonut = ({ data }) => {
 
     console.log("renderr");
     return (
-        <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center' }}>
+        <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center', color: "white !important" }}>
             <Donut
                 data={donutData}
-                externalRadius={150}
-                internalRadius={75}
+                externalRadius={100}
+                internalRadius={50}
                 highlightSliceById={highlightedSlice}
                 customMouseOver={handleMouseOver}
                 customMouseOut={handleMouseOut}
+                width={200}
+            // colorSchema={["#FF8303", "#FF3231", "#FF7A00", "#FF006E", "#fff"]}
             />
             <Legend
                 data={donutData}

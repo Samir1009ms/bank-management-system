@@ -51,7 +51,32 @@
     "currentP":"Current Password",
     "nPassword":"New Password",
     "cNPassword":"Current New Password",
-    "saveChanges":"Save Changes"
+    "saveChanges":"Save Changes",
+    "Amount":"Amount",
+    "Date":"Date",
+    "Type":"Type",
+    "CardNumber":"Card Number",
+    "card":"Card",
+    "cardHolder":"Card Holder",
+    "cardCenter":"Card Center",
+    "cardList":"Card List",
+    "cardType":"Card Type",
+    "cardNumber":"Card Number",
+    "addCard":"Add Card",
+    "date/time":"Date/Time",
+    "namebusinees":"Name/Business",
+    "transferMoney":"Transfer Money",
+    "Edit profile information":"Edit Profile Infomation",
+    "Notifications":"Notifications",
+    "Language":"Language",
+    "Security":"Security",
+    "Theme":"Theme",
+    "Help & Support":"Help & Support",
+    "Contact us":"Contact us",
+    "Privacy policy":"Privacy policy"
+
+
+
 
   }
   

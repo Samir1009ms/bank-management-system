@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux'
 import style from './design/style.module.scss'
 import PieChart from '../charts/PieCharts'
 import LegendDonut from '../charts/PieCharts'
+import { useTranslation } from 'react-i18next'
 
 export default function CardList() {
     const lang = localStorage.getItem("lang")
@@ -35,16 +36,18 @@ export default function CardList() {
         setFirst(event.first);
         setRows(event.rows);
     };
+
+    const { t } = useTranslation()
     return (
         <div className={style.cardListContainer} >
             <div className={style.cardListLeft}
             >
                 <div className={style.cardListLeftTop}>
-                    <h3>Card List</h3>
-                    <div style={{ width: "20%", height: '50px', borderRadius: "22px", background: "var( --btn-bg-color)", display: "flex", alignItems: 'center', columnGap: "6px", padding: "5px 10px", cursor: "pointer    " }}>
+                    <h3>{t('cardList')}</h3>
+                    {/* <div style={{ width: "20%", height: '50px', borderRadius: "22px", background: "var( --btn-bg-color)", display: "flex", alignItems: 'center', columnGap: "6px", padding: "5px 10px", cursor: "pointer    " }}>
                         <AiFillPlusCircle style={{ fontSize: "33px" }} />
                         <p>Add Card</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div className={style.cardContent}>
                     {
@@ -56,7 +59,7 @@ export default function CardList() {
                                         <span className={style.cardNumber}> {cardData && e.cardNumber.slice(12).replace("", "**")}</span>
                                     </div>
                                     <div className={style.cardContainer}>
-                                        <span>Card Type</span>
+                                        <span>{t('cardType')}</span>
                                         <span>{e.cardType}</span>
                                     </div>
                                     <div className={style.cardContainer}>
@@ -64,12 +67,12 @@ export default function CardList() {
                                         <span>MS Bank</span>
                                     </div>
                                     <div className={style.cardContainer}>
-                                        <span>Card Number</span>
+                                        <span>{t('cardNumber')}</span>
                                         <span>{"**** " + e.cardNumber.slice(12)}</span>
                                     </div>
                                     <div className={style.cardContainer}>
-                                        <span>Namein Card</span>
-                                        <span>{e.cardName}</span>
+                                        <span>{t('cardHolder')}</span>
+                                        <span>{(e.cardName)}</span>
                                     </div>
                                     <div className={style.cardListContModal} >
                                         <IoEllipsisVerticalSharp onClick={() => handleRowClick(e)} style={{ cursor: 'pointer' }} />
@@ -91,9 +94,7 @@ export default function CardList() {
                     }
                 </div>
             </div>
-            <div style={{ background: 'green' }}>
-                {/* <PieChart data={cardData} />
-                 */}
+            <div className={style.cardListRigth}>
                 <LegendDonut data={cardData} />
             </div>
         </div >

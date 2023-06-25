@@ -82,10 +82,10 @@ function Transaction() {
                         onPage={(e) => onPageChange(e)}
                     >
                         {/*//! locale en az dinamik yazmaq  */}
-                        <Column field="date" body={(rowData) => moment((rowData.date)).locale(lang).format('MMMM DD, yyyy HH:mm:ss')} header="Date" sortable></Column>
-                        <Column field="amount" header="Amount" sortable></Column>
-                        <Column field="type" header="Type" body={(ty) => ty.type === "Incoming" ? "Income" : "Outcome"} sortable></Column>
-                        <Column field="date" header="Card Number" body={(rowData) => (
+                        <Column field="date" body={(rowData) => moment((rowData.date)).locale(lang).format('MMMM DD, yyyy HH:mm:ss')} header={t('Date')} sortable></Column>
+                        <Column field="amount" header={t('Amount')} sortable></Column>
+                        <Column field="type" header={t('Type')} body={(ty) => ty.type === "Incoming" ? t('incom') : t('outcom')} sortable></Column>
+                        <Column field="date" header={t('CardNumber')} body={(rowData) => (
                             <>
                                 <div>{rowData.cardNumber.slice(0, 4) + " ** " + rowData.cardNumber.slice(12)}</div>
                             </>
