@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
-// ! charts
 import DoughnutChartDemo from "../../components/charts/chart2";
-// ! icons
 import { HiArrowTrendingUp } from 'react-icons/hi2'
 import { HiOutlineArrowTrendingDown } from 'react-icons/hi2'
-// ! style
 import style from "./design/style.module.scss"
 import { useTranslation } from "react-i18next";
 
 export function AccountSummary({ filter }) {
+
     const [incomes, setIncomes] = useState(0)
     const [outgomings, setOutgomings] = useState(0)
+
     useEffect(() => {
         const arr = filter && filter.flatMap((e) => e.transctions)
         const outcomne = arr && arr.filter((e) => e.type !== "Incoming")
@@ -18,7 +17,9 @@ export function AccountSummary({ filter }) {
         setOutgomings(outcomne && outcomne.reduce((acc, amount) => (acc + amount.amount), 0))
         setIncomes(incomne && incomne.reduce((acc, amount) => (acc + amount.amount), 0))
     }, [filter])
+
     const { t } = useTranslation()
+
     return (
         <div className={`grid col-4 row-gap-1 ${style.accSum}`}>
             <div className={`${style.summary}`}>

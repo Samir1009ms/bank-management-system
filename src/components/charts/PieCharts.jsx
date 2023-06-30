@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useCallback, memo } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 import { Legend, Donut } from 'britecharts-react';
 
 const LegendDonut = ({ data }) => {
     const [highlightedSlice, setHighlightedSlice] = useState(null);
+
     const donutData = data.map((item) => {
         const { cardNumber, _id, balance } = item;
         return { name: "**" + cardNumber.slice(12), _id, quantity: balance };
     });
-
 
     const handleMouseOver = useCallback((data) => {
         setHighlightedSlice(null);
@@ -17,11 +17,6 @@ const LegendDonut = ({ data }) => {
         setHighlightedSlice(null);
     }, []);
 
-    useEffect(() => {
-        // Etkinlikleri burada kullanabilirsiniz
-    }, []);
-
-    console.log("renderr");
     return (
         <div style={{ display: "flex", flexDirection: 'column', alignItems: 'center', color: "white !important" }}>
             <Donut

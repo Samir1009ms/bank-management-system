@@ -7,6 +7,8 @@ import { RadioButton } from 'primereact/radiobutton';
 import { useTranslation } from 'react-i18next';
 
 function QuickTransfer() {
+    const loading = useSelector((state) => state.card.loading);
+
     let cardData = useSelector((state) => state.card.cards);
 
     const [ingredient, setIngredient] = useState(0)
@@ -46,7 +48,7 @@ function QuickTransfer() {
     };
 
     useEffect(() => {
-        if (cardData) {
+        if (cardData[cardActive]) {
             setTra((data) => ({
                 ...data,
                 senderCardNumber: cardData[cardActive].cardNumber
@@ -61,8 +63,11 @@ function QuickTransfer() {
         })
     }
     const { t } = useTranslation()
+
+
+    console.log(loading);
     return (
-        <div className={`${style.transfer}`}>
+        loading ? "loading" : <div className={`${style.transfer}`}>
             <h3 className={`${style.textW}`}>{t('quickT')}</h3>
             <div className={style.transferContainer}>
                 <div className={style.top}>
@@ -75,14 +80,19 @@ function QuickTransfer() {
                     <div onClick={() => handleDesign()} className={style.debit}>
                         <div className={style.debitCards}>
                             <div className={style.cardLeft}>
-                                <span className={style.cardDesign}>
-                                    <span className={style.cardType}>{cardData ? cardData[cardActive].cardType : "Card"}</span>
-                                    <span className={style.cardNumber}> {cardData && cardData[cardActive].cardNumber.slice(12).replace("", "**")}</span>
-                                </span>
-                                <span className={style.cardText}>
-                                    <span>{t('debitC')}</span>
-                                    $ {(cardData ? (cardData[cardActive].balance) : "0000").toLocaleString("en-US")}
-                                </span>
+                                {cardData[cardActive] &&
+                                    <>
+                                        <span className={style.cardDesign}>
+                                            <span className={style.cardType}>{cardData[cardActive].cardType && cardData[cardActive].cardType}</span>
+                                            <span className={style.cardNumber}> {cardData[cardActive].cardNumber && cardData[cardActive].cardNumber.slice(12).replace("", "**")}</span>
+                                        </span>
+                                        <span className={style.cardText}>
+                                            <span>{t('debitC')}</span>
+                                            $ {(cardData ? (cardData[cardActive].balance) : "0000").toLocaleString("en-US")}
+                                        </span>
+                                    </>
+                                }
+
                             </div>
                             <div>
                                 <FiChevronDown />

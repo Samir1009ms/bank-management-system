@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Chart } from 'primereact/chart';
 import style from "./design/style.module.scss"
@@ -10,7 +9,6 @@ export default function DoughnutChartDemo({ incom, outcom }) {
     const { t } = useTranslation();
 
     useEffect(() => {
-
         const documentStyle = getComputedStyle(document.documentElement);
         const data = {
             labels: [`${t('outcom')}`, `${t('incom')}`],
@@ -51,8 +49,6 @@ export default function DoughnutChartDemo({ incom, outcom }) {
         setChartData(data);
         setChartOptions(options);
     }, [outcom, incom, t]);
-
-
 
     return (
         <div className={`card flex justify-content-center align-items-center w-full ${style.chart2}`}>

@@ -1,20 +1,17 @@
 import React, { useState } from 'react'
-import moment from 'moment'
-import { Column } from 'primereact/column'
-import { DataTable } from 'primereact/datatable'
-import { AiFillPlusCircle, AiOutlineInfoCircle } from 'react-icons/ai'
+import { AiOutlineInfoCircle } from 'react-icons/ai'
 import { ImCancelCircle } from 'react-icons/im'
 import { IoEllipsisVerticalSharp } from 'react-icons/io5'
 import { useSelector } from 'react-redux'
 import style from './design/style.module.scss'
-import PieChart from '../charts/PieCharts'
 import LegendDonut from '../charts/PieCharts'
 import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 export default function CardList() {
-    const lang = localStorage.getItem("lang")
-
+    const navigate = useNavigate()
     let cardData = useSelector((state) => state.card.cards);
+
     const [state, setState] = useState({
         number: '0000000000000000',
         expiry: '00/00',
@@ -22,9 +19,7 @@ export default function CardList() {
         name: 'NO NAME',
         focus: 'TRUE',
     });
-    console.log('sa');
-    console.log(cardData);
-    console.log('dsds');
+
     const [activeRow, setActiveRow] = useState(null);
     const handleRowClick = (rowData) => {
         setActiveRow(activeRow === rowData ? null : rowData);
@@ -79,7 +74,7 @@ export default function CardList() {
                                         {activeRow === e && (
                                             <div className={style.modalContainer}
                                             >
-                                                <span className={style.modalTop} onClick={() => console.log(e)} >
+                                                <span className={style.modalTop} onClick={() => navigate(`details/${e._id}`)} >
                                                     <AiOutlineInfoCircle /> view details
                                                 </span>
                                                 <span className={style.modalBottom} onClick={() => handleRowClick(false)} >

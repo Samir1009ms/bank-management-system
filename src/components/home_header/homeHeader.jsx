@@ -3,29 +3,29 @@ import { Avatar } from 'primereact/avatar';
 import style from "./design/style.module.scss"
 import { useEffect } from 'react';
 import { AuthService } from '../../services/auth.services';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Notification } from '../notificatons/notifications';
 import { useTranslation } from 'react-i18next';
-import { AiOutlineDown } from 'react-icons/ai'
-import { FiUser } from 'react-icons/fi'
-import { FiLogOut } from 'react-icons/fi'
-// import img from '../../assets/1 (2).jpg'
-export function HomeHeader() {
 
+export function HomeHeader() {
     // ! location text
     const [pathname, setPathname] = useState(null)
     const [user, setUser] = useState()
+    const { id } = useParams()
     const location = useLocation()
     const { t } = useTranslation()
+
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem("user"))
         setUser(user)
         if (location.pathname === "/") {
             setPathname(t('dashboard'))
+        } else if (location.pathname === `/card/details/${id}`) {
+            setPathname(t(`${location.pathname.slice(6, 13)}`))
         } else {
             setPathname(t(`${location.pathname.slice(1)}`))
         }
-    }, [location, t])
+    }, [location, t, id])
 
     //! user profile  
     const [users, setUsers] = useState("hidden")
@@ -42,11 +42,9 @@ export function HomeHeader() {
     function logout() {
         AuthService.logout()
         navigate('/login')
-
     }
 
     const [img, setImg] = useState('');
-
     const filee = (dataURL) => {
         const blob = dataURLtoBlob(dataURL);
         setImg(URL.createObjectURL(blob))
@@ -65,7 +63,6 @@ export function HomeHeader() {
     }
 
     useEffect(() => {
-
         const img = localStorage.getItem('img')
         if (img) {
             filee(img)
@@ -78,13 +75,10 @@ export function HomeHeader() {
         };
 
         window.addEventListener("click", handleClickOutside);
-
         return () => {
             window.removeEventListener("click", handleClickOutside);
         };
     }, [])
-
-
 
     return (
         <div className={`${style.homeHeader}`}>
@@ -101,15 +95,11 @@ export function HomeHeader() {
                 </div>
                 <div className={`${style.profilesMenu} ${users}  flex-column gap-2 p-3`}>
                     <span onClick={() => { navigate('/profile'); userProfile() }} className={`${style.icons} ${style.users} flex align-items-center gap-1`} >
-                        <i className={`pi pi-user ${style.icons} `}>
-
-                        </i>
+                        <i className={`pi pi-user ${style.icons} `}> </i>
                         {t('profile')}
                     </span>
                     <span className={`${style.icons} ${style.users}  flex align-items-center gap-1`} onClick={() => logout()}>
-                        <i className={`pi pi-sign-out ${style.icons}`}>
-
-                        </i>
+                        <i className={`pi pi-sign-out ${style.icons}`}></i>
                         {t('logout')}
                     </span>
                 </div>

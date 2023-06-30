@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Cards from 'react-credit-cards-2';
-import 'react-credit-cards-2/dist/es/styles-compiled.css';
 import { useSelector } from 'react-redux';
 import style from './design/style.module.scss';
 import { useTranslation } from 'react-i18next';
@@ -20,7 +19,6 @@ export default function CardCenter() {
 
     const handleClick = (index) => {
         setCurrentCardIndex(index);
-        // console.log(8 % 6);
     };
 
     // TODO: Will be add in next development
@@ -57,12 +55,8 @@ export default function CardCenter() {
                                         transform: `translateX(${((i - currentCardIndex + cardData.length) % cardData.length) * 100}%)${currentCardIndex === i ? 'scale(1.1)' : ''
                                             }`,
                                         zIndex: currentCardIndex === i ? 0 : cardData.length - 1,
-                                        // opacity: cardData.length === i ? 1 : 0
-
                                     }}
-
                                 >
-                                    {/* {console.log((((i - currentCardIndex + cardData.length) % cardData.length)), ((i - currentCardIndex + cardData.length)))} */}
                                     <Cards
                                         number={`${e.cardNumber.slice(0, 4)} **** **** ${e.cardNumber.slice(12)}` || state.number}
                                         expiry={e.cardDate || state.expiry}

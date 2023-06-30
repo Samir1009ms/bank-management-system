@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { InputText } from "primereact/inputtext";
-import { InputMask } from "primereact/inputmask";
 import { Calendar } from 'primereact/calendar';
 import style from './design/style.module.scss'
 import Service from '../validation/validation';
 import { useTranslation } from 'react-i18next';
-import axios from 'axios';
 import { ApiService } from '../../services/api.services';
-import moment from 'moment/moment';
 const VALIDATOR = {
     userName: (value, t) => {
         return Service.min(value, 8, t) || Service.max(value, 18, t)

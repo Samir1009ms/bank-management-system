@@ -13,24 +13,23 @@ import { IoEllipsisVerticalSharp } from 'react-icons/io5';
 import { AiOutlineInfoCircle } from 'react-icons/ai';
 import { ImCancelCircle } from 'react-icons/im';
 
-
 export default function Transaction() {
     const d = useSelector((state) => state.transactionsSlice.outcoming)
     const loading = useSelector((state) => state.transactionsSlice.loading)
-    console.log(d);
-    const lang = localStorage.getItem("lang")
 
+    const lang = localStorage.getItem("lang")
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
     const [filters, setFilters] = useState()
     const [selected, setSelected] = useState("All")
     const [selectData, setSelectData] = useState([])
+
     useEffect(() => {
         const filtr = d.filter((e) => {
             let month = moment().month(e.date).format("M")
             month = Number(month)
             return month === selectedMonth
         })
-        setFilters(filtr)
+        // setFilters(filtr)
         if (selected === "All") {
             const allData = filtr.flatMap((e) => e.transctions)
             setSelectData(allData)
@@ -47,22 +46,23 @@ export default function Transaction() {
 
     const [isOpen, setIsOpen] = useState(false)
     const { t } = useTranslation()
-
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(5);
+
     const onPageChange = (event) => {
         setFirst(event.first);
         setRows(event.rows);
     };
-    function select(e) {
-        setSelected(e)
-    }
-    const [activeRow, setActiveRow] = useState(null);
-    const handleRowClick = (rowData) => {
-        setActiveRow(activeRow === rowData ? null : rowData);
-    };
-    return (
+    // function select(e) {
+    //     setSelected(e)
+    // }
+    // const [activeRow, setActiveRow] = useState(null);
 
+    // const handleRowClick = (rowData) => {
+    //     setActiveRow(activeRow === rowData ? null : rowData);
+    // };
+
+    return (
         loading ? "loading..." : <section style={{ backgroundColor: "var(--homeR-bg-color)", borderRadius: '10px', padding: "30px" }}>
             <div style={{ display: "flex", flexDirection: "column" }}>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
@@ -145,7 +145,7 @@ export default function Transaction() {
                                 <div>{rowData.cardNumber.slice(0, 4) + " ** " + rowData.cardNumber.slice(12)}</div>
                             </>
                         )}></Column>
-                    <Column
+                    {/* <Column
                         style={{ width: "10px " }}
                         body={(rowData) => (
                             <div style={{ position: "relative" }}>
@@ -161,7 +161,7 @@ export default function Transaction() {
                                     </div>
                                 )}
                             </div>
-                        )}></Column>
+                        )}></Column> */}
                 </DataTable>
             </div>
         </section>

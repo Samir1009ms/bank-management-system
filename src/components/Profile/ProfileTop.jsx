@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Avatar } from 'primereact/avatar';
 import style from './design/style.module.scss'
-import { useTranslation } from 'react-i18next';
 export default function ProfileTop() {
     const [user, setUser] = useState()
     useEffect(() => {

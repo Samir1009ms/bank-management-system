@@ -16,6 +16,8 @@ import Profile from './pages/profile/Profile';
 import EditProfile from './components/Profile/EditProfile';
 import History from './pages/history/History';
 import Card from './pages/card/Card';
+import CardDetails from './components/cardDetails/CardDetails';
+import Details from './pages/details/Details';
 
 
 
@@ -34,6 +36,7 @@ root.render(
             <Route path='/profile' element={<Profile />} />
             <Route path='/history' element={<History />} />
             <Route path='/card' element={<Card />} />
+            <Route path='/card/details/:id' element={<Details />} />
             <Route path='/profile/editprofile' element={<EditProfile />} />
           </Route>
         </Routes>

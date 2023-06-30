@@ -9,11 +9,11 @@ import { HiOutlineBanknotes } from 'react-icons/hi2'
 import { MdClear } from 'react-icons/md'
 
 export function Notification() {
-
     const [notifications, setNotifications] = useState([]);
 
     useEffect(() => {
         const socket = io('http://localhost:3000');
+
         async function fetchNotifications() {
             const userId = localStorage.getItem("userId");
             try {
@@ -22,14 +22,12 @@ export function Notification() {
             } catch (error) {
             }
         }
-
         fetchNotifications();
 
         const userId = localStorage.getItem("userId");
 
         socket.on('notification', (message) => {
             if (userId === message.sender) {
-
                 setNotifications((prevNotifications) => [...prevNotifications, message]);
             }
             console.log(message);
@@ -50,7 +48,6 @@ export function Notification() {
         }).catch((err) => {
             console.log(err)
         })
-
     }
 
     const [dates, setDates] = useState([])
@@ -76,6 +73,7 @@ export function Notification() {
     }, [notifications])
 
     const [notificat, setNotificat] = useState("hidden")
+
     function notification() {
         setNotificat((prevState) => (prevState === "hidden" ? "flex" : "hidden"))
     }
@@ -83,6 +81,7 @@ export function Notification() {
 
     const notificationRef = useRef(null);
     const iconRef = useRef(null);
+
     useEffect(() => {
         const handleClickOutside = (event) => {
 
@@ -95,6 +94,7 @@ export function Notification() {
             window.removeEventListener("click", handleClickOutside);
         };
     }, []);
+
     return (
         <div className={`${style.notification}`}>
             <i onClick={() => notification()} ref={iconRef} className={`pi pi-bell p-overlay-badge ${style.icons}`} style={{ fontSize: '22px' }}>

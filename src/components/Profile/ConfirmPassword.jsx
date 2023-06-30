@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import style from './design/style.module.scss'
-import { InputText } from 'primereact/inputtext'
 import Service from '../validation/validation'
 import { useTranslation } from 'react-i18next'
 import { Password } from 'primereact/password';

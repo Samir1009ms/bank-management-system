@@ -10,7 +10,6 @@ function Charts() {
     // ? theme store 
     const totalicom = useSelector((state) => state.transactionsSlice.monthData)
     let theme = useSelector((theme) => theme.themeSlice.theme)
-    // console.log(totalicom);
     // ? dark theme
     const darkColors = {
         primary: '#3E79E5',
@@ -36,10 +35,8 @@ function Charts() {
         chartBg: 'rgba(199, 213, 225, 0.3)',
         lineColor: "rgba(119, 119, 119, 0.43)"
     };
-
     // ? theme store dark or light
     const colors = theme === 'dark' ? darkColors : lightColors;
-    // console.log("asas");
     const { t } = useTranslation();
 
     useEffect(() => {

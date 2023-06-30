@@ -1,11 +1,9 @@
 
 
 export function BankCard() {
-
-
     return (
-        <div>
-
+        <div >
+            Wallet
         </div>
     )
 }

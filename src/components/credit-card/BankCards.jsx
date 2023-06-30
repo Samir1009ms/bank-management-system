@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Cards from 'react-credit-cards-2';
-import 'react-credit-cards-2/dist/es/styles-compiled.css'
+// import 'react-credit-cards-2/dist/es/styles-compiled.css'
 import { useSelector } from 'react-redux';
 import style from './design/style.module.scss'
 import { AnimatePresence, motion } from 'framer-motion';
@@ -34,15 +34,15 @@ export default function BankCards() {
                 } else {
                     firstIndex = Math.max(currentIndex - 1, 1);
                     lastIndex = Math.min(firstIndex + 3, cardData.length);
-
                 }
+
                 return Array.from({ length: lastIndex - firstIndex + 1 }, (_, index) => index + firstIndex);
             }
         }
         return [];
-
     };
     const { t } = useTranslation()
+
     return (
         <div className={style.cardsTop} >
             <h3 className={`${style.textW}`}>{t('wallet')}</h3>

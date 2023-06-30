@@ -9,38 +9,40 @@ import 'moment/locale/az'
 import Overwiev from "../../components/Overwiev/Overwiev";
 import Sidebar from "../../components/SideBar/Sidebar";
 import QuickTransfer from "../../components/QuickTransfer/QuickTransfer";
+import Loading from "../../components/loading/Loading";
+import { setLoading } from "../../store/expense/transactions-slice";
 
 function Home() {
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.transactionsSlice.loading);
     useEffect(() => {
-        dispatch(getCard());
+        // dispatch(getCard());
         dispatch(getTransactions())
+        dispatch(setLoading(true));
+
         const socket = io('http://localhost:3000');
         socket.on('notification', (message) => {
             dispatch(getTransactions())
-            dispatch(getCard());
+            // dispatch(getCard());
             // setNotifications((prevNotifications) => [...prevNotifications, message]);
         });
         return () => {
             socket.disconnect();
         };
     }, [dispatch]);
+
     return (
-        loading ? (
-            loading
-        ) : (
-            <main className={`${style.home} grid m-0 w-full pl-4 column-gap-3`}>
-                <section className={` ${style.homeLeftxx} pt-4 pb-6`}>
-                    <Overwiev />
-                    <div className='grid block md:hidden' style={{ width: '100%' }}>
-                        <QuickTransfer />
-                    </div>
-                    <Transaction />
-                </section >
-                <Sidebar />
-            </main >
-        )
+        <main className={`${style.home} grid m-0 w-full pl-4 column-gap-3`}>
+            <section className={` ${style.homeLeftxx} pt-4 pb-6`}>
+                <Overwiev />
+                <div className='grid block md:hidden' style={{ width: '100%' }}>
+                    <QuickTransfer />
+                </div>
+                <Transaction />
+            </section >
+            <Sidebar />
+        </main >
+
     );
 }
 export default memo(Home)

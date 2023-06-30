@@ -1,8 +1,8 @@
 
 export function Wallet() {
     return (
-        <section>
-
+        <section style={{ color: 'var(--nav-text-color)' }}>
+            Wallet
         </section>
     )
 }
