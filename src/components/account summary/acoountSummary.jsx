@@ -18,6 +18,8 @@ export function AccountSummary({ filter }) {
         setIncomes(incomne && incomne.reduce((acc, amount) => (acc + amount.amount), 0))
     }, [filter])
 
+
+
     const { t } = useTranslation()
 
     return (

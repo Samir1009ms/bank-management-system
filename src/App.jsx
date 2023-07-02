@@ -4,7 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { AuthService } from './services/auth.services';
 import { useEffect } from 'react';
 import { HomeHeader } from './components/home_header/homeHeader';
-import 'react-credit-cards-2/dist/es/styles-compiled.css';
+// import 'react-credit-cards-2/dist/es/styles-compiled.css';
 
 import axios from 'axios';
 function App() {
