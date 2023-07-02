@@ -2,28 +2,27 @@ import moment from "moment";
 import { Column } from "primereact/column";
 import { DataTable } from "primereact/datatable";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { AccountSummary } from "../account summary/acoountSummary";
-import style from "./design/style.module.scss"
+import style from "./design/transactions.module.scss"
 import 'moment/locale/az'
 import { useTranslation } from "react-i18next";
 import { BsFillCalendarWeekFill } from 'react-icons/bs'
 import { FiChevronDown } from 'react-icons/fi'
-function Transaction() {
+import { AccountSummary } from "../account summary/acoountSummary";
+function Transaction({ dataGroup }) {
     const lang = localStorage.getItem("lang")
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
-    const [filters, setFilters] = useState()
-    const d = useSelector((state) => state.transactionsSlice.outcoming)
     const [selected, setSelected] = useState("All")
     const [selectData, setSelectData] = useState([])
+    const [filters, setFilters] = useState()
     useEffect(() => {
-        if (d) {
-            const filtr = d.filter((e) => {
+        if (dataGroup) {
+            const filtr = dataGroup.filter((e) => {
                 let month = moment().month(e.date).format("M");
                 month = Number(month)
                 return month === selectedMonth
             })
             setFilters(filtr);
+
             if (selected === "All") {
                 const allData = filtr.flatMap((e) => e.transctions)
                 setSelectData(allData)
@@ -37,7 +36,7 @@ function Transaction() {
                 setSelectData(outcomeData);
             }
         }
-    }, [d, selectedMonth, selected])
+    }, [selectedMonth, selected, dataGroup])
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(5);
     const onPageChange = (event) => {
@@ -50,10 +49,10 @@ function Transaction() {
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false)
     return (
-        <div className={`flex w-full gap-3 mt-6 ${style.transactions}`}>
+        <div className={`flex w-full gap-3 mt-6 p-6 pt-0 ${style.transactions}`}>
             <h2 className={`${style.basliq}`}>{t('transactions')}</h2>
             <div className={`flex column-gap-3 ${style.table}`}>
-                <div className={`col-8 ${style.dataTable}`}>
+                <div className={`col-9 ${style.dataTable}`}>
                     <div className={`${style.selects}`}>
                         <div className={`${style.selectLeft}`}>
                             <span onClick={() => select("All")} className={`${style.click} ${selected === "All" ? style.active : ""}`}>{t('all')}</span>
@@ -92,8 +91,8 @@ function Transaction() {
                         )}></Column>
                     </DataTable>
                 </div>
-                <div style={{ width: "40.33%", marginTop: "-53px" }}>
-                    <AccountSummary filter={filters}></AccountSummary>
+                <div style={{ marginTop: "-45px", width: '100%' }}>
+                    <AccountSummary filter={filters} />
                 </div>
             </div>
         </div>

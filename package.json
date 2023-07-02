@@ -12,6 +12,8 @@
     "britecharts-react": "^0.6.5",
     "chart.js": "^4.3.0",
     "date-fns": "^2.30.0",
+    "echarts": "^5.4.2",
+    "echarts-for-react": "^3.0.2",
     "framer-motion": "^10.12.16",
     "i18next": "^22.5.0",
     "json-server": "^0.17.3",

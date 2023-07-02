@@ -23,7 +23,7 @@ export function AccountSummary({ filter }) {
     const { t } = useTranslation()
 
     return (
-        <div className={`grid col-4 row-gap-1 ${style.accSum}`}>
+        <div className={`grid row-gap-1 ${style.accSum}`}>
             <div className={`${style.summary}`}>
                 <h2 className={`col-12 ${style.text}`}>{t('summary')}</h2>
                 <div className={`${style.xerc} w-full flex column-gap-2`}>

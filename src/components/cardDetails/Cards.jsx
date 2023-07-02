@@ -4,34 +4,52 @@ import { useParams } from 'react-router-dom';
 import Cards from 'react-credit-cards-2';
 import './design/style.scss';
 import { IoIosCopy } from 'react-icons/io';
+import Charts from './Charts';
+import moment from 'moment';
 
-export default function Card() {
-    const { id } = useParams();
-    const [card, setCard] = useState();
+export default function Card({ card, transactions }) {
+    // const { id } = useParams();
+    // const [card, setCard] = useState();
+    // const [transactions, setTransactions] = useState();
 
-    async function getCardTransactions(number) {
-        try {
-            const res = await axios.get(`http://localhost:5500/api/getTransactionsDetails/${number}`);
-            console.log(res.data);
-            // setCard(res.data.card);
-        } catch (err) {
-            console.log(err);
-        }
-    }
+    // async function getCardTransactions(number) {
+    //     try {
+    //         const res = await axios.get(`http://localhost:5500/api/getTransactionsDetails/${number}`);
+    //         console.log(res.data);
+    //         // setCard(res.data.card);
+    //         const data = res.data.filter((transaction) => transaction.type !== 'Outgoing');
+    //         const months = moment.months()
+    //         const ay = []
+    //         months.map((month) => (
+    //             ay.push({ month: month, amount: 0 })
+    //         ))
+    //         data.forEach(e => {
+    //             const month = moment(e.date).format("MMMM")
+    //             const index = ay.findIndex((i) => i.month === month)
+    //             if (index !== -1) {
+    //                 ay[index].amount += e.amount
+    //             }
+    //         });
+    //         setTransactions(ay);
 
-    useEffect(() => {
-        axios.get(`http://localhost:5500/api/getCardDetails/${id}`).then((res) => {
-            console.log(res.data);
-            setCard(res.data.card);
-            getCardTransactions(res.data.card.cardNumber);
-        }
-        ).catch((err) => {
-            console.log(err);
-        })
-    }, [])
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
+
+    // useEffect(() => {
+    //     axios.get(`http://localhost:5500/api/getCardDetails/${id}`).then((res) => {
+    //         console.log(res.data);
+    //         setCard(res.data.card);
+    //         getCardTransactions(res.data.card.cardNumber);
+    //     }
+    //     ).catch((err) => {
+    //         console.log(err);
+    //     })
+    // }, [])
 
     return (
-        <div className='card'>
+        <div className='cards__details'>
             <div className='cardLeft' >
                 <div className='cardLeft-title' >
                     <h1 className='cardLeft-title__text' >Card</h1>
@@ -83,10 +101,12 @@ export default function Card() {
 
                     <div className='cardRigth-details__cont'>
                         {/*//! True bloklamaq False blokdan cixarmaq  */}
-                        <button className='cardRigth-details__cont-btn'>{card && (card.blocked) ? 'karti blokdan cixarmaq' : 'karti bloklamaq'}</button>
+                        <button className='cardRigth-details__cont-btn'>{card && (!card.blocked) ? 'karti blokdan cixarmaq' : 'karti bloklamaq'}</button>
                     </div>
+
                 </div>
             </div>
+            {transactions && <Charts data={transactions} />}
         </div>
     )
 }

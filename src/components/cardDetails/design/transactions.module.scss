@@ -1,0 +1,133 @@
+@import '../../variables/mixins';
+
+.selects {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    margin-top: 20px;
+
+    .selectLeft {
+        display: flex;
+        column-gap: 10px;
+        cursor: pointer;
+        align-items: center;
+
+        .click {
+
+            color: #A4B4CB;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 15px;
+        }
+
+        .active {
+            color: #3D7AE5;
+            border-bottom: 2px solid #3D7AE5;
+            // border-bottom-left-radius: 5px;
+            // border-bottom-right-radius: 5px;
+            border-radius: 2px;
+
+
+        }
+    }
+}
+
+.selectedMonth {
+    color: #3D7AE5;
+    position: relative;
+    padding: 8px 12px;
+    border-radius: 8px;
+    // background: var(--nav-bg-color);
+    // display: flex;
+    font-size: 13px;
+    border: 1px solid #3D7AE5;
+    min-width: 111.52px;
+    text-align: center;
+    cursor: pointer;
+
+
+
+
+    span {
+        // padding: 5px;
+        // border-radius: 8px;
+        color: var(--nav-text-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        column-gap: 6px;
+
+        &:hover {
+            transition: 0.35s ease-in-out;
+            opacity: 0.6;
+            color: rgb(60, 106, 191) !important;
+        }
+
+        i {
+            color: var(--nav-text-color) !important;
+        }
+    }
+
+    .setMonth {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        background: var(--profile-bg-color);
+        padding: 10px;
+        row-gap: 5px;
+        border-radius: 8px;
+        max-height: 193px;
+        overflow: auto;
+        top: 38px;
+        left: 3.5px;
+        z-index: 5;
+        // display: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+
+        span {
+            padding: 8px;
+            min-width: 82.48px;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 8px;
+            color: var(--nav-text-color);
+            box-shadow: var(--box-shadow);
+            background: var(--summary-bg-color);
+            transition: 0.35s ease-in-out;
+
+
+
+            &:hover {
+                opacity: 0.6;
+                transition: 0.35s ease-in-out;
+                color: rgb(60, 106, 191) !important;
+            }
+
+        }
+    }
+}
+
+.transactions {
+    min-height: 464px !important;
+    display: flex;
+    flex-direction: column;
+}
+
+.table {
+    min-height: 464px !important;
+
+}
+
+.basliq {
+    color: var(--nav-text-color);
+}
+
+.dataTable {
+    @include mobile {
+        width: 100%;
+    }
+}

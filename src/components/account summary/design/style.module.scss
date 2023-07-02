@@ -7,7 +7,7 @@
     // flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
+    width: 100% !important;
     max-height: 135px;
     min-height: 135px;
     margin-top: 10px;
@@ -70,6 +70,8 @@
 .accSum {
     flex-direction: column;
     row-gap: 30px !important;
+    width: 100% !important;
+    height: 500px;
 
     @include mobile {
         display: none;
