@@ -1,0 +1,64 @@
+@import '../../variables/mixins';
+
+.cardSlider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 250px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    // scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    @include mobile {
+        width: 85%;
+        margin: 0 auto;
+    }
+}
+
+
+
+
+.cardsContainer {
+    position: absolute;
+    top: 12px;
+    width: 100%;
+    left: 0;
+    height: auto;
+    transition: 0.55s ease-in-out;
+
+    .cards {
+        .rccs {
+            width: 80% !important;
+            display: none !important;
+        }
+    }
+}
+
+
+.ss {
+    position: absolute;
+    top: 0;
+}
+
+.total {
+    position: absolute;
+    top: 10px;
+    left: 25px;
+
+    .balansText {
+        color: #fff;
+        opacity: 0.54;
+        font-size: 14px;
+        text-transform: capitalize;
+    }
+
+    .price {
+        color: #fff;
+        font-size: 26px;
+    }
+}

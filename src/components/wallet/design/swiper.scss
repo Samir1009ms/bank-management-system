@@ -1,0 +1,39 @@
+.mySwiper {
+    transform: scale(1.1);
+    width: 300px !important;
+    height: 250px;
+
+    .card_item {
+        width: 100% !important;
+        height: 100%;
+    }
+}
+
+.swiper {
+    transform: scale(1.1);
+    width: 300px !important;
+    height: 250px;
+
+    .card_item {
+        width: 100% !important;
+        height: 100%;
+    }
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.swiper-slide-shadow {
+    border-radius: 40px !important;
+}
+
+.swiper-3d .swiper-slide-shadow {
+    display: none;
+}

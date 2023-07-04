@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import ReactECharts from "echarts-for-react";
-import EChartsReact from 'echarts-for-react';
 import { useTranslation } from 'react-i18next';
 
 export default function Charts({ data }) {
