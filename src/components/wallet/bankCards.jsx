@@ -13,8 +13,9 @@ import axios from 'axios';
 import { set } from 'lodash';
 import moment from 'moment';
 
-export function BankCard() {
+export function BankCard({ getCardData }) {
     let cardData = useSelector((state) => state.card.cards);
+    // let total = useSelector((state) => state.transactionsSlice.total);
 
     // const [currentCardIndex, setCurrentCardIndex] = useState(0);
 
@@ -30,46 +31,43 @@ export function BankCard() {
 
     const { t } = useTranslation();
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [cardDataX, setCardDataX] = useState([]);
+    // const [cardDataX, setCardDataX] = useState([]);
     const slideChangeHandler = (swiper) => {
         setCurrentIndex(swiper.activeIndex);
-
     };
+    // const [chartData, setChartData] = useState([])
+    // async function getCardData(number) {
+    //     try {
+    //         await axios.get(`http://localhost:5500/api/getTransactionsDetails/${number}`).then((res) => {
+    //             console.log(res.data);
+    //             setCardDataX(res.data);
+    //             const data = res.data.filter((transaction) => transaction.type !== 'Outgoing')
+    //             const months = moment.months()
+    //             const ay = []
+    //             months.map((month) => (
+    //                 ay.push({ month: month, amount: 0 })
+    //             ))
+    //             data.forEach(e => {
+    //                 const month = moment(e.date).format("MMMM")
+    //                 const index = ay.findIndex((i) => i.month === month)
+    //                 if (index !== -1) {
+    //                     ay[index].amount += e.amount
+    //                 }
+    //             })
+    //             setChartData(ay)
+    //             // ! chartData  Charts data adi altinda getmelidir
+    //         }).catch((err) => {
+    //             console.log(err);
+    //         }
+    //         )
+
+    //     }
+    //     catch (e) {
+    //         console.log(e)
+    //     }
 
 
-    const [chartData, setChartData] = useState([])
-    async function getCardData(number) {
-        try {
-            await axios.get(`http://localhost:5500/api/getTransactionsDetails/${number}`).then((res) => {
-                console.log(res.data);
-                setCardDataX(res.data);
-                const data = res.data.filter((transaction) => transaction.type !== 'Outgoing')
-                const months = moment.months()
-                const ay = []
-                months.map((month) => (
-                    ay.push({ month: month, amount: 0 })
-                ))
-                data.forEach(e => {
-                    const month = moment(e.date).format("MMMM")
-                    const index = ay.findIndex((i) => i.month === month)
-                    if (index !== -1) {
-                        ay[index].amount += e.amount
-                    }
-                })
-                setChartData(ay)
-                // ! chartData  Charts data adi altinda getmelidir
-            }).catch((err) => {
-                console.log(err);
-            }
-            )
-
-        }
-        catch (e) {
-            console.log(e)
-        }
-
-
-    }
+    // }
 
     const [group, setGroup] = useState([])
     useEffect(() => {
@@ -80,29 +78,27 @@ export function BankCard() {
 
     }, [currentIndex, cardData])
 
-    useEffect(() => {
-        if (cardDataX.length > 0) {
-            const data = [...cardDataX]
-            const sort = data.sort((a, b) => b.date.localeCompare(a.date))
-            const dataGroup = sort.reduce((acc, date) => {
-                const [month, year] = moment(date.date).format("MMMM YYYY").split(" ")
-                const dataKey = `${month} ${year}`
-                if (!acc[dataKey]) {
-                    acc[dataKey] = []
-                }
-                acc[dataKey].push(date)
-                return acc
-            }, {})
-            const group = Object.entries(dataGroup).map(([date, transactions]) => ({ date, transactions }))
-            console.log(group);
-            setGroup(group)
-            // ! dataGroup adinda Transactions getmelidi
-        }
-    }, [cardDataX])
-
-
+    // useEffect(() => {
+    //     if (cardDataX.length > 0) {
+    //         const data = [...cardDataX]
+    //         const sort = data.sort((a, b) => b.date.localeCompare(a.date))
+    //         const dataGroup = sort.reduce((acc, date) => {
+    //             const [month, year] = moment(date.date).format("MMMM YYYY").split(" ")
+    //             const dataKey = `${month} ${year}`
+    //             if (!acc[dataKey]) {
+    //                 acc[dataKey] = []
+    //             }
+    //             acc[dataKey].push(date)
+    //             return acc
+    //         }, {})
+    //         const group = Object.entries(dataGroup).map(([date, transactions]) => ({ date, transactions }))
+    //         console.log(group);
+    //         setGroup(group)
+    //         // ! dataGroup adinda Transactions getmelidi
+    //     }
+    // }, [cardDataX])
     return (
-        <div>
+        <div style={{ width: '35%' }}>
             {cardData.length > 0 && <div className={style.cardSlider}>
                 <Swiper
                     effect="cards"

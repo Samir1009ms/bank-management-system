@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function CurrentBalance() {
     return (
-        <div>CurrentBalance</div>
+        <div style={{ width: '30%' }}>CurrentBalance</div>
     )
 }

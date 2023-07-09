@@ -1,106 +1,79 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ReactECharts from "echarts-for-react";
+import { useTranslation } from 'react-i18next';
 
-export default function Charts() {
-    const option = {
-        title: {
-            text: 'Stacked Area Chart'
-        },
-        tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                label: {
-                    backgroundColor: '#6a7985'
+export default function Charts({ data }) {
+    const [options, setOptions] = useState({})
+    const { t } = useTranslation();
+    const ay = []
+    useEffect(() => {
+        t('month', { returnObjects: true }).map((month) => ay.push(month))
+        const option = {
+            title: {
+                text: 'Stacked Area Chart',
+                show: false
+
+            },
+            tooltip: {
+                trigger: 'axis',
+                axisPointer: {
+                    type: 'cross',
+                    label: {
+                        backgroundColor: '#6a7985'
+                    }
                 }
-            }
-        },
-        legend: {
-            data: ['Email', 'Union Ads', 'Video Ads', 'Direct', 'Search Engine']
-        },
-        toolbox: {
-            feature: {
-                saveAsImage: {}
-            }
-        },
-        grid: {
-            left: '3%',
-            right: '4%',
-            bottom: '3%',
-            containLabel: true
-        },
-        xAxis: [
-            {
-                type: 'category',
-                boundaryGap: false,
-                data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun', 'Sun']
-            }
-        ],
-        yAxis: [
-            {
-                type: 'value'
-            }
-        ],
-        series: [
-            {
-                name: 'Email',
-                type: 'line',
-                stack: 'Total',
-                areaStyle: {},
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [120, 132, 101, 134, 90, 230, 210]
             },
-            {
-                name: 'Union Ads',
-                type: 'line',
-                stack: 'Total',
-                areaStyle: {},
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [220, 182, 191, 234, 290, 330, 310]
+            legend: {
+                data: ['Data'],
+                show: false
             },
-            {
-                name: 'Video Ads',
-                type: 'line',
-                stack: 'Total',
-                areaStyle: {},
-                emphasis: {
-                    focus: 'series'
+            toolbox: {
+                feature: {
+                    saveAsImage: {}
                 },
-                data: [150, 232, 201, 154, 190, 330, 410]
+                show: false
+
             },
-            {
-                name: 'Direct',
-                type: 'line',
-                stack: 'Total',
-                areaStyle: {},
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [320, 332, 301, 334, 390, 330, 320]
+            grid: {
+                left: '3%',
+                right: '4%',
+                bottom: '3%',
+                containLabel: true
             },
-            {
-                name: 'Search Engine',
-                type: 'line',
-                stack: 'Total',
-                label: {
-                    show: true,
-                    position: 'top'
-                },
-                areaStyle: {},
-                emphasis: {
-                    focus: 'series'
-                },
-                data: [820, 932, 901, 934, 1290, 1330, 1320]
-            }
-        ]
-    };
+            xAxis: [
+                {
+                    type: 'category',
+                    boundaryGap: false,
+                    data: ay
+                }
+            ],
+            yAxis: [
+                {
+                    type: 'value'
+                }
+            ],
+            series: [
+                {
+                    name: 'Data',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: data && data.map((item) => item.amount)
+                }
+            ]
+        };
+
+        setOptions(option)
+        console.log('render');
+
+    }, [data])
+
     return (
-        <div>
-            <ReactECharts option={option} />
+        <div style={{ width: '30%' }}>
+            <ReactECharts option={options} />
         </div>
     )
 }
