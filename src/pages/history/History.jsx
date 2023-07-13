@@ -30,11 +30,11 @@ export default function History() {
 
     }, [dispatch])
     return (
-        loading ? <Loading /> : <section style={{ padding: "22px 0px 22px 22px", columnGap: '12px', display: "flex" }}>
+        loading ? <Loading /> : <section style={{ padding: "22px 0px 0px 22px", columnGap: '12px', display: "flex" }}>
             <div style={{ width: "74%" }}>
                 <Transaction />
 
-                <Payment />
+                {/* <Payment /> */}
             </div>
             {/* <div > */}
             <Sidebar style={{ width: '26%' }} />

@@ -94,7 +94,7 @@ export function HomeHeader() {
                     <i className={`pi pi-angle-down ${style.icons}`}> </i>
                 </div>
                 <div className={`${style.profilesMenu} ${users}  flex-column gap-2 p-3`}>
-                    <span onClick={() => { navigate('/profile'); userProfile() }} className={`${style.icons} ${style.users} flex align-items-center gap-1`} >
+                    <span onClick={() => { navigate('/settings/editprofile'); userProfile() }} className={`${style.icons} ${style.users} flex align-items-center gap-1`} >
                         <i className={`pi pi-user ${style.icons} `}> </i>
                         {t('profile')}
                     </span>

@@ -24,7 +24,7 @@ const cardSlice = createSlice({
         },
         setTotal: (state, action) => {
             // console.log(action.payload);
-            state.total = action.payload
+            state.total = action.payload.reduce((acc, item) => (acc + item.balance), 0)
         }
     },
     extraReducers: (builder) => {

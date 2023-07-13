@@ -37,6 +37,7 @@ export const routing = [
     icon: <RiAccountCircleLine className={s.icon} />,
   },
   {
+    link: '/settings',
     text: "settings",
     icon: <TbSettings className={s.icon} />,
   },

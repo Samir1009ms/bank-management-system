@@ -42,7 +42,7 @@ export default function ProfileContainer({ data }) {
                                         : (e.text === "Theme")
                                             ? <Theme />
                                             : (e.text === 'Edit profile information')
-                                                ? <button style={{ color: 'white' }} onClick={() => navigate("/profile/editprofile")}>edit</button>
+                                                ? <button style={{ color: 'white' }} onClick={() => navigate("/settings/editprofile")}>edit</button>
                                                 : <button>on</button>
                                 )
                             }

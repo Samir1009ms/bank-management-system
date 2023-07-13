@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function BankCards() {
     let cardData = useSelector((state) => state.card.cards);
+    console.log(cardData);
     const [state, setState] = useState({
         number: '0000000000000000',
         expiry: '00/00',

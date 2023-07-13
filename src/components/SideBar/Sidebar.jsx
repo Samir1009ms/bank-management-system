@@ -26,7 +26,7 @@ export default function Sidebar() {
             ?
             // <Loading />
             "sidebar loading"
-            : <section className={`pt-2 mt-5 ${style.left} `}>
+            : <section className={`pt-2 mt-0 ${style.left} `}>
                 <div className={`grid ${style.container} row-gap-6  justify-content-center m-0`} style={{ width: "100%", color: "white" }}>
                     <BankCards />
                     <div className='grid hidden sm:hidden lg:block' style={{ width: "98%" }}>

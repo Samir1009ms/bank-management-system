@@ -7,6 +7,8 @@ import CurrentBalance from "../../components/wallet/CurrentBalance";
 import Charts from "../../components/wallet/Charts";
 import axios from "axios";
 import moment from "moment";
+import Sidebar from "../../components/SideBar/Sidebar";
+
 export function Wallet() {
     const dispatch = useDispatch()
     useEffect(() => {
@@ -24,6 +26,7 @@ export function Wallet() {
 
     const [cardDataX, setCardDataX] = useState([]);
     const [chartData, setChartData] = useState([])
+    const [chartData2, setChartData2] = useState([])
 
     async function getCardData(number) {
         try {
@@ -31,10 +34,15 @@ export function Wallet() {
                 console.log(res.data);
                 setCardDataX(res.data);
                 const data = res.data.filter((transaction) => transaction.type !== 'Outgoing')
+                const data2 = res.data.filter((transaction) => transaction.type === 'Outgoing')
                 const months = moment.months()
                 const ay = []
+                const ay2 = []
                 months.map((month) => (
                     ay.push({ month: month, amount: 0 })
+                ))
+                months.map((month) => (
+                    ay2.push({ month: month, amount: 0 })
                 ))
                 data.forEach(e => {
                     const month = moment(e.date).format("MMMM")
@@ -43,7 +51,15 @@ export function Wallet() {
                         ay[index].amount += e.amount
                     }
                 })
+                data2.forEach(e => {
+                    const month = moment(e.date).format("MMMM")
+                    const index2 = ay2.findIndex((i) => i.month === month)
+                    if (index2 !== -1) {
+                        ay2[index2].amount += e.amount
+                    }
+                })
                 setChartData(ay)
+                setChartData2(ay2)
                 // ! chartData  Charts data adi altinda getmelidir
             }).catch((err) => {
                 console.log(err);
@@ -77,12 +93,15 @@ export function Wallet() {
     }, [cardDataX])
 
     return (
-        <section style={{ color: 'var(--nav-text-color)' }}>
-            <div style={{ display: "flex", width: '100%', alignItems: "center" }}>
+        <section style={{ color: 'var(--nav-text-color)', display: "flex", width: "100%", paddingTop: '30px' }}>
+            <div style={{ display: "flex", width: '80%', alignItems: "flex-start", flexWrap: 'wrap', justifyContent: 'center' }}>
                 <CurrentBalance />
                 <BankCard getCardData={getCardData} />
-                <Charts data={chartData} />
+                <Charts data={chartData} data2={chartData2} />
             </div>
+
+            <Sidebar />
+
         </section>
     )
 }

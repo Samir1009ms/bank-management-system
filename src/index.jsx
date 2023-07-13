@@ -18,6 +18,7 @@ import History from './pages/history/History';
 import Card from './pages/card/Card';
 import CardDetails from './components/cardDetails/CardDetails';
 import Details from './pages/details/Details';
+import Settings from './pages/settings/Settings';
 
 
 
@@ -33,11 +34,11 @@ root.render(
           <Route path="/" exact element={<App />}>
             <Route path='/' element={<Home />} />
             <Route path='/wallet' element={<Wallet />} />
-            <Route path='/profile' element={<Profile />} />
+            <Route path='/settings' element={<Settings />} />
             <Route path='/history' element={<History />} />
             <Route path='/card' element={<Card />} />
             <Route path='/card/details/:id' element={<Details />} />
-            <Route path='/profile/editprofile' element={<EditProfile />} />
+            <Route path='/settings/editprofile' element={<EditProfile />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ReactECharts from "echarts-for-react";
 import { useTranslation } from 'react-i18next';
 
-export default function Charts({ data }) {
+export default function Charts({ data, data2 }) {
     const [options, setOptions] = useState({})
     const { t } = useTranslation();
     const ay = []
@@ -24,7 +24,7 @@ export default function Charts({ data }) {
                 }
             },
             legend: {
-                data: ['Data'],
+                data: ['Data', 'Data2'],
                 show: false
             },
             toolbox: {
@@ -62,6 +62,16 @@ export default function Charts({ data }) {
                         focus: 'series'
                     },
                     data: data && data.map((item) => item.amount)
+                },
+                {
+                    name: 'Data2',
+                    type: 'line',
+                    stack: 'Total',
+                    areaStyle: {},
+                    emphasis: {
+                        focus: 'series'
+                    },
+                    data: data2 && data2.map((item) => item.amount)
                 }
             ]
         };

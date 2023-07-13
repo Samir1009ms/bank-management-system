@@ -98,7 +98,7 @@ export function BankCard({ getCardData }) {
     //     }
     // }, [cardDataX])
     return (
-        <div style={{ width: '35%' }}>
+        <div style={{ width: '50%' }}>
             {cardData.length > 0 && <div className={style.cardSlider}>
                 <Swiper
                     effect="cards"

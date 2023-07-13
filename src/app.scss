@@ -47,7 +47,8 @@
     --homeR-bg-color: #FAFBFC;
     --cart-color: #5B5B5B;
     --amount-text-color: #3D424B;
-    --bank-card-bg-color: #A4B4CB;
+    // --bank-card-bg-color: #A4B4CB;
+    --bank-card-bg-color: #2f3c4e;
     --card-blur-color: linear-gradient(89.36deg, #01B8E3 13.74%, #3D7AE5 40.06%);
     --profile-bg-color: #e6ecf2;
     --box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
@@ -142,6 +143,7 @@ body.dark {
     border-radius: 14.5px;
     color: #fff;
     height: 100%;
+    border: 1px solid #3e89b47d;
     left: 0;
     overflow: hidden;
     position: absolute;

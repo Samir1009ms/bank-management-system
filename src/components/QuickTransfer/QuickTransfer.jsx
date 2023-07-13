@@ -48,11 +48,13 @@ function QuickTransfer() {
     };
 
     useEffect(() => {
-        if (cardData[cardActive]) {
-            setTra((data) => ({
-                ...data,
-                senderCardNumber: cardData[cardActive].cardNumber
-            }))
+        if (cardData) {
+            if (cardData[cardActive]) {
+                setTra((data) => ({
+                    ...data,
+                    senderCardNumber: cardData[cardActive].cardNumber
+                }))
+            }
         }
     }, [cardActive, cardData])
     function handleTransferPost() {
@@ -80,7 +82,7 @@ function QuickTransfer() {
                     <div onClick={() => handleDesign()} className={style.debit}>
                         <div className={style.debitCards}>
                             <div className={style.cardLeft}>
-                                {cardData[cardActive] &&
+                                {cardData ?
                                     <>
                                         <span className={style.cardDesign}>
                                             <span className={style.cardType}>{cardData[cardActive].cardType && cardData[cardActive].cardType}</span>
@@ -91,7 +93,16 @@ function QuickTransfer() {
                                             $ {(cardData ? (cardData[cardActive].balance) : "0000").toLocaleString("en-US")}
                                         </span>
                                     </>
-                                }
+                                    : <>
+                                        <span className={style.cardDesign}>
+                                            <span className={style.cardType}>Type</span>
+                                            <span className={style.cardNumber}>** 1111</span>
+                                        </span>
+                                        <span className={style.cardText}>
+                                            <span>{t('debitC')}</span>
+                                            &00
+                                        </span>
+                                    </>}
 
                             </div>
                             <div>

@@ -47,7 +47,7 @@ export default function Transaction() {
     const [isOpen, setIsOpen] = useState(false)
     const { t } = useTranslation()
     const [first, setFirst] = useState(0);
-    const [rows, setRows] = useState(5);
+    const [rows, setRows] = useState(8);
 
     const onPageChange = (event) => {
         setFirst(event.first);
@@ -63,11 +63,11 @@ export default function Transaction() {
     // };
 
     return (
-        loading ? "loading..." : <section style={{ backgroundColor: "var(--homeR-bg-color)", borderRadius: '10px', padding: "30px" }}>
-            <div style={{ display: "flex", flexDirection: "column" }}>
+        loading ? "loading..." : <section style={{ backgroundColor: "var(--homeR-bg-color)", borderRadius: '10px', padding: "30px", height: '94%' }}>
+            <div style={{ display: "flex", flexDirection: "column", height: '100%' }}>
                 <div style={{ display: "flex", justifyContent: "space-between" }}>
                     <h4 style={{ color: "var(--nav-text-color)" }}>Transfer History</h4>
-                    <div style={{ display: "flex", alignItems: "center" }}>
+                    <div style={{ display: "flex", alignItems: "center", height: '100%' }}>
                         <div style={{ color: "var(--nav-text-color)" }}>
                             <BiSearch style={{ fontSize: "22px", marginBottom: "-4px", marginRight: "15px" }} />
                         </div>
@@ -92,7 +92,7 @@ export default function Transaction() {
                     paginator={selectData.length > 5}
                     paginatorTemplate="PrevPageLink PageLinks NextPageLink"
                     onPage={(e) => onPageChange(e)}
-                    style={{ color: "var(--nav-text-color)" }}
+                    style={{ color: "var(--nav-text-color)", height: '100%' }}
                 >
                     {/*//! locale en az dinamik yazmaq  */}
                     <Column
