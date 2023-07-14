@@ -82,7 +82,7 @@ export default function Charts({ data, data2 }) {
     }, [data])
 
     return (
-        <div style={{ width: '30%' }}>
+        <div style={{ width: '45%' }}>
             <ReactECharts option={options} />
         </div>
     )

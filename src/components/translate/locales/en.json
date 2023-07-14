@@ -62,11 +62,14 @@
     "cardList":"Card List",
     "cardType":"Card Type",
     "cardNumber":"Card Number",
+    "cardCvv":"CVV",
+    "cardDate":"Card Date",
     "addCard":"Add Card",
     "date/time":"Date/Time",
     "namebusinees":"Name/Business",
     "transferMoney":"Transfer Money",
     "Edit profile information":"Edit Profile Infomation",
+    "editprofile":"Edit Profile",
     "Notifications":"Notifications",
     "Language":"Language",
     "Security":"Security",
@@ -75,7 +78,8 @@
     "Contact us":"Contact us",
     "Privacy policy":"Privacy policy",
     "Card":"Card",
-    "details":"Card Details"
+    "details":"Card Details",
+    "Sound":"Sound"
 
 
 

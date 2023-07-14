@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { AuthService } from '../../services/auth.services.js'
 import LanguageSwitcher from '../../components/translate/TranslateSwitch.jsx'
 import { useTranslation } from 'react-i18next'
+import { Theme } from '../../components/theme/theme.jsx'
 
 
 var counter = 0
@@ -69,7 +70,7 @@ export function Navbar() {
         <>
             <div onClick={() => toggleMenu()} className={`lg:hidden ${s.hamburger}`}>X</div>
             <header className={`${s.header}  animate__animated col-2 lg:flex  ${isOpen ? `${s.active} ` : ''}`}>
-                <LanguageSwitcher />
+                {/* <LanguageSwitcher /> */}
                 <nav className={s.navTop}>
                     <ul className={s.navList}>
                         {routing.map((route, index) => {
@@ -100,7 +101,7 @@ export function Navbar() {
                                         className={`${s.navListText}  ${hover2 === index && s.hover}`}
                                     >
                                         <Link
-                                            className={`${s.navLink} `}
+                                            className={`${s.navLink} ${e.text === "" && s.links} `}
                                             onMouseEnter={() => active2(index)}
                                             onMouseLeave={() => deActive2(index)}
                                         >
@@ -112,6 +113,9 @@ export function Navbar() {
                             })
                         }
                     </ul>
+                    <div style={{ display: 'none' }}>
+                        <Theme />
+                    </div>
                 </nav>
             </header>
         </>

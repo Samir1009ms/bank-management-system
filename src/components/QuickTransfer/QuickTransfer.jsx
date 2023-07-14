@@ -29,7 +29,6 @@ function QuickTransfer() {
         }
     }
 
-
     const [tra, setTra] = useState({
         senderCardNumber: '',
         receiverCardNumber: '',
@@ -39,7 +38,6 @@ function QuickTransfer() {
     const handleChange = (e) => {
         const { name, value } = e.target;
         const parsedValue = parseFloat(value);
-
         setTra((prevTra) => ({
             ...prevTra,
             [name]: name === "amount" ? (isNaN(parsedValue) || parsedValue === 0) ? null : parsedValue : value,
@@ -66,8 +64,6 @@ function QuickTransfer() {
     }
     const { t } = useTranslation()
 
-
-    console.log(loading);
     return (
         loading ? "loading" : <div className={`${style.transfer}`}>
             <h3 className={`${style.textW}`}>{t('quickT')}</h3>
@@ -103,7 +99,6 @@ function QuickTransfer() {
                                             &00
                                         </span>
                                     </>}
-
                             </div>
                             <div>
                                 <FiChevronDown />

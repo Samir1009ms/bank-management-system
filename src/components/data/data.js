@@ -3,7 +3,7 @@ import { IoColorPaletteOutline } from 'react-icons/io5'
 import { HiLanguage } from 'react-icons/hi2'
 import { ImProfile } from 'react-icons/im'
 import { MdSecurity, MdOutlineHelpOutline, MdContacts, MdOutlinePrivacyTip } from 'react-icons/md'
-
+import { FaMusic } from 'react-icons/fa'
 export const profileTop = [
     {
         text: 'Edit profile information',
@@ -18,8 +18,8 @@ export const profileTop = [
         button: true
     },
     {
-        text: 'Language',
-        icon: <HiLanguage />,
+        text: 'Sound',
+        icon: <FaMusic />,
         status: true,
         button: true
     }

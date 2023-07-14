@@ -8,6 +8,7 @@ import Charts from "../../components/wallet/Charts";
 import axios from "axios";
 import moment from "moment";
 import Sidebar from "../../components/SideBar/Sidebar";
+import AddCart from "../../components/add cart/AddCart";
 
 export function Wallet() {
     const dispatch = useDispatch()
@@ -97,6 +98,7 @@ export function Wallet() {
             <div style={{ display: "flex", width: '80%', alignItems: "flex-start", flexWrap: 'wrap', justifyContent: 'center' }}>
                 <CurrentBalance />
                 <BankCard getCardData={getCardData} />
+                <AddCart />
                 <Charts data={chartData} data2={chartData2} />
             </div>
 

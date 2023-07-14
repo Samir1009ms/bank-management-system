@@ -1,0 +1,117 @@
+.AddCart {
+    width: 49%;
+    background: var(--transfer-cont-bg-color);
+    border-radius: 10px;
+
+    .container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+
+        .top {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            column-gap: 14px;
+            padding: 16px 8px 0;
+
+            .transferCont {
+                width: 93%;
+                padding: 8px 12px;
+                border-radius: 8px !important;
+                background: var(--transfer-Input-bg-color) !important;
+                box-shadow: var(--box-shadow);
+
+                // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
+                .numberText {
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 120%;
+                    display: flex;
+                    align-items: center;
+                    color: #A4B4CB;
+                }
+
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+
+                .transferInput {
+                    height: 27px;
+                    border: none !important;
+                    width: 93%;
+                    border-radius: 8px !important;
+                    background: none;
+                    color: var(--amount-text-color);
+                    border: none !important;
+                    text-indent: 3px;
+                    font-size: 16px;
+                    line-height: 120%;
+                    font-weight: 700;
+
+                    &::placeholder {
+                        color: var(--amount-text-color);
+                        opacity: 0.4;
+                    }
+
+                    // background: var(--transfer-Input-bg-color) !important;
+                    // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px,
+                    //  rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2)
+                    //   0px -3px 0px inset !important;
+                }
+
+            }
+        }
+
+        .cards {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+
+            .top {
+                width: 47%;
+
+                .transferCont {
+                    width: 100%;
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+
+
+.transferButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    column-gap: 14px;
+    padding: 0px 8px 16px;
+    margin-top: 10px;
+
+    .transferBtnContainer {
+        width: 93%;
+
+        .transferBtn {
+            width: 100%;
+            padding: 12px 11px 12px;
+            background: var(--btn-bg-color);
+            border-radius: 10px;
+            color: white;
+            font-weight: 500;
+            margin: 0;
+            box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
+
+        }
+    }
+}

@@ -7,6 +7,7 @@ import { BiHelpCircle } from "react-icons/bi";
 import s from "../design/style.module.scss";
 import { Theme } from "../../../components/theme/theme"
 import { BsCreditCard } from "react-icons/bs";
+import LanguageSwitcher from "../../../components/translate/TranslateSwitch";
 
 export const routing = [
 
@@ -49,10 +50,12 @@ export const routing = [
 
 export const mod = [
   {
-    text: "help",
-    icon: <BiHelpCircle className={s.icon} />,
+    // icon: <Theme></Theme>
+    text: "",
+    icon: <LanguageSwitcher />
   },
-  {
-    icon: <Theme></Theme>
-  },
+  // {
+  //   text: "help",
+  //   icon: <BiHelpCircle className={s.icon} />,
+  // }
 ]

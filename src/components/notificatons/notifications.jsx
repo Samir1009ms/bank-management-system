@@ -7,10 +7,10 @@ import { useTranslation } from 'react-i18next';
 import { Badge } from "primereact/badge";
 import { HiOutlineBanknotes } from 'react-icons/hi2'
 import { MdClear } from 'react-icons/md'
+import audi from '../../assets/water_droplet.mp3'
 
 export function Notification() {
     const [notifications, setNotifications] = useState([]);
-
     useEffect(() => {
         const socket = io('http://localhost:3000');
 
@@ -25,10 +25,14 @@ export function Notification() {
         fetchNotifications();
 
         const userId = localStorage.getItem("userId");
-
         socket.on('notification', (message) => {
             if (userId === message.sender) {
                 setNotifications((prevNotifications) => [...prevNotifications, message]);
+            }
+            const sound = localStorage.getItem("sound")
+            if (sound === "true") {
+                const audio = new Audio(audi);
+                audio.play();
             }
             console.log(message);
         });
@@ -39,7 +43,6 @@ export function Notification() {
             socket.disconnect();
         };
     }, []);
-
 
     function delet(e) {
         setNotifications(notifications.filter((x) => x._id !== e))
@@ -84,7 +87,6 @@ export function Notification() {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-
             if (notificationRef.current && !notificationRef.current.contains(event.target) && !iconRef.current.contains(event.target)) {
                 setNotificat("hidden");
             }

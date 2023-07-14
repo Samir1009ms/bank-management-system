@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function BankCards() {
     let cardData = useSelector((state) => state.card.cards);
-    console.log(cardData);
+    // console.log(cardData);
     const [state, setState] = useState({
         number: '0000000000000000',
         expiry: '00/00',
@@ -36,7 +36,6 @@ export default function BankCards() {
                     firstIndex = Math.max(currentIndex - 1, 1);
                     lastIndex = Math.min(firstIndex + 3, cardData.length);
                 }
-
                 return Array.from({ length: lastIndex - firstIndex + 1 }, (_, index) => index + firstIndex);
             }
         }

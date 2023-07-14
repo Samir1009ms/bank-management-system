@@ -22,6 +22,8 @@ export function HomeHeader() {
             setPathname(t('dashboard'))
         } else if (location.pathname === `/card/details/${id}`) {
             setPathname(t(`${location.pathname.slice(6, 13)}`))
+        } else if (location.pathname === `/settings/editprofile`) {
+            setPathname(t(`${location.pathname.slice(10, 21)}`))
         } else {
             setPathname(t(`${location.pathname.slice(1)}`))
         }
@@ -48,7 +50,7 @@ export function HomeHeader() {
     const filee = (dataURL) => {
         const blob = dataURLtoBlob(dataURL);
         setImg(URL.createObjectURL(blob))
-        console.log(URL.createObjectURL(blob));
+        // console.log(URL.createObjectURL(blob));
     }
 
     const dataURLtoBlob = (dataURL) => {

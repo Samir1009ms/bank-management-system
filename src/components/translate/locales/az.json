@@ -62,11 +62,14 @@
     "cardType":"Kart növü",
     "cardNumber":"Kart nömrəsi",
     "cardHolder":"Kart sahibi",
+    "cardDate":"Kart tarixi",
     "addCard":"Kart əlavə et",
+    "cardCvv":"CVV",
     "date/time":"Tarix / Vaxt",
     "namebusinees":"Ad / Biznes",
     "transferMoney":"Pul köçürmək",
     "Edit profile information":"Profil məlumatlarını redaktə et",
+    "editprofile":"Profil məlumatlarını redaktə et",
     "Notifications":"Bildirişlər",
     "Language":"Dil",
     "Security":"Təhlükəsizlik",
@@ -75,7 +78,8 @@
     "Theme":"Tema",
     "Help & Support":"Yardım və dəstək",
     "Card":"Kart",
-    "details":"Kart detalları"
+    "details":"Kart detalları",
+    "Sound":"Səs"
 
 
   
