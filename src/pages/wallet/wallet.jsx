@@ -33,8 +33,9 @@ export function Wallet() {
     const [chartData2, setChartData2] = useState([])
 
     async function getCardData(number) {
+        const BASE_URL = 'http://localhost:5500/api'
         try {
-            await axios.get(`http://localhost:5500/api/getTransactionsDetails/${number}`).then((res) => {
+            await axios.get(`${BASE_URL}/getTransactionsDetails/${number}`).then((res) => {
                 console.log(res.data);
                 setCardDataX(res.data);
                 const data = res.data.filter((transaction) => transaction.type !== 'Outgoing')

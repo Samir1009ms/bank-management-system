@@ -56,7 +56,8 @@ export default function AddCart() {
 
     async function handleTransferPost() {
         const userId = localStorage.getItem("userId");
-        await axios.post(`http://localhost:5500/api/addBankCard/${userId}`, {
+        const BASE_URL = 'http://localhost:5500/api'
+        await axios.post(`${BASE_URL}/addBankCard/${userId}`, {
             cardNumber: card.cardNumber,
             cardDate: card.cardDate,
             cardCvv: card.cardCvv,

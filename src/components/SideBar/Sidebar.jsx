@@ -29,7 +29,7 @@ export default function Sidebar({ styles }) {
             ?
             // <Loading />
             "sidebar loading"
-            : <section className={`pt-2 mt-0 ${style.left} ${styles.hidden}`}>
+            : <section className={`pt-2 mt-0 ${style.left} ${styles?.hidden}`}>
                 <div className={`grid ${style.container} row-gap-6  justify-content-center m-0`} style={{ width: "100%", color: "white" }}>
                     <BankCards />
                     <div className='grid hidden sm:hidden lg:block' style={{ width: "98%" }}>

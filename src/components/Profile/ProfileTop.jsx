@@ -82,12 +82,9 @@ export default function ProfileTop() {
     }
 
     return (
-        <section style={{
-            width: '60%', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '0 0 45px', background: 'var(--summary-bg-color)', borderRadius: '14px'
-        }}>
-            <section style={{ width: '70%', display: 'flex', alignItems: 'center    ', justifyContent: 'flex-start', flexDirection: 'column', rowGap: '10px' }
-            } >
-                <div style={{ position: 'relative', width: '20%', marginTop: '-40px' }}>
+        <section className={style.profileTop} >
+            <section className={style.profileContainer}  >
+                <div className={style.top} >
                     <Avatar
                         label={user && user.name[0]}
                         size="xlarge"

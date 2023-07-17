@@ -1,3 +1,5 @@
+@import '../../variables/mixins';
+
 .pen {
     color: var(--nav-text-color) !important;
     background: var(--summary-bg-color);
@@ -7,6 +9,44 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
+}
+
+.profileTop {
+    width: 60%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 0 45px;
+    background: var(--summary-bg-color);
+    border-radius: 14px;
+
+    @include mobile {
+        width: 100%;
+    }
+
+    .profileContainer {
+        width: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-direction: column;
+        row-gap: 10px;
+
+        @include mobile {
+            width: 91%;
+        }
+
+        .top {
+            // style={{ position: 'relative', width: '20%', marginTop: '-40px' }}
+            width: 20%;
+            margin-top: -40px;
+            position: relative;
+
+            @include mobile {
+                width: 30%;
+            }
+        }
+    }
 }
 
 .input {
@@ -51,13 +91,17 @@
 
 
 .profile {
-width: 60%;
-display: flex;
-align-items: flex-start;
-justify-content: center;
-padding: 30px 20px;
-background: var(--summary-bg-color);
-border-radius: 10px;
+    width: 60%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 30px 20px;
+    background: var(--summary-bg-color);
+    border-radius: 10px;
+
+    @include mobile {
+        width: 100%;
+    }
 
     .container {
         width: 100%;
@@ -83,6 +127,7 @@ border-radius: 10px;
                 justify-content: center;
                 column-gap: 10px;
                 font-size: 16px;
+
                 // color: var(--nav-text-color);
                 .icon {
                     font-size: 19px;
@@ -91,9 +136,9 @@ border-radius: 10px;
                 }
             }
 
-            .group{
-            
-                .editBtn{
+            .group {
+
+                .editBtn {
                     border: 1px solid rgba(46, 121, 191, 0.808);
                     padding: 1px 8.5px;
                     border-radius: 5px;
@@ -102,7 +147,8 @@ border-radius: 10px;
                     color: var(--nav-text-color);
                     margin: 0;
                 }
-                .toggleBtn{
+
+                .toggleBtn {
                     border: 1px solid rgba(46, 121, 191, 0.808);
                     padding: 1px 14px;
                     border-radius: 5px;

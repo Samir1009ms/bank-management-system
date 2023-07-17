@@ -2,11 +2,11 @@ import React from 'react'
 import ProfileTop from '../../components/Profile/ProfileTop'
 import ProfileContainer from '../../components/Profile/ProfileContainer'
 import { profileTop, profileCenter, profileBottom } from '../../components/data/data'
-
+import style from './style.module.scss'
 export default function Settings() {
     return (
         <div>
-            <section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', rowGap: "30px", padding: "80px 0" }}>
+            <section className={style.settings} >
                 <ProfileTop />
                 <ProfileContainer data={profileTop} />
                 <ProfileContainer data={profileCenter} />

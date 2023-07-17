@@ -14,8 +14,9 @@ export default function CardDetails() {
     const [loading, setLoading] = useState(true);
 
     async function getCardTransactions(number) {
+        const BASE_URL = 'http://localhost:5500/api'
         try {
-            const res = await axios.get(`http://localhost:5500/api/getTransactionsDetails/${number}`);
+            const res = await axios.get(`${BASE_URL}/getTransactionsDetails/${number}`);
             console.log(res.data);
             // setCard(res.data.card);
             setData(res.data);
@@ -41,7 +42,9 @@ export default function CardDetails() {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:5500/api/getCardDetails/${id}`).then((res) => {
+        const BASE_URL = process.env.BASE_URL;
+
+        axios.get(`${BASE_URL}/getCardDetails/${id}`).then((res) => {
             console.log(res.data);
             setCard(res.data.card);
             getCardTransactions(res.data.card.cardNumber);

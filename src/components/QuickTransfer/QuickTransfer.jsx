@@ -55,7 +55,8 @@ function QuickTransfer() {
     }, [cardActive, cardData])
 
     function handleTransferPost() {
-        axios.post("http://localhost:5500/api/transferMoney", {
+        const BASE_URL = 'http://localhost:5500/api'
+        axios.post(`${BASE_URL}/transferMoney`, {
             senderCardNumber: tra.senderCardNumber,
             receiverCardNumber: tra.receiverCardNumber,
             amount: tra.amount
