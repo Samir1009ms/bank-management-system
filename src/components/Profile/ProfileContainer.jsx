@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types';
-import LanguageSwitcher from '../translate/TranslateSwitch';
 import { Theme } from '../theme/theme';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import style from './design/style.module.scss'
 import { tr } from 'date-fns/locale';
-// import audi from '../../assets/water_droplet.mp3'
 export default function ProfileContainer({ data }) {
     const { t } = useTranslation()
     const { i18n } = useTranslation();
@@ -19,8 +17,6 @@ export default function ProfileContainer({ data }) {
         const sounds = localStorage.getItem("sound")
         if (sounds === "true") {
             setSound(true)
-            // const audio = new Audio(audi);
-            // audio.play();
         }
         else {
             setSound(false)
@@ -43,14 +39,13 @@ export default function ProfileContainer({ data }) {
         if (sound) {
             localStorage.setItem("sound", false)
             setSound(false)
-            // const audio = new Audio(audi);
-            // audio.play();
         }
         else {
             localStorage.setItem("sound", true)
             setSound(true)
         }
     }
+
     function handleClickNotification() {
         if (notification) {
             localStorage.setItem("notification", false)
@@ -91,7 +86,6 @@ export default function ProfileContainer({ data }) {
         </section>
     )
 }
-
 
 ProfileContainer.propTypes = {
     data: PropTypes.arrayOf(PropTypes.shape({

@@ -9,6 +9,7 @@ import { EffectCards } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/effect-cards';
 import './design/swiper.scss'
+import './design/style.module.scss'
 import axios from 'axios';
 import { set } from 'lodash';
 import moment from 'moment';
@@ -16,10 +17,7 @@ import moment from 'moment';
 export function BankCard({ getCardData }) {
     let cardData = useSelector((state) => state.card.cards);
     // let total = useSelector((state) => state.transactionsSlice.total);
-
     // const [currentCardIndex, setCurrentCardIndex] = useState(0);
-
-
 
     const [state, setState] = useState({
         number: '0000000000000000',
@@ -30,9 +28,10 @@ export function BankCard({ getCardData }) {
     });
 
     const { t } = useTranslation();
-    const [currentIndex, setCurrentIndex] = useState(0);
+    const [currentIndex, setCurrentIndex] = useState(Math.floor((cardData.length - 1) / 2));
     // const [cardDataX, setCardDataX] = useState([]);
     const slideChangeHandler = (swiper) => {
+        console.log(swiper.activeIndex);
         setCurrentIndex(swiper.activeIndex);
     };
     // const [chartData, setChartData] = useState([])
@@ -75,7 +74,6 @@ export function BankCard({ getCardData }) {
             console.log(cardData[currentIndex] && cardData[currentIndex].cardNumber);
             getCardData(cardData[currentIndex] && cardData[currentIndex].cardNumber);
         }
-
     }, [currentIndex, cardData])
 
     // useEffect(() => {
@@ -98,14 +96,14 @@ export function BankCard({ getCardData }) {
     //     }
     // }, [cardDataX])
     return (
-        <div style={{ width: '50%' }}>
+        <div className={style.BankCard}>
             {cardData.length > 0 && <div className={style.cardSlider}>
                 <Swiper
                     effect="cards"
                     grabCursor={true}
                     modules={[EffectCards]}
                     onSwiper={(swiper) => {
-                        swiper.slideTo(Math.floor(cardData.length / 2));
+                        swiper.slideTo(Math.floor((cardData.length - 1) / 2));
                         slideChangeHandler(swiper);
                     }}
                     onSlideChange={slideChangeHandler}

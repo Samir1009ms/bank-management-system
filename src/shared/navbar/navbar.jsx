@@ -3,12 +3,9 @@ import { mod, routing } from './config/routing.jsx'
 import s from './design/style.module.scss'
 import { useEffect, useState } from 'react'
 import { AuthService } from '../../services/auth.services.js'
-import LanguageSwitcher from '../../components/translate/TranslateSwitch.jsx'
 import { useTranslation } from 'react-i18next'
 import { Theme } from '../../components/theme/theme.jsx'
-
-
-var counter = 0
+import { TbMenu2 } from 'react-icons/tb'
 
 export function Navbar() {
     const location = useLocation()
@@ -17,25 +14,18 @@ export function Navbar() {
 
     function active(e) {
         setHover(e)
-        // setHover2(e)
-        // console.log(e);
     }
     function deActive(e) {
         setHover(null)
-        // setHover2(null)
     }
     function active2(e) {
-        // setHover(e)
         setHover2(e)
-        // console.log(e);
     }
     function deActive2(e) {
-        // setHover(null)
         setHover2(null)
     }
 
     const [isAdmin, setIsAdmin] = useState(false)
-
 
     useEffect(() => {
         const fetchData = async () => {
@@ -53,7 +43,6 @@ export function Navbar() {
         };
 
         window.addEventListener('resize', handleResize);
-
         return () => {
             window.removeEventListener('resize', handleResize);
         };
@@ -68,7 +57,7 @@ export function Navbar() {
     };
     return (
         <>
-            <div onClick={() => toggleMenu()} className={`lg:hidden ${s.hamburger}`}>X</div>
+            <div onClick={() => toggleMenu()} className={`lg:hidden ${s.hamburger}`}><TbMenu2 /></div>
             <header className={`${s.header}  animate__animated col-2 lg:flex  ${isOpen ? `${s.active} ` : ''}`}>
                 {/* <LanguageSwitcher /> */}
                 <nav className={s.navTop}>
@@ -92,7 +81,6 @@ export function Navbar() {
                             )
                         })}
                     </ul>
-                    {/* {isAdmin && <p>sss</p>} */}
                     <ul className={s.navList}>
                         {
                             mod.map((e, index) => {

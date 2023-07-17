@@ -2,8 +2,6 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { ApiService } from '../../services/api.services';
 import { setTransactions, dataT, setTotalIncomne } from "../expense/transactions-slice";
 
-
-
 export const getTransactions = createAsyncThunk(
     'getTransactions',
     async (_, thunkApi) => {
@@ -13,9 +11,6 @@ export const getTransactions = createAsyncThunk(
             thunkApi.dispatch(setTransactions(data))
             thunkApi.dispatch(dataT(data))
             thunkApi.dispatch(setTotalIncomne(data))
-
-            // console.log(data);
-            // console.log("ss");
             return data
         }
         catch (err) {

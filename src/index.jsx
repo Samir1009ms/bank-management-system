@@ -12,17 +12,14 @@ import { Provider } from 'react-redux';
 import cartStore from './store/store';
 import { I18nextProvider } from 'react-i18next';
 import i18n from './i18';
-import Profile from './pages/profile/Profile';
 import EditProfile from './components/Profile/EditProfile';
 import History from './pages/history/History';
 import Card from './pages/card/Card';
-import CardDetails from './components/cardDetails/CardDetails';
 import Details from './pages/details/Details';
 import Settings from './pages/settings/Settings';
 
-
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   // <React.StrictMode>
   <Provider store={cartStore}>

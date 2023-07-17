@@ -13,7 +13,6 @@ const cardSlice = createSlice({
     reducers: {
         setCard: (state, action) => {
             state.cardData = action.payload;
-            // console.log(state.cardData);
             state.cards = state.cardData.cards
         },
         setLoading: (state, action) => {
@@ -23,7 +22,6 @@ const cardSlice = createSlice({
             state.error = action.payload;
         },
         setTotal: (state, action) => {
-            // console.log(action.payload);
             state.total = action.payload.reduce((acc, item) => (acc + item.balance), 0)
         }
     },
@@ -39,9 +37,7 @@ const cardSlice = createSlice({
                 state.cards = state.cardData.cards
             })
             .addCase(getCard.rejected, (state, action) => {
-
                 state.loading = false;
-
                 state.error = action.error.message;
             });
     },

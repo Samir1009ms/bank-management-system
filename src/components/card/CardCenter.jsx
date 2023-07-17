@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { AiFillPlusCircle } from 'react-icons//ai'
 
 export default function CardCenter() {
+
     let cardData = useSelector((state) => state.card.cards);
     const [state, setState] = useState({
         number: '0000000000000000',

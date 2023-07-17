@@ -1,7 +1,13 @@
+@import '../../variables/mixins';
+
 .AddCart {
     width: 49%;
     background: var(--transfer-cont-bg-color);
     border-radius: 10px;
+
+    @include mobile {
+        width: 100%;
+    }
 
     .container {
         width: 100%;
@@ -24,7 +30,10 @@
                 background: var(--transfer-Input-bg-color) !important;
                 box-shadow: var(--box-shadow);
 
-                // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
+                // box-shadow: 
+                // rgba(76, 75, 75, 0.4) 0px 2px 4px, 
+                // rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, 
+                // rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
                 .numberText {
                     font-weight: 600;
                     font-size: 14px;
@@ -59,11 +68,11 @@
                     }
 
                     // background: var(--transfer-Input-bg-color) !important;
-                    // box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px,
-                    //  rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2)
-                    //   0px -3px 0px inset !important;
+                    // box-shadow: 
+                    // rgba(76, 75, 75, 0.4) 0px 2px 4px,
+                    // rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, 
+                    // rgba(76, 75, 75, 0.2) 0px -3px 0px inset !important;
                 }
-
             }
         }
 
@@ -85,11 +94,6 @@
     }
 }
 
-
-
-
-
-
 .transferButton {
     display: flex;
     align-items: center;
@@ -110,8 +114,10 @@
             color: white;
             font-weight: 500;
             margin: 0;
-            box-shadow: rgba(76, 75, 75, 0.4) 0px 2px 4px, rgba(76, 75, 75, 0.3) 0px 7px 13px -3px, rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
-
+            box-shadow:
+                rgba(76, 75, 75, 0.4) 0px 2px 4px,
+                rgba(76, 75, 75, 0.3) 0px 7px 13px -3px,
+                rgba(76, 75, 75, 0.2) 0px -3px 0px inset;
         }
     }
 }

@@ -18,6 +18,7 @@ export default function BankCards() {
     });
 
     const [currentCardIndex, setCurrentCardIndex] = useState(0);
+
     const getVisibleIndexes = () => {
         if (cardData && cardData.length > 0) {
             if (cardData.length <= 2) {

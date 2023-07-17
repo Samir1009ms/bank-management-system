@@ -11,15 +11,11 @@ const transactionsSlice = createSlice({
         incoming: [],
         outcoming: [],
         monthData: null
-
     },
     reducers: {
         setTransactions: ((state, action) => {
-            // console.log(action.payload);
-            // console.log(":sss");
             state.transactions = action.payload
             state.incoming = action.payload.filter((e) => e.type !== "Outgoing")
-
         }),
 
         setLoading: ((state, action) => {
@@ -27,7 +23,6 @@ const transactionsSlice = createSlice({
         }),
         setError: (state, action) => {
             state.error = action.payload;
-
         },
         dataT: ((state, action) => {
             let xerc = [...action.payload]
@@ -81,8 +76,6 @@ const transactionsSlice = createSlice({
             .addCase(getTransactions.rejected, (state, action) => {
                 state.loading = false
                 state.error = action.error.message
-                // console.log("sss");
-
             })
     }
 })

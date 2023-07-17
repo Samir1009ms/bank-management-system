@@ -1,7 +1,7 @@
 export function Pagination({ cardsPerPage, totalCards, currentPage, onPageChange, s }) {
 
-
     const pageNumbers = [];
+
     for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
         pageNumbers.push(i);
         console.log(pageNumbers);

@@ -1,9 +1,7 @@
 import axios from "axios";
 // const BASE_URL = "https://ecommerce-back-end-theta.vercel.app/api/";
 const BASE_URL = "http://localhost:5500/api/"
-// const BASE_URL = "http://192.168.42.83:5500/api/"
-
-
+// const BASE_URL = "http://192.168.42.31:5500/api/"
 
 export class ApiService {
 
@@ -32,7 +30,4 @@ export class ApiService {
     static async updateProfile(userId, value) {
         return await axios.put(`${BASE_URL}updateProfile/${userId}`, { value })
     }
-
-
-
 }

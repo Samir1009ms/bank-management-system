@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom';
 import Transaction from './Transactions';
 import Loading from '../loading/Loading';
 
-
 export default function CardDetails() {
     const { id } = useParams();
     const [card, setCard] = useState();
@@ -50,8 +49,6 @@ export default function CardDetails() {
         ).catch((err) => {
             console.log(err);
         })
-
-
     }, [])
 
     const [dataGroup, setDataGroup] = useState([])
@@ -77,8 +74,6 @@ export default function CardDetails() {
         }
     }, [dataX])
 
-
-
     return (
         <section>
             {loading ? <Loading /> :
@@ -91,7 +86,6 @@ export default function CardDetails() {
                     </div>
                 </>
             }
-
         </section>
     )
 }

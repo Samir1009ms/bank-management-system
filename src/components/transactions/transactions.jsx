@@ -9,13 +9,16 @@ import 'moment/locale/az'
 import { useTranslation } from "react-i18next";
 import { BsFillCalendarWeekFill } from 'react-icons/bs'
 import { FiChevronDown } from 'react-icons/fi'
+
 function Transaction() {
+
     const lang = localStorage.getItem("lang")
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
     const [filters, setFilters] = useState()
     const d = useSelector((state) => state.transactionsSlice.outcoming)
     const [selected, setSelected] = useState("All")
     const [selectData, setSelectData] = useState([])
+
     useEffect(() => {
         if (d) {
             const filtr = d.filter((e) => {
@@ -24,6 +27,7 @@ function Transaction() {
                 return month === selectedMonth
             })
             setFilters(filtr);
+
             if (selected === "All") {
                 const allData = filtr.flatMap((e) => e.transctions)
                 setSelectData(allData)
@@ -38,17 +42,22 @@ function Transaction() {
             }
         }
     }, [d, selectedMonth, selected])
+
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(5);
+
     const onPageChange = (event) => {
         setFirst(event.first);
         setRows(event.rows);
     };
+
     function select(e) {
         setSelected(e)
     }
+
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false)
+
     return (
         <div className={`flex w-full gap-3 mt-6 ${style.transactions}`}>
             <h2 className={`${style.basliq}`}>{t('transactions')}</h2>

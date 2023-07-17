@@ -2,13 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCard } from '../../store/asyncthunk/bankCard-service';
 import { io } from "socket.io-client";
-import { BankCard } from "../../components/wallet/bankCards";
-import CurrentBalance from "../../components/wallet/CurrentBalance";
-import Charts from "../../components/wallet/Charts";
 import axios from "axios";
 import moment from "moment";
-import Sidebar from "../../components/SideBar/Sidebar";
+import style from './style.module.scss'
+
+import CurrentBalance from "../../components/wallet/CurrentBalance";
+import { BankCard } from "../../components/wallet/bankCards";
 import AddCart from "../../components/add cart/AddCart";
+import Sidebar from "../../components/SideBar/Sidebar";
+import Charts from "../../components/wallet/Charts";
+import Transactions from "../../components/wallet/Transactions";
 
 export function Wallet() {
     const dispatch = useDispatch()
@@ -66,19 +69,19 @@ export function Wallet() {
                 console.log(err);
             }
             )
-
         }
         catch (e) {
             console.log(e)
         }
     }
-    const [group, setGroup] = useState([])
+
+    const [groups, setGroup] = useState([])
     useEffect(() => {
         if (cardDataX.length > 0) {
             const data = [...cardDataX]
             const sort = data.sort((a, b) => b.date.localeCompare(a.date))
             const dataGroup = sort.reduce((acc, date) => {
-                const [month, year] = moment(date.date).format("MMMM YYYY").split(" ")
+                const [month, year] = moment(date.date).format("MMMM DD YYYY").split(" ")
                 const dataKey = `${month} ${year}`
                 if (!acc[dataKey]) {
                     acc[dataKey] = []
@@ -86,24 +89,29 @@ export function Wallet() {
                 acc[dataKey].push(date)
                 return acc
             }, {})
-            const group = Object.entries(dataGroup).map(([date, transactions]) => ({ date, transactions }))
+            const group = Object.entries(dataGroup).map(([date, transactions]) => ({
+                date,
+                transactions
+            }))
             console.log(group);
             setGroup(group)
-            // ! dataGroup adinda Transactions getmelidi
+            console.log(group);
+            // !dataGroup adinda Transactions getmelidi
+        } else {
+            setGroup([])
         }
     }, [cardDataX])
 
     return (
-        <section style={{ color: 'var(--nav-text-color)', display: "flex", width: "100%", paddingTop: '30px' }}>
-            <div style={{ display: "flex", width: '80%', alignItems: "flex-start", flexWrap: 'wrap', justifyContent: 'center' }}>
-                <CurrentBalance />
+        <section className={style.wallet}>
+            <div className={style.container}>
+                {/* <CurrentBalance /> */}
                 <BankCard getCardData={getCardData} />
-                <AddCart />
                 <Charts data={chartData} data2={chartData2} />
+                <AddCart />
+                <Transactions selectData={groups && groups} />
             </div>
-
-            <Sidebar />
-
+            <Sidebar styles={style} />
         </section>
     )
 }

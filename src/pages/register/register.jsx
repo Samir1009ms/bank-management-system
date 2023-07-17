@@ -5,8 +5,6 @@ import { Password } from "primereact/password";
 import { Button } from "primereact/button";
 import { Checkbox } from "primereact/checkbox";
 import { Link, useNavigate } from "react-router-dom";
-
-
 import style from "./design/style.module.scss"
 import { useTranslation } from "react-i18next";
 
@@ -19,14 +17,12 @@ export function Register() {
     const [name, setName] = useState('');
     const [checked, setChecked] = useState(false);
     const [disabled, setDisabled] = useState(true);
-
     const navigate = useNavigate();
 
     const handleRegister = (event) => {
         event.preventDefault();
         setMessage('');
         setLoading(true)
-
         AuthService.register(name, email, password)
             .then((data) => {
                 console.log(data);
@@ -37,8 +33,6 @@ export function Register() {
                 console.log(error);
                 setLoading(false)
             })
-
-
     }
 
     const handlePassword = () => {
@@ -86,19 +80,18 @@ export function Register() {
         }
     }, [])
 
-
-    async function isLogged(){
-        try{
+    async function isLogged() {
+        try {
             await AuthService.getCurrentUser()
             navigate("/")
-        }catch{
+        } catch {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         isLogged()
 
-    },[])
+    }, [])
 
     return (
         <main className={`${style.main} formgrid grid justify-content-center xl:col-8 col-12 md:col-10 sm:col-12`}>
@@ -129,7 +122,6 @@ export function Register() {
                             <label className={style.auth} htmlFor="password">{t('cPassword')}</label>
                             {message && <small className={style.error}>{message}</small>}
                             {/* {message && <div>{message}</div>} */}
-
                         </span>
                     </div>
                     <div className="card flex justify-content-center col-12">

@@ -18,8 +18,6 @@ export function AccountSummary({ filter }) {
         setIncomes(incomne && incomne.reduce((acc, amount) => (acc + amount.amount), 0))
     }, [filter])
 
-
-
     const { t } = useTranslation()
 
     return (
@@ -44,6 +42,5 @@ export function AccountSummary({ filter }) {
             </div>
             <DoughnutChartDemo incom={incomes} outcom={outgomings}></DoughnutChartDemo>
         </div>
-
     )
 }

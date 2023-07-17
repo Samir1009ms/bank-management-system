@@ -9,9 +9,6 @@ import { FiChevronDown } from 'react-icons/fi';
 import style from './design/style.module.scss'
 import { useTranslation } from 'react-i18next';
 import { BiSearch } from 'react-icons/bi';
-import { IoEllipsisVerticalSharp } from 'react-icons/io5';
-import { AiOutlineInfoCircle } from 'react-icons/ai';
-import { ImCancelCircle } from 'react-icons/im';
 
 export default function Transaction() {
     const d = useSelector((state) => state.transactionsSlice.outcoming)
@@ -19,7 +16,7 @@ export default function Transaction() {
 
     const lang = localStorage.getItem("lang")
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
-    const [filters, setFilters] = useState()
+    // const [filters, setFilters] = useState()
     const [selected, setSelected] = useState("All")
     const [selectData, setSelectData] = useState([])
 
@@ -144,24 +141,9 @@ export default function Transaction() {
                             <>
                                 <div>{rowData.cardNumber.slice(0, 4) + " ** " + rowData.cardNumber.slice(12)}</div>
                             </>
-                        )}></Column>
-                    {/* <Column
-                        style={{ width: "10px " }}
-                        body={(rowData) => (
-                            <div style={{ position: "relative" }}>
-                                <IoEllipsisVerticalSharp onClick={() => handleRowClick(rowData)} style={{ cursor: 'pointer' }} />
-                                {activeRow === rowData && (
-                                    <div style={{ position: 'absolute', left: '-67px', bottom: '-18px', width: '90px', background: 'var(--table-dropDown-bg)', color: 'var(--nav-text-color)', borderRadius: "10px", padding: '8px 5px' }}>
-                                        <span onClick={() => console.log(rowData)} style={{ cursor: "pointer", fontSize: "11px", display: "flex", alignItems: 'center', columnGap: "6px", marginBottom: '6px' }}>
-                                            <AiOutlineInfoCircle /> view details
-                                        </span>
-                                        <span onClick={() => handleRowClick(false)} style={{ cursor: "pointer", display: "flex", alignItems: 'center', columnGap: "6px" }}>
-                                            <ImCancelCircle />  cancel
-                                        </span>
-                                    </div>
-                                )}
-                            </div>
-                        )}></Column> */}
+                        )}
+                    >
+                    </Column>
                 </DataTable>
             </div>
         </section>

@@ -6,12 +6,9 @@ import { useTranslation } from 'react-i18next';
 export default function OverwievLeft() {
     const total = useSelector((state) => state.card.total);
     const loading = useSelector((state) => state.transactionsSlice.loading);
-
     const { t } = useTranslation()
 
     function click() {
-
-        // window.print()
         console.log(window);
     }
     return (

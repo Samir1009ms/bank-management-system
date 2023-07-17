@@ -10,10 +10,11 @@ import { MdClear } from 'react-icons/md'
 import audi from '../../assets/water_droplet.mp3'
 
 export function Notification() {
+
     const [notifications, setNotifications] = useState([]);
+
     useEffect(() => {
         const socket = io('http://localhost:3000');
-
         async function fetchNotifications() {
             const userId = localStorage.getItem("userId");
             try {
@@ -25,6 +26,7 @@ export function Notification() {
         fetchNotifications();
 
         const userId = localStorage.getItem("userId");
+
         socket.on('notification', (message) => {
             if (userId === message.sender) {
                 setNotifications((prevNotifications) => [...prevNotifications, message]);
@@ -36,6 +38,7 @@ export function Notification() {
             }
             console.log(message);
         });
+
         socket.on('deleteNotification', (message) => {
             console.log(message);
         });
@@ -58,6 +61,7 @@ export function Notification() {
     useEffect(() => {
         if (notifications) {
             const dataSorts = notifications.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+
             const GroupDates = dataSorts.reduce((acc, date) => {
                 const [day, month, year] = moment(date.createdAt).format("DD MMMM YYYY").split(" ")
                 const dataKey = ` ${day} ${month} ${year}`
@@ -67,6 +71,7 @@ export function Notification() {
                 acc[dataKey].push(date)
                 return acc
             }, {})
+
             const dates = Object.entries(GroupDates).map(([day, notifications]) => ({
                 day,
                 notifications: notifications
@@ -115,7 +120,6 @@ export function Notification() {
                     } else {
                         displayDate = date.day;
                     }
-
                     return (
                         <div className={style.bildiris} key={date.day}>
                             <h5 className={style.date}>{displayDate}</h5>

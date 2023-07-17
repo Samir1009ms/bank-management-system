@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
 import ReactECharts from "echarts-for-react";
 import { useTranslation } from 'react-i18next';
-
+import style from "./design/chart.module.scss";
 export default function Charts({ data, data2 }) {
     const [options, setOptions] = useState({})
     const { t } = useTranslation();
     const ay = []
+
     useEffect(() => {
-        t('month', { returnObjects: true }).map((month) => ay.push(month))
+
         const option = {
             title: {
                 text: 'Stacked Area Chart',
                 show: false
-
             },
             tooltip: {
                 trigger: 'axis',
@@ -24,7 +24,7 @@ export default function Charts({ data, data2 }) {
                 }
             },
             legend: {
-                data: ['Data', 'Data2'],
+                data: ['Incomne', 'Outcome'],
                 show: false
             },
             toolbox: {
@@ -32,7 +32,6 @@ export default function Charts({ data, data2 }) {
                     saveAsImage: {}
                 },
                 show: false
-
             },
             grid: {
                 left: '3%',
@@ -44,7 +43,7 @@ export default function Charts({ data, data2 }) {
                 {
                     type: 'category',
                     boundaryGap: false,
-                    data: ay
+                    data: t('month', { returnObjects: true }).map((month) => (month))
                 }
             ],
             yAxis: [
@@ -54,7 +53,7 @@ export default function Charts({ data, data2 }) {
             ],
             series: [
                 {
-                    name: 'Data',
+                    name: t('incom'),
                     type: 'line',
                     stack: 'Total',
                     areaStyle: {},
@@ -64,7 +63,7 @@ export default function Charts({ data, data2 }) {
                     data: data && data.map((item) => item.amount)
                 },
                 {
-                    name: 'Data2',
+                    name: t('outcom'),
                     type: 'line',
                     stack: 'Total',
                     areaStyle: {},
@@ -75,14 +74,11 @@ export default function Charts({ data, data2 }) {
                 }
             ]
         };
-
         setOptions(option)
-        console.log('render');
-
-    }, [data])
+    }, [data, t, data2])
 
     return (
-        <div style={{ width: '45%' }}>
+        <div className={style.chart}>
             <ReactECharts option={options} />
         </div>
     )

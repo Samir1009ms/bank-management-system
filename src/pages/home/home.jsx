@@ -11,7 +11,6 @@ import Sidebar from "../../components/SideBar/Sidebar";
 import QuickTransfer from "../../components/QuickTransfer/QuickTransfer";
 import Loading from "../../components/loading/Loading";
 import { setLoading } from "../../store/expense/transactions-slice";
-
 function Home() {
     const dispatch = useDispatch();
     const loading = useSelector((state) => state.transactionsSlice.loading);

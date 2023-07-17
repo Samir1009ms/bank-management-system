@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import style from "./design/style.module.scss";
 import { useTranslation } from 'react-i18next';
-import { set } from 'lodash';
 import axios from 'axios';
+
 export default function AddCart() {
+
+    const { t } = useTranslation();
 
     const [card, setCard] = useState({
         cardNumber: '',
@@ -12,6 +14,7 @@ export default function AddCart() {
         cardName: '',
         cardType: '',
     });
+
     const getCardType = (cardNumber) => {
         const visaPattern = /^4/;
         const mastercardPattern = /^5/;
@@ -29,13 +32,12 @@ export default function AddCart() {
         } else {
             return 'Unknown';
         }
-
     };
 
     const [formValid, setFormValid] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
-        console.log(typeof (value));
         if (name === "cardNumber" && value.length >= 16) {
             const cardType = getCardType(value);
             setCard({ ...card, cardNumber: value, cardType: cardType });
@@ -74,8 +76,6 @@ export default function AddCart() {
             console.log(err);
         })
     }
-
-    const { t } = useTranslation();
 
     return (
         <section className={style.AddCart}>

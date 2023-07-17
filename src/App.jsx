@@ -4,9 +4,7 @@ import { Outlet, useNavigate } from 'react-router-dom';
 import { AuthService } from './services/auth.services';
 import { useEffect } from 'react';
 import { HomeHeader } from './components/home_header/homeHeader';
-// import 'react-credit-cards-2/dist/es/styles-compiled.css';
 
-import axios from 'axios';
 function App() {
   const navigate = useNavigate()
 
@@ -22,13 +20,13 @@ function App() {
   useEffect(() => {
     isLogged()
   }, [])
+
   return (
     <>
       <Navbar></Navbar>
       <div className={`flex w-10 flex-column container`}>
         <HomeHeader></HomeHeader>
         <Outlet></Outlet>
-        {/* <Footer /> */}
       </div>
     </>
   );

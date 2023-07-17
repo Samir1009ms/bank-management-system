@@ -9,29 +9,24 @@ import style from "./design/style.module.scss"
 import { useTranslation } from 'react-i18next';
 
 const Login = () => {
-
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [checked, setChecked] = useState(false);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
     const navigate = useNavigate()
-    // console.log(password);
-
     const [disabled, setDisabled] = useState(true);
-
     const { i18n } = useTranslation();
     const { t } = useTranslation()
     const [lang, setLang] = useState()
+
     useEffect(() => {
         let theme = localStorage.getItem("theme");
         if (theme === "dark") {
             document.body.classList.add("dark");
-
         } else {
             document.body.classList.remove("dark");
             localStorage.setItem("theme", "light")
-
         }
         const selectedLanguage = localStorage.getItem('lang');
         if (selectedLanguage) {
@@ -41,7 +36,6 @@ const Login = () => {
             localStorage.setItem("lang", "az")
             setLang('az')
             i18n.changeLanguage(lang);
-
         }
     }, [])
 
@@ -61,10 +55,6 @@ const Login = () => {
 
             .then((data) => {
                 navigate('/');
-                // window.location.reload();
-                // console.log(data);
-                // console.log("ssas");
-
             })
             .catch((error) => {
                 setLoading(false);
@@ -72,23 +62,18 @@ const Login = () => {
             });
     };
 
-    async function isLogged(){
-        try{
+    async function isLogged() {
+        try {
             await AuthService.getCurrentUser()
             navigate("/")
-        }catch{
+        } catch {
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         isLogged()
 
-    },[])
-
-
-
-
-
+    }, [])
 
     return (
         <main className={`${style.main} formgrid grid justify-content-center xl:col-8 md:col-10 col-12 sm:col-12`}>
@@ -119,11 +104,6 @@ const Login = () => {
                     <div className="card flex flex-wrap justify-content-center gap-3">
                         <Button disabled={disabled} className={`col-12 pb-2 pt-2 ${style.colors}`} label={loading ? "loading.." : `${t('login')}`} rounded />
                     </div>
-
-                    {/* <Message severity="info" text="Info Message" />
-                <Message severity="success" text="Success Message" />
-                <Message severity="warn" text="Warning Message" />
-                <Message severity="error" text="Error Message" /> */}
                     {message && <div>{message}</div>}
                 </form>
                 <div className={`${style.xx} grid gap-2`}>

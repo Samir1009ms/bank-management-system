@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
-
 import DayNightToggle from 'react-day-and-night-toggle'
 import { useDispatch } from "react-redux";
 import { theme } from "../../store/expense/theme-slice";
-
 
 export function Theme() {
 
@@ -35,10 +33,9 @@ export function Theme() {
             document.body.classList.remove("dark")
             setThemes("light")
             dispatch(theme("light"))
-
         }
-
     }
+
     return (
         <div className={`flex align-items-center `}>
             {/* <button
@@ -56,7 +53,6 @@ export function Theme() {
 
             />
             {/* <span>{theme === "dark" ? "Light Mod" : "Dark Mod"}</span> */}
-
         </div>
     )
 }

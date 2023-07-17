@@ -1,0 +1,9 @@
+@import '../../variables/mixins';
+
+.swiper {
+    @include mobile {
+        width: 275px !important;
+    }
+
+
+}

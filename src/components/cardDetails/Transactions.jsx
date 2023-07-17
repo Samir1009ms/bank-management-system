@@ -8,12 +8,15 @@ import { useTranslation } from "react-i18next";
 import { BsFillCalendarWeekFill } from 'react-icons/bs'
 import { FiChevronDown } from 'react-icons/fi'
 import { AccountSummary } from "../account summary/acoountSummary";
+
 function Transaction({ dataGroup }) {
+
     const lang = localStorage.getItem("lang")
     const [selectedMonth, setSelectedMonth] = useState((new Date().getMonth() + 1));
     const [selected, setSelected] = useState("All")
     const [selectData, setSelectData] = useState([])
     const [filters, setFilters] = useState()
+
     useEffect(() => {
         if (dataGroup) {
             const filtr = dataGroup.filter((e) => {
@@ -37,17 +40,22 @@ function Transaction({ dataGroup }) {
             }
         }
     }, [selectedMonth, selected, dataGroup])
+
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(5);
+
     const onPageChange = (event) => {
         setFirst(event.first);
         setRows(event.rows);
     };
+
     function select(e) {
         setSelected(e)
     }
+
     const { t } = useTranslation();
     const [isOpen, setIsOpen] = useState(false)
+
     return (
         <div className={`flex w-full gap-3 mt-6 p-6 pt-0 ${style.transactions}`}>
             <h2 className={`${style.basliq}`}>{t('transactions')}</h2>

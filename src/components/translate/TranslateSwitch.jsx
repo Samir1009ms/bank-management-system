@@ -92,7 +92,7 @@ function LanguageSwitcher() {
                             type="radio"
                             name="e"
                             id=""
-                            checked={lang === 'en'} />
+                            defaultChecked={lang === 'en'} />
                     </div>
                     <div
                         style={{
@@ -104,11 +104,9 @@ function LanguageSwitcher() {
                             alignItems: 'center',
                             justifyContent: 'space-between'
 
-
-
-
                         }}
-                        onClick={() => { handleChangeLanguage('az'); handleClick() }}>Az <input type="radio" name="e" id="" checked={lang === 'az'} /></div>
+                        onClick={() => { handleChangeLanguage('az'); handleClick() }}>Az
+                        <input type="radio" name="e" id="" defaultChecked={lang === 'az'} /></div>
                 </div>}
         </div>
     );

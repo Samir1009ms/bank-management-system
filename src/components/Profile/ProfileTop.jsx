@@ -3,6 +3,7 @@ import { Avatar } from 'primereact/avatar';
 import style from './design/style.module.scss'
 export default function ProfileTop() {
     const [user, setUser] = useState()
+
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'))
         setUser(user)
@@ -74,8 +75,6 @@ export default function ProfileTop() {
             reader.readAsDataURL(file);
         }
     };
-
-
     // !=--------------------------------=
     const inputRef = useRef()
     const handleInputChange = () => {

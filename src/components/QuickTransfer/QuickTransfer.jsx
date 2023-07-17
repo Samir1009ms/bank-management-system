@@ -7,10 +7,9 @@ import { RadioButton } from 'primereact/radiobutton';
 import { useTranslation } from 'react-i18next';
 
 function QuickTransfer() {
+
     const loading = useSelector((state) => state.card.loading);
-
     let cardData = useSelector((state) => state.card.cards);
-
     const [ingredient, setIngredient] = useState(0)
     const [cardActive, setCardActive] = useState(ingredient)
     const [designs, setDesigns] = useState("hidden")
@@ -42,7 +41,6 @@ function QuickTransfer() {
             ...prevTra,
             [name]: name === "amount" ? (isNaN(parsedValue) || parsedValue === 0) ? null : parsedValue : value,
         }));
-
     };
 
     useEffect(() => {
@@ -55,6 +53,7 @@ function QuickTransfer() {
             }
         }
     }, [cardActive, cardData])
+
     function handleTransferPost() {
         axios.post("http://localhost:5500/api/transferMoney", {
             senderCardNumber: tra.senderCardNumber,
@@ -62,6 +61,7 @@ function QuickTransfer() {
             amount: tra.amount
         })
     }
+
     const { t } = useTranslation()
 
     return (

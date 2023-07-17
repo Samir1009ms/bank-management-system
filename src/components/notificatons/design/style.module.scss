@@ -1,3 +1,5 @@
+@import '../../variables/mixins';
+
 .icons {
     color: var(--nav-text-color) !important;
     cursor: pointer;
@@ -31,6 +33,10 @@
     color: var(--nav-text-color);
     border-radius: 8px;
     flex-direction: column;
+
+    @include mobile {
+        left: -97px;
+    }
 
     &::-webkit-scrollbar {
 

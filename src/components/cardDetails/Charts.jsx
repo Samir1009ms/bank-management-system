@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 export default function Charts({ data }) {
 
-
     const [options, setOptions] = useState({})
     const { t } = useTranslation();
     const ay = []
@@ -12,7 +11,6 @@ export default function Charts({ data }) {
     useEffect(() => {
         t('month', { returnObjects: true }).map((month) => ay.push(month))
 
-        console.log("rr");
         const option = {
             color: ['#37A2FF'],
             title: {
@@ -47,7 +45,6 @@ export default function Charts({ data }) {
                     boundaryGap: false,
                     nameLocation: 'end',
                     data: ay,
-
                 }
             ],
 
@@ -79,7 +76,6 @@ export default function Charts({ data }) {
         };
         setOptions(option)
     }, [data, t])
-
 
     return (
         <div style={{ width: "400px", height: "200px" }}>

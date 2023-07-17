@@ -5,7 +5,6 @@ import { profileTop, profileCenter, profileBottom } from '../../components/data/
 
 export default function Profile() {
     return (
-
         <section style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', rowGap: "30px", padding: "80px 0" }}>
             <ProfileTop />
             <ProfileContainer data={profileTop} />

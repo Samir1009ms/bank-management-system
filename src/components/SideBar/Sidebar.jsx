@@ -6,7 +6,8 @@ import { getCard } from '../../store/asyncthunk/bankCard-service';
 import { io } from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux';
 
-export default function Sidebar() {
+export default function Sidebar({ styles }) {
+
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCard());
@@ -20,13 +21,15 @@ export default function Sidebar() {
             socket.disconnect();
         };
     }, [dispatch]);
+
     const loading = useSelector((state) => state.card.loading);
+
     return (
         loading
             ?
             // <Loading />
             "sidebar loading"
-            : <section className={`pt-2 mt-0 ${style.left} `}>
+            : <section className={`pt-2 mt-0 ${style.left} ${styles.hidden}`}>
                 <div className={`grid ${style.container} row-gap-6  justify-content-center m-0`} style={{ width: "100%", color: "white" }}>
                     <BankCards />
                     <div className='grid hidden sm:hidden lg:block' style={{ width: "98%" }}>

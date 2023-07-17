@@ -31,11 +31,14 @@ const VALIDATOR = {
         return Service.min(value, 3, t) || Service.max(value, 40, t)
     }
 }
+
 const isValidEmail = (email) => {
     const emailRegex = /^([\w\-]+)@((\[([0-9]{1,3}\.){3}[0-9]{1,3}\])|(([\w\-]+.)+)([a-zA-Z]{2,4})(\.az|\.tr|\.com))$/;
     return emailRegex.test(email);
 };
+
 export default function EditProfileCont() {
+
     const { t, i18n } = useTranslation();
     const [lang, setLang] = useState()
 
@@ -49,8 +52,8 @@ export default function EditProfileCont() {
             setLang('az')
             i18n.changeLanguage(lang);
         }
-        console.log("ss");
     }, [i18n, lang])
+
     const [formValues, setFormValues] = useState({
         userName: '',
         email: '',
@@ -60,6 +63,7 @@ export default function EditProfileCont() {
         city: '',
         adress: ''
     })
+
     const [formError, setFormError] = useState({
         userName: String ? undefined : true,
         email: String ? undefined : true,
@@ -69,6 +73,7 @@ export default function EditProfileCont() {
         city: String ? undefined : true,
         adress: String ? undefined : true
     })
+
     const handleFormValue = (e) => {
         const name = e.target.name
         let value = (e.target.value)
@@ -83,9 +88,11 @@ export default function EditProfileCont() {
         console.log(typeof (value));
         validations(name, value)
     }
+
     const validations = (name, value) => {
         setFormError({ ...formError, [name]: VALIDATOR[name](value, t) })
     }
+
     const error = () => {
         for (const name in formError) {
             if (formError[name]) {
@@ -94,7 +101,9 @@ export default function EditProfileCont() {
         }
         return false;
     };
+
     const [status, setStatus] = useState(false)
+
     function post() {
         const userId = localStorage.getItem("userId")
         if (status) {
@@ -110,15 +119,13 @@ export default function EditProfileCont() {
             }).catch((err) => {
                 console.log(err);
             })
-
         }
     }
+
     async function getProfile(userId) {
         try {
             await ApiService.getProfile(userId).then((e) => {
-                console.log(e.data);
                 const { userName, email, province, city, phone, date, adress } = e.data
-                console.log(typeof (date));
                 setFormValues({ ...formValues, userName: userName, email: email, province: province, city: city, phone: phone, date: new Date(date), adress: adress })
             }).catch((e) => {
                 console.log(e);
@@ -126,6 +133,7 @@ export default function EditProfileCont() {
         }
         catch { }
     }
+
     useEffect(() => {
         const { email, name, _id } = JSON.parse(localStorage.getItem("user"))
         setFormValues({ ...formValues, email: email, userName: name })

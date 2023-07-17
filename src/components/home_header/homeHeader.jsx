@@ -28,7 +28,6 @@ export function HomeHeader() {
             setPathname(t(`${location.pathname.slice(1)}`))
         }
     }, [location, t, id])
-
     //! user profile  
     const [users, setUsers] = useState("hidden")
     const userProfileRef = useRef(null);
@@ -50,7 +49,6 @@ export function HomeHeader() {
     const filee = (dataURL) => {
         const blob = dataURLtoBlob(dataURL);
         setImg(URL.createObjectURL(blob))
-        // console.log(URL.createObjectURL(blob));
     }
 
     const dataURLtoBlob = (dataURL) => {

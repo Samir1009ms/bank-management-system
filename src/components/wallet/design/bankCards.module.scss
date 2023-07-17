@@ -1,5 +1,14 @@
 @import '../../variables/mixins';
 
+
+.BankCard {
+    width: 45%;
+
+    @include mobile {
+        width: 100%;
+    }
+}
+
 .cardSlider {
     display: flex;
     flex-direction: column;
@@ -15,7 +24,7 @@
 
 
     @include mobile {
-        width: 85%;
+        width: 100%;
         margin: 0 auto;
     }
 }

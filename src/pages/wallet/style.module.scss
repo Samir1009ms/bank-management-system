@@ -1,0 +1,38 @@
+@import '../../components/variables/variables';
+@import '../../components/variables/mixins';
+
+
+.wallet {
+    color: var(--nav-text-color);
+    display: flex;
+    width: 100%;
+    padding-top: 30px;
+
+
+    .container {
+        // style={{ display: "flex", width: '80%', alignItems: "flex-start", flexWrap: 'wrap', justifyContent: 'center', gap: '10px' }}
+
+        display: flex;
+        width: 80%;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+
+        @include mobile {
+
+            width: 100%;
+            gap: 24px;
+            flex-direction: column;
+
+        }
+
+    }
+}
+
+.hidden {
+
+    @include mobile {
+        display: none;
+    }
+}

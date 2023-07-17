@@ -1,0 +1,11 @@
+@import '../../variables/mixins';
+
+.chart {
+    width: 45%;
+    margin-top: -35px;
+
+    @include mobile {
+        width: 100%;
+    }
+
+}

@@ -9,6 +9,7 @@ import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 export default function CardList() {
+
     const navigate = useNavigate()
     let cardData = useSelector((state) => state.card.cards);
 
@@ -27,6 +28,7 @@ export default function CardList() {
 
     const [first, setFirst] = useState(0);
     const [rows, setRows] = useState(5);
+
     const onPageChange = (event) => {
         setFirst(event.first);
         setRows(event.rows);

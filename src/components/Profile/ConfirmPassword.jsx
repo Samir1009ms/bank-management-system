@@ -32,17 +32,19 @@ export default function ConfirmPassword() {
         }
         console.log("ss");
     }, [i18n, lang])
+
     const [formValues, setFormValues] = useState({
         password: '',
         yPassword: '',
         nPassword: ''
     })
+
     const [formError, setFormError] = useState({
         password: '' ? undefined : true,
         yPassword: '' ? undefined : true,
         nPassword: '' ? undefined : true
     })
-    console.log(formError);
+
     const handleFormValue = (e) => {
         const name = e.target.name
         let value = (e.target.value)
@@ -53,9 +55,11 @@ export default function ConfirmPassword() {
         setFormValues({ ...formValues, [name]: value })
         validations(name, value)
     }
+
     const validations = (name, value) => {
         setFormError({ ...formError, [name]: VALIDATOR[name](value, t) })
     }
+
     const error = () => {
         for (const name in formError) {
             if (formError[name]) {
@@ -64,9 +68,10 @@ export default function ConfirmPassword() {
         }
         return false;
     };
-    const BASE_URL = 'http://localhost:5500/api'
 
+    const BASE_URL = 'http://localhost:5500/api'
     const [err, setErr] = useState()
+
     function handlePassword() {
         const { email } = JSON.parse(localStorage.getItem('user'))
         const { password, nPassword } = formValues
@@ -77,6 +82,7 @@ export default function ConfirmPassword() {
             console.log();
         })
     }
+
     return (
         <section style={{ width: '44%', padding: '20px', background: 'var(--homeR-bg-color)', borderRadius: "15px" }}>
             <div style={{ marginBottom: '20px', fontSize: '20px', fontWeight: '900' }}>
