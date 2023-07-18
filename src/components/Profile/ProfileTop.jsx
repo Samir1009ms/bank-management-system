@@ -96,7 +96,7 @@ export default function ProfileTop() {
                         style={{ width: '40px', height: "40px", background: 'var(--profile-bg-color)', borderRadius: "50%", display: 'flex', alignItems: 'center', justifyContent: "center", position: 'absolute', right: '0', bottom: '-9px' }}>
                         <i className={`pi pi-pencil ${style.pen}`} style={{ position: 'relative' }}>
                         </i>
-                        <input ref={inputRef} onChange={handleImageChange} type="file" name="" id="" style={{ visibility: 'hidden', position: "absolute", top: 0, left: 0, zIndex: -2 }} />
+                        <input ref={inputRef} onChange={handleImageChange} type="file" name="" id="" style={{ display: "none", position: "absolute", top: 0, left: 0, zIndex: -2 }} />
                     </span>
                 </div>
                 <div style={{ color: 'var(--nav-text-color)', display: "flex", flexDirection: 'column', alignItems: 'center', rowGap: '10px' }}>

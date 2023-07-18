@@ -48,12 +48,25 @@ export default function Card({ card, transactions }) {
     //     })
     // }, [])
 
+    const handleClick = async (id) => {
+        console.log(id);
+        const userId = localStorage.getItem('userId')
+        try {
+            const res = await axios.put(`http://localhost:5500/api/blockCard/${userId}/card/${id}`, { blocked: !card.blocked });
+            console.log(res.data);
+            // window.location.reload();
+        } catch (err) {
+            // console.log(err);
+        }
+    }
+
     return (
         <div className='cards__details'>
             <div className='cardLeft' >
                 <div className='cardLeft-title' >
                     <h1 className='cardLeft-title__text' >Card</h1>
                 </div>
+                {card.blocked && <div className='blocked'>Blocked</div>}
                 <div className='div' style={{ width: '300px' }}>
                     {
                         card && <Cards
@@ -85,7 +98,7 @@ export default function Card({ card, transactions }) {
                     </div>
                     <div className='cardRigth-details__cont'>
                         <h3 className='cardRigth-details__cont-title'>Balance:
-                            <span className='cardRigth-details__cont-title__text'>{card && card.balance} Azn</span>
+                            <span className='cardRigth-details__cont-title__text'>{card && (card.balance).toFixed(2)} Azn</span>
                         </h3>
                     </div>
                     <div className='cardRigth-details__cont'>
@@ -101,7 +114,7 @@ export default function Card({ card, transactions }) {
 
                     <div className='cardRigth-details__cont'>
                         {/*//! True bloklamaq False blokdan cixarmaq  */}
-                        <button className='cardRigth-details__cont-btn'>{card && (!card.blocked) ? 'karti blokdan cixarmaq' : 'karti bloklamaq'}</button>
+                        <button className='cardRigth-details__cont-btn' onClick={() => handleClick(card._id)}>{card && (card.blocked) ? 'karti blokdan cixarmaq' : 'karti bloklamaq'}</button>
                     </div>
 
                 </div>

@@ -6,7 +6,6 @@ import axios from "axios";
 import moment from "moment";
 import style from './style.module.scss'
 
-import CurrentBalance from "../../components/wallet/CurrentBalance";
 import { BankCard } from "../../components/wallet/bankCards";
 import AddCart from "../../components/add cart/AddCart";
 import Sidebar from "../../components/SideBar/Sidebar";
@@ -106,7 +105,6 @@ export function Wallet() {
     return (
         <section className={style.wallet}>
             <div className={style.container}>
-                {/* <CurrentBalance /> */}
                 <BankCard getCardData={getCardData} />
                 <Charts data={chartData} data2={chartData2} />
                 <AddCart />

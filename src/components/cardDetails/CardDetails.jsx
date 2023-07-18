@@ -42,9 +42,7 @@ export default function CardDetails() {
     }
 
     useEffect(() => {
-        const BASE_URL = process.env.BASE_URL;
-
-        axios.get(`${BASE_URL}/getCardDetails/${id}`).then((res) => {
+        axios.get(`http://localhost:5500/api/getCardDetails/${id}`).then((res) => {
             console.log(res.data);
             setCard(res.data.card);
             getCardTransactions(res.data.card.cardNumber);
@@ -52,7 +50,7 @@ export default function CardDetails() {
         ).catch((err) => {
             console.log(err);
         })
-    }, [])
+    }, [id])
 
     const [dataGroup, setDataGroup] = useState([])
 
