@@ -88,7 +88,7 @@ export default function ConfirmPassword() {
             <div style={{ marginBottom: '20px', fontSize: '20px', fontWeight: '900' }}>
                 <span style={{ color: "var(--nav-text-color)" }}>Change Password</span>
             </div>
-            <div className={style.d} style={{ color: 'var(--nav-text-color)', padding: '15px', marginTop: '10px', border: "1px solid #ff8303", borderRadius: '15px', background: 'var(--summary-bg-color)' }}>
+            <div className={style.d} style={{ color: 'var(--nav-text-color)', padding: '15px', marginTop: '10px', borderRadius: '15px', background: 'var(--summary-bg-color)' }}>
                 <div className="flex flex-column gap-2" style={{ marginBottom: "25px", position: "relative" }}>
                     <label htmlFor="password">{t('currentP')}*</label>
                     <Password
