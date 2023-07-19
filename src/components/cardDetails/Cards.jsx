@@ -37,16 +37,7 @@ export default function Card({ card, transactions }) {
     //     }
     // }
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5500/api/getCardDetails/${id}`).then((res) => {
-    //         console.log(res.data);
-    //         setCard(res.data.card);
-    //         getCardTransactions(res.data.card.cardNumber);
-    //     }
-    //     ).catch((err) => {
-    //         console.log(err);
-    //     })
-    // }, [])
+
 
     const handleClick = async (id) => {
         console.log(id);
