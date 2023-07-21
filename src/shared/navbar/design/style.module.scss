@@ -27,7 +27,7 @@
     @include tablet {
         position: fixed;
         width: 41% !important;
-        padding: 40px 6px !important;
+        padding: 80px 6px 40px !important;
         transform: translateX(-100%);
         transition: 0.5s ease-in-out;
         z-index: 99;
@@ -35,6 +35,18 @@
         background: var(--profile-bg-color);
 
 
+
+    }
+
+    .Logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 18px;
+
+        @include tablet {
+            margin-right: 8px;
+        }
     }
 
 
@@ -48,6 +60,8 @@
 
         @include mobile {
             width: 100%;
+            // margin-top: 54px;
+
         }
 
         .logo {

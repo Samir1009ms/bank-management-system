@@ -11,8 +11,10 @@ import AddCart from "../../components/add cart/AddCart";
 import Sidebar from "../../components/SideBar/Sidebar";
 import Charts from "../../components/wallet/Charts";
 import Transactions from "../../components/wallet/Transactions";
+import Loading from "../../components/loading/Loading";
 
 export function Wallet() {
+    const [loading, setLoading] = useState(true);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCard());
@@ -35,6 +37,7 @@ export function Wallet() {
         const BASE_URL = 'http://localhost:5500/api'
         try {
             await axios.get(`${BASE_URL}/getTransactionsDetails/${number}`).then((res) => {
+                setLoading(false);
                 console.log(res.data);
                 setCardDataX(res.data);
                 const data = res.data.filter((transaction) => transaction.type !== 'Outgoing')
@@ -42,6 +45,7 @@ export function Wallet() {
                 const months = moment.months()
                 const ay = []
                 const ay2 = []
+                console.log(loading);
                 months.map((month) => (
                     ay.push({ month: month, amount: 0 })
                 ))
@@ -100,17 +104,22 @@ export function Wallet() {
         } else {
             setGroup([])
         }
+        setTimeout(() => {
+            setLoading(false)
+        }
+            , 1500)
     }, [cardDataX])
 
     return (
-        <section className={style.wallet}>
-            <div className={style.container}>
-                <BankCard getCardData={getCardData} />
-                <Charts data={chartData} data2={chartData2} />
-                <AddCart />
-                <Transactions selectData={groups && groups} />
-            </div>
-            <Sidebar styles={style} />
-        </section>
+        loading ? <Loading /> :
+            <section className={style.wallet}>
+                <div className={style.container}>
+                    <BankCard getCardData={getCardData} />
+                    <Charts data={chartData} data2={chartData2} />
+                    <AddCart />
+                    <Transactions selectData={groups && groups} />
+                </div>
+                <Sidebar styles={style} />
+            </section>
     )
 }

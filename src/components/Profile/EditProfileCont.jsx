@@ -5,6 +5,7 @@ import style from './design/style.module.scss'
 import Service from '../validation/validation';
 import { useTranslation } from 'react-i18next';
 import { ApiService } from '../../services/api.services';
+
 const VALIDATOR = {
     userName: (value, t) => {
         return Service.min(value, 8, t) || Service.max(value, 18, t)
@@ -38,7 +39,6 @@ const isValidEmail = (email) => {
 };
 
 export default function EditProfileCont() {
-
     const { t, i18n } = useTranslation();
     const [lang, setLang] = useState()
 
@@ -112,6 +112,7 @@ export default function EditProfileCont() {
             }).catch((err) => {
                 console.log(err);
             })
+
         }
         else {
             ApiService.updateProfile(userId, formValues).then((e) => {

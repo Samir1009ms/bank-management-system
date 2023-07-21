@@ -1,13 +1,21 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import style from "./design/style.module.scss";
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { FiChevronDown } from 'react-icons/fi';
 import { RadioButton } from 'primereact/radiobutton';
 import { useTranslation } from 'react-i18next';
+import { Toast } from 'primereact/toast';
 
 function QuickTransfer() {
+    const toast = useRef(null);
 
+    const showSuccess = () => {
+        toast.current.show({ severity: 'success', summary: 'Success', detail: 'Success', life: 3000 });
+    }
+    const showError = (e) => {
+        toast.current.show({ severity: 'error', summary: 'Error', detail: `${e}`, life: 3000 });
+    }
     const loading = useSelector((state) => state.card.loading);
     let cardData = useSelector((state) => state.card.cards);
     const [ingredient, setIngredient] = useState(0)
@@ -60,14 +68,25 @@ function QuickTransfer() {
             senderCardNumber: tra.senderCardNumber,
             receiverCardNumber: tra.receiverCardNumber,
             amount: tra.amount
-        })
+        }).then((res) => {
+            console.log(res.data);
+            showSuccess()
+            setTra({
+                senderCardNumber: '',
+                receiverCardNumber: '',
+                amount: ''
+            })
+        }).catch((err) => {
+            console.log(err);
+            showError(err.response.data.message)
+        }
+        )
     }
-
     const { t } = useTranslation()
-
     return (
-        loading ? "loading" : <div className={`${style.transfer}`}>
+        loading ? "" : <div className={`${style.transfer}`}>
             <h3 className={`${style.textW}`}>{t('quickT')}</h3>
+            <Toast ref={toast} />
             <div className={style.transferContainer}>
                 <div className={style.top}>
                     <div className={style.transferCont}>

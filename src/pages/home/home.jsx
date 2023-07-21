@@ -31,7 +31,8 @@ function Home() {
     }, [dispatch]);
 
     return (
-        <main className={`${style.home} grid m-0 w-full pt-5 pl-4 column-gap-3`}>
+
+        loading ? <Loading /> : <main className={`${style.home} grid m-0 w-full pt-5 pl-4 column-gap-3`}>
             <section className={` ${style.homeLeftxx}  pb-6`}>
                 <Overwiev />
                 <div className='grid block md:hidden' style={{ width: '100%' }}>
@@ -41,7 +42,6 @@ function Home() {
             </section >
             <Sidebar />
         </main >
-
     );
 }
 export default memo(Home)

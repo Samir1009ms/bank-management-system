@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth.services.js'
 import { useTranslation } from 'react-i18next'
 import { Theme } from '../../components/theme/theme.jsx'
 import { TbMenu2 } from 'react-icons/tb'
+import logo from '../../assets/Logo.svg'
 
 export function Navbar() {
     const location = useLocation()
@@ -59,7 +60,9 @@ export function Navbar() {
         <>
             <div onClick={() => toggleMenu()} className={`lg:hidden ${s.hamburger}`}><TbMenu2 /></div>
             <header className={`${s.header}  animate__animated col-2 lg:flex  ${isOpen ? `${s.active} ` : ''}`}>
-                {/* <LanguageSwitcher /> */}
+                <div className={s.Logo}>
+                    <img src={logo} alt="" />
+                </div>
                 <nav className={s.navTop}>
                     <ul className={s.navList}>
                         {routing.map((route, index) => {

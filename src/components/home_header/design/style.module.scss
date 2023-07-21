@@ -40,6 +40,10 @@
     @include mobile {
         padding: 0 20px;
         justify-content: flex-end;
+        position: sticky;
+        top: 0px;
+        z-index: 111;
+        background: var(--body-bg-color);
     }
 }
 
