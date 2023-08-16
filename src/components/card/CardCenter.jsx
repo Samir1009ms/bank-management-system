@@ -38,10 +38,10 @@ export default function CardCenter() {
             <div className={style.cardsTop}>
                 <div style={{ display: "flex", justifyContent: "space-between", color: 'white', width: "100%", alignItems: 'center', padding: '0 20px 0 10px' }}>
                     <h3 className={`${style.textW}`}>{t('cardCenter')}</h3>
-                    <div style={{ width: "15%", height: '50px', borderRadius: "22px", background: "var( --btn-bg-color)", display: "flex", alignItems: 'center', columnGap: "6px", padding: "5px 10px", cursor: "pointer    " }}>
+                    {/* <div style={{ width: "15%", height: '50px', borderRadius: "22px", background: "var( --btn-bg-color)", display: "flex", alignItems: 'center', columnGap: "6px", padding: "5px 10px", cursor: "pointer    " }}>
                         <AiFillPlusCircle style={{ fontSize: "33px" }} />
                         <p>{t('addCard')}</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div className={style.cardSlider}>
                     {/* <p onClick={previous}>X</p> */}
