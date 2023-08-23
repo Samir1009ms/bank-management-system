@@ -69,7 +69,7 @@ export default function ConfirmPassword() {
         return false;
     };
 
-    const BASE_URL = 'http://localhost:5500/api'
+    const BASE_URL = 'https://back-end-bank-managment.vercel.app/api'
     const [err, setErr] = useState()
 
     function handlePassword() {

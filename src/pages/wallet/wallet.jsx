@@ -34,7 +34,7 @@ export function Wallet() {
     const [chartData2, setChartData2] = useState([])
 
     async function getCardData(number) {
-        const BASE_URL = 'http://localhost:5500/api'
+        const BASE_URL = 'https://back-end-bank-managment.vercel.app/api'
         try {
             await axios.get(`${BASE_URL}/getTransactionsDetails/${number}`).then((res) => {
                 setLoading(false);
