@@ -1,8 +1,10 @@
 import axios from "axios";
-// const BASE_URL = "https://ecommerce-back-end-theta.vercel.app/api/";
-const BASE_URL = "http://localhost:5500/api"
+// const BASE_URL = "https://bank-management-back-ends.vercel.app/api/";
+// const BASE_URL = "http://localhost:5500/api"
 // const BASE_URL = "http://192.168.42.148:5500/api/"
-// const BASE_URL = process.env.BASE_URL;
+const BASE_URL = "https:back-end-bank-managment.vercel.app/api";
+// const BASE_URL = 'https://bank-management-back-ends.vercel.app/api'
+;
 
 export class ApiService {
 

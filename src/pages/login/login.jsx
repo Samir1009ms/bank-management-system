@@ -77,19 +77,19 @@ const Login = () => {
     }, [])
 
 
-    useEffect(() => {
-        const token = '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';
-        const headers = {
-            Authorization: `Bearer ${token}`
-        };
-        axios.get('https://api.github.com/user/repos', { headers })
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.error(error);
-            });
-    }, []);
+    // // useEffect(() => {
+    //     const token = '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';
+    //     const headers = {
+    //         Authorization: `Bearer ${token}`
+    //     };
+    //     axios.get('https://api.github.com/user/repos', { headers })
+    //         .then((response) => {
+    //             console.log(response);
+    //         })
+    //         .catch((error) => {
+    //             console.error(error);
+    //         });
+    // }, []);
 
     return (
         <main className={`${style.main} formgrid grid justify-content-center xl:col-8 md:col-10 col-12 sm:col-12`}>
