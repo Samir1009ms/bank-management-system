@@ -19,7 +19,7 @@ function Home() {
         dispatch(getTransactions())
         dispatch(setLoading(true));
 
-        const socket = io('http://localhost:3000');
+        const socket = io(window.location.origin);
         socket.on('notification', (message) => {
             dispatch(getTransactions())
             // dispatch(getCard());

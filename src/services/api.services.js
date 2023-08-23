@@ -5,7 +5,7 @@ import axios from "axios";
 // const BASE_URL = 'https://bank-management-back-ends.vercel.app/api'
 
 // const BASE_URL = "https://lucent-kleicha-0104ef.netlify.app/api"
-const BASE_URL = "https:back-end-bank-managment.vercel.app/api";
+const BASE_URL = "https://back-end-bank-managment.vercel.app/api";
 
 export class ApiService {
 

@@ -14,7 +14,7 @@ export default function Card() {
     useEffect(() => {
         dispatch(setLoading(true));
         dispatch(getCard());
-        const socket = io('http://localhost:3000');
+        const socket = io(window.location.origin);
         socket.on('notification', (message) => {
             dispatch(getCard());
             // setNotifications((prevNotifications) => [...prevNotifications, message]);
