@@ -58,17 +58,17 @@ export default function BankCards() {
                             transition={{ duration: 0.7 }}
                         >
                             {<Cards
-                                number={cardData ? cardData[currentCardIndex].cardNumber : state.number}
-                                expiry={cardData ? cardData[currentCardIndex].cardDate : state.expiry}
-                                cvc={cardData ? cardData[currentCardIndex].cardCvv : state.cvc}
-                                name={cardData ? cardData[currentCardIndex].cardName : state.name}
+                                number={cardData[currentCardIndex] ? cardData[currentCardIndex].cardNumber : state.number}
+                                expiry={cardData[currentCardIndex] ? cardData[currentCardIndex].cardDate : state.expiry}
+                                cvc={cardData[currentCardIndex] ? cardData[currentCardIndex].cardCvv : state.cvc}
+                                name={cardData[currentCardIndex] ? cardData[currentCardIndex].cardName : state.name}
                             >
                             </Cards>}
                             <div className={style.blur}>
                             </div>
                             <div className={style.total}>
                                 <small className={style.balansText}>{t('current')}</small>
-                                <p className={style.price}>$ {cardData ? (cardData[currentCardIndex].balance).toLocaleString('en-US') : 0}</p>
+                                <p className={style.price}>$ {cardData[currentCardIndex] ? (cardData[currentCardIndex].balance).toLocaleString('en-US') : 0}</p>
                             </div>
                         </motion.div>
                     </AnimatePresence>

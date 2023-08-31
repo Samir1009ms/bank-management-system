@@ -101,12 +101,12 @@ function QuickTransfer() {
                                 {cardData ?
                                     <>
                                         <span className={style.cardDesign}>
-                                            <span className={style.cardType}>{cardData[cardActive].cardType && cardData[cardActive].cardType}</span>
-                                            <span className={style.cardNumber}> {cardData[cardActive].cardNumber && cardData[cardActive].cardNumber.slice(12).replace("", "**")}</span>
+                                            <span className={style.cardType}>{cardData[cardActive] ? cardData[cardActive].cardType : ''}</span>
+                                            <span className={style.cardNumber}> {cardData[cardActive] && cardData[cardActive].cardNumber.slice(12).replace("", "**")}</span>
                                         </span>
                                         <span className={style.cardText}>
                                             <span>{t('debitC')}</span>
-                                            $ {(cardData ? (cardData[cardActive].balance) : "0000").toLocaleString("en-US")}
+                                            $ {(cardData[cardActive] ? (cardData[cardActive].balance) : "0000").toLocaleString("en-US")}
                                         </span>
                                     </>
                                     : <>
