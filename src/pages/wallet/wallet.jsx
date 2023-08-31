@@ -18,7 +18,7 @@ export function Wallet() {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCard());
-        const socket = io(window.location.origin);
+        const socket = io('http://localhost:3000');
 
         socket.on('notification', (message) => {
             dispatch(getCard());
@@ -34,7 +34,7 @@ export function Wallet() {
     const [chartData2, setChartData2] = useState([])
 
     async function getCardData(number) {
-        const BASE_URL = 'https://back-end-bank-managment.vercel.app/api'
+        const BASE_URL = 'http://localhost:5500/api'
         try {
             await axios.get(`${BASE_URL}/getTransactionsDetails/${number}`).then((res) => {
                 setLoading(false);

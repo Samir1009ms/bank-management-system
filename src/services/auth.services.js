@@ -1,11 +1,11 @@
 import axios from "axios";
 // const BASE_URL = "https://bank-management-back-ends.vercel.app/api";
-// const BASE_URL = 'http://localhost:5500/api'
+const BASE_URL = 'http://localhost:5500/api'
 // const BASE_URL = process.env.BASE_URL;
 // const BASE_URL = 'https://bank-management-back-ends.vercel.app/api'
 
 // const BASE_URL = "https://lucent-kleicha-0104ef.netlify.app/api"
-const BASE_URL = "https://back-end-bank-managment.vercel.app/api";
+// const BASE_URL = "https://back-end-bank-managment.vercel.app/ap";
 
 export class AuthService {
 

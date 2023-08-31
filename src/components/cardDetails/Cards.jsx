@@ -43,7 +43,7 @@ export default function Card({ card, transactions }) {
         console.log(id);
         const userId = localStorage.getItem('userId')
         try {
-            const res = await axios.put(`https://back-end-bank-managment.vercel.app/api/blockCard/${userId}/card/${id}`, { blocked: !card.blocked });
+            const res = await axios.put(`http://localhost:5500/api/blockCard/${userId}/card/${id}`, { blocked: !card.blocked });
             console.log(res.data);
             // window.location.reload();
         } catch (err) {

@@ -56,7 +56,7 @@ export default function AddCart() {
 
     async function handleTransferPost() {
         const userId = localStorage.getItem("userId");
-        const BASE_URL = 'https://back-end-bank-managment.vercel.app/api'
+        const BASE_URL = 'http://localhost:5500/api'
         await axios.post(`${BASE_URL}/addBankCard/${userId}`, {
             cardNumber: card.cardNumber,
             cardDate: card.cardDate,

@@ -63,7 +63,7 @@ function QuickTransfer() {
     }, [cardActive, cardData])
 
     function handleTransferPost() {
-        const BASE_URL = 'https://back-end-bank-managment.vercel.app/api'
+        const BASE_URL = 'http://localhost:5500/api'
         axios.post(`${BASE_URL}/transferMoney`, {
             senderCardNumber: tra.senderCardNumber,
             receiverCardNumber: tra.receiverCardNumber,
