@@ -3,7 +3,6 @@ import style from "./design/style.module.scss";
 import BankCards from '../credit-card/BankCards';
 import QuickTransfer from '../QuickTransfer/QuickTransfer';
 import { getCard } from '../../store/asyncthunk/bankCard-service';
-import { io } from "socket.io-client";
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function Sidebar({ styles }) {
@@ -11,15 +10,6 @@ export default function Sidebar({ styles }) {
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCard());
-        const socket = io('http://localhost:3000');
-        socket.on('notification', (message) => {
-            dispatch(getCard());
-            // dispatch(setLoading(true))
-            // setNotifications((prevNotifications) => [...prevNotifications, message]);
-        });
-        return () => {
-            socket.disconnect();
-        };
     }, [dispatch]);
 
     const loading = useSelector((state) => state.card.loading);

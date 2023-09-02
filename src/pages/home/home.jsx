@@ -4,7 +4,6 @@ import { getCard } from '../../store/asyncthunk/bankCard-service';
 import { getTransactions } from '../../store/asyncthunk/transactions-service';
 import { useDispatch, useSelector } from "react-redux";
 import Transaction from "../../components/transactions/transactions";
-import { io } from "socket.io-client";
 import 'moment/locale/az'
 import Overwiev from "../../components/Overwiev/Overwiev";
 import Sidebar from "../../components/SideBar/Sidebar";
@@ -18,16 +17,6 @@ function Home() {
         // dispatch(getCard());
         dispatch(getTransactions())
         dispatch(setLoading(true));
-
-        const socket = io('http://localhost:3000');
-        socket.on('notification', (message) => {
-            dispatch(getTransactions())
-            // dispatch(getCard());
-            // setNotifications((prevNotifications) => [...prevNotifications, message]);
-        });
-        return () => {
-            socket.disconnect();
-        };
     }, [dispatch]);
 
     return (

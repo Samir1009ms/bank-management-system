@@ -1,55 +1,31 @@
 import style from './design/style.module.scss'
 import { useEffect, useRef, useState } from "react";
-import { io } from "socket.io-client";
 import { ApiService } from "../../services/api.services";
 import moment from 'moment';
 import { useTranslation } from 'react-i18next';
 import { Badge } from "primereact/badge";
 import { HiOutlineBanknotes } from 'react-icons/hi2'
 import { MdClear } from 'react-icons/md'
-import audi from '../../assets/water_droplet.mp3'
+import { useDispatch, useSelector } from 'react-redux';
+import { getNotifications } from '../../store/asyncthunk/notifications-service';
 
 export function Notification() {
 
     const [notifications, setNotifications] = useState([]);
+    const dispatch = useDispatch()
+
+    const data = useSelector((state) => state.notification.notificatons)
+
 
     useEffect(() => {
-        const socket = io('http://localhost:3000');
-        async function fetchNotifications() {
-            const userId = localStorage.getItem("userId");
-            try {
-                const data = await ApiService.notii(userId);
-                setNotifications(data);
-            } catch (error) {
-            }
-        }
-        fetchNotifications();
-
-        const userId = localStorage.getItem("userId");
-
-        socket.on('notification', (message) => {
-            if (userId === message.sender) {
-                setNotifications((prevNotifications) => [...prevNotifications, message]);
-            }
-            const sound = localStorage.getItem("sound")
-            if (sound === "true") {
-                const audio = new Audio(audi);
-                audio.play();
-            }
-            console.log(message);
-        });
-
-        socket.on('deleteNotification', (message) => {
-            console.log(message);
-        });
-        return () => {
-            socket.disconnect();
-        };
-    }, []);
+        dispatch(getNotifications())
+    }, [dispatch])
+    useEffect(() => {
+        setNotifications(data)
+    }, [notifications, data]);
 
     function delet(e) {
         setNotifications(notifications.filter((x) => x._id !== e))
-        console.log(notifications);
         ApiService.deleteNotifications(e).then((e) => {
         }).catch((err) => {
             console.log(err)
@@ -59,26 +35,28 @@ export function Notification() {
     const [dates, setDates] = useState([])
 
     useEffect(() => {
-        if (notifications) {
-            const dataSorts = notifications.sort((a, b) => b.createdAt.localeCompare(a.createdAt))
+        if (notifications.length > 0) {
+            const dataSorts = [...notifications];
+            dataSorts.sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 
             const GroupDates = dataSorts.reduce((acc, date) => {
-                const [day, month, year] = moment(date.createdAt).format("DD MMMM YYYY").split(" ")
-                const dataKey = ` ${day} ${month} ${year}`
+                const [day, month, year] = moment(date.createdAt).format("DD MMMM YYYY").split(" ");
+                const dataKey = ` ${day} ${month} ${year}`;
                 if (!acc[dataKey]) {
-                    acc[dataKey] = []
+                    acc[dataKey] = [];
                 }
-                acc[dataKey].push(date)
-                return acc
-            }, {})
+                acc[dataKey].push(date);
+                return acc;
+            }, {});
 
             const dates = Object.entries(GroupDates).map(([day, notifications]) => ({
                 day,
                 notifications: notifications
-            }))
-            setDates(dates)
+            }));
+            setDates(dates);
         }
-    }, [notifications])
+    }, [notifications]);
+
 
     const [notificat, setNotificat] = useState("hidden")
 

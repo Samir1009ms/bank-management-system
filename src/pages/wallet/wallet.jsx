@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { getCard } from '../../store/asyncthunk/bankCard-service';
-import { io } from "socket.io-client";
 import axios from "axios";
 import moment from "moment";
 import style from './style.module.scss'
@@ -12,21 +11,13 @@ import Sidebar from "../../components/SideBar/Sidebar";
 import Charts from "../../components/wallet/Charts";
 import Transactions from "../../components/wallet/Transactions";
 import Loading from "../../components/loading/Loading";
+import { ApiService } from "../../services/api.services";
 
 export function Wallet() {
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch()
     useEffect(() => {
         dispatch(getCard());
-        const socket = io('http://localhost:3000');
-
-        socket.on('notification', (message) => {
-            dispatch(getCard());
-            // setNotifications((prevNotifications) => [...prevNotifications, message]);
-        });
-        return () => {
-            socket.disconnect();
-        };
     }, [dispatch]);
 
     const [cardDataX, setCardDataX] = useState([]);
@@ -34,18 +25,15 @@ export function Wallet() {
     const [chartData2, setChartData2] = useState([])
 
     async function getCardData(number) {
-        const BASE_URL = 'http://localhost:5500/api'
         try {
-            await axios.get(`${BASE_URL}/getTransactionsDetails/${number}`).then((res) => {
+            ApiService.getTransactionsDetails(number).then((res) => {
                 setLoading(false);
-                console.log(res.data);
                 setCardDataX(res.data);
                 const data = res.data.filter((transaction) => transaction.type !== 'Outgoing')
                 const data2 = res.data.filter((transaction) => transaction.type === 'Outgoing')
                 const months = moment.months()
                 const ay = []
                 const ay2 = []
-                console.log(loading);
                 months.map((month) => (
                     ay.push({ month: month, amount: 0 })
                 ))
@@ -68,6 +56,8 @@ export function Wallet() {
                 })
                 setChartData(ay)
                 setChartData2(ay2)
+                // dispatch(getCard());
+
                 // ! chartData  Charts data adi altinda getmelidir
             }).catch((err) => {
                 console.log(err);
@@ -97,10 +87,7 @@ export function Wallet() {
                 date,
                 transactions
             }))
-            console.log(group);
             setGroup(group)
-            console.log(group);
-            // !dataGroup adinda Transactions getmelidi
         } else {
             setGroup([])
         }

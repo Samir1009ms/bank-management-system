@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { AuthService } from '../../services/auth.services';
 import { Link, useNavigate } from 'react-router-dom';
 import { Password } from 'primereact/password';
@@ -8,6 +8,7 @@ import { Checkbox } from 'primereact/checkbox';
 import style from "./design/style.module.scss"
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import { Toast } from 'primereact/toast';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -20,6 +21,11 @@ const Login = () => {
     const { i18n } = useTranslation();
     const { t } = useTranslation()
     const [lang, setLang] = useState()
+    const toast = useRef(null);
+
+    const showError = (e) => {
+        toast.current.show({ severity: 'error', summary: 'Error', detail: `${e}`, life: 3000 });
+    }
 
     useEffect(() => {
         let theme = localStorage.getItem("theme");
@@ -59,7 +65,9 @@ const Login = () => {
             })
             .catch((error) => {
                 setLoading(false);
-                setMessage(error.response.data.message);
+                showError(error.response.data.message);
+                console.log(error.response.data.parol)
+
             });
     };
 
@@ -76,23 +84,9 @@ const Login = () => {
 
     }, [])
 
-
-    // // useEffect(() => {
-    //     const token = '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';
-    //     const headers = {
-    //         Authorization: `Bearer ${token}`
-    //     };
-    //     axios.get('https://api.github.com/user/repos', { headers })
-    //         .then((response) => {
-    //             console.log(response);
-    //         })
-    //         .catch((error) => {
-    //             console.error(error);
-    //         });
-    // }, []);
-
     return (
         <main className={`${style.main} formgrid grid justify-content-center xl:col-8 md:col-10 col-12 sm:col-12`}>
+            <Toast ref={toast} />
             <section className={`${style.login} col-12 field xl:col-6 sm:col-9 justify-content-center flex flex-column  align-items-center gap-4 pt-6 pb-6`}>
                 <form className='col-10 sm:col-10 gap-4 grid flex-column' onSubmit={handleLogin}>
                     <h3 className={style.sign}>{t('login')}</h3>

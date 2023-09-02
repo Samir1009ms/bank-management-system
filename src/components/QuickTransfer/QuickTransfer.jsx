@@ -1,11 +1,14 @@
 import React, { memo, useEffect, useRef, useState } from 'react'
 import style from "./design/style.module.scss";
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { FiChevronDown } from 'react-icons/fi';
 import { RadioButton } from 'primereact/radiobutton';
 import { useTranslation } from 'react-i18next';
 import { Toast } from 'primereact/toast';
+import { getCard } from '../../store/asyncthunk/bankCard-service';
+import { getNotifications } from '../../store/asyncthunk/notifications-service';
+import { getTransactions } from '../../store/asyncthunk/transactions-service';
+import { ApiService } from '../../services/api.services';
 
 function QuickTransfer() {
     const toast = useRef(null);
@@ -41,7 +44,7 @@ function QuickTransfer() {
         receiverCardNumber: '',
         amount: ''
     })
-
+    const dispatch = useDispatch()
     const handleChange = (e) => {
         const { name, value } = e.target;
         const parsedValue = parseFloat(value);
@@ -63,19 +66,17 @@ function QuickTransfer() {
     }, [cardActive, cardData])
 
     function handleTransferPost() {
-        const BASE_URL = 'http://localhost:5500/api'
-        axios.post(`${BASE_URL}/transferMoney`, {
-            senderCardNumber: tra.senderCardNumber,
-            receiverCardNumber: tra.receiverCardNumber,
-            amount: tra.amount
-        }).then((res) => {
-            console.log(res.data);
+        ApiService.transferMoney(tra).then((res) => {
             showSuccess()
             setTra({
                 senderCardNumber: '',
                 receiverCardNumber: '',
                 amount: ''
             })
+            dispatch(getCard());
+            dispatch(getNotifications())
+            dispatch(getTransactions())
+
         }).catch((err) => {
             console.log(err);
             showError(err.response.data.message)

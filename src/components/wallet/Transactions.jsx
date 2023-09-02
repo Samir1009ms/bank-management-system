@@ -19,50 +19,17 @@ export default function Transactions({ selectData }) {
         setRows(event.rows);
     };
 
-    // useEffect(() => {
-    //     if (selectData.length > 0) {
-    //         console.log(selectData);
-    //         const filtr = selectData.filter((e) => {
-    //             let month = moment().month(e.date).format("M");
-    //             month = Number(month)
-    //             return month === selectedMonth
-    //         })
-    //         setFilters(filtr);
-    //         console.log(filtr);
-
-    //         if (selected === "All") {
-    //             const allData = filtr.flatMap((e) => e.transctions)
-    //             // console.log(filtr);
-    //             console.log(allData);
-    //             setSelectDatas(allData)
-    //         } else if (selected === "Incomings") {
-    //             let incomeData = filtr.flatMap((e) => e.transctions)
-    //             incomeData = incomeData.filter((e) => e.type === "Incoming");
-    //             setSelectDatas(incomeData);
-    //         } else if (selected === "Outcomings") {
-    //             let outcomeData = filtr.flatMap((e) => e.transctions)
-    //             outcomeData = outcomeData.filter((e) => e.type === "Outgoing");
-    //             setSelectDatas(outcomeData);
-    //         }
-    //     }
-    // }, [selectData, selectedMonth, selected])
-
-
     useEffect(() => {
         if (selectData.length > 0) {
-            console.log(selectData);
             const filtr = selectData.filter((e) => {
                 let month = moment().month(e.date).format("M");
                 month = Number(month)
                 return month === selectedMonth
             })
             setFilters(filtr);
-            console.log(filtr);
 
             if (selected === "All") {
                 const allData = filtr.flatMap((e) => e.transactions)
-                // console.log(filtr);
-                console.log(allData);
                 setSelectDatas(allData)
             } else if (selected === "Incomings") {
                 let incomeData = filtr.flatMap((e) => e.transactions)
@@ -78,18 +45,9 @@ export default function Transactions({ selectData }) {
             setSelectDatas([])
         }
     }, [selectData, selectedMonth, selected])
-    // const [data, setData] = useState()
     const { t } = useTranslation();
-    // useEffect(() => {
-    //     if (selectData && Array.isArray(selectData)) {
-    //         setData(
-    //             selectData.map((e) => (e.transactions))
-    //         );
-    //         console.log(selectData.map((e) => e.transactions));
-    //     }
-    // }, [selectData]);
     return (
-        <div>
+        <div style={{ width: '50%' }}>
             < DataTable
                 value={selectDatas}
                 sortmode="multiple"

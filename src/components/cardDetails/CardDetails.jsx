@@ -5,6 +5,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import Transaction from './Transactions';
 import Loading from '../loading/Loading';
+import { ApiService } from '../../services/api.services';
 
 export default function CardDetails() {
     const { id } = useParams();
@@ -14,42 +15,41 @@ export default function CardDetails() {
     const [loading, setLoading] = useState(true);
 
     async function getCardTransactions(number) {
-        const BASE_URL = 'http://localhost:5500/api'
         try {
-            const res = await axios.get(`${BASE_URL}/getTransactionsDetails/${number}`);
-            console.log(res.data);
-            // setCard(res.data.card);
-            setData(res.data);
-            const data = res.data.filter((transaction) => transaction.type !== 'Outgoing');
-            const months = moment.months()
-            const ay = []
-            months.map((month) => (
-                ay.push({ month: month, amount: 0 })
-            ))
-            data.forEach(e => {
-                const month = moment(e.date).format("MMMM")
-                const index = ay.findIndex((i) => i.month === month)
-                if (index !== -1) {
-                    ay[index].amount += e.amount
-                }
-            });
-            setTransactions(ay);
-            setLoading(false);
-
+            ApiService.getTransactionsDetails(number).then((res) => {
+                setData(res.data);
+                const data = res.data.filter((transaction) => transaction.type !== 'Outgoing');
+                const months = moment.months()
+                const ay = []
+                months.map((month) => (
+                    ay.push({ month: month, amount: 0 })
+                ))
+                data.forEach(e => {
+                    const month = moment(e.date).format("MMMM")
+                    const index = ay.findIndex((i) => i.month === month)
+                    if (index !== -1) {
+                        ay[index].amount += e.amount
+                    }
+                });
+                setTransactions(ay);
+                setLoading(false);
+            })
         } catch (err) {
             console.log(err);
         }
     }
-
-    useEffect(() => {
-        axios.get(`http://localhost:5500/api/getCardDetails/${id}`).then((res) => {
-            console.log(res.data);
+    function cardDetails() {
+        ApiService.cardDetails(id).then((res) => {
             setCard(res.data.card);
             getCardTransactions(res.data.card.cardNumber);
         }
         ).catch((err) => {
             console.log(err);
         })
+    }
+
+    useEffect(() => {
+        cardDetails()
     }, [id])
 
     const [dataGroup, setDataGroup] = useState([])
@@ -80,7 +80,7 @@ export default function CardDetails() {
             {loading ? <Loading /> :
                 <>
                     <div>
-                        <Card card={card && card} transactions={transactions && transactions} />
+                        <Card cardDetails={cardDetails} card={card && card} transactions={transactions && transactions} />
                     </div>
                     <div>
                         <Transaction dataGroup={dataGroup && dataGroup} />

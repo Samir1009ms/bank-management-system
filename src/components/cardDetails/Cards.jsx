@@ -1,53 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import Cards from 'react-credit-cards-2';
 import './design/style.scss';
 import { IoIosCopy } from 'react-icons/io';
 import Charts from './Charts';
-import moment from 'moment';
+import { ApiService } from '../../services/api.services';
 
-export default function Card({ card, transactions }) {
-    // const { id } = useParams();
-    // const [card, setCard] = useState();
-    // const [transactions, setTransactions] = useState();
-
-    // async function getCardTransactions(number) {
-    //     try {
-    //         const res = await axios.get(`http://localhost:5500/api/getTransactionsDetails/${number}`);
-    //         console.log(res.data);
-    //         // setCard(res.data.card);
-    //         const data = res.data.filter((transaction) => transaction.type !== 'Outgoing');
-    //         const months = moment.months()
-    //         const ay = []
-    //         months.map((month) => (
-    //             ay.push({ month: month, amount: 0 })
-    //         ))
-    //         data.forEach(e => {
-    //             const month = moment(e.date).format("MMMM")
-    //             const index = ay.findIndex((i) => i.month === month)
-    //             if (index !== -1) {
-    //                 ay[index].amount += e.amount
-    //             }
-    //         });
-    //         setTransactions(ay);
-
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
-
-
-
+export default function Card({ card, transactions, cardDetails }) {
     const handleClick = async (id) => {
-        console.log(id);
         const userId = localStorage.getItem('userId')
         try {
-            const res = await axios.put(`http://localhost:5500/api/blockCard/${userId}/card/${id}`, { blocked: !card.blocked });
-            console.log(res.data);
-            // window.location.reload();
+            const blocked = !card.blocked
+            ApiService.blockedCard(userId, id, blocked).then((res) => {
+                cardDetails()
+            })
         } catch (err) {
-            // console.log(err);
+            console.log(err);
         }
     }
 

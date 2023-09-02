@@ -4,6 +4,7 @@ import Service from '../validation/validation'
 import { useTranslation } from 'react-i18next'
 import { Password } from 'primereact/password';
 import axios from 'axios'
+import { ApiService } from '../../services/api.services';
 
 const VALIDATOR = {
     password: (value, t) => {
@@ -68,14 +69,12 @@ export default function ConfirmPassword() {
         }
         return false;
     };
-
-    const BASE_URL = 'http://localhost:5500/api'
     const [err, setErr] = useState()
 
     function handlePassword() {
         const { email } = JSON.parse(localStorage.getItem('user'))
         const { password, nPassword } = formValues
-        axios.post(`${BASE_URL}/login`, { email, password, nPassword }).then((e) => {
+        ApiService.confirmPassword(email, password, nPassword).then((e) => {
             console.log(e);
         }).catch((e) => {
             setErr(e.response.data.parol)

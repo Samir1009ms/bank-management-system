@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 import style from "./design/style.module.scss";
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
+import { ApiService } from '../../services/api.services';
+import { useDispatch } from 'react-redux';
+import { getCard } from '../../store/asyncthunk/bankCard-service';
 
 export default function AddCart() {
 
@@ -53,19 +56,10 @@ export default function AddCart() {
         );
         setFormValid(isFormValid);
     };
-
+    const dispatch = useDispatch()
     async function handleTransferPost() {
         const userId = localStorage.getItem("userId");
-        const BASE_URL = 'http://localhost:5500/api'
-        await axios.post(`${BASE_URL}/addBankCard/${userId}`, {
-            cardNumber: card.cardNumber,
-            cardDate: card.cardDate,
-            cardCvv: card.cardCvv,
-            cardName: card.cardName,
-            cardType: card.cardType,
-
-        }).then((res) => {
-            console.log(res);
+        ApiService.addCard(userId, card).then((res) => {
             setCard({
                 cardNumber: '',
                 cardDate: '',
@@ -73,6 +67,7 @@ export default function AddCart() {
                 cardName: '',
                 cardType: '',
             })
+            dispatch(getCard())
         }).catch((err) => {
             console.log(err);
         })
