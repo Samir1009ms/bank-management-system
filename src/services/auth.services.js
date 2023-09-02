@@ -1,6 +1,6 @@
 import axios from "axios";
-const BASE_URL = 'http://localhost:5500/api'
-// const BASE_URL = 'https://bank-management-back-end.vercel.app/api'
+// const BASE_URL = 'http://localhost:5500/api'
+const BASE_URL = 'https://bank-management-back-end.vercel.app/api'
 // const BASE_URL = "http://192.168.42.148:5500/api"
 
 export class AuthService {
