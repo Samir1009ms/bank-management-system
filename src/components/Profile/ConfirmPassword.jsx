@@ -3,7 +3,6 @@ import style from './design/style.module.scss'
 import Service from '../validation/validation'
 import { useTranslation } from 'react-i18next'
 import { Password } from 'primereact/password';
-import axios from 'axios'
 import { ApiService } from '../../services/api.services';
 
 const VALIDATOR = {
