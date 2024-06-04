@@ -5,7 +5,7 @@ import { theme } from "../../store/expense/theme-slice";
 
 export function Theme() {
 
-    const [themes, setThemes] = useState('light')
+    const [themes, setThemes] = useState('dark')
     const dispatch = useDispatch()
 
     useEffect(() => {
