@@ -14,7 +14,7 @@ function QuickTransfer() {
     const toast = useRef(null);
 
     const showSuccess = () => {
-        toast.current.show({ severity: 'success', summary: 'Success', detail: 'Success', life: 3000 });
+        toast.current.show({ severity: 'success', summary: 'Success', detail: '', life: 3000 });
     }
     const showError = (e) => {
         toast.current.show({ severity: 'error', summary: 'Error', detail: `${e}`, life: 3000 });
@@ -67,6 +67,7 @@ function QuickTransfer() {
 
     function handleTransferPost() {
         ApiService.transferMoney(tra).then((res) => {
+            console.log(res);
             showSuccess()
             setTra({
                 senderCardNumber: '',

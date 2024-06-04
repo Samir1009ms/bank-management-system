@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getCard } from '../asyncthunk/bankCard-service';
+import { fill, filter } from 'lodash';
 
 const notificationsSlice = createSlice({
     name: 'notifications',
@@ -15,6 +16,9 @@ const notificationsSlice = createSlice({
             state.notificatons = action.payload;
             // console.log(action.payload)
             // state.cards = state.cardData.cards
+        },
+        filterNotifications: (state, action) => {
+            state.notificatons = state.notificatons.filter((x) => x._id !== action.payload)
         },
         setLoading: (state, action) => {
             state.loading = action.payload;
@@ -44,5 +48,5 @@ const notificationsSlice = createSlice({
     },
 });
 
-export const { setNotifcations, setLoading, setError, setTotal } = notificationsSlice.actions;
+export const { setNotifcations, setLoading, setError, setTotal, filterNotifications } = notificationsSlice.actions;
 export default notificationsSlice.reducer;

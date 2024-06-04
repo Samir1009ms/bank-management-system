@@ -8,6 +8,7 @@ import { HiOutlineBanknotes } from 'react-icons/hi2'
 import { MdClear } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux';
 import { getNotifications } from '../../store/asyncthunk/notifications-service';
+import { filterNotifications } from '../../store/expense/notifications-slice';
 
 export function Notification() {
 
@@ -25,7 +26,10 @@ export function Notification() {
     }, [notifications, data]);
 
     function delet(e) {
-        setNotifications(notifications.filter((x) => x._id !== e))
+        setNotifications(notifications.filter((item) => item._id !== e))
+        dispatch(filterNotifications(e))
+
+        console.log('silindi', e)
         ApiService.deleteNotifications(e).then((e) => {
         }).catch((err) => {
             console.log(err)

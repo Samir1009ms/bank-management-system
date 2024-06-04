@@ -64,6 +64,38 @@ body {
     background: var(--body-bg-color);
 }
 
+.p-datepicker:not(.p-datepicker-inline) .p-datepicker-header {
+    background: var(--body-bg-color) !important;
+}
+
+.p-link,
+.p-datepicker-title {
+    color: var(--nav-text-color) !important;
+}
+
+.p-datepicker-calendar-container {
+    color: var(--nav-text-color) !important;
+    background: var(--summary-bg-color) !important;
+    border-radius: 10px !important;
+}
+
+.p-yearpicker-year,
+.p-monthpicker-month {
+    &:hover {
+        background: var(--nav-hover-color) !important;
+    }
+}
+
+.p-datepicker:not(.p-disabled) table td span:not(.p-highlight):not(.p-disabled):hover {
+    background: var(--nav-hover-color) !important;
+}
+
+.p-datepicker:not(.p-datepicker-inline) {
+    background: var(--body-bg-color) !important;
+    color: var(--nav-text-color) !important;
+    border: 0 none;
+    box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.2), 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12);
+}
 
 body.dark {
     --body-bg-color: #050624;

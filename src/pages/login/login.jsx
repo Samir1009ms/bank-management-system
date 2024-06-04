@@ -11,9 +11,9 @@ import axios from 'axios';
 import { Toast } from 'primereact/toast';
 
 const Login = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [checked, setChecked] = useState(false);
+    const [email, setEmail] = useState('samir@admins.com');
+    const [password, setPassword] = useState('23012001');
+    const [checked, setChecked] = useState(true);
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState('');
     const navigate = useNavigate()
